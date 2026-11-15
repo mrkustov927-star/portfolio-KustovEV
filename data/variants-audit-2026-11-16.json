@@ -1,0 +1,38 @@
+{
+  "date": "2026-11-16",
+  "addedProjects": 37,
+  "newGalleryImagesAndPages": 2644,
+  "newDownloadAssets": 1671,
+  "sourceIdsCovered": 1984,
+  "reviewedGenericImages": 709,
+  "confirmedGenericPersonalExclusions": 73,
+  "blockedSources": [
+    "libfile_b1cb1073db5481919b54127ba67bfa8e",
+    "libfile_641afaa53b5481918e5e6f46c049180e",
+    "libfile_98f3fff8c9b08191be72a8121bbbb5ac"
+  ],
+  "unavailableSources": [
+    {
+      "sourceId": "libfile_858f4c71e2e88191a19d4ba399feb540",
+      "reason": "Image preview unavailable"
+    },
+    {
+      "sourceId": "libfile_eff7060394d88191ad6b2b3c8ce03ad0",
+      "reason": "No file payload; native Site or unresolved source"
+    },
+    {
+      "sourceId": "libfile_8330fb0906e48191ab1088288b54ab50",
+      "reason": "No file payload; native Site or unresolved source"
+    },
+    {
+      "sourceId": "libfile_17d491aa74b48191ba2b9a24b95e8c7d",
+      "reason": "No file payload; native Site or unresolved source"
+    }
+  ],
+  "counts": {
+    "projects": 112,
+    "galleries": 167,
+    "imagesAndPages": 3249,
+    "sitesAndTools": 30
+  }
+}

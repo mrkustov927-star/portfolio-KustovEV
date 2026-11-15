@@ -23,7 +23,7 @@ const originals=JSON.parse(fs.readFileSync('data/originals-manifest.json','utf8'
 const downloadMap=new Map(originals.files.map(f=>[f.url,f]));
 const base='https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/'+originals.releaseTag+'/';
 for(const f of originals.files){
- if(!f.url.startsWith(base)||!f.url.endsWith(f.asset)||!f.bytes||!/^[a-f0-9]{64}$/.test(f.sha256))throw new Error('Invalid original metadata: '+f.asset);
+ if(!(originals.releases||[originals.releaseTag]).some(tag=>f.url.startsWith('https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/'+tag+'/'))||!f.url.endsWith(f.asset)||!f.bytes||!/^[a-f0-9]{64}$/.test(f.sha256))throw new Error('Invalid original metadata: '+f.asset);
 }
 for(const items of Object.values(galleries))for(const g of items){
  const f=downloadMap.get(g.original);
@@ -32,6 +32,6 @@ for(const items of Object.values(galleries))for(const g of items){
 }
 for(const p of projects)for(const r of p.resources){
  if(/chatgpt.com\/library/.test(r.url))throw new Error('Authenticated Library link remains: '+p.id);
- if(r.url.startsWith(base)&&!downloadMap.has(r.url))throw new Error('Unknown release asset: '+p.id);
+ if(r.url.startsWith('https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/')&&!downloadMap.has(r.url))throw new Error('Unknown release asset: '+p.id);
 }
 console.log(JSON.stringify({originalFiles:originals.files.length,originalSources:Object.keys(originals.sources).length,downloads:'public'}));
