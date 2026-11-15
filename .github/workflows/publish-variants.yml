@@ -1,0 +1,105 @@
+name: Publish recovered portfolio variants
+on:
+  push:
+    paths:
+      - .github/workflows/publish-variants.yml
+permissions:
+  contents: write
+concurrency:
+  group: portfolio-variants-20261116
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: mrkustov927-star/portfolio-KustovEV
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 2
+      - name: Verify starting revision
+        run: test "$(git rev-parse HEAD^)" = "038491638dba53aaa0e8d02b8fd1798febbeaa29"
+      - name: Stream and verify publication bundles
+        shell: python
+        run: |
+          import pathlib,urllib.request,hashlib,tarfile
+          root=pathlib.Path('/tmp/portfolio-variants');root.mkdir()
+          bundles={"source-changes.tar.gz":{"sha256":"6d22300a590b2f9930150a7e0b4a8ae302beda811aaf516c303491194592ff27","bytes":351530966},"variant-assets.tar":{"sha256":"2fe6652fc11b754f6b0e3017467ccc7f092b6ed4dd14d56a7d5192fc0cb238f6","bytes":7127828480}}
+          class VerifiedStream:
+              def __init__(self,response):
+                  self.response=response;self.digest=hashlib.sha256();self.count=0
+              def read(self,n=-1):
+                  data=self.response.read(n)
+                  self.digest.update(data);self.count+=len(data);return data
+          for name,meta in bundles.items():
+              with urllib.request.urlopen('https://sb-2xxhf4varqmt.vercel.run/'+name,timeout=900) as response:
+                  stream=VerifiedStream(response)
+                  mode='r|gz' if name.endswith('.gz') else 'r|'
+                  with tarfile.open(fileobj=stream,mode=mode) as archive:
+                      archive.extractall('.' if name.startswith('source-') else root,filter='data')
+                  while stream.read(1048576):pass
+                  assert stream.count==meta['bytes'],name
+                  assert stream.digest.hexdigest()==meta['sha256'],name
+                  print('Verified bundle:',name,stream.count,flush=True)
+      - name: Verify site and original files
+        run: |
+          npm run build
+          npm run check
+          node --check public/app.js
+          python3 - <<'PY'
+          import json,pathlib,hashlib,collections
+          root=pathlib.Path('/tmp/portfolio-variants')
+          files=json.loads((root/'new-assets.json').read_text())
+          assert all(n<=1000 for n in collections.Counter(f['releaseTag'] for f in files).values())
+          for f in files:
+              p=root/'assets'/f['asset']
+              assert p.stat().st_size==f['bytes'] and f['bytes']<2**31
+              h=hashlib.sha256()
+              with p.open('rb') as source:
+                  for chunk in iter(lambda:source.read(1048576),b''):h.update(chunk)
+              assert h.hexdigest()==f['sha256'],f['asset']
+          print('Verified original and archive assets:',len(files))
+          PY
+      - name: Upload and verify recovered variants
+        shell: python
+        run: |
+          import subprocess,json,pathlib,os,collections,time
+          root=pathlib.Path('/tmp/portfolio-variants');files=json.loads((root/'new-assets.json').read_text());repo=os.environ['GH_REPO']
+          groups=collections.defaultdict(list)
+          for f in files:groups[f['releaseTag']].append(f)
+          releases=json.loads(subprocess.check_output(['gh','api',f'repos/{repo}/releases?per_page=100']))
+          release_ids={}
+          def assets(rid):
+              pages=json.loads(subprocess.check_output(['gh','api','--paginate','--slurp',f'repos/{repo}/releases/{rid}/assets?per_page=100']))
+              return {f['name']:f for page in pages for f in page}
+          for tag,items in groups.items():
+              rel=next((r for r in releases if r['tag_name']==tag),None)
+              if rel is None:
+                  rel=json.loads(subprocess.check_output(['gh','api','--method','POST',f'repos/{repo}/releases','-f','tag_name='+tag,'-f','target_commitish=038491638dba53aaa0e8d02b8fd1798febbeaa29','-F','draft=true','-f','make_latest=false','-f','name=Восстановленные варианты портфолио · 16.11.2026 · '+tag[-1],'-f','body=Дополнительные версии, эскизы и исходные материалы портфолио Евгения Кустова. Оригиналы доступны без входа в ChatGPT. Происхождение и контрольные суммы сохранены в репозитории.']))
+              rid=rel['id'];release_ids[tag]=rid
+              for attempt in range(5):
+                  remote=assets(rid)
+                  missing=[str(root/'assets'/f['asset']) for f in items if f['asset'] not in remote]
+                  if not missing:break
+                  print('Uploading',tag,'remaining:',len(missing),flush=True)
+                  result=subprocess.run(['gh','release','upload',tag,*missing])
+                  if result.returncode:time.sleep(5*(attempt+1))
+              remote=assets(rid)
+              for f in items:
+                  r=remote[f['asset']]
+                  assert r['size']==f['bytes'],f['asset']
+                  assert r['digest']=='sha256:'+f['sha256'],f['asset']
+              print('Confirmed original digests:',tag,len(items),flush=True)
+          for tag,rid in release_ids.items():
+              subprocess.check_output(['gh','api','--method','PATCH',f'repos/{repo}/releases/{rid}','-F','draft=false','-f','make_latest=false'])
+              remote=assets(rid)
+              for f in groups[tag]:assert remote[f['asset']]['browser_download_url']==f['url'],f['asset']
+      - name: Commit reviewed catalog and galleries
+        run: |
+          git config user.name "portfolio-maintenance"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data public src scripts docs README.md
+          git commit -m "Recover portfolio variants, add series galleries and original downloads"
+          git push origin HEAD:main
