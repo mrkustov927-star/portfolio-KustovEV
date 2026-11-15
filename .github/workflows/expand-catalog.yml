@@ -1,0 +1,40 @@
+name: Expand portfolio catalog
+on:
+  push:
+    paths:
+      - ".github/workflows/expand-catalog.yml"
+permissions:
+  contents: write
+concurrency:
+  group: portfolio-catalog-expansion
+  cancel-in-progress: false
+jobs:
+  expand:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 2
+      - name: Check the reviewed source baseline
+        run: |
+          test "$(git rev-parse HEAD^)" = "3e4386409804e4c473b80438df4963ed8b6d4f5b"
+      - name: Import the reviewed catalog and materials
+        run: |
+          curl --fail --location --retry 2 --max-time 240 "https://sb-2xxhf4varqmt.vercel.run/catalog-expansion.tar.gz" --output "$RUNNER_TEMP/catalog.tar.gz"
+          echo "a0070f24f5ca0932fa5dbd85eb4ab8afe74f2bc0fbcaf3df1d9c58340ffb2fa1  $RUNNER_TEMP/catalog.tar.gz" | sha256sum --check
+          python3 -c 'import os,tarfile; tarfile.open(os.environ["RUNNER_TEMP"]+"/catalog.tar.gz").extractall(".", filter="data")'
+      - name: Build and verify the expanded portfolio
+        run: |
+          npm run build
+          npm run check
+          node --check public/app.js
+      - name: Save the verified expansion
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public data scripts docs README.md
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Expand portfolio to 54 projects and 586 reviewed material pages"
+          git pull --rebase origin main
+          git push origin HEAD:main
