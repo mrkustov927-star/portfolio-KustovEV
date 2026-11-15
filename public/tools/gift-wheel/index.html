@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#081b30" />
+<title>Барабан подарков — Единство в действии</title>
+<style>
+  :root { color-scheme: dark; --bg:#07192b; --ink:#f9fcff; --muted:#a8bed0; --edge:rgba(222,238,255,.17); --surface:#102b43; --surface2:#0c2237; --red:#ff575d; --yellow:#ffd780; --teal:#67e9cf; }
+  * { box-sizing: border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; min-height:100vh; background: radial-gradient(ellipse 55% 45% at 10% 18%,rgba(40,129,174,.24),transparent 76%), radial-gradient(ellipse 52% 48% at 92% 80%,rgba(247,63,94,.12),transparent 76%),var(--bg); color:var(--ink); font-family: Inter,system-ui,-apple-system,'Segoe UI',Arial,sans-serif; line-height:1.5; }
+  button,input,textarea { font:inherit; }
+  button { cursor:pointer; }
+  button:focus-visible,input:focus-visible,textarea:focus-visible {outline:3px solid var(--yellow);outline-offset:3px}
+  .container {max-width:1300px;margin:0 auto;padding:22px clamp(14px,3.5vw,46px) 50px;}
+  header {display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:28px;flex-wrap:wrap;}
+  .brand {display:flex;align-items:center;gap:12px;}
+  .brandmark {display:grid;place-items:center;width:48px;height:48px;flex-shrink:0;background:linear-gradient(145deg,#ff6b63,#ed344e);border-radius:15px;box-shadow:0 8px 24px #ff575d32;font-size:27px}
+  .eyebrow {font-size:11px;letter-spacing:2.5px;font-weight:800;color:#ffc782;text-transform:uppercase;}
+  .header-title {font-size:14px;font-weight:750;letter-spacing:.15px}
+  .head-actions {display:flex;align-items:center;gap:10px;}
+  .chip {padding:9px 13px;border:1px solid var(--edge);background:#ffffff0a;border-radius:40px;font-size:12px;color:#d8e7f4;white-space:nowrap}
+  .ghost {border:1px solid var(--edge);background:#ffffff0a;color:#eff6ff;padding:9px 13px;border-radius:12px;font-size:13px;font-weight:650;}
+  .ghost:hover {background:#ffffff19;}
+  .hero {max-width:780px;margin:0 auto 20px;text-align:center;}
+  .hero h1 {font-size:clamp(29px,5.2vw,52px);line-height:1.14;font-weight:850;letter-spacing:-1.7px;margin:4px 0 12px;}
+  .hero h1 span{color:var(--yellow)}
+  .hero p {color:var(--muted);margin:0;font-size:clamp(14px,1.4vw,16px)}
+  .main-grid {display:grid;grid-template-columns:minmax(0,1.35fr) minmax(330px,.85fr);gap:clamp(18px,2vw,30px);align-items:start;margin-top:20px}
+  .wheel-area {display:flex;flex-direction:column;align-items:center;padding:18px 14px 24px;border:1px solid #ffffff15;border-radius:26px;background:linear-gradient(155deg,#0e2b4314,#04101f66);min-width:0;}
+  .wheel-head {display:flex;align-items:center;justify-content:space-between;gap:14px;width:100%;max-width:610px;font-size:13px;color:#d0e3f0;padding:0 7px;}
+  .wheel-head strong {font-variant-numeric:tabular-nums;color:#fff;}
+  .circle-wrap {position:relative;width:min(100%,590px);aspect-ratio:1;margin:4px auto 0;display:grid;place-items:center;}
+  .outer-glow{position:absolute;width:94%;height:94%;border-radius:50%;background:conic-gradient(from 15deg,#eb5b6b,#ffd887,#64eacb,#77b3ff,#da85fb,#eb5b6b);filter:blur(25px);opacity:.3}
+  .wheel-disk {position:absolute;width:92%;height:92%;border-radius:50%;padding:7px;border:9px solid #f8fcff;box-shadow:0 15px 40px #0008,0 0 0 4px #21445e;overflow:hidden;background:#e3f2fa;display:grid;place-items:center;transform:rotate(0deg);will-change:transform}
+  #wheelCanvas {width:100%;height:100%;display:block;border-radius:50%;}
+  .pointer {position:absolute;z-index:4;top:1.9%;left:50%;transform:translateX(-50%);width:0;height:0;border-left:19px solid transparent;border-right:19px solid transparent;border-top:43px solid #ff5760;filter:drop-shadow(0 5px 3px #06131eac);}
+  .pointer::before {content:"";position:absolute;top:-47px;left:-10px;width:20px;height:12px;background:#fff0e5;border-radius:4px}
+  .hub {position:absolute;z-index:3;width:19%;height:19%;display:grid;place-items:center;border:8px solid #fffbf7;border-radius:50%;background:linear-gradient(145deg,#fc6569,#dd315a);box-shadow:0 7px 22px #072032bb; font-size:clamp(21px,4vw,42px);pointer-events:none}
+  .wheel-caption {margin:4px 0 0;color:#a5bfd3;font-size:12px;text-align:center;max-width:550px}
+  .panel {background:linear-gradient(165deg,#143550,#0b2338);border:1px solid var(--edge);border-radius:25px;padding:clamp(19px,2.5vw,30px);box-shadow:0 18px 70px #00000023;}
+  .panel-top {display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:22px}
+  .panel h2{font-size:20px;letter-spacing:-.4px;margin:0;}
+  .mini-label{font-size:11px;color:var(--muted);font-weight:800;letter-spacing:1.5px;text-transform:uppercase}
+  .label {font-weight:770;font-size:15px;display:block;margin-bottom:9px}
+  .field-row{display:flex;gap:11px;align-items:stretch}
+  #chosenNumber{display:block;width:100%;height:72px;min-width:0;background:#061b2c;border:1px solid #5d839e;border-radius:15px;color:white;font-size:33px;letter-spacing:1px;font-weight:800;text-align:center;font-variant-numeric:tabular-nums}
+  #chosenNumber::placeholder{font-size:17px;font-weight:450;color:#6b8fa8}
+  .field-note{font-size:12px;color:#9db9c9;margin:9px 0 17px;}
+  .primary{display:flex;align-items:center;justify-content:center;gap:9px;border:0;border-radius:15px;padding:18px 16px;font-size:16px;font-weight:800;color:#1a1823;background:linear-gradient(125deg,#ffe297,#ffb964);width:100%;box-shadow:0 8px 22px #f9a8523b;transition:transform .15s,opacity .15s}
+  .primary:not(:disabled):hover{transform:translateY(-2px)}
+  .primary:disabled{opacity:.43;cursor:not-allowed;box-shadow:none}
+  .alert {display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border:1px solid #ffc97969;background:#f4a83413;color:#ffdfad;border-radius:13px;font-size:13px;margin:0 0 16px;}
+  .result {border-radius:19px;background:radial-gradient(circle at 100% 0%,#2f607862,transparent 80%),#071e31;border:1px solid #ffffff21;margin-top:20px;padding:20px 16px;min-height:151px;text-align:center;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+  .result-label {font-size:11px;font-weight:750;letter-spacing:1.6px;text-transform:uppercase;color:var(--teal)}
+  .result-name{font-size:clamp(20px,2.7vw,28px);font-weight:850;letter-spacing:-.6px;line-height:1.25;overflow-wrap:anywhere;}
+  .result-sub {font-size:12px;color:var(--muted);max-width:310px;}
+  .result.winner{border-color:#ffd7808a;background:radial-gradient(circle at 50% 0%,#6e4d3659,transparent 85%),#071e31}
+  .result.winner .result-label{color:var(--yellow)}
+  .stats {display:flex;justify-content:space-between;gap:10px;margin-top:16px;padding-top:16px;border-top:1px solid var(--edge);color:#c4d8e8;font-size:13px}
+  .stats strong{color:#fff;font-size:18px;font-variant-numeric:tabular-nums}
+  .control-row {display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+  .control-row button{flex:1;min-width:130px}
+  .lower-grid {display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:24px;}
+  .section {border:1px solid var(--edge);border-radius:20px;background:#112d4380;padding:21px 23px;min-width:0}
+  .section-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px}
+  .section h3{font-size:17px;margin:0}
+  .small-button{padding:7px 12px;border:1px solid #496b81;background:transparent;color:#daedff;border-radius:10px;font-weight:700;font-size:12px}
+  .small-button:hover{background:#ffffff14}
+  .hint{font-size:13px;color:var(--muted);margin:0}
+  .roster{display:flex;flex-wrap:wrap;gap:7px;max-height:165px;overflow:auto}
+  .name-pill{border:1px solid #456276;background:#17374b;border-radius:30px;padding:6px 10px;font-size:12px;color:#e8f6fc;white-space:nowrap}
+  .name-pill.done{opacity:.46;text-decoration:line-through}
+  .history {margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px;max-height:170px;overflow:auto}
+  .history li{display:flex;justify-content:space-between;gap:8px;align-items:center;background:#19374a;border:1px solid #ffffff12;border-radius:10px;padding:7px 10px;font-size:12px;}
+  .history span{color:#aac2d4}
+  .footer{font-size:12px;color:#82a2b7;display:flex;justify-content:center;text-align:center;margin-top:25px}
+  dialog {width:min(94vw,610px);max-height:86vh;color:var(--ink);background:#112c43;border:1px solid #8eb3cb5b;border-radius:22px;padding:22px;box-shadow:0 20px 100px #000a;}
+  dialog::backdrop{background:#020c19bd;backdrop-filter:blur(6px)}
+  .dialog-head{display:flex;justify-content:space-between;align-items:center;gap:15px}
+  dialog h2 {font-size:21px;letter-spacing:-.4px;margin:0}
+  dialog p {color:#c2d4e4;font-size:13px;}
+  #namesEditor{display:block;width:100%;height:min(44vh,370px);min-height:260px;border:1px solid #537b95;background:#071b2c;color:#fafcff;border-radius:13px;padding:12px 15px;font-size:13px;line-height:1.9;resize:vertical}
+  .dialog-buttons {display:flex;gap:10px;margin-top:13px}
+  .dialog-buttons button{flex:1}
+  .muted-link {color:#ffd58f;text-decoration:underline;text-underline-offset:3px;cursor:pointer;border:0;background:transparent;font-size:13px;padding:0}
+  .confetti{pointer-events:none;position:fixed;inset:0;overflow:hidden;z-index:30}
+  .confetti-piece{position:absolute;width:9px;height:15px;animation:fall 3.3s ease-out forwards}
+  @keyframes fall {0%{opacity:1;transform:translate3d(0,-10vh,0) rotate(0deg)}100%{opacity:0;transform:translate3d(var(--dx),110vh,0) rotate(var(--turn))}}
+  @media(max-width:940px){.main-grid{grid-template-columns:1fr}.wheel-area{padding:12px 10px 18px}.circle-wrap{width:min(100%,570px)}.panel{max-width:650px;width:100%;justify-self:center}.hero h1{font-size:clamp(29px,6vw,46px)}.lower-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:620px){.container{padding:16px 12px 30px}header{margin-bottom:17px}.brandmark{width:42px;height:42px}.eyebrow{font-size:9px;letter-spacing:1.5px}.header-title{font-size:12px}.chip{display:none}.hero{margin-bottom:10px}.hero h1{font-size:34px;letter-spacing:-1px}.hero p{font-size:13px}.main-grid{gap:12px;margin-top:14px}.wheel-area{border-radius:17px}.wheel-disk{border-width:6px;padding:3px}.pointer{border-left-width:13px;border-right-width:13px;border-top-width:29px}.pointer::before{top:-32px;left:-7px;width:14px;height:7px}.hub{border-width:4px}.panel{padding:17px;border-radius:18px}.panel-top{margin-bottom:15px}.field-note{margin-bottom:12px}.result{min-height:128px}.lower-grid{grid-template-columns:1fr;gap:10px;margin-top:12px}.section{padding:14px 15px}.wheel-caption{font-size:11px}.footer{font-size:11px}}
+  @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="brand"><div class="brandmark" aria-hidden="true">🎁</div><div><div class="eyebrow">Единство в действии • 2026</div><div class="header-title">Форум волонтёрских команд · Санкт-Петербург</div></div></div>
+    <div class="head-actions"><span id="topCount" class="chip">13 из 14 участников</span><button id="fullscreen" class="ghost" type="button" title="Открыть на весь экран">⛶ На весь экран</button></div>
+  </header>
+  <div class="hero"><h1>Барабан <span>добрых подарков</span></h1><p>Каждый ребёнок имеет равный шанс. Один подарок — один победитель!</p></div>
+  <main class="main-grid">
+    <section class="wheel-area" aria-label="Барабан для розыгрыша">
+      <div class="wheel-head"><span>🎯 <strong>Случайный выбор</strong></span><span id="wheelParticipants">13 фамилий на барабане</span></div>
+      <div class="circle-wrap">
+        <div class="outer-glow"></div>
+        <div class="wheel-disk" id="disk"><canvas id="wheelCanvas" width="900" height="900" role="img" aria-label="Барабан с именами участников"></canvas></div>
+        <div class="pointer" aria-hidden="true"></div><div class="hub" aria-hidden="true">🎁</div>
+      </div>
+      <p class="wheel-caption">Красная стрелка указывает на победителя. Уже выигравшие исключаются автоматически.</p>
+    </section>
+    <section class="panel">
+      <div class="panel-top"><h2>Запустить розыгрыш</h2><span class="mini-label">ШАГ 01 / 02</span></div>
+      <label class="label" for="chosenNumber">Какое число назвали ребята?</label>
+      <div class="field-row"><input id="chosenNumber" type="number" inputmode="numeric" min="1" max="99" placeholder="От 1 до 99" autocomplete="off" aria-describedby="numberHint" /></div>
+      <p id="numberHint" class="field-note">Число влияет на вращение. Победитель выбирается случайно, с равными шансами.</p>
+      <div id="missingAlert" class="alert" role="status"><span aria-hidden="true">⚠️</span><div><b>Нужен 14-й участник.</b> В списке пока 13 имён. <button class="muted-link" type="button" data-edit="true">Добавить фамилию</button>, чтобы никто не остался без шанса.</div></div>
+      <button id="spin" type="button" class="primary" disabled>🎡 Крутить барабан</button>
+      <div id="result" class="result" aria-live="polite" aria-atomic="true"><div class="result-label" id="resultLabel">ГОТОВ К РОЗЫГРЫШУ</div><div class="result-name" id="resultName">Подготовьте список участников</div><div class="result-sub" id="resultSub">Дополните список и попросите ребят назвать число.</div></div>
+      <div class="stats"><div>Получили подарки<br/><strong id="winnerCount">0</strong></div><div style="text-align:right">Ещё участвуют<br/><strong id="remainingCount">13</strong></div></div>
+      <div class="control-row"><button id="undo" class="ghost" type="button" disabled>↶ Отменить результат</button><button id="reset" class="ghost" type="button">↻ Начать заново</button></div>
+    </section>
+  </main>
+  <div class="lower-grid">
+    <section class="section"><div class="section-top"><h3>👥 Участники</h3><button type="button" class="small-button" data-edit="true">✎ Изменить список</button></div><div id="roster" class="roster" aria-label="Список детей"></div></section>
+    <section class="section"><div class="section-top"><h3>🏆 Получили подарки</h3><span id="historyCount" class="mini-label">0 победителей</span></div><p id="emptyHistory" class="hint">Здесь появятся победители после каждого вращения.</p><ol id="history" class="history"></ol></section>
+  </div>
+  <footer class="footer">🎲 Случайный выбор без повторов. Все результаты сохраняются на этом устройстве. Даты рождения не используются.</footer>
+</div>
+<dialog id="editDialog" aria-labelledby="dialogTitle">
+  <div class="dialog-head"><h2 id="dialogTitle">Список участников</h2><button class="ghost" type="button" id="closeDialog" aria-label="Закрыть окно">✕</button></div>
+  <p>В демонстрации используются условные участники. <strong>Для своей встречи замените их имена.</strong> Можно исправить любое имя. По одному ребёнку в строке, без наставников.</p>
+  <textarea id="namesEditor" spellcheck="false" aria-label="Фамилии и имена детей"></textarea>
+  <p id="editCount" style="margin:8px 0" aria-live="polite"></p>
+  <p id="editError" style="margin:0;color:#ffbcb8;font-weight:700" role="alert"></p>
+  <div class="dialog-buttons"><button class="ghost" id="cancelEdit" type="button">Отмена</button><button class="primary" id="saveNames" type="button">Сохранить 14 участников</button></div>
+</dialog>
+<div class="confetti" id="confetti" aria-hidden="true"></div>
+<script>
+(()=>{
+'use strict';
+const EXPECTED=14;
+const DEFAULT_NAMES=Array.from({length:14},(_,i)=>'Участник '+String(i+1).padStart(2,'0'));
+const COLORS=['#ff647a','#ffbf6f','#6dd1c5','#6a9ffa','#dc8fdc','#95cd7a','#fd9198','#d8bc84','#69c8e8','#bd9dfb','#ff9d69','#88ddbf','#f596c2','#89acfc'];
+const KEY='portfolio_gift_wheel_demo_v1';
+const $=(id)=>document.getElementById(id);
+let names=DEFAULT_NAMES.slice();let draws=[];let spinning=false;let rotation=0;let currentEligible=[];
+try { const stored=JSON.parse(localStorage.getItem(KEY)||'{}');if(Array.isArray(stored.names)&&stored.names.length>=1&&stored.names.every(x=>typeof x==='string'))names=stored.names;if(Array.isArray(stored.draws))draws=stored.draws.filter(d=>d&&typeof d.name==='string'&&names.includes(d.name)); }catch(e){}
+let firstEditOpened=false;
+function save(){try{localStorage.setItem(KEY,JSON.stringify({names,draws}))}catch(e){}}
+function eligible(){const won=new Set(draws.map(d=>d.name));return names.filter(x=>!won.has(x))}
+function displayName(x){const p=x.trim().split(/\s+/);return [p[0]||'',p[1]||''].filter(Boolean).join(' ')}
+function drawWheel(list){
+ const canvas=$('wheelCanvas'),ctx=canvas.getContext('2d');const S=900,R=435,C=S/2;
+ ctx.clearRect(0,0,S,S);ctx.save();ctx.translate(C,C);
+ if(!list.length){ctx.fillStyle='#21415c';ctx.beginPath();ctx.arc(0,0,R,0,Math.PI*2);ctx.fill();ctx.fillStyle='#fff';ctx.font='bold 29px sans-serif';ctx.textAlign='center';ctx.fillText('Все подарки разыграны!',0,-220);ctx.restore();return}
+ const step=Math.PI*2/list.length;
+ list.forEach((person,i)=>{
+  const a=-Math.PI/2+(i-.5)*step,b=a+step;
+  ctx.beginPath();ctx.moveTo(0,0);ctx.arc(0,0,R,a,b);ctx.closePath();ctx.fillStyle=COLORS[(names.indexOf(person)+COLORS.length)%COLORS.length];ctx.fill();ctx.strokeStyle='#ffffffdd';ctx.lineWidth=5;ctx.stroke();
+  let ang=-Math.PI/2+i*step;ctx.save();ctx.rotate(ang);
+  const left=Math.cos(ang)<-0.0001;
+  if(left)ctx.rotate(Math.PI);
+  ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillStyle='#13253c';
+  const parts=person.split(/\s+/);const surname=parts[0]||person,first=parts[1]||'';
+  const x=(left?-1:1)*275;
+  ctx.font=`900 ${list.length>=13?29:Math.min(39,31+Math.floor((14-list.length)/2))}px system-ui, sans-serif`;
+  ctx.fillText(surname,x,-17,220);
+  ctx.font=`700 ${list.length>=13?25:29}px system-ui, sans-serif`;
+  ctx.fillText(first,x,18,210);
+  ctx.restore();
+ });
+ ctx.beginPath();ctx.arc(0,0,R-2,0,2*Math.PI);ctx.lineWidth=12;ctx.strokeStyle='#09253d3b';ctx.stroke();ctx.restore();
+}
+function freshWheel(){currentEligible=eligible();rotation=0;$('disk').style.transition='none';$('disk').style.transform='rotate(0deg)';drawWheel(currentEligible);}
+function updateUI(){
+ const rem=eligible(),missing=names.length!==EXPECTED;
+ $('topCount').textContent=`${names.length} из ${EXPECTED} участников`;
+ $('wheelParticipants').textContent=`${rem.length} ${rem.length===1?'фамилия':rem.length>=2&&rem.length<=4?'фамилии':'фамилий'} на барабане`;
+ $('winnerCount').textContent=draws.length;$('remainingCount').textContent=rem.length;
+ $('historyCount').textContent=`${draws.length} победителей`;
+ $('missingAlert').hidden=!missing;
+ $('spin').disabled=spinning||missing||rem.length===0||!validNumber();
+ $('undo').disabled=spinning||draws.length===0;
+ $('reset').disabled=spinning;
+ const roster=$('roster');roster.replaceChildren();const won=new Set(draws.map(x=>x.name));names.forEach(n=>{const el=document.createElement('span');el.className='name-pill'+(won.has(n)?' done':'');el.textContent=displayName(n);el.title=n;roster.append(el)});
+ const history=$('history');history.replaceChildren();draws.forEach((d,i)=>{const li=document.createElement('li');const nm=document.createElement('b');nm.textContent=`${i+1}. ${displayName(d.name)}`;const no=document.createElement('span');no.textContent=`число ${d.number}`;li.append(nm,no);history.append(li)});$('emptyHistory').hidden=draws.length>0;
+ if(!spinning&&rem.length===0){showResult('Все подарки разыграны!','Все 14 детей выбраны','Можно начать новый розыгрыш.');}
+}
+function validNumber(){const v=$('chosenNumber').value;return /^\d+$/.test(v)&&+v>=1&&+v<=99}
+function showResult(label,name,desc,winner=false){$('resultLabel').textContent=label;$('resultName').textContent=name;$('resultSub').textContent=desc;$('result').classList.toggle('winner',winner)}
+function randIndex(len){
+ if(globalThis.crypto&&typeof crypto.getRandomValues==='function'){
+  const c=new Uint32Array(1),limit=Math.floor(0x100000000/len)*len;do{crypto.getRandomValues(c)}while(c[0]>=limit);return c[0]%len;
+ }
+ return Math.floor(Math.random()*len);
+}
+function celebrate(){const layer=$('confetti');layer.replaceChildren();const colors=['#ffd780','#ff5867','#65e5c9','#fff','#8daaff'];for(let i=0;i<65;i++){const el=document.createElement('div');el.className='confetti-piece';el.style.left=`${randIndex(100)}%`;el.style.background=colors[randIndex(colors.length)];el.style.animationDelay=`${Math.random()*.55}s`;el.style.setProperty('--dx',`${randIndex(360)-180}px`);el.style.setProperty('--turn',`${randIndex(1100)-550}deg`);layer.append(el)}setTimeout(()=>layer.replaceChildren(),4300)}
+function spin(){
+ if(spinning||names.length!==EXPECTED||!validNumber()||!eligible().length)return;
+ const n=Number($('chosenNumber').value),list=currentEligible.slice();if(!list.length)return;
+ const winningIndex=randIndex(list.length),winner=list[winningIndex];spinning=true;
+ $('chosenNumber').disabled=true;
+ showResult('БАРАБАН ВРАЩАЕТСЯ','Кто же победит?','Сейчас стрелка укажет на счастливчика…');updateUI();
+ // Указанное детьми число меняет длительность и число оборотов, но НЕ выбор победителя.
+ const turns=5+(n%7),duration=4700+(n%5)*270;
+ const sliceDeg=360/list.length;
+ const goal=((360-winningIndex*sliceDeg)%360+360)%360;
+ const mod=((rotation%360)+360)%360;
+ const correction=(goal-mod+360)%360;
+ rotation+=turns*360+correction;
+ $('disk').style.transition=`transform ${duration}ms cubic-bezier(.12,.75,.11,1)`;
+ requestAnimationFrame(()=>requestAnimationFrame(()=>$('disk').style.transform=`rotate(${rotation}deg)`));
+ let finalized=false;
+ function finalize(){if(finalized)return;finalized=true;draws.push({name:winner,number:n});save();showResult('🎉 ПОБЕДИТЕЛЬ',winner,`Ребята назвали число ${n}. Поздравляем!`,true);spinning=false;$('chosenNumber').disabled=false;$('chosenNumber').value='';updateUI();celebrate();setTimeout(()=>{if(!spinning)freshWheel()},1100)}
+ const timeout=setTimeout(finalize,duration+300);
+ $('disk').addEventListener('transitionend',function ended(e){if(e.propertyName!=='transform')return;$('disk').removeEventListener('transitionend',ended);clearTimeout(timeout);finalize()});
+}
+function openEditor(){if(spinning)return;const dlg=$('editDialog');$('namesEditor').value=names.join('\n')+'\n';$('editError').textContent='';countEditor();dlg.showModal();}
+function countEditor(){const list=$('namesEditor').value.split(/\r?\n/).map(s=>s.trim()).filter(Boolean);$('editCount').textContent=`Заполнено: ${list.length} из ${EXPECTED}`;$('editCount').style.color=list.length===EXPECTED?'#85ead0':'#ffcf93'}
+function commitNames(){const list=$('namesEditor').value.split(/\r?\n/).map(s=>s.trim().replace(/\s+/g,' ')).filter(Boolean);const canon=list.map(x=>x.toLocaleLowerCase('ru-RU'));
+ if(list.length!==EXPECTED){$('editError').textContent=`Нужно ровно ${EXPECTED} детей. Сейчас: ${list.length}.`;return}
+ if(new Set(canon).size!==list.length){$('editError').textContent='В списке есть одинаковые ФИО. Проверьте повторения.';return}
+ const changed=JSON.stringify(list)!==JSON.stringify(names);
+ if(changed&&draws.length&&!confirm('После изменения списка результаты текущего розыгрыша будут сброшены. Продолжить?'))return;
+ names=list;if(changed)draws=[];save();$('editDialog').close();freshWheel();showResult('ВСЁ ГОТОВО','Все 14 участников добавлены','Попросите ребят назвать число от 1 до 99.');updateUI();}
+ document.querySelectorAll('[data-edit]').forEach(btn=>btn.addEventListener('click',openEditor));
+ $('closeDialog').addEventListener('click',()=>$('editDialog').close());$('cancelEdit').addEventListener('click',()=>$('editDialog').close());
+ $('namesEditor').addEventListener('input',countEditor);$('saveNames').addEventListener('click',commitNames);
+ $('chosenNumber').addEventListener('input',updateUI);
+ $('chosenNumber').addEventListener('keydown',e=>{if(e.key==='Enter')spin()});
+ $('spin').addEventListener('click',spin);
+ $('undo').addEventListener('click',()=>{if(spinning||!draws.length)return;const last=draws.pop();save();freshWheel();showResult('РЕЗУЛЬТАТ ОТМЕНЁН',displayName(last.name),'Этот участник снова участвует в розыгрыше.');updateUI()});
+ $('reset').addEventListener('click',()=>{if(spinning||!draws.length)return;if(!confirm('Начать розыгрыш заново и вернуть всех детей в барабан?'))return;draws=[];save();freshWheel();showResult('НОВЫЙ РОЗЫГРЫШ','Все дети снова участвуют','Попросите ребят назвать число.');updateUI()});
+ $('fullscreen').addEventListener('click',async()=>{try{if(document.fullscreenElement){await document.exitFullscreen()}else if(document.documentElement.requestFullscreen){await document.documentElement.requestFullscreen()}}catch(e){alert('Полноэкранный режим недоступен в этом браузере.')} });
+ if(names.length===EXPECTED){showResult('ГОТОВ К РОЗЫГРЫШУ','Назовите число','Введите число от 1 до 99 и нажмите кнопку.')}else{showResult('ПОДГОТОВКА СПИСКА','Подготовьте список участников','Нажмите «Добавить фамилию» перед первым розыгрышем.')}
+ freshWheel();updateUI();
+})();
+</script>
+</body>
+</html>

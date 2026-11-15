@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f4ee">
+  <meta name="description" content="Портфолио Евгения Кустова: мастер-классы, карточки для мероприятий, игры, интерактивные сайты и материалы для наставников Движения Первых.">
+  <meta property="og:title" content="Евгений Кустов — разработки для Первых">
+  <meta property="og:description" content="Идеи, которые становятся делом. Портфолио проектов и практических материалов из Кемского округа.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://portfolio-kustovev.vercel.app">
+  <title>Евгений Кустов — разработки для Первых</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="styles.css">
+  <script src="materials.js" defer></script>
+  <script src="projects.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#catalog">К разработкам</a>
+  <header class="header">
+    <a class="brand" href="#top" aria-label="Евгений Кустов — на главную"><span class="monogram">ЕК<span>↗</span></span><span>Евгений Кустов<small>разработки для Первых</small></span></a>
+    <nav aria-label="Основная навигация"><a href="#catalog">Разработки</a><button class="nav-site-button" type="button" data-collection="digital">Сайты</button><a href="#collections">Подборки</a><a href="#about">Об авторе</a></nav>
+    <button class="saved-button" id="saved-button" type="button"><span aria-hidden="true">☆</span> Избранное <span id="saved-count">0</span></button>
+  </header>
+  <main id="top">
+    <section class="hero wrap" aria-labelledby="hero-title"><div class="hero-copy"><p class="eyebrow"><span class="red-dot"></span> ЕВГЕНИЙ КУСТОВ · КЕМЬ, КАРЕЛИЯ</p><h1 id="hero-title">Идеи, которые<br>становятся <span>делом.</span></h1><p class="lead">Мастер-классы. Игры. Сайты.<br>Материалы для общих дел с Первыми.</p><p class="hero-description">Здесь собраны мои разработки с ChatGPT: от карточки для творческой встречи до интерактивного помощника. Их можно рассмотреть, открыть и взять в работу.</p><div class="hero-actions"><a class="button primary" href="#catalog">Найти разработку <span>↗</span></a><button class="text-link plain-button" type="button" data-collection="digital">Посмотреть сайты →</button></div><div class="hero-foot"><span class="tiny-label">ПРАКТИКА, КОТОРОЙ МОЖНО ДЕЛИТЬСЯ</span><span>2025—2026</span></div></div><button class="hero-collage" type="button" data-project="legend-workshop" aria-label="Открыть мастерскую «Азбука легенд родного края»"><span class="feature-top"><span class="mini-tag">КОЛЛЕКЦИЯ ПРАКТИКИ</span><span>СОЗДАНО В КЕМИ</span></span><span class="collage-stage"><img class="collage-sheet sheet-one" src="materials/legends/011.webp" alt="Исследовательская карточка о петроглифах Карелии"><img class="collage-sheet sheet-two" src="materials/ornaments/002.webp" alt="Учебный лист с орнаментом"><img class="collage-sheet sheet-three" src="materials/nosiki/001.webp" alt="Карточка проекта «Носики Первых»"><span class="collage-sticker">От образца<br>к своему делу ↗</span></span><span class="collage-caption"><strong>Материалы,<br>с которыми работают.</strong><span class="round-arrow">↗</span></span></button></section><div class="index-strip wrap"><span><b id="total-stat">26</b> разработок</span><span><b id="materials-stat">200+</b> листов и изображений</span><span><b id="sites-stat">7</b> сайтов и инструментов</span><a class="strip-note" href="https://github.com/mrkustov927-star/portfolio-KustovEV" target="_blank" rel="noopener noreferrer">Исходники на GitHub <span>↗</span></a></div>
+    <section class="catalog wrap" id="catalog" aria-labelledby="catalog-title">
+      <div class="section-heading"><div><p class="eyebrow">01 / КАТАЛОГ</p><h2 id="catalog-title">От замысла к практике</h2></div><p>Выберите задачу.<br>Найдите подходящий инструмент.</p></div>
+      <div class="catalog-tools"><label class="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg><input id="search" type="search" placeholder="Название, тема или аудитория…" autocomplete="off" aria-label="Поиск разработок"><span class="search-hint">ПОИСК</span></label><label class="format-label"><span class="sr-only">Формат</span><select id="format"><option value="all">Все форматы</option><option value="site">Интерактивный сайт</option><option value="print">Для печати</option><option value="method">Методический комплект</option></select></label></div>
+      <div class="filters" id="filters" role="group" aria-label="Направление разработки"></div>
+      <div class="results-line"><p id="results-count" role="status" aria-live="polite"></p><button id="reset" class="reset" type="button" hidden>Сбросить фильтры <span aria-hidden="true">×</span></button><span class="catalog-note">Карточки · сайты · материалы</span></div>
+      <div class="project-grid" id="project-grid"></div>
+      <div class="empty" id="empty" hidden><span aria-hidden="true">↗</span><h3>Попробуем другой запрос?</h3><p>По этим условиям разработок пока нет.</p><button class="button primary" type="button" id="empty-reset">Показать все работы</button></div>
+      <p class="catalog-footnote">Внутри каждой разработки — назначение, аудитория, авторство и доступные материалы. Карточки можно пролистывать, PDF — открывать и скачивать. Работы без исходного файла отмечены как описания.</p>
+      <noscript><p>Для поиска и просмотра карточек включите JavaScript. Готовые сайты: <a href="https://mrkustov927-star.github.io/kem-family-routes">Маршруты по Кеми</a>, <a href="https://novosti-pervykh-slet-gruppa7.mrkustov.chatgpt.site">Новости Первых</a>.</p></noscript>
+    </section>
+    <section class="collections-section" id="collections" aria-labelledby="collections-title"><div class="wrap"><div class="section-heading"><div><p class="eyebrow">02 / ПОДБОРКИ</p><h2 id="collections-title">С чего начнём?</h2></div><p>Несколько точек входа<br>для разных задач.</p></div><div class="collections-grid">
+      <button class="collection" data-collection="mentor" type="button"><span class="collection-number">01</span><h3>Я наставник</h3><p>Советы Первых, работа с командой, подготовка к чемпионату.</p><span class="collection-action">Материалы для работы <span>↗</span></span></button>
+      <button class="collection" data-collection="event" type="button"><span class="collection-number">02</span><h3>Готовлю событие</h3><p>Маршрут, игра, мастер-класс или медиаматериал о встрече.</p><span class="collection-action">От идеи к проведению <span>↗</span></span></button>
+      <button class="collection" data-collection="digital" type="button"><span class="collection-number">03</span><h3>Ищу интерактив</h3><p>Сайты, которые можно открыть и попробовать прямо сейчас.</p><span class="collection-action">Открыть сайты <span>↗</span></span></button>
+    </div></div></section>
+    <section class="about wrap" id="about" aria-labelledby="about-title"><div class="about-mark" aria-hidden="true"><span>Е</span><span>К<span class="about-spark">↗</span></span><small>КЕМЬ / КАРЕЛИЯ</small></div><div class="about-copy"><p class="eyebrow">03 / ОБ АВТОРЕ</p><h2 id="about-title">Евгений<br>Валерьевич Кустов</h2><p class="about-role">Специалист по организации работы Движения Первых<br>в Кемском муниципальном округе</p><p>Работаю с детьми, наставниками и первичными отделениями. Разрабатываю инструменты, которые помогают объяснять сложное, готовить события и превращать детские инициативы в общие дела.</p><p>ChatGPT помогает мне собирать структуру, тексты, визуальные материалы и интерактивные инструменты. Практический контекст, отбор содержания и доработка под конкретную команду — моя часть работы.</p><div class="about-values"><span>Детская инициатива</span><span>Совместное творчество</span><span>Практическая польза</span></div><p class="authorship-note">В совместных работах указаны команда и роль участников. Это личное портфолио практических разработок.</p></div></section>
+    <section class="closing wrap"><p>Хорошая разработка<br>продолжается <span>в чужой практике.</span></p><a href="#catalog" class="round-arrow" aria-label="Вернуться к каталогу">↑</a></section>
+  </main>
+  <footer class="footer wrap"><span>© 2026 · Евгений Кустов</span><span>Для детей. Для наставников. Для общих дел.</span><a href="#top">Наверх ↑</a></footer>
+  <dialog id="detail" aria-labelledby="detail-title"><div class="dialog-inner" id="detail-content"></div><button class="dialog-close" id="dialog-close" type="button" aria-label="Закрыть карточку">×</button></dialog>
+  <dialog id="viewer" aria-labelledby="viewer-title"><div class="viewer-head"><h2 id="viewer-title"></h2><button id="viewer-close" type="button" aria-label="Закрыть просмотр">×</button></div><div class="viewer-stage"><button id="viewer-prev" type="button" aria-label="Предыдущее изображение">←</button><img id="viewer-image" alt=""><button id="viewer-next" type="button" aria-label="Следующее изображение">→</button></div><div class="viewer-foot"><span id="viewer-counter"></span><a id="viewer-download" download>Скачать изображение ↓</a><a id="viewer-original" target="_blank" rel="noopener noreferrer">Открыть отдельно ↗</a></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

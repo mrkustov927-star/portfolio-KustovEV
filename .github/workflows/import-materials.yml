@@ -1,0 +1,37 @@
+name: Import portfolio materials
+on:
+  push:
+    paths:
+      - ".github/workflows/import-materials.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: portfolio-material-import
+  cancel-in-progress: false
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Download and verify the prepared materials
+        run: |
+          curl --fail --location --retry 2 --max-time 180 "https://sb-2jpz8dbk5ouz.vercel.run/portfolio-materials.tar.gz" --output "$RUNNER_TEMP/materials.tar.gz"
+          echo "3c3e438a689ee0b2fddafdea8733012cbbc4ed19684216c89fdef8a380c8d38e  $RUNNER_TEMP/materials.tar.gz" | sha256sum --check
+          python3 -c 'import os,tarfile; tarfile.open(os.environ["RUNNER_TEMP"]+"/materials.tar.gz").extractall(".", filter="data")'
+      - name: Build and check every material
+        run: |
+          npm run build
+          npm run check
+          node -e 'const fs=require("fs"),cp=require("child_process");const checks=JSON.parse(cp.execFileSync("node",["scripts/check.mjs"],{encoding:"utf8"}));fs.writeFileSync("data/import-report.json",JSON.stringify({...checks,sourceCommit:process.env.GITHUB_SHA,runId:process.env.GITHUB_RUN_ID,materialArchiveSha256:"3c3e438a689ee0b2fddafdea8733012cbbc4ed19684216c89fdef8a380c8d38e"},null,2));'
+      - name: Commit the verified material files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public data/material-sources.json data/import-report.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Import portfolio material assets and validated galleries"
+          git pull --rebase origin main
+          git push origin HEAD:main
+

@@ -1,0 +1,8 @@
+{
+  "name": "portfolio-kustovev",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {"build":"node scripts/build.mjs", "check":"node scripts/check.mjs", "dev":"node preview.mjs"},
+  "engines": {"node":">=22"}
+}
