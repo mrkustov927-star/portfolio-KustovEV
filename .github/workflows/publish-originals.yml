@@ -1,0 +1,94 @@
+name: Publish original files and complete portfolio
+on:
+  push:
+    paths:
+      - .github/workflows/publish-originals.yml
+permissions:
+  contents: write
+concurrency:
+  group: portfolio-originals-20261115
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: mrkustov927-star/portfolio-KustovEV
+      ORIGINALS_TAG: portfolio-originals-2026-11-15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 2
+      - name: Check starting revision
+        run: test "$(git rev-parse HEAD^)" = "de66a52d97b384760ad29d793e31685ab03ba94a"
+      - name: Download verified publication bundles
+        shell: python
+        run: |
+          import urllib.request,hashlib,pathlib,tarfile
+          root=pathlib.Path('/tmp/portfolio-originals');root.mkdir()
+          bundles={"source-changes.tar.gz":{"sha256":"d8995e0380d9ddd052e8def79ee197565f3c657b6594a81028def78e9c1dc5a1","bytes":1893413},"original-assets.tar":{"sha256":"b9d312c9d2996e9323d0746bc3963a5203fcf6d168d54ec88351d9cc6eb8b9ab","bytes":1982597120}}
+          for name,meta in bundles.items():
+              path=root/name
+              h=hashlib.sha256()
+              with urllib.request.urlopen('https://sb-2xxhf4varqmt.vercel.run/'+name,timeout=900) as response,path.open('wb') as output:
+                  while chunk:=response.read(1024*1024):
+                      h.update(chunk);output.write(chunk)
+              assert path.stat().st_size==meta['bytes'],name
+              assert h.hexdigest()==meta['sha256'],name
+              print('Verified',name,path.stat().st_size,flush=True)
+          with tarfile.open(root/'original-assets.tar') as archive:
+              archive.extractall(root,filter='data')
+          with tarfile.open(root/'source-changes.tar.gz') as archive:
+              archive.extractall('.',filter='data')
+      - name: Validate catalog and original bytes
+        run: |
+          npm run build
+          npm run check
+          node --check public/app.js
+          python3 - <<'PY'
+          import pathlib,json,hashlib
+          root=pathlib.Path('/tmp/portfolio-originals')
+          manifest=json.loads((root/'asset-manifest.json').read_text())
+          for f in manifest:
+              p=root/'assets'/f['asset']
+              assert p.stat().st_size==f['bytes']
+              assert hashlib.sha256(p.read_bytes()).hexdigest()==f['sha256']
+          print('Verified original assets:',len(manifest))
+          PY
+      - name: Create draft and upload original assets
+        shell: python
+        run: |
+          import subprocess,json,pathlib,os
+          root=pathlib.Path('/tmp/portfolio-originals')
+          manifest=json.loads((root/'asset-manifest.json').read_text())
+          tag=os.environ['ORIGINALS_TAG'];repo=os.environ['GH_REPO']
+          notes=root/'release-notes.md'
+          notes.write_text('Оригинальные материалы портфолио Евгения Кустова.\n\nФайлы доступны для скачивания без входа в ChatGPT. Исходное содержимое файлов сохранено без изменений. В каталоге доступны отдельные изображения, документы, видео и комплекты материалов.\n\nНе восстановленные файлы перечислены в data/recovery-backlog.json; их описания не выдаются за готовые оригиналы.\n',encoding='utf-8')
+          if subprocess.run(['gh','release','view',tag],capture_output=True).returncode:
+              subprocess.run(['gh','release','create',tag,'--draft','--title','Оригиналы материалов портфолио · 15.11.2026','--notes-file',str(notes),'--target','de66a52d97b384760ad29d793e31685ab03ba94a','--latest=false'],check=True)
+          def remote_assets():
+              rel=json.loads(subprocess.check_output(['gh','api',f'repos/{repo}/releases/tags/{tag}']))
+              pages=json.loads(subprocess.check_output(['gh','api','--paginate','--slurp',f"repos/{repo}/releases/{rel['id']}/assets?per_page=100"]))
+              return {f['name']:f for page in pages for f in page}
+          for attempt in range(4):
+              remote=remote_assets()
+              missing=[str(root/'assets'/f['asset']) for f in manifest if f['asset'] not in remote]
+              if not missing:break
+              print('Uploading original assets:',len(missing),flush=True)
+              subprocess.run(['gh','release','upload',tag,*missing])
+          remote=remote_assets()
+          for f in manifest:
+              a=remote[f['asset']]
+              assert a['size']==f['bytes'],f['asset']
+              assert a['digest']=='sha256:'+f['sha256'],f['asset']
+              assert a['browser_download_url']==f['url'],f['asset']
+          print('Confirmed release asset digests and URLs:',len(manifest),flush=True)
+          subprocess.run(['gh','release','edit',tag,'--draft=false','--latest=false'],check=True)
+      - name: Commit verified portfolio update
+        run: |
+          git config user.name "portfolio-maintenance"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data public src scripts
+          git commit -m "Add 21 professional projects and public original downloads"
+          git push origin HEAD:main
