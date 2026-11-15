@@ -1,0 +1,80 @@
+{
+  "checkedAt": "2026-11-15T22:30:44.038340+00:00",
+  "authentication": "none",
+  "cookies": "none",
+  "samples": [
+    {
+      "format": "PNG",
+      "bytes": 1078157,
+      "sha256": "369314fba49ea5a17f80b0edabd279e869e5101ab9c61f3c3a4c61b42cda1237",
+      "status": 200,
+      "verified": true
+    },
+    {
+      "format": "ZIP",
+      "bytes": 2050322,
+      "sha256": "083115bb6598034b37a0bc009c554af88d18c62fb0313dd9182c78fb749f4288",
+      "status": 200,
+      "verified": true
+    },
+    {
+      "format": "PDF",
+      "bytes": 6531,
+      "sha256": "5a902c1df4ad298566f3d298156447d1e13707894d5e6c024bfab59a59c13c07",
+      "status": 200,
+      "verified": true
+    },
+    {
+      "format": "DOCX",
+      "bytes": 37673,
+      "sha256": "b0cfd2700119eb79893994c4a4374173924be0f38b86bce59441b605473e6486",
+      "status": 200,
+      "verified": true
+    },
+    {
+      "format": "PPTX",
+      "bytes": 46124,
+      "sha256": "562362a835a843677c62be066f3626e831658625963d3105b712800bfcec4568",
+      "status": 200,
+      "verified": true
+    },
+    {
+      "format": "HTML",
+      "bytes": 1281,
+      "sha256": "c7951d84fa526efe5d8aae64079c9a8cfe35c72da94e6dd63ab68f0bb6c8f048",
+      "status": 200,
+      "verified": true
+    },
+    {
+      "format": "XLSX",
+      "bytes": 11564,
+      "sha256": "d6f39276d6323409356e909a97fcc3a04296fcca29fdc0d8c6d69ddb247be030",
+      "status": 200,
+      "verified": true
+    },
+    {
+      "format": "MP4",
+      "bytes": 61106,
+      "sha256": "0e0d937414370b85247749c583f41ea569c6331f7f6d4591465e0e5ef782f004",
+      "status": 200,
+      "verified": true
+    }
+  ],
+  "sourceCommit": "f161161e33773d3ceb89f00312c8c14caf7d6b2e",
+  "publication": {
+    "newAssets": 1671,
+    "bytes": 7123981113,
+    "allPublishedDigestsVerified": true,
+    "workflowRun": "https://github.com/mrkustov927-star/portfolio-KustovEV/actions/runs/43768956271",
+    "releases": [
+      {
+        "tag": "portfolio-variants-2026-11-16-a",
+        "assets": 841
+      },
+      {
+        "tag": "portfolio-variants-2026-11-16-b",
+        "assets": 830
+      }
+    ]
+  }
+}
