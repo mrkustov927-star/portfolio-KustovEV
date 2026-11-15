@@ -2763,7 +2763,7 @@
     "ready": true,
     "status": "Учебный сайт и оригиналы",
     "previewFrame": "tools/lessons/edu-7-info/index.html",
-    "previewScripts": false,
+    "previewScripts": true,
     "previewLabel": "ПРЕВЬЮ УРОКА"
   },
   {
@@ -2818,7 +2818,7 @@
     "ready": true,
     "status": "Учебный сайт и оригиналы",
     "previewFrame": "tools/lessons/edu-7-volume/index.html",
-    "previewScripts": false,
+    "previewScripts": true,
     "previewLabel": "ПРЕВЬЮ УРОКА"
   },
   {
@@ -2873,7 +2873,7 @@
     "ready": true,
     "status": "Учебный сайт и оригиналы",
     "previewFrame": "tools/lessons/edu-7-computer/index.html",
-    "previewScripts": false,
+    "previewScripts": true,
     "previewLabel": "ПРЕВЬЮ УРОКА"
   },
   {
@@ -2928,7 +2928,7 @@
     "ready": true,
     "status": "Учебный сайт и оригиналы",
     "previewFrame": "tools/lessons/edu-8-numbers/index.html",
-    "previewScripts": false,
+    "previewScripts": true,
     "previewLabel": "ПРЕВЬЮ УРОКА"
   },
   {
@@ -2983,7 +2983,7 @@
     "ready": true,
     "status": "Учебный сайт и оригиналы",
     "previewFrame": "tools/lessons/edu-8-logic/index.html",
-    "previewScripts": false,
+    "previewScripts": true,
     "previewLabel": "ПРЕВЬЮ УРОКА"
   },
   {
@@ -3038,7 +3038,7 @@
     "ready": true,
     "status": "Учебный сайт и оригиналы",
     "previewFrame": "tools/lessons/edu-9-models/index.html",
-    "previewScripts": false,
+    "previewScripts": true,
     "previewLabel": "ПРЕВЬЮ УРОКА"
   },
   {
@@ -3093,7 +3093,7 @@
     "ready": true,
     "status": "Учебный сайт и оригиналы",
     "previewFrame": "tools/lessons/edu-10-software/index.html",
-    "previewScripts": false,
+    "previewScripts": true,
     "previewLabel": "ПРЕВЬЮ УРОКА"
   },
   {
@@ -3155,7 +3155,7 @@
     "ready": true,
     "status": "Учебный сайт и оригиналы",
     "previewFrame": "tools/lessons/edu-10-alphabet/index.html",
-    "previewScripts": false,
+    "previewScripts": true,
     "previewLabel": "ПРЕВЬЮ УРОКА"
   },
   {
@@ -3203,7 +3203,7 @@
     "ready": true,
     "status": "Учебный сайт и оригиналы",
     "previewFrame": "tools/lessons/edu-10-command/index.html",
-    "previewScripts": false,
+    "previewScripts": true,
     "previewLabel": "ПРЕВЬЮ УРОКА"
   },
   {
@@ -3258,7 +3258,7 @@
     "ready": true,
     "status": "Учебный сайт и оригиналы",
     "previewFrame": "tools/lessons/edu-10-representation/index.html",
-    "previewScripts": false,
+    "previewScripts": true,
     "previewLabel": "ПРЕВЬЮ УРОКА"
   },
   {
@@ -3313,7 +3313,7 @@
     "ready": true,
     "status": "Учебный сайт и оригиналы",
     "previewFrame": "tools/lessons/edu-10-editor/index.html",
-    "previewScripts": false,
+    "previewScripts": true,
     "previewLabel": "ПРЕВЬЮ УРОКА"
   },
   {
@@ -3403,7 +3403,7 @@
     "ready": true,
     "status": "Учебный сайт и оригиналы",
     "previewFrame": "tools/lessons/edu-10-arithmetic/index.html",
-    "previewScripts": false,
+    "previewScripts": true,
     "previewLabel": "ПРЕВЬЮ УРОКА"
   },
   {
@@ -3458,7 +3458,7 @@
     "ready": true,
     "status": "Учебный сайт и оригиналы",
     "previewFrame": "tools/lessons/edu-11-graphs/index.html",
-    "previewScripts": false,
+    "previewScripts": true,
     "previewLabel": "ПРЕВЬЮ УРОКА"
   },
   {
@@ -3513,7 +3513,7 @@
     "ready": true,
     "status": "Учебный сайт и оригиналы",
     "previewFrame": "tools/lessons/edu-11-database/index.html",
-    "previewScripts": false,
+    "previewScripts": true,
     "previewLabel": "ПРЕВЬЮ УРОКА"
   },
   {
@@ -3561,7 +3561,7 @@
     "ready": true,
     "status": "Учебный сайт и оригиналы",
     "previewFrame": "tools/lessons/edu-11-modeling/index.html",
-    "previewScripts": false,
+    "previewScripts": true,
     "previewLabel": "ПРЕВЬЮ УРОКА"
   },
   {
@@ -3609,7 +3609,7 @@
     "ready": true,
     "status": "Учебный сайт и оригиналы",
     "previewFrame": "tools/lessons/edu-11-excel/index.html",
-    "previewScripts": false,
+    "previewScripts": true,
     "previewLabel": "ПРЕВЬЮ УРОКА"
   },
   {
