@@ -21,7 +21,7 @@ jobs:
         with:
           fetch-depth: 2
       - name: Check starting revision
-        run: test "$(git rev-parse HEAD^)" = "de66a52d97b384760ad29d793e31685ab03ba94a"
+        run: test "$(git rev-parse HEAD^)" = "59f30b89c28abc8051d3a5227460e6f5df1d6747"
       - name: Download verified publication bundles
         shell: python
         run: |
@@ -65,10 +65,8 @@ jobs:
           tag=os.environ['ORIGINALS_TAG'];repo=os.environ['GH_REPO']
           notes=root/'release-notes.md'
           notes.write_text('Оригинальные материалы портфолио Евгения Кустова.\n\nФайлы доступны для скачивания без входа в ChatGPT. Исходное содержимое файлов сохранено без изменений. В каталоге доступны отдельные изображения, документы, видео и комплекты материалов.\n\nНе восстановленные файлы перечислены в data/recovery-backlog.json; их описания не выдаются за готовые оригиналы.\n',encoding='utf-8')
-          if subprocess.run(['gh','release','view',tag],capture_output=True).returncode:
-              subprocess.run(['gh','release','create',tag,'--draft','--title','Оригиналы материалов портфолио · 15.11.2026','--notes-file',str(notes),'--target','de66a52d97b384760ad29d793e31685ab03ba94a','--latest=false'],check=True)
           def remote_assets():
-              rel=json.loads(subprocess.check_output(['gh','api',f'repos/{repo}/releases/tags/{tag}']))
+              rel=json.loads(subprocess.check_output(['gh','api',f'repos/{repo}/releases/446370871']))
               pages=json.loads(subprocess.check_output(['gh','api','--paginate','--slurp',f"repos/{repo}/releases/{rel['id']}/assets?per_page=100"]))
               return {f['name']:f for page in pages for f in page}
           for attempt in range(4):
@@ -82,9 +80,11 @@ jobs:
               a=remote[f['asset']]
               assert a['size']==f['bytes'],f['asset']
               assert a['digest']=='sha256:'+f['sha256'],f['asset']
-              assert a['browser_download_url']==f['url'],f['asset']
           print('Confirmed release asset digests and URLs:',len(manifest),flush=True)
-          subprocess.run(['gh','release','edit',tag,'--draft=false','--latest=false'],check=True)
+          subprocess.check_output(['gh','api','--method','PATCH',f'repos/{repo}/releases/446370871','-F','draft=false','-f','make_latest=false'])
+          remote=remote_assets()
+          for f in manifest:
+              assert remote[f['asset']]['browser_download_url']==f['url'],f['asset']
       - name: Commit verified portfolio update
         run: |
           git config user.name "portfolio-maintenance"
