@@ -20,7 +20,7 @@
   const categoryName = id => categories.find(c => c.id === id)?.label || id;
   const plural = n => n % 10 === 1 && n % 100 !== 11 ? "разработка" : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? "разработки" : "разработок";
   function cover(p, index) {
-    if (p.preview) return `<span class="cover cover-image${p.format==='site'?' preview-site':''}"><img src="${escape(p.preview)}" alt="Превью разработки: ${escape(p.title)}" loading="lazy"><span class="preview-label">${p.format==='site'?'САЙТ':p.gallery.length+' МАТЕРИАЛОВ'}</span></span>`;
+    if (p.preview) return `<span class="cover cover-image${p.format==='site'?' preview-site':''}"><img src="${escape(p.preview)}" alt="Превью разработки: ${escape(p.title)}" loading="lazy"><span class="preview-label">${p.format==='site'?'САЙТ':'ЛИСТЫ И КАРТОЧКИ · '+p.gallery.length}</span></span>`;
     if (p.previewFrame) return `<span class="cover cover-frame"><iframe src="${escape(p.previewFrame)}" title="Живое превью: ${escape(p.title)}" tabindex="-1" loading="lazy" sandbox="allow-scripts"></iframe><span class="preview-label">ЖИВОЙ ПРОСМОТР</span></span>`;
     const photo = p.cover === "route" ? '<img src="assets/kem-history.jpg" alt="" loading="lazy" width="750" height="587">' : "";
     return `<span class="cover cover-${escape(p.cover)}">${photo}<span class="cover-overline">${escape(p.overline)}</span><span class="cover-index">${String(index+1).padStart(2,"0")}</span><span class="cover-main">${p.coverTitle}</span>${p.cover !== "route" ? `<span class="cover-icon" aria-hidden="true">${escape(p.icon)}</span>` : ""}</span>`;
