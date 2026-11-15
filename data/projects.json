@@ -14,9 +14,16 @@
     ],
     "resources": [
       {
+        "title": "Скачать оригиналы комплекта",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-beca921073616e0c23323ef4.zip",
+        "type": "ZIP · 34.3 МБ",
+        "download": true
+      },
+      {
         "title": "Презентация творческой мастерской",
-        "url": "downloads/workshop.pdf",
-        "type": "PDF · скачать или открыть"
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-6e8c090c20bf1a8cd37a8fc8.pdf",
+        "type": "PDF · 268 КБ",
+        "download": true
       }
     ],
     "tags": [
@@ -76,9 +83,10 @@
     ],
     "resources": [
       {
-        "title": "Проверенная версия · все листы",
-        "url": "downloads/ornaments.zip",
-        "type": "ZIP · PNG"
+        "title": "Скачать исходный файл",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-dc2e1943ff270ff40709726c.zip",
+        "type": "ZIP · 2.0 МБ",
+        "download": true
       }
     ],
     "status": "6 учебных листов",
@@ -101,9 +109,10 @@
     ],
     "resources": [
       {
-        "title": "Полный печатный комплект · 14 страниц",
-        "url": "downloads/kursk.pdf",
-        "type": "PDF · скачать или открыть"
+        "title": "Скачать исходный файл",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-82f68b61efa59a6e08170626.pdf",
+        "type": "PDF · 4.7 МБ",
+        "download": true
       }
     ],
     "tags": [
@@ -165,39 +174,52 @@
     ],
     "resources": [
       {
+        "title": "Скачать оригиналы комплекта",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-67acd44a20900748c4bd50d4.zip",
+        "type": "ZIP · 93.6 МБ",
+        "download": true
+      },
+      {
         "title": "Сценарий встречи",
-        "url": "downloads/school_scenario.pdf",
-        "type": "PDF · скачать или открыть"
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-0cfb34447b56c513c2c469d0.pdf",
+        "type": "PDF · 219 КБ",
+        "download": true
       },
       {
         "title": "Раздаточные материалы",
-        "url": "downloads/school_handouts.pdf",
-        "type": "PDF · скачать или открыть"
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-ddc88b95a55779e61118df0a.pdf",
+        "type": "PDF · 216 КБ",
+        "download": true
       },
       {
         "title": "Редактируемый сценарий",
-        "url": "downloads/school-scenario.docx",
-        "type": "DOCX"
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-2ef6ec057f196d6f6672f5f4.docx",
+        "type": "DOCX · 51 КБ",
+        "download": true
       },
       {
         "title": "Редактируемые рабочие листы",
-        "url": "downloads/school-handouts.docx",
-        "type": "DOCX"
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-9fdd27af537af31b11dc5901.docx",
+        "type": "DOCX · 46 КБ",
+        "download": true
       },
       {
         "title": "Карточки на стол экономия тонера",
-        "url": "downloads/audit/school-visuals/libfile_2a9dd58b21e08191bdfeebef673b4a89.pdf",
-        "type": "PDF"
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-2a29c25372c4ca37e80f40b4.pdf",
+        "type": "PDF · 158 КБ",
+        "download": true
       },
       {
         "title": "Таблички команд А4(1)",
-        "url": "downloads/audit/school-visuals/libfile_815a0daf5ac88191a03f406d919fc78a.pdf",
-        "type": "PDF"
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-b97835f6016a30dfbf28bb1b.pdf",
+        "type": "PDF · 214 КБ",
+        "download": true
       },
       {
         "title": "Таблички команд А4(1)",
-        "url": "downloads/audit/school-visuals/libfile_f749891f1c488191b71baabc4c489474.pptx",
-        "type": "PPTX"
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-feb7250164661bf812babe17.pptx",
+        "type": "PPTX · 799 КБ",
+        "download": true
       },
       {
         "title": "Все изображения · веб-копии",
@@ -206,9 +228,10 @@
       },
       {
         "title": "Школа актива инструкции к заданиям.pptx",
-        "url": "https://chatgpt.com/library?file_id=libfile_13ce79f116548191bafc22c1c655481b&account_id=personal",
-        "type": "Оригинал в ChatGPT",
-        "library": true
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-c7f364d7704935c8ba95c114.pptx",
+        "type": "PPTX · 30.1 МБ",
+        "download": true,
+        "originalName": "Школа_актива_инструкции_к_заданиям.pptx"
       }
     ],
     "status": "Сценарий, листы и визуальный комплект",
@@ -249,6 +272,12 @@
     "description": "Практические листы о первой встрече, роли наставника, поддержке подростка и переходе от идеи к делу.",
     "role": "Разработка и оформление материалов с помощью ChatGPT — Евгений Кустов.",
     "resources": [
+      {
+        "title": "Скачать оригиналы комплекта",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-575ee8388cea201caadd7bc0.zip",
+        "type": "ZIP · 22.0 МБ",
+        "download": true
+      },
       {
         "title": "Все изображения · веб-копии",
         "url": "downloads/audit/gallery-mentor.zip",
@@ -293,9 +322,10 @@
     "role": "Разработка и оформление материалов с помощью ChatGPT — Евгений Кустов.",
     "resources": [
       {
-        "title": "Рабочая книга Жемчужный лабиринт возможностей",
-        "url": "downloads/audit/labyrinth/libfile_2f9cf989314c8191abca8ad30f3e2d82.pdf",
-        "type": "PDF"
+        "title": "Скачать исходный файл",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-377a5d2221ffff6eb22950e8.pdf",
+        "type": "PDF · 8.4 МБ",
+        "download": true
       },
       {
         "title": "Все изображения · веб-копии",
@@ -339,9 +369,16 @@
     "role": "Разработка и оформление материалов с помощью ChatGPT — Евгений Кустов.",
     "resources": [
       {
+        "title": "Скачать оригиналы комплекта",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-265c73484cd584525cee95f0.zip",
+        "type": "ZIP · 22.8 МБ",
+        "download": true
+      },
+      {
         "title": "Цветные квест листы Символы России",
-        "url": "downloads/audit/symbols/libfile_1e37e9c5a15081919a4016d871f0b811.zip",
-        "type": "ZIP"
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-e8cd40f6162c746575b9cab7.zip",
+        "type": "ZIP · 7.6 МБ",
+        "download": true
       },
       {
         "title": "Все изображения · веб-копии",
@@ -394,19 +431,28 @@
     "role": "Разработка и оформление материалов с помощью ChatGPT — Евгений Кустов.",
     "resources": [
       {
+        "title": "Скачать оригиналы комплекта",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-b4b495ce61b10eebc712a160.zip",
+        "type": "ZIP · 1.4 МБ",
+        "download": true
+      },
+      {
         "title": "20 карточек лото Первые лицевые стороны",
-        "url": "downloads/audit/loto/libfile_511d738e1fdc81919d6b91812261a99b.pdf",
-        "type": "PDF"
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-3cc4b358a6308420a7238f8c.pdf",
+        "type": "PDF · 698 КБ",
+        "download": true
       },
       {
         "title": "Редактируемые исходники 20 карточек лото Первые",
-        "url": "downloads/audit/loto/libfile_e0e6d7d4f9288191a7d2c5f9d0aecf8f.zip",
-        "type": "ZIP"
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-821c930bbc9ac22d9cb342d0.zip",
+        "type": "ZIP · 290 КБ",
+        "download": true
       },
       {
         "title": "20 карточек лото Первые оборотные стороны",
-        "url": "downloads/audit/loto/libfile_16e798591bc481918533c15e45d75425.pdf",
-        "type": "PDF"
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-ca3637053749397e4957f288.pdf",
+        "type": "PDF · 295 КБ",
+        "download": true
       },
       {
         "title": "Все изображения · веб-копии",
@@ -437,10 +483,10 @@
     ],
     "resources": [
       {
-        "title": "Все готовые карточки · исходный архив",
-        "url": "https://chatgpt.com/library?file_id=libfile_d0ae2abe149c819180209cd127f26ecb&account_id=personal",
-        "type": "ZIP · оригинал в ChatGPT",
-        "library": true
+        "title": "Скачать исходный файл",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-ef0e582b1fc2c49afc705955.zip",
+        "type": "ZIP · 82.6 МБ",
+        "download": true
       }
     ],
     "tags": [
@@ -493,6 +539,12 @@
     "role": "Подготовка игровой модели и визуальных материалов с ChatGPT — Евгений Кустов; разработка связана с командой первички «Культурный мост».",
     "resources": [
       {
+        "title": "Скачать оригиналы комплекта",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-e91dc6f501f6a6674c032cf6.zip",
+        "type": "ZIP · 7.4 МБ",
+        "download": true
+      },
+      {
         "title": "Все изображения · веб-копии",
         "url": "downloads/audit/gallery-bridges.zip",
         "type": "ZIP · WebP"
@@ -542,19 +594,28 @@
     ],
     "resources": [
       {
+        "title": "Скачать оригиналы комплекта",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-d6bc7695ec4d68bbb4e2bb98.zip",
+        "type": "ZIP · 23.1 МБ",
+        "download": true
+      },
+      {
         "title": "Все игровые эскизы",
-        "url": "downloads/games_pdf.pdf",
-        "type": "PDF · скачать или открыть"
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-3671cbd1ef338776ff09068f.pdf",
+        "type": "PDF · 887 КБ",
+        "download": true
       },
       {
         "title": "PNG для печати и доработки",
-        "url": "downloads/games.zip",
-        "type": "ZIP · изображения"
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-f015da475a0b94209ddef09e.zip",
+        "type": "ZIP · 1.6 МБ",
+        "download": true
       },
       {
         "title": "Редактируемые исходники игровых эскизов",
-        "url": "downloads/games-editable.zip",
-        "type": "ZIP · SVG"
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-b6294ebdb2916420be66a00d.zip",
+        "type": "ZIP · 250 КБ",
+        "download": true
       },
       {
         "title": "Все изображения · веб-копии",
@@ -599,14 +660,16 @@
     "role": "Разработка и оформление материалов с помощью ChatGPT — Евгений Кустов.",
     "resources": [
       {
-        "title": "Правовая шпаргалка Первички",
-        "url": "downloads/audit/primary/libfile_114563b665e08191925299dc1ecf3176.docx",
-        "type": "DOCX"
+        "title": "Скачать исходный файл",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-e0230ef8bead7041d2c2718d.zip",
+        "type": "ZIP · 2.6 МБ",
+        "download": true
       },
       {
-        "title": "Комплект для первичек Движение Первых",
-        "url": "downloads/audit/primary/libfile_a63bd3b1f94c81918db03f8e61f85eaa.zip",
-        "type": "ZIP"
+        "title": "Правовая шпаргалка Первички",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-8a41140c4d1c93d5fbd211c8.docx",
+        "type": "DOCX · 56 КБ",
+        "download": true
       },
       {
         "title": "Все изображения · веб-копии",
@@ -638,15 +701,16 @@
     ],
     "resources": [
       {
-        "title": "Сувениры Кемского округа · для печати",
-        "url": "downloads/souvenirs.pdf",
-        "type": "PDF · скачать или открыть"
+        "title": "Скачать исходный файл",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-59d8adda33e2077ecc704f7d.zip",
+        "type": "ZIP · 34.6 МБ",
+        "download": true
       },
       {
-        "title": "Исходные макеты закладок",
-        "url": "https://chatgpt.com/library?file_id=libfile_0369ae14127881918d20ac8c8d19f536&account_id=personal",
-        "type": "ZIP · оригинал в ChatGPT",
-        "library": true
+        "title": "Сувениры Кемского округа · для печати",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-095b2fce1391acb3a1158482.pdf",
+        "type": "PDF · 4.8 МБ",
+        "download": true
       }
     ],
     "tags": [
@@ -685,15 +749,16 @@
     ],
     "resources": [
       {
-        "title": "Общий печатный комплект сувениров",
-        "url": "downloads/souvenirs.pdf",
-        "type": "PDF · скачать или открыть"
+        "title": "Скачать исходный файл",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-bf054c0d9843af14e07894ba.zip",
+        "type": "ZIP · 33.1 МБ",
+        "download": true
       },
       {
-        "title": "Отдельные макеты открыток",
-        "url": "https://chatgpt.com/library?file_id=libfile_ea51836804cc8191b2d0768fd5894a4a&account_id=personal",
-        "type": "ZIP · оригинал в ChatGPT",
-        "library": true
+        "title": "Общий печатный комплект сувениров",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-095b2fce1391acb3a1158482.pdf",
+        "type": "PDF · 4.8 МБ",
+        "download": true
       }
     ],
     "tags": [
@@ -731,9 +796,10 @@
     ],
     "resources": [
       {
-        "title": "Комплект сувениров · 9 страниц",
-        "url": "downloads/souvenirs.pdf",
-        "type": "PDF · скачать или открыть"
+        "title": "Скачать исходный файл",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-095b2fce1391acb3a1158482.pdf",
+        "type": "PDF · 4.8 МБ",
+        "download": true
       }
     ],
     "tags": [
@@ -872,14 +938,15 @@
     ],
     "resources": [
       {
+        "title": "Скачать исходный файл",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-ad6caa9111d51650de27988e.pdf",
+        "type": "PDF · 83 КБ",
+        "download": true
+      },
+      {
         "title": "Открыть тренажёр",
         "type": "Сайт · доступ владельцу через ChatGPT",
         "url": "https://pervaya-pomoshch-kem-trainer.mrkustov.chatgpt.site"
-      },
-      {
-        "title": "PP Municipal answer key Kustov",
-        "url": "downloads/audit/municipal-aid/libfile_886d7ea26264819180cac807de727955.pdf",
-        "type": "PDF"
       },
       {
         "title": "Все изображения · веб-копии",
@@ -925,19 +992,27 @@
     ],
     "resources": [
       {
+        "title": "Скачать оригиналы комплекта",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-2d6a7b876fe2b6740c9f3de6.zip",
+        "type": "ZIP · 13.6 МБ",
+        "download": true
+      },
+      {
         "title": "Открыть сайт подготовки",
         "type": "Сайт · доступ владельцу через ChatGPT",
         "url": "https://pervaya-pomoshch-proverka-2026.mrkustov.chatgpt.site"
       },
       {
         "title": "Лист критериев трёх этапов · 2026",
-        "url": "downloads/aid-criteria.docx",
-        "type": "DOCX · редактируемый файл"
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-f6b5179b937f5f3c6c28d125.docx",
+        "type": "DOCX · 42 КБ",
+        "download": true
       },
       {
         "title": "Карточки на стол · экономия тонера",
-        "url": "downloads/aid-tables.pdf",
-        "type": "PDF · для печати"
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-2a29c25372c4ca37e80f40b4.pdf",
+        "type": "PDF · 158 КБ",
+        "download": true
       },
       {
         "title": "Все изображения · веб-копии",
@@ -986,9 +1061,10 @@
     ],
     "resources": [
       {
-        "title": "Карточки экскурсоводов · А4",
-        "url": "downloads/kem_cards.pdf",
-        "type": "PDF · скачать или открыть"
+        "title": "Скачать исходный файл",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-c49a4864c0ca995e6fae55ca.pdf",
+        "type": "PDF · 110 КБ",
+        "download": true
       }
     ],
     "status": "14 листов · PDF",
@@ -1027,24 +1103,34 @@
     ],
     "resources": [
       {
+        "title": "Скачать оригиналы комплекта",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-f000bdeef254455340d8db8c.zip",
+        "type": "ZIP · 130 КБ",
+        "download": true
+      },
+      {
         "title": "Карточки участникам семинара",
-        "url": "downloads/library_handouts.pdf",
-        "type": "PDF · скачать или открыть"
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-a60c490356362e740e50b0ee.pdf",
+        "type": "PDF · 45 КБ",
+        "download": true
       },
       {
         "title": "Презентация семинара",
-        "url": "downloads/library-slides.pptx",
-        "type": "PPTX · редактируемая презентация"
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-d609ff03fa934eeb6cfd18aa.pptx",
+        "type": "PPTX · 6.0 МБ",
+        "download": true
       },
       {
         "title": "Текст выступления Библиотеки и Движение Первых",
-        "url": "downloads/audit/library-speech/libfile_e8773a0ad6dc8191918656e83c6b9289.pdf",
-        "type": "PDF"
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-b0f0a090f2b5e116dd533357.pdf",
+        "type": "PDF · 84 КБ",
+        "download": true
       },
       {
         "title": "Текст выступления Библиотеки и Движение Первых",
-        "url": "downloads/audit/library-speech/libfile_6fb487efcb08819190009a921fdccc79.docx",
-        "type": "DOCX"
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-5d09f58416cd99ff6642ab48.docx",
+        "type": "DOCX · 41 КБ",
+        "download": true
       },
       {
         "title": "Все изображения · веб-копии",
@@ -1158,9 +1244,10 @@
     ],
     "resources": [
       {
-        "title": "Итоговые карточки конференции",
-        "url": "downloads/conference_cards.pdf",
-        "type": "PDF · скачать или открыть"
+        "title": "Скачать исходный файл",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-5b6eb7d76c58a9b5486b87eb.pdf",
+        "type": "PDF · 144 КБ",
+        "download": true
       }
     ],
     "tags": [
@@ -1198,10 +1285,10 @@
     ],
     "resources": [
       {
-        "title": "Исходный набор августовских карточек",
-        "url": "https://chatgpt.com/library?file_id=libfile_7040074d1ff881918c9a1d177b53d140&account_id=personal",
-        "type": "ZIP · оригинал в ChatGPT",
-        "library": true
+        "title": "Скачать исходный файл",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-721343d5b5f7e03f6c67f109.zip",
+        "type": "ZIP · 20.8 МБ",
+        "download": true
       }
     ],
     "tags": [
@@ -1239,10 +1326,10 @@
     ],
     "resources": [
       {
-        "title": "Исходный архив карточек",
-        "url": "https://chatgpt.com/library?file_id=libfile_3ab68fc3d6d08191b41ee2ddeeaea826&account_id=personal",
-        "type": "ZIP · оригинал в ChatGPT",
-        "library": true
+        "title": "Скачать исходный файл",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-fba4c30f8672313343ad4fad.zip",
+        "type": "ZIP · 5.0 МБ",
+        "download": true
       }
     ],
     "tags": [
@@ -1293,9 +1380,10 @@
     ],
     "resources": [
       {
-        "title": "Календарь · октябрь 2026",
-        "url": "downloads/calendar.pdf",
-        "type": "PDF · скачать или открыть"
+        "title": "Скачать исходный файл",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-ae73c9b0730310b04fcee268.pdf",
+        "type": "PDF · 70 КБ",
+        "download": true
       }
     ],
     "status": "Архив · октябрь 2026",
@@ -1371,14 +1459,16 @@
     ],
     "resources": [
       {
-        "title": "Совет Первых · макет первой главы",
-        "url": "downloads/council.pdf",
-        "type": "PDF · макет"
+        "title": "Скачать исходный файл",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-4becf2d03936928a0bf7dabb.pdf",
+        "type": "PDF · 693 КБ",
+        "download": true
       },
       {
         "title": "Редактируемый макет первой главы",
-        "url": "downloads/audit/booklet-council/libfile_5d543c6821b0819187329512b58beec0.pptx",
-        "type": "PPTX"
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-ac5b10f6000fc1d43e6a2e1a.pptx",
+        "type": "PPTX · 815 КБ",
+        "download": true
       }
     ],
     "status": "Макет первой главы",
@@ -1416,6 +1506,12 @@
       "Визуальные эскизы состязаний и полевых карточек"
     ],
     "resources": [
+      {
+        "title": "Скачать оригиналы комплекта",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-5c95e5158a19986e8a081b9d.zip",
+        "type": "ZIP · 17.3 МБ",
+        "download": true
+      },
       {
         "title": "Все изображения · веб-копии",
         "url": "downloads/audit/gallery-zarnitsa-visuals.zip",
@@ -1458,9 +1554,16 @@
     "role": "Визуализация и систематизация обсуждений с помощью ChatGPT — Евгений Кустов. Содержание идей — коллективная работа участников экспертных и проектных сессий.",
     "resources": [
       {
+        "title": "Скачать оригиналы комплекта",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-b7a5d9606e45b520692ef980.zip",
+        "type": "ZIP · 128.1 МБ",
+        "download": true
+      },
+      {
         "title": "novosti pervykh product",
-        "url": "downloads/audit/experts/libfile_f2cc820fd9608191a65956ba4c36e3e1.pptx",
-        "type": "PPTX"
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-e6a961bcbe79f2402a4d2692.pptx",
+        "type": "PPTX · 58 КБ",
+        "download": true
       },
       {
         "title": "Все изображения · веб-копии",
@@ -1505,9 +1608,16 @@
     "role": "Разработка и оформление материалов с помощью ChatGPT — Евгений Кустов.",
     "resources": [
       {
+        "title": "Скачать оригиналы комплекта",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-ae677adc06cc4a44b413ea10.zip",
+        "type": "ZIP · 14.4 МБ",
+        "download": true
+      },
+      {
         "title": "Буклет Движение Первых Кемь двусторонний",
-        "url": "downloads/audit/brochure/libfile_6af20c0c5a188191bc8b2d690555a948.pdf",
-        "type": "PDF"
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-0bad353d2f910b72cffc84b7.pdf",
+        "type": "PDF · 1.8 МБ",
+        "download": true
       },
       {
         "title": "Все изображения · веб-копии",
@@ -1552,6 +1662,12 @@
     "role": "Разработка и оформление материалов с помощью ChatGPT — Евгений Кустов.",
     "resources": [
       {
+        "title": "Скачать оригиналы комплекта",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-1d7f23eb7342dc72f2246942.zip",
+        "type": "ZIP · 13.9 МБ",
+        "download": true
+      },
+      {
         "title": "Открыть интерактивную разработку",
         "url": "tools/vk-community-model/index.html",
         "type": "Интерактивная модель"
@@ -1568,13 +1684,15 @@
       },
       {
         "title": "rubric cards pervye kem pack",
-        "url": "downloads/audit/vk-model/libfile_5fe734caef5c8191b6164264ffd8a161.zip",
-        "type": "ZIP"
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-c352e8e2608b9b31e0df4412.zip",
+        "type": "ZIP · 11.3 МБ",
+        "download": true
       },
       {
         "title": "vk menu first kem pack",
-        "url": "downloads/audit/vk-model/libfile_a8ead093accc81919848baef3c6296b7.zip",
-        "type": "ZIP"
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-12e2b616eca1c0a6e74ace3f.zip",
+        "type": "ZIP · 445 КБ",
+        "download": true
       },
       {
         "title": "Все изображения · веб-копии",
@@ -1630,9 +1748,10 @@
       },
       {
         "title": "Автономный макет кабинета",
-        "url": "https://chatgpt.com/library?file_id=libfile_182c0842b2c481919730a145cc623b03&account_id=personal",
-        "type": "HTML · оригинал в ChatGPT",
-        "library": true
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-ece5653c81e453b54b0196b2.html",
+        "type": "HTML · 9.5 МБ",
+        "download": true,
+        "originalName": "dobro-media-standalone.html"
       }
     ],
     "collections": [
@@ -1713,6 +1832,12 @@
     "role": "Разработка и оформление материалов с помощью ChatGPT — Евгений Кустов.",
     "resources": [
       {
+        "title": "Скачать исходный файл",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-dc3a628201fb977966fba759.zip",
+        "type": "ZIP · 2.1 МБ",
+        "download": true
+      },
+      {
         "title": "Открыть интерактивную разработку",
         "url": "tools/project-navigator/index.html",
         "type": "Архивный сайт"
@@ -1721,11 +1846,6 @@
         "title": "Все изображения · веб-копии",
         "url": "downloads/audit/gallery-navigator-previews.zip",
         "type": "ZIP · WebP"
-      },
-      {
-        "title": "Навигатор Первых сверка по положениям 2026",
-        "url": "downloads/audit/navigator/libfile_8853e7f90bd881919a40e21ffcecded6.zip",
-        "type": "ZIP"
       }
     ],
     "collections": [
@@ -1766,8 +1886,9 @@
     "resources": [
       {
         "title": "VK Monitor Pervye v0.2",
-        "url": "downloads/audit/vk-monitor/libfile_ecceb903c8c48191b5c3e2d555de08dc.zip",
-        "type": "ZIP"
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-5cff88173c4f90ab785c8612.zip",
+        "type": "ZIP · 52 КБ",
+        "download": true
       }
     ],
     "collections": [
@@ -1806,9 +1927,16 @@
     "role": "Визуальные и цифровые материалы с помощью ChatGPT — Евгений Кустов. Автор проекта — Валерия Синявина; заявитель гранта — Иван Брунов. Реализация — театр «ГРОТЕСК» и партнёры.",
     "resources": [
       {
+        "title": "Скачать оригиналы комплекта",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-b746b19ffcdff1a18f664eba.zip",
+        "type": "ZIP · 62.7 МБ",
+        "download": true
+      },
+      {
         "title": "frontovaya agitbrigada brand materials sketches",
-        "url": "downloads/audit/frontovaya/libfile_b21ec0ab9b808191baacefd5f32bf010.pdf",
-        "type": "PDF"
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-7af16be0bfffdb08db6c7501.pdf",
+        "type": "PDF · 820 КБ",
+        "download": true
       },
       {
         "title": "Все изображения · веб-копии",
@@ -1858,8 +1986,9 @@
       },
       {
         "title": "VK bot napominaniy Frontovaya agitbrigada",
-        "url": "downloads/audit/frontovaya/libfile_5a6e8fab11448191a132a20f9ee2bb93.zip",
-        "type": "ZIP"
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-ed1ad359a6da3bf9c443b246.zip",
+        "type": "ZIP · 16 КБ",
+        "download": true
       }
     ],
     "collections": [
@@ -1898,6 +2027,12 @@
     "description": "Архив афиш, баннеров и карточек обратного отсчёта исторического фестиваля.",
     "role": "Подготовка визуальных и медиаматериалов с помощью ChatGPT — Евгений Кустов. Фестиваль — партнёрская командная работа.",
     "resources": [
+      {
+        "title": "Скачать оригиналы комплекта",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-799eaa4afed0c91624570641.zip",
+        "type": "ZIP · 29.4 МБ",
+        "download": true
+      },
       {
         "title": "Все изображения · веб-копии",
         "url": "downloads/audit/gallery-kemy-fest.zip",
@@ -1939,6 +2074,12 @@
     "role": "Разработка и оформление материалов с помощью ChatGPT — Евгений Кустов.",
     "resources": [
       {
+        "title": "Скачать оригиналы комплекта",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-b48d0101a8bf037d4f5ea62a.zip",
+        "type": "ZIP · 10.8 МБ",
+        "download": true
+      },
+      {
         "title": "Все изображения · веб-копии",
         "url": "downloads/audit/gallery-vozrozhdenie.zip",
         "type": "ZIP · WebP"
@@ -1978,6 +2119,12 @@
     "description": "Визуальные образцы для творческой мастерской: животные на камнях и беломорские петроглифы.",
     "role": "Разработка и оформление материалов с помощью ChatGPT — Евгений Кустов.",
     "resources": [
+      {
+        "title": "Скачать оригиналы комплекта",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-9963d5bdf220391b92741eaa.zip",
+        "type": "ZIP · 8.9 МБ",
+        "download": true
+      },
       {
         "title": "Все изображения · веб-копии",
         "url": "downloads/audit/gallery-stone-art.zip",
@@ -2020,6 +2167,12 @@
     "role": "Разработка и оформление материалов с помощью ChatGPT — Евгений Кустов.",
     "resources": [
       {
+        "title": "Скачать оригиналы комплекта",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-0c8989c95c12f7efb8e1f327.zip",
+        "type": "ZIP · 11.1 МБ",
+        "download": true
+      },
+      {
         "title": "Все изображения · веб-копии",
         "url": "downloads/audit/gallery-karelian-painting.zip",
         "type": "ZIP · WebP"
@@ -2060,6 +2213,12 @@
     "role": "Разработка и оформление материалов с помощью ChatGPT — Евгений Кустов.",
     "resources": [
       {
+        "title": "Скачать оригиналы комплекта",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-fab3c8f7f30340efb7d520e7.zip",
+        "type": "ZIP · 7.1 МБ",
+        "download": true
+      },
+      {
         "title": "Все изображения · веб-копии",
         "url": "downloads/audit/gallery-meetings.zip",
         "type": "ZIP · WebP"
@@ -2098,6 +2257,12 @@
     "description": "Иллюстрации для знакомства участников с сообществами Движения Первых.",
     "role": "Разработка и оформление материалов с помощью ChatGPT — Евгений Кустов.",
     "resources": [
+      {
+        "title": "Скачать оригиналы комплекта",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-45a40c9f08098fcc9ad97905.zip",
+        "type": "ZIP · 4.5 МБ",
+        "download": true
+      },
       {
         "title": "Все изображения · веб-копии",
         "url": "downloads/audit/gallery-communities.zip",
@@ -2141,13 +2306,15 @@
     "resources": [
       {
         "title": "Задания КПО 14 карточек инициатив",
-        "url": "downloads/audit/initiative-tasks/libfile_049b8945fd148191a8f3c27ea68ea0f8.docx",
-        "type": "DOCX"
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-17ee38a80e06ec20aa8fa13b.docx",
+        "type": "DOCX · 49 КБ",
+        "download": true
       },
       {
         "title": "Задания КПО 10 лучших предложений",
-        "url": "downloads/audit/initiative-tasks/libfile_27bd53f51b54819192772d9d981ef5d3.docx",
-        "type": "DOCX"
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-77f91217b209d8f30b9c9bc9.docx",
+        "type": "DOCX · 46 КБ",
+        "download": true
       }
     ],
     "collections": [
@@ -2182,6 +2349,12 @@
     "description": "Архив вариантов афиши исторической выставки о Карельском фронте.",
     "role": "Разработка и оформление материалов с помощью ChatGPT — Евгений Кустов.",
     "resources": [
+      {
+        "title": "Скачать оригиналы комплекта",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-a09280cb7b771b272d5b8fbf.zip",
+        "type": "ZIP · 11.4 МБ",
+        "download": true
+      },
       {
         "title": "Все изображения · веб-копии",
         "url": "downloads/audit/gallery-exhibition.zip",
@@ -2222,6 +2395,12 @@
     "role": "Разработка и оформление материалов с помощью ChatGPT — Евгений Кустов.",
     "resources": [
       {
+        "title": "Скачать исходный файл",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-c8a782cdbf7148000f68c110.png",
+        "type": "PNG · 1.9 МБ",
+        "download": true
+      },
+      {
         "title": "Все изображения · веб-копии",
         "url": "downloads/audit/gallery-family-emblem.zip",
         "type": "ZIP · WebP"
@@ -2261,6 +2440,12 @@
     "description": "Макеты о накоплении баллов за контент и участии в медиажизни сообщества.",
     "role": "Разработка и оформление материалов с помощью ChatGPT — Евгений Кустов.",
     "resources": [
+      {
+        "title": "Скачать оригиналы комплекта",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-188bebf744ed6af3c61e828b.zip",
+        "type": "ZIP · 3.3 МБ",
+        "download": true
+      },
       {
         "title": "Все изображения · веб-копии",
         "url": "downloads/audit/gallery-loyalty.zip",
@@ -2305,27 +2490,31 @@
     "resources": [
       {
         "title": "Кюккя · итоговый ролик",
-        "url": "https://chatgpt.com/library?file_id=libfile_5f9bacee1e4c819192228f72c54dc44f&account_id=personal",
-        "type": "MP4 · оригинал в ChatGPT",
-        "library": true
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-2c3f4fcacd1a7bac108a47a7.mp4",
+        "type": "MP4 · 49.3 МБ",
+        "download": true,
+        "originalName": "Первые_Кемский_округ_Кюккя_2026_v7_preview_720p.mp4"
       },
       {
         "title": "Приветствие педагогической конференции",
-        "url": "https://chatgpt.com/library?file_id=libfile_1ee61be1ef408191bb73fa5de49e4603&account_id=personal",
-        "type": "MP4 · оригинал в ChatGPT",
-        "library": true
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-ec77b65ad578b34e7b19e49c.mp4",
+        "type": "MP4 · 81.0 МБ",
+        "download": true,
+        "originalName": "Приветствие_участникам_августовской_педагогической_конференции_ФИНАЛ_v3.mp4"
       },
       {
         "title": "Кемь Фест · исторический костюм",
-        "url": "https://chatgpt.com/library?file_id=libfile_27d2765f53f08191b798726c70895369&account_id=personal",
-        "type": "MP4 · оригинал в ChatGPT",
-        "library": true
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-9416c116d165ab612560e0a3.mp4",
+        "type": "MP4 · 137.5 МБ",
+        "download": true,
+        "originalName": "Кемь_Фест_2026_Костюмы_IX–XI_века.mp4"
       },
       {
         "title": "Встреча с поисковиками",
-        "url": "https://chatgpt.com/library?file_id=libfile_9ccc473df61c8191b3b7df9b8e714446&account_id=personal",
-        "type": "MP4 · оригинал в ChatGPT",
-        "library": true
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-e0abca58322d748fdc65bece.mp4",
+        "type": "MP4 · 86.2 МБ",
+        "download": true,
+        "originalName": "Встреча_с_поисковиками_2026.mp4"
       }
     ],
     "collections": [
@@ -2362,14 +2551,16 @@
     "role": "Разработка и оформление материалов с помощью ChatGPT — Евгений Кустов.",
     "resources": [
       {
-        "title": "Рабочеостровск проверенная историческая справка для экскурсии 09-08-2026",
-        "url": "downloads/audit/rabocheostrovsk/libfile_480c778a355081918d82d43f5ef67c63.docx",
-        "type": "DOCX"
+        "title": "Скачать исходный файл",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-bb42f52424cfb55cde9435be.pdf",
+        "type": "PDF · 1.0 МБ",
+        "download": true
       },
       {
-        "title": "Рабочеостровск экскурсионная книга ПОЛНАЯ ИСТОЧНИКОВАЯ РЕДАКЦИЯ",
-        "url": "downloads/audit/rabocheostrovsk/libfile_1c15eb6800c48191ba143732ea4fb9c7.pdf",
-        "type": "PDF"
+        "title": "Рабочеостровск проверенная историческая справка для экскурсии 09-08-2026",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-845efa7dd2cf8b69e0aa39e4.docx",
+        "type": "DOCX · 57 КБ",
+        "download": true
       },
       {
         "title": "Все изображения · веб-копии",
@@ -2414,9 +2605,16 @@
     "role": "Разработка и оформление материалов с помощью ChatGPT — Евгений Кустов.",
     "resources": [
       {
+        "title": "Скачать оригиналы комплекта",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-81d72ea04ba0cd377c9d522a.zip",
+        "type": "ZIP · 546 КБ",
+        "download": true
+      },
+      {
         "title": "Кемская центральная библиотека 10 SVG",
-        "url": "downloads/audit/library-logos/libfile_ad3a8fed7c108191b5993167bd382fa8.zip",
-        "type": "ZIP"
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-130403dbf4fd69fa6aeec3c5.zip",
+        "type": "ZIP · 888 КБ",
+        "download": true
       },
       {
         "title": "Все изображения · веб-копии",
@@ -2498,5 +2696,1222 @@
     "resources": [],
     "status": "Описание · файлы не подключены",
     "ready": false
+  },
+  {
+    "id": "edu-7-info",
+    "title": "Информация и единицы измерения · 7 класс",
+    "category": "informatics",
+    "format": "site",
+    "formatLabel": "Учебный сайт",
+    "year": "2026",
+    "cover": "blue",
+    "coverTitle": "Понять.<br>Попробовать.<br>Научиться.",
+    "overline": "ИНФОРМАТИКА",
+    "icon": "↗",
+    "summary": "Знакомство с информацией, битами, байтами и переводом единиц.",
+    "description": "Знакомство с информацией, битами, байтами и переводом единиц.",
+    "audience": "7 класс, учителя информатики",
+    "role": "Учебная разработка Евгения Кустова, созданная и доработанная с помощью ChatGPT.",
+    "tags": [
+      "7 класс",
+      "Информатика",
+      "Интерактив"
+    ],
+    "includes": [
+      "Знакомство с информацией, битами, байтами и переводом единиц.",
+      "Исходные файлы учебной разработки"
+    ],
+    "resources": [
+      {
+        "title": "Открыть учебный сайт",
+        "url": "tools/lessons/edu-7-info/index.html",
+        "type": "Интерактивный урок"
+      },
+      {
+        "title": "informatika 7 informaciya edinicy interactive.html",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-7fd72be5c5485c5943403c9c.html",
+        "type": "HTML · 36 КБ",
+        "download": true,
+        "originalName": "informatika_7_informaciya_edinicy_interactive.html"
+      },
+      {
+        "title": "informatika 7 informaciya edinicy interactive.zip",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-850d3cddcdbce005f8e47c0b.zip",
+        "type": "ZIP · 10 КБ",
+        "download": true,
+        "originalName": "informatika_7_informaciya_edinicy_interactive.zip"
+      },
+      {
+        "title": "Карточки и ответы Единицы информации ОБНОВЛЕНО.pdf",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-978d64a4b8dc804235da39ee.pdf",
+        "type": "PDF · 73 КБ",
+        "download": true,
+        "originalName": "Карточки_и_ответы_Единицы_информации_ОБНОВЛЕНО.pdf"
+      },
+      {
+        "title": "Карточки Единицы информации 5 вариантов ОБНОВЛЕНО.docx",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-5558db07525149048fb72de4.docx",
+        "type": "DOCX · 39 КБ",
+        "download": true,
+        "originalName": "Карточки_Единицы_информации_5_вариантов_ОБНОВЛЕНО.docx"
+      }
+    ],
+    "collections": [
+      "digital",
+      "teaching"
+    ],
+    "ready": true,
+    "status": "Учебный сайт и оригиналы",
+    "previewFrame": "tools/lessons/edu-7-info/index.html",
+    "previewScripts": false,
+    "previewLabel": "ПРЕВЬЮ УРОКА"
+  },
+  {
+    "id": "edu-7-volume",
+    "title": "Сколько весит сообщение? · 7 класс",
+    "category": "informatics",
+    "format": "site",
+    "formatLabel": "Учебный сайт",
+    "year": "2026",
+    "cover": "blue",
+    "coverTitle": "Понять.<br>Попробовать.<br>Научиться.",
+    "overline": "ИНФОРМАТИКА",
+    "icon": "↗",
+    "summary": "Информационный объём текста: учебные примеры и интерактивные задания.",
+    "description": "Информационный объём текста: учебные примеры и интерактивные задания.",
+    "audience": "7 класс, учителя информатики",
+    "role": "Учебная разработка Евгения Кустова, созданная и доработанная с помощью ChatGPT.",
+    "tags": [
+      "7 класс",
+      "Информатика",
+      "Интерактив"
+    ],
+    "includes": [
+      "Информационный объём текста: учебные примеры и интерактивные задания.",
+      "Исходные файлы учебной разработки"
+    ],
+    "resources": [
+      {
+        "title": "Открыть учебный сайт",
+        "url": "tools/lessons/edu-7-volume/index.html",
+        "type": "Интерактивный урок"
+      },
+      {
+        "title": "Информатика 7класс Информационный объем текста интерактив.html",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-1681f6fcb634d0e3032d3be6.html",
+        "type": "HTML · 79 КБ",
+        "download": true,
+        "originalName": "Информатика_7класс_Информационный_объем_текста_интерактив.html"
+      },
+      {
+        "title": "Информационный объем текста 7класс сайт и памятка.zip",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-197cb2aa5810746e3b06ba90.zip",
+        "type": "ZIP · 19 КБ",
+        "download": true,
+        "originalName": "Информационный_объем_текста_7класс_сайт_и_памятка.zip"
+      }
+    ],
+    "collections": [
+      "digital",
+      "teaching"
+    ],
+    "ready": true,
+    "status": "Учебный сайт и оригиналы",
+    "previewFrame": "tools/lessons/edu-7-volume/index.html",
+    "previewScripts": false,
+    "previewLabel": "ПРЕВЬЮ УРОКА"
+  },
+  {
+    "id": "edu-7-computer",
+    "title": "Устройство компьютера · 7 класс",
+    "category": "informatics",
+    "format": "site",
+    "formatLabel": "Учебный сайт",
+    "year": "2026",
+    "cover": "blue",
+    "coverTitle": "Понять.<br>Попробовать.<br>Научиться.",
+    "overline": "ИНФОРМАТИКА",
+    "icon": "↗",
+    "summary": "Устройства компьютера, их назначение и совместная работа.",
+    "description": "Устройства компьютера, их назначение и совместная работа.",
+    "audience": "7 класс, учителя информатики",
+    "role": "Учебная разработка Евгения Кустова, созданная и доработанная с помощью ChatGPT.",
+    "tags": [
+      "7 класс",
+      "Информатика",
+      "Интерактив"
+    ],
+    "includes": [
+      "Устройства компьютера, их назначение и совместная работа.",
+      "Исходные файлы учебной разработки"
+    ],
+    "resources": [
+      {
+        "title": "Открыть учебный сайт",
+        "url": "tools/lessons/edu-7-computer/index.html",
+        "type": "Интерактивный урок"
+      },
+      {
+        "title": "информатика 7 компоненты компьютера.html",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-67fb8a9f9bd0a081dbf4ece2.html",
+        "type": "HTML · 63 КБ",
+        "download": true,
+        "originalName": "информатика_7_компоненты_компьютера.html"
+      },
+      {
+        "title": "Секреты компьютера 7класс сайт и памятка.zip",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-2263fc7132c7b55105c64542.zip",
+        "type": "ZIP · 20 КБ",
+        "download": true,
+        "originalName": "Секреты_компьютера_7класс_сайт_и_памятка.zip"
+      }
+    ],
+    "collections": [
+      "digital",
+      "teaching"
+    ],
+    "ready": true,
+    "status": "Учебный сайт и оригиналы",
+    "previewFrame": "tools/lessons/edu-7-computer/index.html",
+    "previewScripts": false,
+    "previewLabel": "ПРЕВЬЮ УРОКА"
+  },
+  {
+    "id": "edu-8-numbers",
+    "title": "Системы счисления · 8 класс",
+    "category": "informatics",
+    "format": "site",
+    "formatLabel": "Учебный сайт",
+    "year": "2026",
+    "cover": "blue",
+    "coverTitle": "Понять.<br>Попробовать.<br>Научиться.",
+    "overline": "ИНФОРМАТИКА",
+    "icon": "↗",
+    "summary": "Позиционная запись чисел, переводы и упражнения.",
+    "description": "Позиционная запись чисел, переводы и упражнения.",
+    "audience": "8 класс, учителя информатики",
+    "role": "Учебная разработка Евгения Кустова, созданная и доработанная с помощью ChatGPT.",
+    "tags": [
+      "8 класс",
+      "Информатика",
+      "Интерактив"
+    ],
+    "includes": [
+      "Позиционная запись чисел, переводы и упражнения.",
+      "Исходные файлы учебной разработки"
+    ],
+    "resources": [
+      {
+        "title": "Открыть учебный сайт",
+        "url": "tools/lessons/edu-8-numbers/index.html",
+        "type": "Интерактивный урок"
+      },
+      {
+        "title": "informatika 8 sistemy schisleniya interactive.html",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-1f579b13dedcd6c31605a03b.html",
+        "type": "HTML · 39 КБ",
+        "download": true,
+        "originalName": "informatika_8_sistemy_schisleniya_interactive.html"
+      },
+      {
+        "title": "informatika 8 sistemy schisleniya interactive.zip",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-1bc876de0997f32afa60077c.zip",
+        "type": "ZIP · 10 КБ",
+        "download": true,
+        "originalName": "informatika_8_sistemy_schisleniya_interactive.zip"
+      }
+    ],
+    "collections": [
+      "digital",
+      "teaching"
+    ],
+    "ready": true,
+    "status": "Учебный сайт и оригиналы",
+    "previewFrame": "tools/lessons/edu-8-numbers/index.html",
+    "previewScripts": false,
+    "previewLabel": "ПРЕВЬЮ УРОКА"
+  },
+  {
+    "id": "edu-8-logic",
+    "title": "Логическая лаборатория · 8 класс",
+    "category": "informatics",
+    "format": "site",
+    "formatLabel": "Учебный сайт",
+    "year": "2026",
+    "cover": "blue",
+    "coverTitle": "Понять.<br>Попробовать.<br>Научиться.",
+    "overline": "ИНФОРМАТИКА",
+    "icon": "↗",
+    "summary": "Высказывания, логические операции и практические задания.",
+    "description": "Высказывания, логические операции и практические задания.",
+    "audience": "8 класс, учителя информатики",
+    "role": "Учебная разработка Евгения Кустова, созданная и доработанная с помощью ChatGPT.",
+    "tags": [
+      "8 класс",
+      "Информатика",
+      "Интерактив"
+    ],
+    "includes": [
+      "Высказывания, логические операции и практические задания.",
+      "Исходные файлы учебной разработки"
+    ],
+    "resources": [
+      {
+        "title": "Открыть учебный сайт",
+        "url": "tools/lessons/edu-8-logic/index.html",
+        "type": "Интерактивный урок"
+      },
+      {
+        "title": "Логическая лаборатория 8класс.html",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-f0fdb6d6cb794f591677066a.html",
+        "type": "HTML · 58 КБ",
+        "download": true,
+        "originalName": "Логическая_лаборатория_8класс.html"
+      },
+      {
+        "title": "Логическая лаборатория 8класс сайт и памятка.zip",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-1c48d4f75cb1a39259d7c336.zip",
+        "type": "ZIP · 19 КБ",
+        "download": true,
+        "originalName": "Логическая_лаборатория_8класс_сайт_и_памятка.zip"
+      }
+    ],
+    "collections": [
+      "digital",
+      "teaching"
+    ],
+    "ready": true,
+    "status": "Учебный сайт и оригиналы",
+    "previewFrame": "tools/lessons/edu-8-logic/index.html",
+    "previewScripts": false,
+    "previewLabel": "ПРЕВЬЮ УРОКА"
+  },
+  {
+    "id": "edu-9-models",
+    "title": "Информационные модели · ОГЭ 4 и 9 · 9 класс",
+    "category": "informatics",
+    "format": "site",
+    "formatLabel": "Учебный сайт",
+    "year": "2026",
+    "cover": "blue",
+    "coverTitle": "Понять.<br>Попробовать.<br>Научиться.",
+    "overline": "ИНФОРМАТИКА",
+    "icon": "↗",
+    "summary": "Повторение смешанных информационных моделей и тренажёр заданий ОГЭ.",
+    "description": "Повторение смешанных информационных моделей и тренажёр заданий ОГЭ.",
+    "audience": "9 класс, учителя информатики",
+    "role": "Учебная разработка Евгения Кустова, созданная и доработанная с помощью ChatGPT.",
+    "tags": [
+      "9 класс",
+      "Информатика",
+      "Интерактив"
+    ],
+    "includes": [
+      "Повторение смешанных информационных моделей и тренажёр заданий ОГЭ.",
+      "Исходные файлы учебной разработки"
+    ],
+    "resources": [
+      {
+        "title": "Открыть учебный сайт",
+        "url": "tools/lessons/edu-9-models/index.html",
+        "type": "Интерактивный урок"
+      },
+      {
+        "title": "Информатика 9 Смешанные модели ОГЭ 4 9 ПОВТОРЕНИЕ И ТРЕНАЖЕР.html",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-2c4c85a513d2d9ee139fec65.html",
+        "type": "HTML · 74 КБ",
+        "download": true,
+        "originalName": "Информатика_9_Смешанные_модели_ОГЭ_4_9_ПОВТОРЕНИЕ_И_ТРЕНАЖЕР.html"
+      },
+      {
+        "title": "Информатика 9 Смешанные модели ОГЭ 4 9 ПОВТОРЕНИЕ И ТРЕНАЖЕР.zip",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-86ac8db4953a6f4d7e536bb2.zip",
+        "type": "ZIP · 23 КБ",
+        "download": true,
+        "originalName": "Информатика_9_Смешанные_модели_ОГЭ_4_9_ПОВТОРЕНИЕ_И_ТРЕНАЖЕР.zip"
+      }
+    ],
+    "collections": [
+      "digital",
+      "teaching"
+    ],
+    "ready": true,
+    "status": "Учебный сайт и оригиналы",
+    "previewFrame": "tools/lessons/edu-9-models/index.html",
+    "previewScripts": false,
+    "previewLabel": "ПРЕВЬЮ УРОКА"
+  },
+  {
+    "id": "edu-10-software",
+    "title": "Программное обеспечение · 10 класс",
+    "category": "informatics",
+    "format": "site",
+    "formatLabel": "Учебный сайт",
+    "year": "2026",
+    "cover": "blue",
+    "coverTitle": "Понять.<br>Попробовать.<br>Научиться.",
+    "overline": "ИНФОРМАТИКА",
+    "icon": "↗",
+    "summary": "Виды ПО, операционные системы, драйверы и утилиты.",
+    "description": "Виды ПО, операционные системы, драйверы и утилиты.",
+    "audience": "10 класс, учителя информатики",
+    "role": "Учебная разработка Евгения Кустова, созданная и доработанная с помощью ChatGPT.",
+    "tags": [
+      "10 класс",
+      "Информатика",
+      "Интерактив"
+    ],
+    "includes": [
+      "Виды ПО, операционные системы, драйверы и утилиты.",
+      "Исходные файлы учебной разработки"
+    ],
+    "resources": [
+      {
+        "title": "Открыть учебный сайт",
+        "url": "tools/lessons/edu-10-software/index.html",
+        "type": "Интерактивный урок"
+      },
+      {
+        "title": "programmnoye obespechenie 10 class v3.html",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-04a08c75503447ea37cb07c8.html",
+        "type": "HTML · 54 КБ",
+        "download": true,
+        "originalName": "programmnoye_obespechenie_10_class_v3.html"
+      },
+      {
+        "title": "programmnoye obespechenie 10 class v3.zip",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-fbc5eb7f05aef9e8969415ea.zip",
+        "type": "ZIP · 13 КБ",
+        "download": true,
+        "originalName": "programmnoye_obespechenie_10_class_v3.zip"
+      }
+    ],
+    "collections": [
+      "digital",
+      "teaching"
+    ],
+    "ready": true,
+    "status": "Учебный сайт и оригиналы",
+    "previewFrame": "tools/lessons/edu-10-software/index.html",
+    "previewScripts": false,
+    "previewLabel": "ПРЕВЬЮ УРОКА"
+  },
+  {
+    "id": "edu-10-alphabet",
+    "title": "Алфавитный подход к измерению информации · 10 класс",
+    "category": "informatics",
+    "format": "site",
+    "formatLabel": "Учебный сайт",
+    "year": "2026",
+    "cover": "blue",
+    "coverTitle": "Понять.<br>Попробовать.<br>Научиться.",
+    "overline": "ИНФОРМАТИКА",
+    "icon": "↗",
+    "summary": "Мощность алфавита, информационный вес символа, теория и задания.",
+    "description": "Мощность алфавита, информационный вес символа, теория и задания.",
+    "audience": "10 класс, учителя информатики",
+    "role": "Учебная разработка Евгения Кустова, созданная и доработанная с помощью ChatGPT.",
+    "tags": [
+      "10 класс",
+      "Информатика",
+      "Интерактив"
+    ],
+    "includes": [
+      "Мощность алфавита, информационный вес символа, теория и задания.",
+      "Исходные файлы учебной разработки"
+    ],
+    "resources": [
+      {
+        "title": "Открыть учебный сайт",
+        "url": "tools/lessons/edu-10-alphabet/index.html",
+        "type": "Интерактивный урок"
+      },
+      {
+        "title": "alphabet lab grade10 v4.zip",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-58ebbfe66f8c4c3322b71b0c.zip",
+        "type": "ZIP · 25 КБ",
+        "download": true,
+        "originalName": "alphabet_lab_grade10_v4.zip"
+      },
+      {
+        "title": "Предыдущая редакция · informatics_grade10_complete.zip",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-9df33526301ab0f12f0335a1.zip",
+        "type": "ZIP · 26 КБ",
+        "download": true,
+        "originalName": "informatics_grade10_complete.zip"
+      },
+      {
+        "title": "Предыдущая редакция · informatika10_complete_v3.zip",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-4f37166e91548ee44ebed911.zip",
+        "type": "ZIP · 30 КБ",
+        "download": true,
+        "originalName": "informatika10_complete_v3.zip"
+      }
+    ],
+    "collections": [
+      "digital",
+      "teaching"
+    ],
+    "ready": true,
+    "status": "Учебный сайт и оригиналы",
+    "previewFrame": "tools/lessons/edu-10-alphabet/index.html",
+    "previewScripts": false,
+    "previewLabel": "ПРЕВЬЮ УРОКА"
+  },
+  {
+    "id": "edu-10-command",
+    "title": "Работа с командной строкой · 10 класс",
+    "category": "informatics",
+    "format": "site",
+    "formatLabel": "Учебный сайт",
+    "year": "2026",
+    "cover": "blue",
+    "coverTitle": "Понять.<br>Попробовать.<br>Научиться.",
+    "overline": "ИНФОРМАТИКА",
+    "icon": "↗",
+    "summary": "Учебная презентация и тренажёр для двадцатиминутного занятия.",
+    "description": "Учебная презентация и тренажёр для двадцатиминутного занятия.",
+    "audience": "10 класс, учителя информатики",
+    "role": "Учебная разработка Евгения Кустова, созданная и доработанная с помощью ChatGPT.",
+    "tags": [
+      "10 класс",
+      "Информатика",
+      "Интерактив"
+    ],
+    "includes": [
+      "Учебная презентация и тренажёр для двадцатиминутного занятия.",
+      "Исходные файлы учебной разработки"
+    ],
+    "resources": [
+      {
+        "title": "Открыть учебный сайт",
+        "url": "tools/lessons/edu-10-command/index.html",
+        "type": "Интерактивный урок"
+      },
+      {
+        "title": "cmd lab 10.html",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-e24419968a4bb7075bd64a48.html",
+        "type": "HTML · 58 КБ",
+        "download": true,
+        "originalName": "cmd_lab_10.html"
+      }
+    ],
+    "collections": [
+      "digital",
+      "teaching"
+    ],
+    "ready": true,
+    "status": "Учебный сайт и оригиналы",
+    "previewFrame": "tools/lessons/edu-10-command/index.html",
+    "previewScripts": false,
+    "previewLabel": "ПРЕВЬЮ УРОКА"
+  },
+  {
+    "id": "edu-10-representation",
+    "title": "Представление информации в компьютере · 10 класс",
+    "category": "informatics",
+    "format": "site",
+    "formatLabel": "Учебный сайт",
+    "year": "2026",
+    "cover": "blue",
+    "coverTitle": "Понять.<br>Попробовать.<br>Научиться.",
+    "overline": "ИНФОРМАТИКА",
+    "icon": "↗",
+    "summary": "Практикум о кодировании и представлении информации в компьютере.",
+    "description": "Практикум о кодировании и представлении информации в компьютере.",
+    "audience": "10 класс, учителя информатики",
+    "role": "Учебная разработка Евгения Кустова, созданная и доработанная с помощью ChatGPT.",
+    "tags": [
+      "10 класс",
+      "Информатика",
+      "Интерактив"
+    ],
+    "includes": [
+      "Практикум о кодировании и представлении информации в компьютере.",
+      "Исходные файлы учебной разработки"
+    ],
+    "resources": [
+      {
+        "title": "Открыть учебный сайт",
+        "url": "tools/lessons/edu-10-representation/index.html",
+        "type": "Интерактивный урок"
+      },
+      {
+        "title": "Информатика 10 Представление информации Практикум.html",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-0352c36d7025cf465bbc5381.html",
+        "type": "HTML · 64 КБ",
+        "download": true,
+        "originalName": "Информатика_10_Представление_информации_Практикум.html"
+      },
+      {
+        "title": "Информатика 10 Представление информации Сайт и памятка.zip",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-f9c88bfca07e81bc41f8cdf0.zip",
+        "type": "ZIP · 21 КБ",
+        "download": true,
+        "originalName": "Информатика_10_Представление_информации_Сайт_и_памятка.zip"
+      }
+    ],
+    "collections": [
+      "digital",
+      "teaching"
+    ],
+    "ready": true,
+    "status": "Учебный сайт и оригиналы",
+    "previewFrame": "tools/lessons/edu-10-representation/index.html",
+    "previewScripts": false,
+    "previewLabel": "ПРЕВЬЮ УРОКА"
+  },
+  {
+    "id": "edu-10-editor",
+    "title": "Текстовый процессор · цифровая редакция · 10 класс",
+    "category": "informatics",
+    "format": "site",
+    "formatLabel": "Учебный сайт",
+    "year": "2026",
+    "cover": "blue",
+    "coverTitle": "Понять.<br>Попробовать.<br>Научиться.",
+    "overline": "ИНФОРМАТИКА",
+    "icon": "↗",
+    "summary": "Интерактивная учебная редакция: структура и оформление текстового документа.",
+    "description": "Интерактивная учебная редакция: структура и оформление текстового документа.",
+    "audience": "10 класс, учителя информатики",
+    "role": "Учебная разработка Евгения Кустова, созданная и доработанная с помощью ChatGPT.",
+    "tags": [
+      "10 класс",
+      "Информатика",
+      "Интерактив"
+    ],
+    "includes": [
+      "Интерактивная учебная редакция: структура и оформление текстового документа.",
+      "Исходные файлы учебной разработки"
+    ],
+    "resources": [
+      {
+        "title": "Открыть учебный сайт",
+        "url": "tools/lessons/edu-10-editor/index.html",
+        "type": "Интерактивный урок"
+      },
+      {
+        "title": "Информатика 10 Текстовый процессор Цифровая редакция.html",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-b8d43fbefc1e838385711391.html",
+        "type": "HTML · 73 КБ",
+        "download": true,
+        "originalName": "Информатика_10_Текстовый_процессор_Цифровая_редакция.html"
+      },
+      {
+        "title": "Информатика 10 Текстовый процессор Сайт и памятка.zip",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-a1db54cbb28b57051b3783b4.zip",
+        "type": "ZIP · 24 КБ",
+        "download": true,
+        "originalName": "Информатика_10_Текстовый_процессор_Сайт_и_памятка.zip"
+      }
+    ],
+    "collections": [
+      "digital",
+      "teaching"
+    ],
+    "ready": true,
+    "status": "Учебный сайт и оригиналы",
+    "previewFrame": "tools/lessons/edu-10-editor/index.html",
+    "previewScripts": false,
+    "previewLabel": "ПРЕВЬЮ УРОКА"
+  },
+  {
+    "id": "edu-10-arithmetic",
+    "title": "Арифметика в системах счисления · 10 класс",
+    "category": "informatics",
+    "format": "site",
+    "formatLabel": "Учебный сайт",
+    "year": "2026",
+    "cover": "blue",
+    "coverTitle": "Понять.<br>Попробовать.<br>Научиться.",
+    "overline": "ИНФОРМАТИКА",
+    "icon": "↗",
+    "summary": "Запись вычислений столбиком, отдельные учебные доски и индивидуальные задания.",
+    "description": "Запись вычислений столбиком, отдельные учебные доски и индивидуальные задания.",
+    "audience": "10 класс, учителя информатики",
+    "role": "Учебная разработка Евгения Кустова, созданная и доработанная с помощью ChatGPT.",
+    "tags": [
+      "10 класс",
+      "Информатика",
+      "Интерактив"
+    ],
+    "includes": [
+      "Запись вычислений столбиком, отдельные учебные доски и индивидуальные задания.",
+      "Исходные файлы учебной разработки"
+    ],
+    "resources": [
+      {
+        "title": "Открыть учебный сайт",
+        "url": "tools/lessons/edu-10-arithmetic/index.html",
+        "type": "Интерактивный урок"
+      },
+      {
+        "title": "informatika 10 arifmetika NEON ZAPIS STOLBIKOM.html",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-d5f886a9659b1f3cb9d74bd5.html",
+        "type": "HTML · 88 КБ",
+        "download": true,
+        "originalName": "informatika_10_arifmetika_NEON_ZAPIS_STOLBIKOM.html"
+      },
+      {
+        "title": "informatika 10 arifmetika NEON ZAPIS STOLBIKOM.zip",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-be507044371737d4e625b00a.zip",
+        "type": "ZIP · 23 КБ",
+        "download": true,
+        "originalName": "informatika_10_arifmetika_NEON_ZAPIS_STOLBIKOM.zip"
+      },
+      {
+        "title": "Доска Сложение 11011 111 11 и 454 544.html",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-fea57482bab3391b3afaf5c6.html",
+        "type": "HTML · 15 КБ",
+        "download": true,
+        "originalName": "Доска_Сложение_11011_111_11_и_454_544.html"
+      },
+      {
+        "title": "10 класс Сложение 4 8 Индивидуальные задания.html",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-0268813bd3b21c79883deada.html",
+        "type": "HTML · 27 КБ",
+        "download": true,
+        "originalName": "10_класс_Сложение_4_8_Индивидуальные_задания.html"
+      },
+      {
+        "title": "Системы счисления 10 класс Конспект.pdf",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-8113cf45ebf230a128cf3ee9.pdf",
+        "type": "PDF · 799 КБ",
+        "download": true,
+        "originalName": "Системы_счисления_10_класс_Конспект.pdf"
+      },
+      {
+        "title": "Системы счисления 10 класс Конспект.docx",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-514a567030b69d4d5f2252f7.docx",
+        "type": "DOCX · 192 КБ",
+        "download": true,
+        "originalName": "Системы_счисления_10_класс_Конспект.docx"
+      },
+      {
+        "title": "Индивидуальные задания системы счисления параллельный класс.docx",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-13da8b6495358c74cdd04c2e.docx",
+        "type": "DOCX · 39 КБ",
+        "download": true,
+        "originalName": "Индивидуальные_задания_системы_счисления_параллельный_класс.docx"
+      }
+    ],
+    "collections": [
+      "digital",
+      "teaching"
+    ],
+    "ready": true,
+    "status": "Учебный сайт и оригиналы",
+    "previewFrame": "tools/lessons/edu-10-arithmetic/index.html",
+    "previewScripts": false,
+    "previewLabel": "ПРЕВЬЮ УРОКА"
+  },
+  {
+    "id": "edu-11-graphs",
+    "title": "Информационное моделирование · графы и деревья · 11 класс",
+    "category": "informatics",
+    "format": "site",
+    "formatLabel": "Учебный сайт",
+    "year": "2026",
+    "cover": "blue",
+    "coverTitle": "Понять.<br>Попробовать.<br>Научиться.",
+    "overline": "ИНФОРМАТИКА",
+    "icon": "↗",
+    "summary": "Сайт-презентация с графами, деревьями и учебными заданиями.",
+    "description": "Сайт-презентация с графами, деревьями и учебными заданиями.",
+    "audience": "11 класс, учителя информатики",
+    "role": "Учебная разработка Евгения Кустова, созданная и доработанная с помощью ChatGPT.",
+    "tags": [
+      "11 класс",
+      "Информатика",
+      "Интерактив"
+    ],
+    "includes": [
+      "Сайт-презентация с графами, деревьями и учебными заданиями.",
+      "Исходные файлы учебной разработки"
+    ],
+    "resources": [
+      {
+        "title": "Открыть учебный сайт",
+        "url": "tools/lessons/edu-11-graphs/index.html",
+        "type": "Интерактивный урок"
+      },
+      {
+        "title": "11 klass grafy derevya presentation v10 clear arrows.html",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-e0670cbc971c18ffca5b482a.html",
+        "type": "HTML · 86 КБ",
+        "download": true,
+        "originalName": "11_klass_grafy_derevya_presentation_v10_clear_arrows.html"
+      },
+      {
+        "title": "11 klass grafy derevya presentation v10 clear arrows.zip",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-7fbab0e2610dc8610fa94f89.zip",
+        "type": "ZIP · 21 КБ",
+        "download": true,
+        "originalName": "11_klass_grafy_derevya_presentation_v10_clear_arrows.zip"
+      }
+    ],
+    "collections": [
+      "digital",
+      "teaching"
+    ],
+    "ready": true,
+    "status": "Учебный сайт и оригиналы",
+    "previewFrame": "tools/lessons/edu-11-graphs/index.html",
+    "previewScripts": false,
+    "previewLabel": "ПРЕВЬЮ УРОКА"
+  },
+  {
+    "id": "edu-11-database",
+    "title": "Реляционные базы данных · 11 класс",
+    "category": "informatics",
+    "format": "site",
+    "formatLabel": "Учебный сайт",
+    "year": "2026",
+    "cover": "blue",
+    "coverTitle": "Понять.<br>Попробовать.<br>Научиться.",
+    "overline": "ИНФОРМАТИКА",
+    "icon": "↗",
+    "summary": "Расширенный интерактивный урок по проектированию реляционной базы данных.",
+    "description": "Расширенный интерактивный урок по проектированию реляционной базы данных.",
+    "audience": "11 класс, учителя информатики",
+    "role": "Учебная разработка Евгения Кустова, созданная и доработанная с помощью ChatGPT.",
+    "tags": [
+      "11 класс",
+      "Информатика",
+      "Интерактив"
+    ],
+    "includes": [
+      "Расширенный интерактивный урок по проектированию реляционной базы данных.",
+      "Исходные файлы учебной разработки"
+    ],
+    "resources": [
+      {
+        "title": "Открыть учебный сайт",
+        "url": "tools/lessons/edu-11-database/index.html",
+        "type": "Интерактивный урок"
+      },
+      {
+        "title": "relational db 11 interactive expanded.html",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-d48f1621652df1c204d41d73.html",
+        "type": "HTML · 83 КБ",
+        "download": true,
+        "originalName": "relational_db_11_interactive_expanded.html"
+      },
+      {
+        "title": "relational db 11 interactive expanded.zip",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-565b8b9af92ce3c2cdb809a0.zip",
+        "type": "ZIP · 23 КБ",
+        "download": true,
+        "originalName": "relational_db_11_interactive_expanded.zip"
+      }
+    ],
+    "collections": [
+      "digital",
+      "teaching"
+    ],
+    "ready": true,
+    "status": "Учебный сайт и оригиналы",
+    "previewFrame": "tools/lessons/edu-11-database/index.html",
+    "previewScripts": false,
+    "previewLabel": "ПРЕВЬЮ УРОКА"
+  },
+  {
+    "id": "edu-11-modeling",
+    "title": "Модели и анализ данных · 11 класс",
+    "category": "informatics",
+    "format": "site",
+    "formatLabel": "Учебный сайт",
+    "year": "2026",
+    "cover": "blue",
+    "coverTitle": "Понять.<br>Попробовать.<br>Научиться.",
+    "overline": "ИНФОРМАТИКА",
+    "icon": "↗",
+    "summary": "Этапы моделирования, эксперименты с готовой моделью и листы учителя и ученика.",
+    "description": "Этапы моделирования, эксперименты с готовой моделью и листы учителя и ученика.",
+    "audience": "11 класс, учителя информатики",
+    "role": "Учебная разработка Евгения Кустова, созданная и доработанная с помощью ChatGPT.",
+    "tags": [
+      "11 класс",
+      "Информатика",
+      "Интерактив"
+    ],
+    "includes": [
+      "Этапы моделирования, эксперименты с готовой моделью и листы учителя и ученика.",
+      "Исходные файлы учебной разработки"
+    ],
+    "resources": [
+      {
+        "title": "Открыть учебный сайт",
+        "url": "tools/lessons/edu-11-modeling/index.html",
+        "type": "Интерактивный урок"
+      },
+      {
+        "title": "model lab 11 complete.zip",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-a2003920ebf1166281011c71.zip",
+        "type": "ZIP · 335 КБ",
+        "download": true,
+        "originalName": "model_lab_11_complete.zip"
+      }
+    ],
+    "collections": [
+      "digital",
+      "teaching"
+    ],
+    "ready": true,
+    "status": "Учебный сайт и оригиналы",
+    "previewFrame": "tools/lessons/edu-11-modeling/index.html",
+    "previewScripts": false,
+    "previewLabel": "ПРЕВЬЮ УРОКА"
+  },
+  {
+    "id": "edu-11-excel",
+    "title": "Excel · теория и практика · 11 класс",
+    "category": "informatics",
+    "format": "site",
+    "formatLabel": "Учебный сайт",
+    "year": "2026",
+    "cover": "blue",
+    "coverTitle": "Понять.<br>Попробовать.<br>Научиться.",
+    "overline": "ИНФОРМАТИКА",
+    "icon": "↗",
+    "summary": "Два занятия по электронным таблицам: теория, практика, файл XLSX и методические материалы.",
+    "description": "Два занятия по электронным таблицам: теория, практика, файл XLSX и методические материалы.",
+    "audience": "11 класс, учителя информатики",
+    "role": "Учебная разработка Евгения Кустова, созданная и доработанная с помощью ChatGPT.",
+    "tags": [
+      "11 класс",
+      "Информатика",
+      "Интерактив"
+    ],
+    "includes": [
+      "Два занятия по электронным таблицам: теория, практика, файл XLSX и методические материалы.",
+      "Исходные файлы учебной разработки"
+    ],
+    "resources": [
+      {
+        "title": "Открыть учебный сайт",
+        "url": "tools/lessons/edu-11-excel/index.html",
+        "type": "Интерактивный урок"
+      },
+      {
+        "title": "excel lab 11 complete.zip",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-95b5db67fdf936c87ce90440.zip",
+        "type": "ZIP · 74 КБ",
+        "download": true,
+        "originalName": "excel_lab_11_complete.zip"
+      }
+    ],
+    "collections": [
+      "digital",
+      "teaching"
+    ],
+    "ready": true,
+    "status": "Учебный сайт и оригиналы",
+    "previewFrame": "tools/lessons/edu-11-excel/index.html",
+    "previewScripts": false,
+    "previewLabel": "ПРЕВЬЮ УРОКА"
+  },
+  {
+    "id": "edu-ip",
+    "title": "IP-адреса и подсети",
+    "category": "informatics",
+    "format": "print",
+    "formatLabel": "Печатные материалы",
+    "year": "2026",
+    "cover": "blue cover-document",
+    "coverTitle": "Идея.<br>Форма.<br>Практика.",
+    "overline": "ИНФОРМАТИКА",
+    "icon": "↗",
+    "summary": "Конспект, восемь плакатов A3 и самостоятельная работа.",
+    "description": "Конспект, восемь плакатов A3 и самостоятельная работа.",
+    "audience": "Учителя информатики, учащиеся 7–11 классов",
+    "role": "Подготовка и оформление с помощью ChatGPT — Евгений Кустов.",
+    "tags": [
+      "Информатика",
+      "Рабочая версия",
+      "2026–2027"
+    ],
+    "includes": [
+      "IP подсети 8 плакатов A3.pdf",
+      "IP подсети Плакаты A3 Комплект.zip",
+      "IP подсети 10 класс Понятный конспект.pdf",
+      "IP подсети 10 класс Понятный конспект.docx",
+      "Самостоятельная работа IP адреса 5 вариантов.pdf",
+      "Ответы самостоятельная IP адреса.pdf"
+    ],
+    "resources": [
+      {
+        "title": "Скачать исходный файл",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-ae28515de60b4f34b3400505.pdf",
+        "type": "PDF · 115 КБ",
+        "download": true
+      },
+      {
+        "title": "IP подсети Плакаты A3 Комплект.zip",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-43f4e0dafc347c6ebf4e56e5.zip",
+        "type": "ZIP · 4.9 МБ",
+        "download": true,
+        "originalName": "IP_подсети_Плакаты_A3_Комплект.zip"
+      },
+      {
+        "title": "IP подсети 10 класс Понятный конспект.pdf",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-b489eb680d53d62e48b82209.pdf",
+        "type": "PDF · 1.1 МБ",
+        "download": true,
+        "originalName": "IP_подсети_10_класс_Понятный_конспект.pdf"
+      },
+      {
+        "title": "IP подсети 10 класс Понятный конспект.docx",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-a01487ce3aa0a92506aa215a.docx",
+        "type": "DOCX · 547 КБ",
+        "download": true,
+        "originalName": "IP_подсети_10_класс_Понятный_конспект.docx"
+      },
+      {
+        "title": "Самостоятельная работа IP адреса 5 вариантов.pdf",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-70f81982e24541a1969f2531.pdf",
+        "type": "PDF · 128 КБ",
+        "download": true,
+        "originalName": "Самостоятельная_работа_IP_адреса_5_вариантов.pdf"
+      },
+      {
+        "title": "Ответы самостоятельная IP адреса.pdf",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-df3f429d205fa2a8f6fd22ac.pdf",
+        "type": "PDF · 71 КБ",
+        "download": true,
+        "originalName": "Ответы_самостоятельная_IP_адреса.pdf"
+      }
+    ],
+    "collections": [
+      "teaching"
+    ],
+    "ready": true,
+    "status": "Оригиналы доступны",
+    "note": "",
+    "galleryGroup": "edu-ip",
+    "preview": "materials/edu-ip/001.webp"
+  },
+  {
+    "id": "edu-electives",
+    "title": "Программы элективов · 2026–2027",
+    "category": "informatics",
+    "format": "method",
+    "formatLabel": "Рабочая методическая разработка",
+    "year": "2026",
+    "cover": "blue cover-document",
+    "coverTitle": "Идея.<br>Форма.<br>Практика.",
+    "overline": "ИНФОРМАТИКА",
+    "icon": "↗",
+    "summary": "Искусственный интеллект, практикум решения задач, информационные системы и модели.",
+    "description": "Искусственный интеллект, практикум решения задач, информационные системы и модели.",
+    "audience": "Учителя информатики, учащиеся 7–11 классов",
+    "role": "Подготовка и оформление с помощью ChatGPT — Евгений Кустов.",
+    "tags": [
+      "Информатика",
+      "Рабочая версия",
+      "2026–2027"
+    ],
+    "includes": [
+      "Программа электива 10 класс Практикум по решению задач 2026-2027.docx",
+      "Программа электива 10 класс Искусственный интеллект 2026-2027.docx",
+      "Программа электива 11 класс Информационные системы и модели 2026-2027.docx"
+    ],
+    "resources": [
+      {
+        "title": "Программа электива 10 класс Практикум по решению задач 2026-2027.docx",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-908c12601eea4a2f41ca85bb.docx",
+        "type": "DOCX · 62 КБ",
+        "download": true,
+        "originalName": "Программа_электива_10_класс_Практикум_по_решению_задач_2026-2027.docx"
+      },
+      {
+        "title": "Программа электива 10 класс Искусственный интеллект 2026-2027.docx",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-6541ef199d7a144aedb91123.docx",
+        "type": "DOCX · 64 КБ",
+        "download": true,
+        "originalName": "Программа_электива_10_класс_Искусственный_интеллект_2026-2027.docx"
+      },
+      {
+        "title": "Программа электива 11 класс Информационные системы и модели 2026-2027.docx",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-e97b35fba9747f662800b612.docx",
+        "type": "DOCX · 62 КБ",
+        "download": true,
+        "originalName": "Программа_электива_11_класс_Информационные_системы_и_модели_2026-2027.docx"
+      }
+    ],
+    "collections": [
+      "teaching"
+    ],
+    "ready": true,
+    "status": "Оригиналы доступны",
+    "note": "Рабочие редакции; не обозначаются как утверждённые образовательной организацией программы."
+  },
+  {
+    "id": "edu-plans",
+    "title": "Планирование информатики · 2026–2027",
+    "category": "informatics",
+    "format": "method",
+    "formatLabel": "Рабочая методическая разработка",
+    "year": "2026",
+    "cover": "blue cover-document",
+    "coverTitle": "Идея.<br>Форма.<br>Практика.",
+    "overline": "ИНФОРМАТИКА",
+    "icon": "↗",
+    "summary": "Рабочие таблицы для 7–11 классов, базового и углублённого уровней.",
+    "description": "Рабочие таблицы для 7–11 классов, базового и углублённого уровней.",
+    "audience": "Учителя информатики, учащиеся 7–11 классов",
+    "role": "Подготовка и оформление с помощью ChatGPT — Евгений Кустов.",
+    "tags": [
+      "Информатика",
+      "Рабочая версия",
+      "2026–2027"
+    ],
+    "includes": [
+      "Информатика 10 углублённый 2026-2027 исправлено.xlsx",
+      "Информатика 7 2026-2027 исправлено.xlsx",
+      "Информатика 10 база 2026-2027 исправлено.xlsx",
+      "Информатика 8 2026-2027 исправлено.xlsx",
+      "Информатика 9 2026-2027 исправлено.xlsx",
+      "Информатика 11 база 2026-2027 исправлено.xlsx"
+    ],
+    "resources": [
+      {
+        "title": "Информатика 10 углублённый 2026-2027 исправлено.xlsx",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-b1c2938c26750d1fb2791236.xlsx",
+        "type": "XLSX · 81 КБ",
+        "download": true,
+        "originalName": "Информатика_10_углублённый_2026-2027_исправлено.xlsx"
+      },
+      {
+        "title": "Информатика 7 2026-2027 исправлено.xlsx",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-3e4571d93d121b71c9daba58.xlsx",
+        "type": "XLSX · 28 КБ",
+        "download": true,
+        "originalName": "Информатика_7_2026-2027_исправлено.xlsx"
+      },
+      {
+        "title": "Информатика 10 база 2026-2027 исправлено.xlsx",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-ccce5faaf90e9c12f2c2bb66.xlsx",
+        "type": "XLSX · 20 КБ",
+        "download": true,
+        "originalName": "Информатика_10_база_2026-2027_исправлено.xlsx"
+      },
+      {
+        "title": "Информатика 8 2026-2027 исправлено.xlsx",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-350a842d3549e30baef10a55.xlsx",
+        "type": "XLSX · 20 КБ",
+        "download": true,
+        "originalName": "Информатика_8_2026-2027_исправлено.xlsx"
+      },
+      {
+        "title": "Информатика 9 2026-2027 исправлено.xlsx",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-4d6edbe10a2565d5e8ac2694.xlsx",
+        "type": "XLSX · 20 КБ",
+        "download": true,
+        "originalName": "Информатика_9_2026-2027_исправлено.xlsx"
+      },
+      {
+        "title": "Информатика 11 база 2026-2027 исправлено.xlsx",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-1cd1b9565fd40c8bad8dc706.xlsx",
+        "type": "XLSX · 21 КБ",
+        "download": true,
+        "originalName": "Информатика_11_база_2026-2027_исправлено.xlsx"
+      }
+    ],
+    "collections": [
+      "teaching"
+    ],
+    "ready": true,
+    "status": "Оригиналы доступны",
+    "note": "Рабочие редакции; не обозначаются как утверждённые образовательной организацией программы."
+  },
+  {
+    "id": "grotesk-print",
+    "title": "Гротеск: печатные макеты и сувениры",
+    "category": "media",
+    "format": "print",
+    "formatLabel": "Печатные материалы",
+    "year": "2026",
+    "cover": "blue cover-document",
+    "coverTitle": "Идея.<br>Форма.<br>Практика.",
+    "overline": "ТЕАТР / ДИЗАЙН",
+    "icon": "↗",
+    "summary": "Принты в четырёх цветах и векторные макеты сувенирных ручек.",
+    "description": "Принты в четырёх цветах и векторные макеты сувенирных ручек.",
+    "audience": "Театральные команды и дизайнеры",
+    "role": "Подготовка и оформление с помощью ChatGPT — Евгений Кустов.",
+    "tags": [
+      "Гротеск",
+      "Макеты",
+      "Печать"
+    ],
+    "includes": [
+      "GROTESK PRINT PACKAGE 4COLORS CORRECTED.zip",
+      "GROTESK PEN VECTOR EQUAL SIZE.zip"
+    ],
+    "resources": [
+      {
+        "title": "Скачать исходный файл",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-ca50e3c32fd0be496908dc58.zip",
+        "type": "ZIP · 1.9 МБ",
+        "download": true
+      },
+      {
+        "title": "GROTESK PEN VECTOR EQUAL SIZE.zip",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-c14f21ec1133b0ecf52cec58.zip",
+        "type": "ZIP · 278 КБ",
+        "download": true,
+        "originalName": "GROTESK_PEN_VECTOR_EQUAL_SIZE.zip"
+      }
+    ],
+    "collections": [
+      "event"
+    ],
+    "ready": true,
+    "status": "Оригиналы доступны",
+    "note": "",
+    "galleryGroup": "grotesk-print",
+    "preview": "materials/grotesk-print/preview-0.webp"
+  },
+  {
+    "id": "grotesk-invitation",
+    "title": "Гротеск: приглашение для печати",
+    "category": "media",
+    "format": "print",
+    "formatLabel": "Печатные материалы",
+    "year": "2026",
+    "cover": "blue cover-document",
+    "coverTitle": "Идея.<br>Форма.<br>Практика.",
+    "overline": "ТЕАТР / ДИЗАЙН",
+    "icon": "↗",
+    "summary": "Печатный макет приглашения театра «Гротеск».",
+    "description": "Печатный макет приглашения театра «Гротеск».",
+    "audience": "Театральные команды и дизайнеры",
+    "role": "Подготовка и оформление с помощью ChatGPT — Евгений Кустов.",
+    "tags": [
+      "Гротеск",
+      "Макеты",
+      "Печать"
+    ],
+    "includes": [
+      "Grotesk invitation print.pdf"
+    ],
+    "resources": [
+      {
+        "title": "Скачать исходный файл",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-originals-2026-11-15/original-432ed7501a0637063fdd7bac.pdf",
+        "type": "PDF · 851 КБ",
+        "download": true
+      }
+    ],
+    "collections": [
+      "event"
+    ],
+    "ready": true,
+    "status": "Оригиналы доступны",
+    "note": "",
+    "galleryGroup": "grotesk-invitation",
+    "preview": "materials/grotesk-invitation/001.webp"
   }
 ]

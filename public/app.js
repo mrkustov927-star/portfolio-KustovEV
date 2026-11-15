@@ -21,7 +21,7 @@
   const plural = n => n % 10 === 1 && n % 100 !== 11 ? "разработка" : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? "разработки" : "разработок";
   function cover(p, index) {
     if (p.preview) return `<span class="cover cover-image${p.format==='site'?' preview-site':''}"><img src="${escape(p.preview)}" alt="Превью разработки: ${escape(p.title)}" loading="lazy"><span class="preview-label">${p.format==='site'?'САЙТ':'ЛИСТЫ И КАРТОЧКИ · '+p.gallery.length}</span></span>`;
-    if (p.previewFrame) return `<span class="cover cover-frame"><iframe src="${escape(p.previewFrame)}" title="Живое превью: ${escape(p.title)}" tabindex="-1" loading="lazy" sandbox="allow-scripts"></iframe><span class="preview-label">ЖИВОЙ ПРОСМОТР</span></span>`;
+    if (p.previewFrame) return `<span class="cover cover-frame"><iframe src="${escape(p.previewFrame)}" title="Живое превью: ${escape(p.title)}" tabindex="-1" loading="lazy" sandbox="${p.previewScripts===false?'':'allow-scripts'}"></iframe><span class="preview-label">${escape(p.previewLabel||'ЖИВОЙ ПРОСМОТР')}</span></span>`;
     const photo = p.cover === "route" ? '<img src="assets/kem-history.jpg" alt="" loading="lazy" width="750" height="587">' : "";
     return `<span class="cover cover-${escape(p.cover)}">${photo}<span class="cover-overline">${escape(p.overline)}</span><span class="cover-index">${String(index+1).padStart(2,"0")}</span><span class="cover-main">${p.coverTitle}</span>${p.cover !== "route" ? `<span class="cover-icon" aria-hidden="true">${escape(p.icon)}</span>` : ""}</span>`;
   }
@@ -64,8 +64,8 @@
     const p = byId.get(id);
     if (!p) return;
     if (!dialog.open) lastFocus = document.activeElement;
-    const resources = p.resources.length ? `<div class="dialog-section"><h3>Открыть материалы</h3>${p.resources.map(r => `<a class="resource" href="${escape(r.url)}" target="_blank" rel="noopener noreferrer"><span><strong>${escape(r.title)}</strong><small>${escape(r.type)}</small></span><span aria-hidden="true">↗</span><span class="sr-only"> — откроется в новой вкладке</span></a>`).join("")}${p.resources.some(r=>r.library)?'<p class="resource-note">Оригиналы файлов открываются в ChatGPT. Для просмотра и скачивания нужен доступ к соответствующему файлу.</p>':""}</div>` : '<p class="description-only">В портфолио пока представлено описание этой разработки. Файл ещё не подключён.</p>';
-    const gallery = p.gallery.length ? `<div class="dialog-section"><h3>Карточки и страницы · ${p.gallery.length}</h3><p class="gallery-hint">Нажмите на изображение, чтобы рассмотреть и пролистать весь комплект.</p><div class="material-gallery">${p.gallery.map((g,i)=>`<button class="material-thumb" type="button" data-gallery-project="${p.id}" data-gallery-index="${i}" aria-label="Открыть: ${escape(g.title)}"><img src="${escape(g.src)}" alt="${escape(g.title)}" loading="lazy" width="${g.width}" height="${g.height}"><span>${escape(g.title)}</span></button>`).join('')}</div></div>` : '';
+    const resources = p.resources.length ? `<div class="dialog-section"><h3>Открыть материалы</h3>${p.resources.map(r => `<a class="resource" href="${escape(r.url)}" target="_blank" rel="noopener noreferrer"><span><strong>${escape(r.title)}</strong><small>${escape(r.type)}</small></span><span aria-hidden="true">↗</span><span class="sr-only"> — откроется в новой вкладке</span></a>`).join("")}${p.resources.some(r=>r.library)?'<p class="resource-note">Исходные файлы скачиваются без входа в ChatGPT.</p>':""}</div>` : '<p class="description-only">В портфолио пока представлено описание этой разработки. Файл ещё не подключён.</p>';
+    const gallery = p.gallery.length ? `<div class="dialog-section"><h3>Карточки и страницы · ${p.gallery.length}</h3><p class="gallery-hint">Нажмите на изображение, чтобы рассмотреть комплект и скачать оригинал. Исходные файлы доступны без входа в ChatGPT.</p><div class="material-gallery">${p.gallery.map((g,i)=>`<button class="material-thumb" type="button" data-gallery-project="${p.id}" data-gallery-index="${i}" aria-label="Открыть: ${escape(g.title)}"><img src="${escape(g.src)}" alt="${escape(g.title)}" loading="lazy" width="${g.width}" height="${g.height}"><span>${escape(g.title)}</span></button>`).join('')}</div></div>` : '';
     $("detail-content").innerHTML = `<div class="dialog-header"><p class="eyebrow">${escape(categoryName(p.category))} / ${escape(p.year)}</p><h2 id="detail-title">${escape(p.title)}</h2><p>${escape(p.description)}</p></div><dl class="dialog-meta"><div><dt>Для кого</dt><dd>${escape(p.audience)}</dd></div><div><dt>Формат</dt><dd>${escape(p.formatLabel)}</dd></div><div style="grid-column:1/-1"><dt>Авторство и участие</dt><dd>${escape(p.role)}</dd></div></dl><div class="dialog-section"><h3>Что входит в разработку</h3><ul>${p.includes.map(s=>`<li>${escape(s)}</li>`).join("")}</ul></div>${resources}${p.note?`<p class="resource-note">${escape(p.note)}</p>`:""}<div class="dialog-bottom"><button type="button" data-modal-save="${p.id}" aria-pressed="${saved.has(id)}">${saved.has(id)?"★ В избранном":"☆ В избранное"}</button><button type="button" data-copy="${p.id}">Скопировать ссылку ↗</button></div>`;
     if (gallery) $("detail-content").querySelector('.dialog-bottom').insertAdjacentHTML('beforebegin',gallery);
     if (p.format==='site' && p.preview) $("detail-content").querySelector('.dialog-meta').insertAdjacentHTML('beforebegin',`<img class="detail-site-preview" src="${escape(p.preview)}" alt="Снимок экрана: ${escape(p.title)}">`);
@@ -92,9 +92,10 @@
     $("viewer-title").textContent=g.title;
     $("viewer-image").src=g.src;$("viewer-image").alt=g.title;
     $("viewer-counter").textContent=(viewingIndex+1)+' / '+p.gallery.length;
-    $("viewer-download").href=g.src;$("viewer-download").download=g.title+'.webp';
-    $("viewer-original").href=g.original || g.src;
-    $("viewer-original").textContent=g.original ? "Оригинал в ChatGPT ↗" : "Открыть отдельно ↗";
+    $("viewer-download").href=g.original || g.src;$("viewer-download").download=g.originalName || g.title+'.webp';
+    $("viewer-download").textContent=g.originalLabel || "Скачать веб-копию";
+    $("viewer-original").href=g.src;$("viewer-original").download=g.title+'.webp';
+    $("viewer-original").textContent="Скачать веб-копию · WebP";
     if(!viewer.open)viewer.showModal();
   }
   document.addEventListener("click", async event => {

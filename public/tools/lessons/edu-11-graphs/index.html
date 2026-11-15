@@ -1,0 +1,953 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>11 класс — Информационное моделирование. Графы. Деревья</title>
+<style>
+:root{
+  --bg:#eef3f9;
+  --paper:#ffffff;
+  --text:#122033;
+  --muted:#617089;
+  --line:#d5dfed;
+  --blue:#1f5fdb;
+  --blue-2:#eaf1ff;
+  --cyan:#0891b2;
+  --cyan-2:#e7fbff;
+  --green:#15803d;
+  --green-2:#eaf8ef;
+  --violet:#6d28d9;
+  --violet-2:#f2ecff;
+  --orange:#c26100;
+  --orange-2:#fff2df;
+  --red:#b42318;
+  --red-2:#fff0ef;
+  --yellow:#facc15;
+  --ink:#172033;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
+button,input{font:inherit}
+button{cursor:pointer}
+button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+.shell{min-height:100vh;display:grid;grid-template-rows:auto 1fr auto}
+.top{
+  background:linear-gradient(135deg,#0f367f,#1f5fdb 58%,#0a8ba8);
+  color:#fff;padding:12px 18px;display:flex;gap:14px;align-items:center;justify-content:space-between;
+  box-shadow:0 5px 18px rgba(15,54,127,.18);z-index:5
+}
+.brand{min-width:0}
+.brand b{display:block;font-size:15px;letter-spacing:.04em}
+.brand span{font-size:13px;opacity:.82}
+.top-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.topbtn{border:1px solid #ffffff44;background:#ffffff16;color:#fff;border-radius:10px;padding:8px 11px;min-height:38px;font-weight:800}
+.topbtn.active{background:#fff;color:#163c83}
+.stage{
+  position:relative;overflow:hidden;padding:18px;
+  display:flex;align-items:center;justify-content:center;
+  min-height:calc(100vh - 118px)
+}
+.deck{width:min(1400px,100%);height:100%;display:flex;align-items:center;justify-content:center}
+.slide{
+  display:none;width:100%;max-width:1280px;background:var(--paper);border:1px solid var(--line);
+  border-radius:26px;box-shadow:0 18px 45px rgba(44,66,103,.13);padding:clamp(20px,2.4vw,34px);
+  min-height:min(760px,calc(100vh - 155px));position:relative;overflow:hidden
+}
+.slide.active{display:flex;flex-direction:column;animation:slideIn .22s ease}
+@keyframes slideIn{from{opacity:.25;transform:translateX(16px)}to{opacity:1;transform:none}}
+.slide::after{content:"";position:absolute;width:280px;height:280px;border-radius:50%;right:-110px;bottom:-145px;background:radial-gradient(circle,var(--blue-2),transparent 68%);pointer-events:none}
+.slide-head{display:flex;gap:14px;align-items:flex-start;justify-content:space-between;margin-bottom:12px;position:relative;z-index:1}
+.slide-no{font-weight:900;color:var(--blue);font-size:15px;text-transform:uppercase;letter-spacing:.04em}
+h1{font-size:clamp(38px,5.4vw,76px);line-height:.98;margin:5px 0 14px;letter-spacing:-.035em}
+h2{font-size:clamp(30px,4vw,52px);line-height:1.05;margin:2px 0 8px;letter-spacing:-.025em}
+h3{font-size:clamp(19px,1.6vw,24px);margin:0 0 8px}
+p,li{font-size:clamp(17px,1.45vw,21px);line-height:1.48}
+.subtitle{font-size:clamp(20px,2vw,29px);line-height:1.35;color:var(--muted);max-width:900px}
+.time-chip{white-space:nowrap;border-radius:999px;background:#f6f8fb;border:1px solid var(--line);padding:8px 11px;font-weight:850;color:var(--muted)}
+.hero-layout{display:grid;grid-template-columns:1.15fr .85fr;gap:24px;align-items:center;flex:1;position:relative;z-index:1}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px;flex:1;align-items:stretch}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;flex:1}
+@media(max-width:900px){.hero-layout,.two,.three{grid-template-columns:1fr}.slide{min-height:auto}.stage{min-height:0}.shell{min-height:auto}}
+.card{border:1px solid var(--line);border-radius:19px;background:#fff;padding:17px;min-width:0}
+.card.blue{background:linear-gradient(180deg,#fbfdff,#eef4ff)}
+.card.cyan{background:linear-gradient(180deg,#fbfeff,#ecfbfe)}
+.card.green{background:linear-gradient(180deg,#fdfffd,#edf9f1)}
+.card.violet{background:linear-gradient(180deg,#fdfcff,#f3edff)}
+.card.orange{background:linear-gradient(180deg,#fffefa,#fff4e7)}
+.big-idea{font-size:clamp(25px,3vw,41px);font-weight:900;line-height:1.18;padding:20px;border-radius:19px;background:var(--blue-2);border-left:8px solid var(--blue)}
+.callout{padding:13px 15px;border-radius:14px;background:#f7f9fc;border:1px solid var(--line);font-size:clamp(17px,1.5vw,21px);font-weight:800}
+.note{padding:13px 15px;border-radius:14px;background:#fff8da;border:1px solid #f0d973;font-size:17px;line-height:1.45}
+.visual{border:1px dashed #b8c9e5;border-radius:18px;background:#fbfcff;padding:10px;overflow:auto}
+svg{max-width:100%;height:auto;display:block;margin:auto}
+.icon-big{font-size:clamp(58px,7vw,100px);line-height:1}
+.flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:12px;align-items:center}
+.flow-box{text-align:center;border:1px solid var(--line);border-radius:18px;padding:18px;background:#fff;font-size:20px;font-weight:900}
+.flow-arrow{font-size:38px;color:var(--blue);font-weight:900}
+@media(max-width:720px){.flow{grid-template-columns:1fr}.flow-arrow{transform:rotate(90deg);text-align:center}}
+.controls{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}
+.btn{border:1px solid var(--line);background:#fff;color:var(--text);border-radius:11px;padding:9px 12px;min-height:42px;font-weight:850}
+.btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+.btn.green{background:var(--green);border-color:var(--green);color:#fff}
+.btn.orange{background:#f59e0b;border-color:#f59e0b;color:#172033}
+.btn.red{background:var(--red);border-color:var(--red);color:#fff}
+.answer{display:none;margin-top:10px;padding:13px;border-radius:14px;background:var(--violet-2);border:1px solid #d8caff;font-size:18px;line-height:1.45}
+.answer.show{display:block}
+.teacher-note{display:none;margin-top:10px;padding:12px 14px;border-radius:14px;background:#fff7d6;border:1px solid #efd875;color:#594100;font-size:16px;line-height:1.4}
+.teacher-mode .teacher-note{display:block}
+.graph-node,.tree-node,.builder-node{cursor:pointer}
+.graph-node circle,.tree-node rect,.builder-node circle{transition:.15s}
+.graph-node circle,.builder-node circle{fill:#fff;stroke:var(--blue);stroke-width:6}
+.graph-node.active circle{fill:#dce9ff;stroke-width:8}
+.graph-edge{stroke:#96a4b8;stroke-width:7;transition:.15s}
+.graph-edge.hot{stroke:var(--blue);stroke-width:10}
+.tree-node rect{fill:#fff;stroke-width:4}.tree-node.active rect{fill:#eaf1ff;stroke-width:6}
+.tree-root rect{stroke:var(--blue)}.tree-mid rect{stroke:var(--cyan)}.tree-leaf rect{stroke:var(--green)}
+.level-bg{opacity:.12}
+.type-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.type-tab.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+.type-pane{display:none}.type-pane.active{display:block}
+.case-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;flex:1}
+.case{border:1px solid var(--line);border-radius:18px;padding:14px;background:#fff;display:flex;flex-direction:column;min-width:0}
+.case-art{height:115px;display:grid;place-items:center;border-radius:14px;background:#f7f9fc;margin-bottom:10px}
+@media(max-width:1050px){.case-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:620px){.case-grid{grid-template-columns:1fr}}
+.choices{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.choice{border:1px solid var(--line);background:#fff;border-radius:11px;padding:9px 11px;min-height:42px;font-weight:800;color:var(--text)}
+.choice.correct{background:var(--green-2);border-color:#85d49d;color:#0d6a30}
+.choice.wrong{background:var(--red-2);border-color:#efaaa4;color:#95241c}
+.feedback{min-height:24px;margin-top:9px;font-weight:850;font-size:17px}
+.feedback.good{color:var(--green)}.feedback.bad{color:var(--red)}
+.builder{display:grid;grid-template-columns:1.55fr .75fr;gap:16px;flex:1}
+@media(max-width:900px){.builder{grid-template-columns:1fr}}
+.builder-node.selected circle{fill:#fff1bd;stroke:#d99e00;stroke-width:8}
+.builder-edge{stroke:var(--cyan);stroke-width:7;stroke-linecap:round}
+.goal{padding:9px 11px;border:1px solid var(--line);border-radius:12px;margin:7px 0;background:#fff;font-weight:750}.goal.done{background:var(--green-2);border-color:#84d39d}
+.process-step{border:1px solid var(--line);border-radius:13px;padding:10px 12px;background:#fff;text-align:center;font-weight:850}
+.ege-layout{display:grid;grid-template-columns:1.4fr .85fr;gap:16px;flex:1}
+@media(max-width:900px){.ege-layout{grid-template-columns:1fr}}
+.dp-edge{stroke:#96a4b8;stroke-width:6}.dp-node circle{fill:#fff;stroke:var(--blue);stroke-width:5}.dp-node.must circle{stroke:var(--orange);stroke-width:7}.dp-node.blocked circle{stroke:var(--red);fill:#fff3f2}
+.dp-count{font-size:19px;font-weight:900;fill:var(--ink)}
+.dp-row{padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:#fff;margin-bottom:7px;font-size:17px}
+.dp-row.good{background:var(--green-2);border-color:#88d6a0}
+.answer-line{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px}.answer-line input{width:120px;min-height:44px;border:1px solid var(--line);border-radius:10px;padding:7px 10px;font-size:20px}
+.exit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;flex:1}@media(max-width:800px){.exit-grid{grid-template-columns:1fr}}
+.exit-card{border:1px solid var(--line);border-radius:18px;padding:16px;background:#fff;display:flex;flex-direction:column}
+.exit-card .choices{margin-top:auto}
+.canvas-wrap{border:1px solid var(--line);border-radius:15px;overflow:hidden;background:#fff}
+canvas{display:block;width:100%;height:480px;touch-action:none;background:linear-gradient(#eef2f7 1px,transparent 1px),linear-gradient(90deg,#eef2f7 1px,transparent 1px);background-size:32px 32px}
+.bottom{
+  display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;background:#fff;border-top:1px solid var(--line);padding:9px 14px;z-index:5
+}
+.navbtn{border:0;background:#172033;color:#fff;border-radius:11px;padding:10px 15px;min-height:42px;font-weight:850}.navbtn:disabled{opacity:.28;cursor:default}
+.progress-wrap{min-width:0}
+.progress-line{height:7px;border-radius:999px;background:#e7ecf4;overflow:hidden}.progress-bar{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--cyan));transition:width .2s}
+.progress-meta{display:flex;justify-content:space-between;gap:10px;margin-top:4px;font-size:13px;color:var(--muted);font-weight:750}
+.mode-menu{position:fixed;inset:0;background:#0f172ad9;display:none;place-items:center;z-index:20;padding:18px}.mode-menu.show{display:grid}
+.mode-box{width:min(820px,100%);background:#fff;border-radius:24px;padding:22px;box-shadow:0 30px 60px #0005}
+.mode-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}@media(max-width:760px){.mode-grid{grid-template-columns:1fr}}
+.mode-card{border:1px solid var(--line);border-radius:18px;padding:18px;background:#fff;text-align:left}.mode-card:hover{background:#f8faff}
+.mode-card b{font-size:21px}.mode-card p{font-size:15px;color:var(--muted)}
+.appendix-tag{display:inline-flex;padding:7px 10px;border-radius:999px;background:#172033;color:white;font-size:13px;font-weight:900}
+.hidden-slide{display:none!important}
+
+.trainer-head{display:flex;gap:12px;justify-content:space-between;align-items:flex-start;flex-wrap:wrap}
+.trainer-tabs,.task-tabs{display:flex;gap:8px;flex-wrap:wrap}
+.trainer-layout{display:grid;grid-template-columns:1.45fr .8fr;gap:16px;flex:1;min-height:0}
+@media(max-width:900px){.trainer-layout{grid-template-columns:1fr}}
+.trainer-meta{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 12px}
+.meta-chip{border:1px solid var(--line);background:#f7f9fc;border-radius:999px;padding:7px 10px;font-size:14px;font-weight:850;color:var(--muted)}
+.meta-chip.special{background:var(--orange-2);border-color:#efd1a7;color:#7a3d00}
+.task-condition{font-size:clamp(19px,1.8vw,25px);font-weight:850;line-height:1.35;padding:15px;border-radius:16px;background:#f8fafc;border:1px solid var(--line)}
+.trainer-node circle{fill:#fff;stroke:var(--blue);stroke-width:5}
+.trainer-node.must circle{stroke:var(--orange);stroke-width:7}
+.trainer-node.avoid circle{stroke:var(--red);stroke-width:7;fill:#fff4f3}
+.trainer-node.xor circle{stroke:var(--violet);stroke-width:7}
+.trainer-edge{stroke:#96a4b8;stroke-width:6}
+.trainer-side{display:flex;flex-direction:column;gap:10px}
+.trainer-box{padding:12px;border-radius:14px;border:1px solid var(--line);background:#fff}
+.trainer-box h3{margin-bottom:5px}
+.trainer-answer{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.trainer-answer input{width:120px;min-height:44px;border:1px solid var(--line);border-radius:10px;padding:7px 9px;font-size:20px}
+.reveal-panel{display:none;padding:12px;border-radius:14px;background:var(--violet-2);border:1px solid #d9caff;line-height:1.45}
+.reveal-panel.show{display:block}
+.task-nav{display:flex;gap:8px;flex-wrap:wrap}
+
+
+/* =========================
+   v9 — stable school theme
+   ========================= */
+:root{
+  --bg:#edf3f9; --paper:#ffffff; --text:#172236; --muted:#5f6d80; --line:#d7e0eb;
+  --blue:#2d66c3; --blue-2:#eef4ff; --cyan:#2f95a8; --cyan-2:#eefbff;
+  --green:#2e8b57; --green-2:#eefaf2; --violet:#6d70b7; --violet-2:#f2f3ff;
+  --orange:#c98525; --orange-2:#fff5e8; --red:#c4424d; --red-2:#fff0f2; --yellow:#f2c84b;
+}
+html,body{background:linear-gradient(180deg,#edf3f9,#f8fbff);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.top{background:linear-gradient(135deg,#214f90,#2d66c3 58%,#3297aa);box-shadow:0 7px 22px rgba(41,86,150,.16)}
+.topbtn{border-radius:10px;background:#ffffff12;border:1px solid #ffffff38;min-height:38px}.topbtn.active{background:#fff;color:#2457a6}
+.stage{background:linear-gradient(180deg,#f0f5fb,#f8fbff)}
+.slide{border-radius:20px;border:1px solid #d8e1ec;box-shadow:0 12px 30px rgba(61,89,129,.10);background:#fff}
+.slide-head{border-bottom:1px solid #e5ebf3;padding-bottom:12px}.slide-no,.appendix-tag{color:var(--blue);font-weight:900;letter-spacing:.06em}
+.time-chip{border-radius:999px;background:#f5f8fc;border:1px solid #dde6f1;color:#687587;box-shadow:none}
+.card,.case,.exit-card,.trainer-box,.mode-card{border-radius:16px;border:1px solid #dbe3ee;box-shadow:0 5px 12px rgba(75,105,145,.06)}
+.card.blue{background:linear-gradient(180deg,#fbfdff,#f1f6ff)}.card.cyan{background:linear-gradient(180deg,#fbfeff,#effcff)}
+.card.green{background:linear-gradient(180deg,#fcfffd,#effaf3)}.card.violet{background:linear-gradient(180deg,#fdfdff,#f3f4ff)}.card.orange{background:linear-gradient(180deg,#fffdfa,#fff6ec)}
+.big-idea{border-radius:16px;background:var(--blue-2);border-left:6px solid var(--blue);box-shadow:none}.callout{border-radius:12px;background:#f8fafc;border:1px dashed #cdd8e6}.note{border-radius:12px;background:#fff9ef;border:1px dashed #e8ca91}
+.visual{border-radius:18px;border:1px dashed #c8d6e8;background:linear-gradient(#f2f6fb 1px,transparent 1px),linear-gradient(90deg,#f2f6fb 1px,transparent 1px),linear-gradient(180deg,#fbfdff,#f6f9fd);background-size:32px 32px,32px 32px,auto;box-shadow:inset 0 0 0 4px #fff}
+.flow-box{border-radius:18px;border:1px solid #dbe4ef;box-shadow:0 4px 10px rgba(70,101,145,.05)}.flow-arrow{color:var(--blue)}
+.btn,.choice{border-radius:10px;min-height:40px;border:1px solid #d5deea;box-shadow:none;font-weight:800}.btn.primary{background:var(--blue);border-color:var(--blue)}.btn.green{background:var(--green);border-color:var(--green)}.btn.orange{background:var(--orange);border-color:var(--orange);color:#fff}.btn.red{background:var(--red);border-color:var(--red)}
+.choice.correct{background:var(--green-2);border-color:#add6bc;color:#216842}.choice.wrong{background:var(--red-2);border-color:#edb0b6;color:#9d313b}
+.answer,.reveal-panel{border-radius:14px;background:var(--violet-2);border:1px solid #d7d9f7}.teacher-note{border-radius:14px;background:#fff9ea;border:1px solid #ebdaab}
+.graph-edge,.dp-edge,.trainer-edge{stroke:#778598!important;stroke-width:5.5!important;stroke-linecap:round}.graph-edge.hot{stroke:var(--blue)!important;stroke-width:8!important}
+.graph-node circle,.builder-node circle,.dp-node circle,.trainer-node circle{fill:#fff!important;stroke-width:5!important}.tree-node rect{rx:16}.level-bg{opacity:.10!important}
+.case-art{border-radius:14px;background:#f6f9ff;border:1px dashed #cbdaf1}.goal,.dp-row{border-radius:12px}.goal.done,.dp-row.good{background:#edf8f1;border-color:#b6dcc4}
+.task-condition{border-radius:14px;background:#f8fafc;border:1px solid #dbe3ee}.meta-chip{border-radius:999px;background:#f4f7fb;border:1px solid #dbe3ee}.meta-chip.special{background:#fff6e8;border-color:#f0d6aa;color:#8d601f}
+.bottom{background:#fff;border-top:1px solid #dbe3ee}.navbtn{border-radius:10px;background:#17263b}.progress-line{height:6px;background:#e6edf7}.progress-bar{background:linear-gradient(90deg,var(--blue),var(--cyan))}
+
+/* Annotation overlay used only on EGE task graphs */
+.annotatable{padding-top:10px}.annot-toolbar{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin-bottom:9px}.annot-title{font-size:13px;font-weight:900;color:var(--muted);margin-right:3px}
+.annot-color.active,.annot-tool.active{border-color:var(--blue);box-shadow:0 0 0 3px rgba(45,102,195,.12)}
+.graph-board{position:relative;width:100%;isolation:isolate}.graph-board>svg{position:relative;z-index:1;width:100%}.annot-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:2;background:transparent;touch-action:none;cursor:crosshair;border-radius:10px}
+
+/* Keep a presentation slide usable on 768px-high displays */
+@media (max-height:820px) and (min-width:901px){
+  .slide{padding:20px 26px;min-height:calc(100vh - 138px)} h1{font-size:48px} h2{font-size:36px}.subtitle{font-size:20px}.slide-head{margin-bottom:8px}.card{padding:13px}.visual{padding:8px}
+}
+
+
+/* v10 — clearer arrowheads for interactive board */
+svg marker path{
+  stroke:#ffffff;
+  stroke-width:2.2;
+  stroke-linejoin:round;
+  paint-order:stroke fill;
+}
+.type-pane[data-pane="dir"] svg marker path{
+  stroke:#ffffff;
+  stroke-width:2.5;
+}
+
+</style>
+</head>
+<body>
+<div class="shell" id="app">
+<header class="top">
+  <div class="brand"><b>ИНФОРМАТИКА · 11 КЛАСС</b><span>Информационное моделирование · графы · деревья</span></div>
+  <div class="top-actions">
+    <button class="topbtn" id="menuBtn" type="button">Режимы</button>
+    <button class="topbtn" id="teacherBtn" type="button">Учителю</button>
+    <button class="topbtn" id="fullBtn" type="button">⛶</button>
+  </div>
+</header>
+
+<main class="stage">
+<div class="deck">
+
+<!-- MAIN LESSON 0 -->
+<section class="slide lesson-slide active" data-mode="lesson" data-title="Старт" data-time="1 мин">
+  <div class="slide-head"><div><div class="slide-no">Урок · старт</div><h1>Графы и деревья</h1><div class="subtitle">Как превратить сложную систему связей в понятную информационную модель?</div></div><div class="time-chip">1 мин</div></div>
+  <div class="hero-layout">
+    <div>
+      <div class="big-idea">Сегодня не просто выучим термины. Научимся выбирать модель, строить её и решать с её помощью задачу.</div>
+      <div class="controls">
+        <span class="callout">① увидеть объекты</span>
+        <span class="callout">② выделить связи</span>
+        <span class="callout">③ выбрать граф или дерево</span>
+      </div>
+      <div class="teacher-note">Скажите: «В конце урока вы сможете посмотреть на реальную ситуацию и определить, как её лучше представить — графом или деревом».</div>
+    </div>
+    <div class="visual">
+      <svg viewBox="0 0 620 470" aria-label="Сеть графа">
+        <g stroke="#91a2bc" stroke-width="8" stroke-linecap="round">
+          <line x1="120" y1="110" x2="315" y2="70"/><line x1="315" y1="70" x2="500" y2="155"/><line x1="120" y1="110" x2="210" y2="350"/><line x1="210" y1="350" x2="500" y2="155"/><line x1="500" y1="155" x2="510" y2="365"/><line x1="210" y1="350" x2="510" y2="365"/>
+        </g>
+        <g fill="#fff" stroke="#1f5fdb" stroke-width="7"><circle cx="120" cy="110" r="44"/><circle cx="315" cy="70" r="44"/><circle cx="500" cy="155" r="44"/><circle cx="210" cy="350" r="44"/><circle cx="510" cy="365" r="44"/></g>
+        <g font-size="29" font-weight="900" text-anchor="middle"><text x="120" y="120">А</text><text x="315" y="80">Б</text><text x="500" y="165">В</text><text x="210" y="360">Г</text><text x="510" y="375">Д</text></g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- 1 -->
+<section class="slide lesson-slide" data-mode="lesson" data-title="Проблема" data-time="3 мин">
+  <div class="slide-head"><div><div class="slide-no">Проблемный вход</div><h2>Как описать сеть дорог?</h2><div class="subtitle">Пять городов связаны дорогами. Для каждой дороги известно расстояние.</div></div><div class="time-chip">3 мин</div></div>
+  <div class="two">
+    <div class="card">
+      <h3>Длинное описание</h3>
+      <p>А соединён с Б и В. Б соединён с Г. В соединён с Г. Г соединён с Д. Расстояния различны.</p>
+      <div class="note">Вопрос классу: «Как представить это так, чтобы структуру стало видно сразу?»</div>
+      <button class="btn primary reveal" type="button">Показать модель</button>
+      <div class="answer">Используем <b>граф</b>: города → вершины, дороги → рёбра, расстояния → веса.</div>
+    </div>
+    <div class="visual">
+      <svg viewBox="0 0 650 430">
+        <g stroke="#8fa1b9" stroke-width="8">
+          <line x1="100" y1="90" x2="300" y2="75"/><line x1="100" y1="90" x2="245" y2="305"/><line x1="300" y1="75" x2="520" y2="205"/><line x1="245" y1="305" x2="520" y2="205"/><line x1="520" y1="205" x2="570" y2="350"/>
+        </g>
+        <g font-size="20" font-weight="900"><text x="185" y="62">12 км</text><text x="135" y="210">8 км</text><text x="410" y="120">7 км</text><text x="355" y="292">10 км</text><text x="545" y="285">6 км</text></g>
+        <g fill="#fff" stroke="#1f5fdb" stroke-width="6"><circle cx="100" cy="90" r="37"/><circle cx="300" cy="75" r="37"/><circle cx="245" cy="305" r="37"/><circle cx="520" cy="205" r="37"/><circle cx="570" cy="350" r="37"/></g>
+        <g font-size="25" font-weight="900" text-anchor="middle"><text x="100" y="99">А</text><text x="300" y="84">Б</text><text x="245" y="314">В</text><text x="520" y="214">Г</text><text x="570" y="359">Д</text></g>
+      </svg>
+    </div>
+  </div>
+  <div class="teacher-note">Не называйте «граф» сразу. Дайте детям предложить таблицу, карту, схему. Затем покажите, что граф делает связи видимыми.</div>
+</section>
+
+<!-- 2 -->
+<section class="slide lesson-slide" data-mode="lesson" data-title="Модель" data-time="4 мин">
+  <div class="slide-head"><div><div class="slide-no">Разучиваем</div><h2>Информационная модель</h2><div class="subtitle">Модель сохраняет не всё — только важное для нашей задачи.</div></div><div class="time-chip">4 мин</div></div>
+  <div class="flow" style="margin-top:28px">
+    <div class="flow-box"><div class="icon-big">🌍</div>Реальный объект</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box" style="background:var(--orange-2)"><div class="icon-big">🔎</div>Выбираем существенное</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-box" style="background:var(--blue-2)"><div class="icon-big">◉─◉</div>Строим модель</div>
+  </div>
+  <div class="big-idea" style="margin-top:24px">Для маршрута важны города, дороги и расстояния. Цвет домов и погода — нет.</div>
+  <div class="teacher-note">Подведите к формулировке: «Информационная модель — описание существенных свойств объекта или процесса с помощью информации».</div>
+</section>
+
+<!-- 3 -->
+<section class="slide lesson-slide" data-mode="lesson" data-title="Граф" data-time="6 мин">
+  <div class="slide-head"><div><div class="slide-no">Разучиваем</div><h2>Граф = вершины + рёбра</h2><div class="subtitle">Нажмите на вершину: увидим её соседей и степень.</div></div><div class="time-chip">6 мин</div></div>
+  <div class="hero-layout">
+    <div class="visual">
+      <svg id="liveGraph" viewBox="0 0 760 480">
+        <g>
+          <line class="graph-edge" data-a="А" data-b="Б" x1="120" y1="110" x2="360" y2="70"/>
+          <line class="graph-edge" data-a="А" data-b="В" x1="120" y1="110" x2="230" y2="350"/>
+          <line class="graph-edge" data-a="А" data-b="Г" x1="120" y1="110" x2="580" y2="180"/>
+          <line class="graph-edge" data-a="Б" data-b="Г" x1="360" y1="70" x2="580" y2="180"/>
+          <line class="graph-edge" data-a="В" data-b="Г" x1="230" y1="350" x2="580" y2="180"/>
+          <line class="graph-edge" data-a="В" data-b="Д" x1="230" y1="350" x2="590" y2="365"/>
+        </g>
+        <g class="graph-node" data-n="А" tabindex="0"><circle cx="120" cy="110" r="43"/><text x="120" y="120" text-anchor="middle" font-size="30" font-weight="900">А</text></g>
+        <g class="graph-node" data-n="Б" tabindex="0"><circle cx="360" cy="70" r="43"/><text x="360" y="80" text-anchor="middle" font-size="30" font-weight="900">Б</text></g>
+        <g class="graph-node" data-n="В" tabindex="0"><circle cx="230" cy="350" r="43"/><text x="230" y="360" text-anchor="middle" font-size="30" font-weight="900">В</text></g>
+        <g class="graph-node" data-n="Г" tabindex="0"><circle cx="580" cy="180" r="43"/><text x="580" y="190" text-anchor="middle" font-size="30" font-weight="900">Г</text></g>
+        <g class="graph-node" data-n="Д" tabindex="0"><circle cx="590" cy="365" r="43"/><text x="590" y="375" text-anchor="middle" font-size="30" font-weight="900">Д</text></g>
+      </svg>
+    </div>
+    <div>
+      <div class="card blue">
+        <h3>Вершина</h3><p>Объект модели.</p>
+      </div>
+      <div class="card cyan">
+        <h3>Ребро</h3><p>Связь между объектами.</p>
+      </div>
+      <div class="card green">
+        <h3>Степень вершины</h3><p>Количество рёбер, связанных с вершиной.</p>
+      </div>
+      <div class="callout" id="liveInfo">Выберите вершину на схеме.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 -->
+<section class="slide lesson-slide" data-mode="lesson" data-title="Виды графов" data-time="5 мин">
+  <div class="slide-head"><div><div class="slide-no">Разучиваем</div><h2>Какие бывают графы?</h2><div class="subtitle">Переключайте тип — меняется смысл связи.</div></div><div class="time-chip">5 мин</div></div>
+  <div class="type-tabs">
+    <button class="btn type-tab active" data-pane="plain" type="button">↔ Неориентированный</button>
+    <button class="btn type-tab" data-pane="dir" type="button">→ Ориентированный</button>
+    <button class="btn type-tab" data-pane="weight" type="button">⚖ Взвешенный</button>
+  </div>
+  <div class="type-pane active" data-pane="plain">
+    <div class="two"><div class="card blue"><h3>Связь действует в обе стороны</h3><p>Два города соединены двусторонней дорогой. Дружба взаимна.</p><div class="big-idea">А ↔ Б</div></div><div class="visual"><svg viewBox="0 0 560 280"><line x1="165" y1="140" x2="395" y2="140" stroke="#1f5fdb" stroke-width="11"/><circle cx="110" cy="140" r="52" fill="#fff" stroke="#1f5fdb" stroke-width="7"/><circle cx="450" cy="140" r="52" fill="#fff" stroke="#1f5fdb" stroke-width="7"/><text x="110" y="152" text-anchor="middle" font-size="35" font-weight="900">А</text><text x="450" y="152" text-anchor="middle" font-size="35" font-weight="900">Б</text></svg></div></div>
+  </div>
+  <div class="type-pane" data-pane="dir">
+    <div class="two"><div class="card violet"><h3>У связи есть направление</h3><p>А подписан на Б. Это не означает, что Б подписан на А.</p><div class="big-idea" style="background:var(--violet-2);border-color:var(--violet)">А → Б</div></div><div class="visual"><svg viewBox="0 0 560 280"><defs><marker id="arrDir" markerWidth="20" markerHeight="18" refX="18" refY="9" orient="auto" markerUnits="userSpaceOnUse"><path d="M1,1 L1,17 L18,9 z" fill="#5b21b6"/></marker></defs><line x1="165" y1="140" x2="395" y2="140" stroke="#5b21b6" stroke-width="8" marker-end="url(#arrDir)"/><circle cx="110" cy="140" r="52" fill="#fff" stroke="#6d28d9" stroke-width="7"/><circle cx="450" cy="140" r="52" fill="#fff" stroke="#6d28d9" stroke-width="7"/><text x="110" y="152" text-anchor="middle" font-size="35" font-weight="900">А</text><text x="450" y="152" text-anchor="middle" font-size="35" font-weight="900">Б</text></svg></div></div>
+  </div>
+  <div class="type-pane" data-pane="weight">
+    <div class="two"><div class="card green"><h3>У ребра есть вес</h3><p>Вес: расстояние, время, стоимость, пропускная способность.</p><div class="big-idea" style="background:var(--green-2);border-color:var(--green)">А — 15 км — Б</div></div><div class="visual"><svg viewBox="0 0 560 280"><line x1="165" y1="140" x2="395" y2="140" stroke="#15803d" stroke-width="11"/><rect x="245" y="90" width="70" height="44" rx="11" fill="#eaf8ef" stroke="#15803d" stroke-width="3"/><text x="280" y="119" text-anchor="middle" font-size="21" font-weight="900">15</text><circle cx="110" cy="140" r="52" fill="#fff" stroke="#15803d" stroke-width="7"/><circle cx="450" cy="140" r="52" fill="#fff" stroke="#15803d" stroke-width="7"/><text x="110" y="152" text-anchor="middle" font-size="35" font-weight="900">А</text><text x="450" y="152" text-anchor="middle" font-size="35" font-weight="900">Б</text></svg></div></div>
+  </div>
+</section>
+
+<!-- 5 process -->
+<section class="slide lesson-slide" data-mode="lesson" data-title="Процессы" data-time="4 мин">
+  <div class="slide-head"><div><div class="slide-no">Применяем</div><h2>Граф моделирует не только объекты, но и процессы</h2><div class="subtitle">Стрелка может означать переход из одного состояния в другое.</div></div><div class="time-chip">4 мин</div></div>
+  <div class="hero-layout">
+    <div class="visual">
+      <svg viewBox="0 0 790 500">
+        <defs><marker id="procArr" markerWidth="20" markerHeight="18" refX="18" refY="9" orient="auto" markerUnits="userSpaceOnUse"><path d="M1,1 L1,17 L18,9 z" fill="#0891b2"/></marker></defs>
+        <g stroke="#0891b2" stroke-width="6" marker-end="url(#procArr)" fill="none">
+          <line x1="175" y1="100" x2="330" y2="100"/><line x1="465" y1="100" x2="610" y2="55"/><line x1="465" y1="115" x2="610" y2="220"/><line x1="660" y1="250" x2="475" y2="345"/><line x1="650" y1="95" x2="475" y2="345"/>
+        </g>
+        <g fill="#fff" stroke="#0891b2" stroke-width="4">
+          <rect x="35" y="65" width="150" height="70" rx="17"/><rect x="315" y="65" width="165" height="70" rx="17"/><rect x="605" y="20" width="150" height="70" rx="17"/><rect x="605" y="200" width="150" height="70" rx="17"/><rect x="330" y="320" width="165" height="70" rx="17"/>
+        </g>
+        <g text-anchor="middle" font-size="18" font-weight="900"><text x="110" y="106">Заявка получена</text><text x="397" y="106">Проверка</text><text x="680" y="62">Одобрена</text><text x="680" y="242">Доработка</text><text x="412" y="362">Закрыта</text></g>
+      </svg>
+    </div>
+    <div>
+      <div class="big-idea">Процесс удобно представлять ориентированным графом: вершины — состояния, стрелки — переходы.</div>
+      <div class="note" style="margin-top:14px">Вопрос: почему обычного неориентированного графа здесь недостаточно?</div>
+      <button class="btn primary reveal" type="button">Ответ</button><div class="answer">Переходы имеют направление: из состояния «закрыта» нельзя автоматически вернуться в «заявка получена».</div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 tree -->
+<section class="slide lesson-slide" data-mode="lesson" data-title="Дерево" data-time="6 мин">
+  <div class="slide-head"><div><div class="slide-no">Разучиваем</div><h2>Дерево — особый граф</h2><div class="subtitle">Связный граф без циклов. Нажмите на вершину.</div></div><div class="time-chip">6 мин</div></div>
+  <div class="hero-layout">
+    <div class="visual">
+      <svg id="treeSvg" viewBox="0 0 940 520">
+        <rect class="level-bg" x="10" y="20" width="920" height="100" rx="18" fill="#1f5fdb"/><rect class="level-bg" x="10" y="145" width="920" height="110" rx="18" fill="#0891b2"/><rect class="level-bg" x="10" y="295" width="920" height="110" rx="18" fill="#15803d"/>
+        <g stroke="#95a4b8" stroke-width="5">
+          <line x1="470" y1="88" x2="220" y2="200"/><line x1="470" y1="88" x2="470" y2="200"/><line x1="470" y1="88" x2="720" y2="200"/>
+          <line x1="220" y1="230" x2="125" y2="360"/><line x1="220" y1="230" x2="315" y2="360"/><line x1="470" y1="230" x2="415" y2="360"/><line x1="470" y1="230" x2="535" y2="360"/><line x1="720" y1="230" x2="660" y2="360"/><line x1="720" y1="230" x2="785" y2="360"/>
+        </g>
+        <g class="tree-node tree-root" data-n="Проект" data-role="корень" tabindex="0"><rect x="395" y="55" width="150" height="62" rx="17"/><text x="470" y="94" text-anchor="middle" font-size="20" font-weight="900">Проект</text></g>
+        <g class="tree-node tree-mid" data-n="Исследование" data-role="внутренняя вершина, уровень 1" tabindex="0"><rect x="135" y="180" width="170" height="62" rx="16"/><text x="220" y="218" text-anchor="middle" font-size="18" font-weight="850">Исследование</text></g>
+        <g class="tree-node tree-mid" data-n="Практика" data-role="внутренняя вершина, уровень 1" tabindex="0"><rect x="395" y="180" width="150" height="62" rx="16"/><text x="470" y="218" text-anchor="middle" font-size="18" font-weight="850">Практика</text></g>
+        <g class="tree-node tree-mid" data-n="Представление" data-role="внутренняя вершина, уровень 1" tabindex="0"><rect x="630" y="180" width="180" height="62" rx="16"/><text x="720" y="218" text-anchor="middle" font-size="18" font-weight="850">Представление</text></g>
+        <g class="tree-node tree-leaf" data-n="Поиск" data-role="лист, уровень 2" tabindex="0"><rect x="75" y="335" width="100" height="62" rx="16"/><text x="125" y="373" text-anchor="middle" font-size="18" font-weight="850">Поиск</text></g>
+        <g class="tree-node tree-leaf" data-n="Анализ" data-role="лист, уровень 2" tabindex="0"><rect x="265" y="335" width="100" height="62" rx="16"/><text x="315" y="373" text-anchor="middle" font-size="18" font-weight="850">Анализ</text></g>
+        <g class="tree-node tree-leaf" data-n="Эксперимент" data-role="лист, родитель — «Практика»" tabindex="0"><rect x="350" y="335" width="130" height="62" rx="16"/><text x="415" y="373" text-anchor="middle" font-size="17" font-weight="850">Эксперимент</text></g>
+        <g class="tree-node tree-leaf" data-n="Обработка" data-role="лист, родитель — «Практика»" tabindex="0"><rect x="485" y="335" width="100" height="62" rx="16"/><text x="535" y="373" text-anchor="middle" font-size="17" font-weight="850">Обработка</text></g>
+        <g class="tree-node tree-leaf" data-n="Презентация" data-role="лист, родитель — «Представление»" tabindex="0"><rect x="600" y="335" width="120" height="62" rx="16"/><text x="660" y="373" text-anchor="middle" font-size="16" font-weight="850">Презентация</text></g>
+        <g class="tree-node tree-leaf" data-n="Защита" data-role="лист, родитель — «Представление»" tabindex="0"><rect x="745" y="335" width="80" height="62" rx="16"/><text x="785" y="373" text-anchor="middle" font-size="17" font-weight="850">Защита</text></g>
+      </svg>
+    </div>
+    <div>
+      <div class="card blue"><h3>Корень</h3><p>Верхняя вершина дерева.</p></div>
+      <div class="card cyan"><h3>Родитель / потомок</h3><p>Связь уровней иерархии.</p></div>
+      <div class="card green"><h3>Лист</h3><p>Вершина без потомков.</p></div>
+      <div class="callout" id="treeInfo">Нажмите на вершину.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 choose -->
+<section class="slide lesson-slide" data-mode="lesson" data-title="Выбор модели" data-time="4 мин">
+  <div class="slide-head"><div><div class="slide-no">Совместная практика</div><h2>Граф или дерево?</h2><div class="subtitle">Не вспоминаем определение — выбираем модель под задачу.</div></div><div class="time-chip">4 мин</div></div>
+  <div class="case-grid">
+    <div class="case"><div class="case-art">🛣️</div><h3>Дороги и расстояния</h3><div class="choices"><button class="choice" data-correct="1">Взвешенный граф</button><button class="choice">Дерево</button></div><div class="feedback"></div></div>
+    <div class="case"><div class="case-art">📁</div><h3>Папки и подпапки</h3><div class="choices"><button class="choice">Ориентированный граф</button><button class="choice" data-correct="1">Дерево</button></div><div class="feedback"></div></div>
+    <div class="case"><div class="case-art">👤 → 👤</div><h3>Подписки пользователей</h3><div class="choices"><button class="choice" data-correct="1">Ориентированный граф</button><button class="choice">Дерево</button></div><div class="feedback"></div></div>
+    <div class="case"><div class="case-art">🏢</div><h3>Структура организации</h3><div class="choices"><button class="choice">Взвешенный граф</button><button class="choice" data-correct="1">Дерево</button></div><div class="feedback"></div></div>
+  </div>
+</section>
+
+<!-- 8 builder -->
+<section class="slide lesson-slide" data-mode="lesson" data-title="Построение" data-time="6 мин">
+  <div class="slide-head"><div><div class="slide-no">Самостоятельная практика</div><h2>Постройте граф по тексту</h2><div class="subtitle">Руководитель взаимодействует с дизайнером и программистом. Программист — с тестировщиком. Дизайнер — с редактором.</div></div><div class="time-chip">6 мин</div></div>
+  <div class="builder">
+    <div class="visual">
+      <svg id="builderSvg" viewBox="0 0 800 500">
+        <g id="builderEdges"></g>
+        <g class="builder-node" data-n="Р" tabindex="0"><circle cx="120" cy="100" r="43"/><text x="120" y="110" text-anchor="middle" font-size="29" font-weight="900">Р</text></g>
+        <g class="builder-node" data-n="Д" tabindex="0"><circle cx="380" cy="75" r="43"/><text x="380" y="85" text-anchor="middle" font-size="29" font-weight="900">Д</text></g>
+        <g class="builder-node" data-n="П" tabindex="0"><circle cx="650" cy="120" r="43"/><text x="650" y="130" text-anchor="middle" font-size="29" font-weight="900">П</text></g>
+        <g class="builder-node" data-n="Е" tabindex="0"><circle cx="250" cy="365" r="43"/><text x="250" y="375" text-anchor="middle" font-size="29" font-weight="900">Е</text></g>
+        <g class="builder-node" data-n="Т" tabindex="0"><circle cx="560" cy="365" r="43"/><text x="560" y="375" text-anchor="middle" font-size="29" font-weight="900">Т</text></g>
+      </svg>
+    </div>
+    <div>
+      <div class="card blue"><b>Обозначения</b><p>Р — руководитель<br>Д — дизайнер<br>П — программист<br>Е — редактор<br>Т — тестировщик</p></div>
+      <div class="note">Нажмите две вершины подряд — появится ребро.</div>
+      <div id="goals">
+        <div class="goal" data-edge="Д-Р">○ Р—Д</div><div class="goal" data-edge="П-Р">○ Р—П</div><div class="goal" data-edge="П-Т">○ П—Т</div><div class="goal" data-edge="Д-Е">○ Д—Е</div>
+      </div>
+      <div class="controls"><button class="btn" id="builderUndo" type="button">↶ Отменить</button><button class="btn red" id="builderClear" type="button">Очистить</button></div>
+      <div class="feedback" id="builderFeedback"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 EGE bridge -->
+<section class="slide lesson-slide" data-mode="lesson" data-title="ЕГЭ" data-time="5 мин">
+  <div class="slide-head"><div><div class="slide-no">Связь с ЕГЭ</div><h2>Задание 13: считаем пути</h2><div class="subtitle">Главное правило: число путей в вершину — сумма числа путей во все вершины, из которых в неё входят стрелки.</div></div><div class="time-chip">5 мин</div></div>
+  <div class="ege-layout">
+    <div class="visual annotatable">
+      <div class="annot-toolbar">
+        <span class="annot-title">Пометки ученика</span>
+        <button class="btn annot-color active" data-target="dpAnnot" data-color="#2d66c3" type="button">Синий</button>
+        <button class="btn annot-color" data-target="dpAnnot" data-color="#c4424d" type="button">Красный</button>
+        <button class="btn annot-tool" data-target="dpAnnot" data-tool="eraser" type="button">Ластик</button>
+        <button class="btn" data-clear-annot="dpAnnot" type="button">Очистить</button>
+      </div>
+      <div class="graph-board">
+      <svg id="dpPlain" viewBox="0 0 900 480">
+        <defs><marker id="dpArr" markerWidth="20" markerHeight="18" refX="18" refY="9" orient="auto" markerUnits="userSpaceOnUse"><path d="M1,1 L1,17 L18,9 z" fill="#5f6f84"/></marker></defs>
+        <g class="dp-edge" marker-end="url(#dpArr)">
+          <line x1="115" y1="235" x2="270" y2="120"/><line x1="115" y1="235" x2="270" y2="350"/>
+          <line x1="330" y1="120" x2="480" y2="80"/><line x1="330" y1="120" x2="480" y2="210"/><line x1="330" y1="350" x2="480" y2="210"/>
+          <line x1="540" y1="80" x2="700" y2="235"/><line x1="540" y1="210" x2="700" y2="235"/>
+        </g>
+        <g class="dp-node"><circle cx="90" cy="235" r="38"/><text x="90" y="245" text-anchor="middle" font-size="27" font-weight="900">А</text><text class="dp-count" data-count="А" x="90" y="295" text-anchor="middle"></text></g>
+        <g class="dp-node"><circle cx="300" cy="105" r="38"/><text x="300" y="115" text-anchor="middle" font-size="27" font-weight="900">Б</text><text class="dp-count" data-count="Б" x="300" y="165" text-anchor="middle"></text></g>
+        <g class="dp-node"><circle cx="300" cy="365" r="38"/><text x="300" y="375" text-anchor="middle" font-size="27" font-weight="900">В</text><text class="dp-count" data-count="В" x="300" y="425" text-anchor="middle"></text></g>
+        <g class="dp-node"><circle cx="510" cy="65" r="38"/><text x="510" y="75" text-anchor="middle" font-size="27" font-weight="900">Г</text><text class="dp-count" data-count="Г" x="510" y="125" text-anchor="middle"></text></g>
+        <g class="dp-node"><circle cx="510" cy="220" r="38"/><text x="510" y="230" text-anchor="middle" font-size="27" font-weight="900">Д</text><text class="dp-count" data-count="Д" x="510" y="280" text-anchor="middle"></text></g>
+        <g class="dp-node"><circle cx="735" cy="235" r="38"/><text x="735" y="245" text-anchor="middle" font-size="27" font-weight="900">Ж</text><text class="dp-count" data-count="Ж" x="735" y="295" text-anchor="middle"></text></g>
+      </svg>
+      <canvas id="dpAnnot" class="annot-canvas" aria-label="Слой пометок на графе"></canvas>
+      </div>
+    </div>
+    <div>
+      <div class="big-idea" style="font-size:28px">N(X) = Σ N(предшественников)</div>
+      <div id="dpRows" style="margin-top:12px">
+        <div class="dp-row" data-r="0">А = 1</div><div class="dp-row" data-r="1">Б = А</div><div class="dp-row" data-r="2">В = А</div><div class="dp-row" data-r="3">Г = Б</div><div class="dp-row" data-r="4">Д = Б + В</div><div class="dp-row" data-r="5">Ж = Г + Д</div>
+      </div>
+      <div class="controls"><button class="btn primary" id="dpStep" type="button">Следующий шаг</button><button class="btn" id="dpReset" type="button">Сброс</button></div>
+      <div class="answer-line"><b>Ответ:</b><input id="dpAnswer" inputmode="numeric"><button class="btn green" id="dpCheck" type="button">Проверить</button></div><div class="feedback" id="dpFeedback"></div>
+    </div>
+  </div>
+  <div class="teacher-note">На этом уроке достаточно одного базового типа. Остальные разновидности вынесены в режим «ЕГЭ» и не перегружают основную последовательность.</div>
+</section>
+
+<!-- 10 exit -->
+<section class="slide lesson-slide" data-mode="lesson" data-title="Итог" data-time="3 мин">
+  <div class="slide-head"><div><div class="slide-no">Exit ticket</div><h2>Проверим, что осталось после урока</h2><div class="subtitle">Три ситуации — три решения.</div></div><div class="time-chip">3 мин</div></div>
+  <div class="exit-grid">
+    <div class="exit-card"><h3>1. Переходы между состояниями документа</h3><p>Какую модель выбрать?</p><div class="choices"><button class="choice" data-correct="1">Ориентированный граф</button><button class="choice">Дерево</button></div><div class="feedback"></div></div>
+    <div class="exit-card"><h3>2. Организационная структура</h3><p>Директор → отделы → сотрудники.</p><div class="choices"><button class="choice">Взвешенный граф</button><button class="choice" data-correct="1">Дерево</button></div><div class="feedback"></div></div>
+    <div class="exit-card"><h3>3. Почему сеть дорог обычно не дерево?</h3><div class="choices"><button class="choice" data-correct="1">Могут быть циклы и разные пути</button><button class="choice">У дерева нет вершин</button></div><div class="feedback"></div></div>
+  </div>
+  <div class="big-idea" style="margin-top:16px">Граф показывает связи. Дерево показывает иерархию. Выбор модели зависит от задачи.</div>
+</section>
+
+<!-- EGE APPENDIX -->
+<section class="slide ege-slide" data-mode="ege" data-title="ЕГЭ: алгоритм">
+  <div class="slide-head"><div><div class="appendix-tag">ДОПОЛНИТЕЛЬНО · ЕГЭ</div><h2>Задание 13: четыре типа условий</h2></div></div>
+  <div class="two">
+    <div class="card blue"><h3>Все пути</h3><p>Суммируем входящие пути.</p></div>
+    <div class="card orange"><h3>Обязательная вершина</h3><p>Считаем «до» и «после» неё.</p></div>
+    <div class="card" style="background:var(--red-2)"><h3>Избегаемая вершина</h3><p>Ставим ей 0 путей.</p></div>
+    <div class="card violet"><h3>Два условия</h3><p>Комбинируем запрет и обязательную точку.</p></div>
+  </div>
+  <div class="teacher-note">Этот режим можно открыть после основного урока или использовать на консультации.</div>
+</section>
+
+<section class="slide ege-slide" data-mode="ege" data-title="ЕГЭ: обязательная">
+  <div class="slide-head"><div><div class="appendix-tag">ЕГЭ · обязательная вершина</div><h2>Пути должны проходить через Д</h2></div></div>
+  <div class="hero-layout">
+    <div class="visual">
+      <svg viewBox="0 0 900 470">
+        <defs><marker id="a2" markerWidth="20" markerHeight="18" refX="18" refY="9" orient="auto" markerUnits="userSpaceOnUse"><path d="M1,1 L1,17 L18,9 z" fill="#5f6f84"/></marker></defs>
+        <g class="dp-edge" marker-end="url(#a2)"><line x1="110" y1="235" x2="280" y2="115"/><line x1="110" y1="235" x2="280" y2="350"/><line x1="340" y1="115" x2="485" y2="235"/><line x1="340" y1="350" x2="485" y2="235"/><line x1="545" y1="235" x2="690" y2="115"/><line x1="545" y1="235" x2="690" y2="350"/><line x1="750" y1="115" x2="835" y2="235"/><line x1="750" y1="350" x2="835" y2="235"/></g>
+        <g class="dp-node"><circle cx="85" cy="235" r="38"/><text x="85" y="245" text-anchor="middle" font-size="27" font-weight="900">А</text></g><g class="dp-node"><circle cx="310" cy="100" r="38"/><text x="310" y="110" text-anchor="middle" font-size="27" font-weight="900">Б</text></g><g class="dp-node"><circle cx="310" cy="365" r="38"/><text x="310" y="375" text-anchor="middle" font-size="27" font-weight="900">В</text></g><g class="dp-node must"><circle cx="515" cy="235" r="42"/><text x="515" y="245" text-anchor="middle" font-size="27" font-weight="900">Д</text></g><g class="dp-node"><circle cx="720" cy="100" r="38"/><text x="720" y="110" text-anchor="middle" font-size="27" font-weight="900">Е</text></g><g class="dp-node"><circle cx="720" cy="365" r="38"/><text x="720" y="375" text-anchor="middle" font-size="27" font-weight="900">Г</text></g><g class="dp-node"><circle cx="865" cy="235" r="38"/><text x="865" y="245" text-anchor="middle" font-size="27" font-weight="900">Ж</text></g>
+      </svg>
+    </div>
+    <div><div class="big-idea">пути А→Д × пути Д→Ж</div><p>До Д: 2 пути.<br>После Д: 2 пути.</p><div class="callout">2 × 2 = <b>4</b></div></div>
+  </div>
+</section>
+
+<section class="slide ege-slide" data-mode="ege" data-title="ЕГЭ: избегаемая">
+  <div class="slide-head"><div><div class="appendix-tag">ЕГЭ · избегаемая вершина</div><h2>Не проходить через Е</h2></div></div>
+  <div class="hero-layout">
+    <div class="visual">
+      <svg viewBox="0 0 900 460">
+        <defs><marker id="a3" markerWidth="20" markerHeight="18" refX="18" refY="9" orient="auto" markerUnits="userSpaceOnUse"><path d="M1,1 L1,17 L18,9 z" fill="#5f6f84"/></marker></defs>
+        <g class="dp-edge" marker-end="url(#a3)"><line x1="110" y1="230" x2="280" y2="110"/><line x1="110" y1="230" x2="280" y2="350"/><line x1="340" y1="110" x2="490" y2="110"/><line x1="340" y1="110" x2="490" y2="235"/><line x1="340" y1="350" x2="490" y2="235"/><line x1="340" y1="350" x2="490" y2="360"/><line x1="550" y1="110" x2="715" y2="230"/><line x1="550" y1="235" x2="715" y2="230"/><line x1="550" y1="360" x2="715" y2="230"/></g>
+        <g class="dp-node"><circle cx="85" cy="230" r="38"/><text x="85" y="240" text-anchor="middle" font-size="27" font-weight="900">А</text></g><g class="dp-node"><circle cx="310" cy="95" r="38"/><text x="310" y="105" text-anchor="middle" font-size="27" font-weight="900">Б</text></g><g class="dp-node"><circle cx="310" cy="365" r="38"/><text x="310" y="375" text-anchor="middle" font-size="27" font-weight="900">В</text></g><g class="dp-node blocked"><circle cx="520" cy="95" r="42"/><text x="520" y="105" text-anchor="middle" font-size="27" font-weight="900">Е</text></g><g class="dp-node"><circle cx="520" cy="235" r="38"/><text x="520" y="245" text-anchor="middle" font-size="27" font-weight="900">Д</text></g><g class="dp-node"><circle cx="520" cy="365" r="38"/><text x="520" y="375" text-anchor="middle" font-size="27" font-weight="900">Г</text></g><g class="dp-node"><circle cx="750" cy="230" r="38"/><text x="750" y="240" text-anchor="middle" font-size="27" font-weight="900">Ж</text></g>
+      </svg>
+    </div>
+    <div><div class="big-idea" style="background:var(--red-2);border-color:var(--red)">N(Е) = 0</div><p>Е не передаёт пути дальше.</p><div class="callout">Ж = 0 + 2 + 1 = <b>3</b></div></div>
+  </div>
+</section>
+
+
+<section class="slide ege-slide" data-mode="ege" data-title="ЕГЭ: 12 задач">
+  <div class="slide-head">
+    <div>
+      <div class="appendix-tag">ТРЕНАЖЁР · 12 АВТОРСКИХ АНАЛОГОВ</div>
+      <h2>По 3 задачи каждого типа</h2>
+      <div class="subtitle">Выберите тип и номер задачи. Граф строится автоматически; ответ, подсказка и разбор доступны прямо на слайде.</div>
+    </div>
+  </div>
+
+  <div class="trainer-head">
+    <div class="trainer-tabs" id="trainerCats">
+      <button class="btn trainer-cat active" data-cat="281" type="button">Все пути</button>
+      <button class="btn trainer-cat" data-cat="203" type="button">Обязательная вершина</button>
+      <button class="btn trainer-cat" data-cat="361" type="button">Избегаемая вершина</button>
+      <button class="btn trainer-cat" data-cat="365" type="button">Сложные условия</button>
+    </div>
+    <div class="task-tabs" id="trainerNums">
+      <button class="btn trainer-num active" data-num="1" type="button">Задача 1</button>
+      <button class="btn trainer-num" data-num="2" type="button">Задача 2</button>
+      <button class="btn trainer-num" data-num="3" type="button">Задача 3</button>
+    </div>
+  </div>
+
+  <div class="trainer-meta">
+    <span class="meta-chip" id="trainerCategoryLabel"></span>
+    <span class="meta-chip" id="trainerLevel"></span>
+    <span class="meta-chip special" id="trainerSpecial" style="display:none"></span>
+  </div>
+
+  <div class="task-condition" id="trainerCondition"></div>
+
+  <div class="trainer-layout" style="margin-top:12px">
+    <div class="visual annotatable">
+      <div class="annot-toolbar">
+        <span class="annot-title">Пометки ученика</span>
+        <button class="btn annot-color active" data-target="trainerAnnot" data-color="#2d66c3" type="button">Синий</button>
+        <button class="btn annot-color" data-target="trainerAnnot" data-color="#c4424d" type="button">Красный</button>
+        <button class="btn annot-tool" data-target="trainerAnnot" data-tool="eraser" type="button">Ластик</button>
+        <button class="btn" data-clear-annot="trainerAnnot" type="button">Очистить</button>
+      </div>
+      <div class="graph-board">
+        <svg id="trainerSvg" viewBox="0 0 920 500" aria-label="Граф задания"></svg>
+        <canvas id="trainerAnnot" class="annot-canvas" aria-label="Слой пометок на задаче"></canvas>
+      </div>
+    </div>
+    <div class="trainer-side">
+      <div class="trainer-box">
+        <h3>Ваш ответ</h3>
+        <div class="trainer-answer">
+          <input id="trainerAnswer" inputmode="numeric" aria-label="Ответ">
+          <button class="btn green" id="trainerCheck" type="button">Проверить</button>
+        </div>
+        <div class="feedback" id="trainerFeedback"></div>
+      </div>
+
+      <div class="trainer-box">
+        <h3>Если нужна помощь</h3>
+        <div class="controls">
+          <button class="btn" id="trainerHintBtn" type="button">Подсказка</button>
+          <button class="btn primary" id="trainerSolutionBtn" type="button">Разбор</button>
+        </div>
+        <div class="reveal-panel" id="trainerHint"></div>
+        <div class="reveal-panel" id="trainerSolution"></div>
+      </div>
+
+      <div class="trainer-box">
+        <h3>Навигация</h3>
+        <div class="task-nav">
+          <button class="btn" id="trainerPrev" type="button">← Предыдущая</button>
+          <button class="btn" id="trainerNext" type="button">Следующая →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- TOOLS -->
+<section class="slide tool-slide" data-mode="tools" data-title="Доска">
+  <div class="slide-head"><div><div class="appendix-tag">ИНСТРУМЕНТЫ</div><h2>Свободная доска</h2><div class="subtitle">Ученик может построить граф или дерево пальцем прямо на доске.</div></div></div>
+  <div class="controls"><button class="btn draw-color primary" data-color="#1f5fdb" type="button">Синий</button><button class="btn draw-color" data-color="#15803d" type="button">Зелёный</button><button class="btn draw-color" data-color="#b42318" type="button">Красный</button><button class="btn" id="eraser" type="button">Ластик</button><button class="btn red" id="clearCanvas" type="button">Очистить</button></div>
+  <div class="canvas-wrap" style="margin-top:12px"><canvas id="board" width="1300" height="650"></canvas></div>
+</section>
+
+</div>
+</main>
+
+<footer class="bottom">
+  <button class="navbtn" id="prev" type="button">← Назад</button>
+  <div class="progress-wrap"><div class="progress-line"><div class="progress-bar" id="progressBar"></div></div><div class="progress-meta"><span id="slideTitle">Старт</span><span id="counter">1 / 11</span></div></div>
+  <button class="navbtn" id="next" type="button">Далее →</button>
+</footer>
+</div>
+
+<div class="mode-menu" id="modeMenu" aria-hidden="true">
+  <div class="mode-box">
+    <h2 style="margin-bottom:6px">Выберите режим</h2>
+    <p style="color:var(--muted);margin-top:0">Основной урок идёт как последовательная презентация. Дополнительные материалы открываются отдельно.</p>
+    <div class="mode-grid">
+      <button class="mode-card" data-mode-choice="lesson" type="button"><div class="icon-big">🎓</div><b>Урок · 45 минут</b><p>Основная последовательность: модель → граф → дерево → практика → ЕГЭ → итог.</p></button>
+      <button class="mode-card" data-mode-choice="ege" type="button"><div class="icon-big">🧠</div><b>ЕГЭ №13</b><p>Дополнительный тренажёр: обязательная и избегаемая вершины.</p></button>
+      <button class="mode-card" data-mode-choice="tools" type="button"><div class="icon-big">✏️</div><b>Инструменты</b><p>Свободная доска и дополнительные активности.</p></button>
+    </div>
+    <div class="controls"><button class="btn" id="closeMenu" type="button">Закрыть</button></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const root=document.getElementById('app');
+  const all=[...document.querySelectorAll('.slide')];
+  let mode='lesson', slides=[], current=0;
+
+  const modeMenu=document.getElementById('modeMenu');
+  function rebuild(){
+    slides=all.filter(s=>s.dataset.mode===mode);
+    all.forEach(s=>s.classList.remove('active'));
+    current=Math.max(0,Math.min(current,slides.length-1));
+    if(slides[current]) slides[current].classList.add('active');
+    renderNav();
+  }
+  function show(i){
+    if(!slides.length)return;
+    current=Math.max(0,Math.min(slides.length-1,i));
+    slides.forEach((s,k)=>s.classList.toggle('active',k===current));
+    renderNav();
+    requestAnimationFrame(()=>{Object.values(annotationBoards||{}).forEach(b=>b&&b.resize&&b.resize())});
+  }
+  function renderNav(){
+    document.getElementById('prev').disabled=current===0;
+    document.getElementById('next').disabled=current===slides.length-1;
+    document.getElementById('counter').textContent=(current+1)+' / '+slides.length;
+    document.getElementById('slideTitle').textContent=slides[current]?.dataset.title||'';
+    document.getElementById('progressBar').style.width=slides.length?((current+1)/slides.length*100)+'%':'0%';
+  }
+  document.getElementById('prev').addEventListener('click',()=>show(current-1));
+  document.getElementById('next').addEventListener('click',()=>show(current+1));
+  document.addEventListener('keydown',e=>{
+    if(['INPUT','TEXTAREA','SELECT','BUTTON'].includes(e.target.tagName))return;
+    if(e.key==='ArrowRight'||e.key==='PageDown')show(current+1);
+    if(e.key==='ArrowLeft'||e.key==='PageUp')show(current-1);
+  });
+
+  document.getElementById('menuBtn').addEventListener('click',()=>{modeMenu.classList.add('show');modeMenu.setAttribute('aria-hidden','false')});
+  document.getElementById('closeMenu').addEventListener('click',()=>{modeMenu.classList.remove('show');modeMenu.setAttribute('aria-hidden','true')});
+  document.querySelectorAll('[data-mode-choice]').forEach(b=>b.addEventListener('click',()=>{
+    mode=b.dataset.modeChoice;current=0;rebuild();modeMenu.classList.remove('show');modeMenu.setAttribute('aria-hidden','true');
+  }));
+  document.getElementById('teacherBtn').addEventListener('click',e=>{
+    root.classList.toggle('teacher-mode');e.currentTarget.classList.toggle('active');e.currentTarget.textContent=root.classList.contains('teacher-mode')?'Скрыть заметки':'Учителю';
+  });
+  document.getElementById('fullBtn').addEventListener('click',async()=>{try{if(!document.fullscreenElement)await document.documentElement.requestFullscreen();else await document.exitFullscreen()}catch(e){}});
+
+  document.querySelectorAll('.reveal').forEach(btn=>btn.addEventListener('click',()=>{
+    const a=btn.nextElementSibling;a.classList.toggle('show');btn.textContent=a.classList.contains('show')?'Скрыть':'Показать';
+  }));
+
+  // live graph
+  const lgNodes=[...document.querySelectorAll('#liveGraph .graph-node')], lgEdges=[...document.querySelectorAll('#liveGraph .graph-edge')], liveInfo=document.getElementById('liveInfo');
+  function selectLive(n){
+    lgNodes.forEach(x=>x.classList.toggle('active',x.dataset.n===n));
+    const nei=[];
+    lgEdges.forEach(e=>{const hot=e.dataset.a===n||e.dataset.b===n;e.classList.toggle('hot',hot);if(hot)nei.push(e.dataset.a===n?e.dataset.b:e.dataset.a)});
+    liveInfo.innerHTML='<b>Вершина '+n+'</b><br>Степень: <b>'+nei.length+'</b><br>Соседи: <b>'+nei.join(', ')+'</b>';
+  }
+  lgNodes.forEach(n=>{n.addEventListener('click',()=>selectLive(n.dataset.n));n.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();selectLive(n.dataset.n)}})});
+
+  // tabs
+  document.querySelectorAll('.type-tab').forEach(b=>b.addEventListener('click',()=>{
+    const p=b.dataset.pane;document.querySelectorAll('.type-tab').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.type-pane').forEach(x=>x.classList.toggle('active',x.dataset.pane===p));
+  }));
+
+  // tree
+  const treeInfo=document.getElementById('treeInfo');
+  document.querySelectorAll('#treeSvg .tree-node').forEach(n=>{
+    const pick=()=>{document.querySelectorAll('#treeSvg .tree-node').forEach(x=>x.classList.remove('active'));n.classList.add('active');treeInfo.innerHTML='<b>'+n.dataset.n+'</b><br>'+n.dataset.role};
+    n.addEventListener('click',pick);n.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pick()}});
+  });
+
+  // choices
+  document.querySelectorAll('.case .choice,.exit-card .choice').forEach(b=>b.addEventListener('click',()=>{
+    const wrap=b.closest('.case,.exit-card'), fb=wrap.querySelector('.feedback');
+    wrap.querySelectorAll('.choice').forEach(x=>x.classList.remove('correct','wrong'));
+    const ok=b.dataset.correct==='1';b.classList.add(ok?'correct':'wrong');fb.textContent=ok?'Верно.':'Попробуйте ещё раз.';fb.className='feedback '+(ok?'good':'bad');
+  }));
+
+  // builder
+  const coords={Р:[120,100],Д:[380,75],П:[650,120],Е:[250,365],Т:[560,365]};
+  const builderNodes=[...document.querySelectorAll('#builderSvg .builder-node')], builderEdges=document.getElementById('builderEdges'), builderFeedback=document.getElementById('builderFeedback');
+  let first=null,built=[];
+  const norm=(a,b)=>[a,b].sort((x,y)=>x.localeCompare(y,'ru')).join('-');
+  function drawBuilder(){
+    builderEdges.innerHTML='';
+    built.forEach(id=>{
+      const [a,b]=id.split('-'),A=coords[a],B=coords[b],line=document.createElementNS('http://www.w3.org/2000/svg','line');
+      line.setAttribute('x1',A[0]);line.setAttribute('y1',A[1]);line.setAttribute('x2',B[0]);line.setAttribute('y2',B[1]);line.setAttribute('class','builder-edge');builderEdges.appendChild(line);
+    });
+    document.querySelectorAll('#goals .goal').forEach(g=>{const done=built.includes(g.dataset.edge);g.classList.toggle('done',done);g.textContent=(done?'✓ ':'○ ')+g.dataset.edge});
+    const ok=['Д-Р','П-Р','П-Т','Д-Е'].every(x=>built.includes(x));
+    builderFeedback.textContent=ok?'Отлично: текстовая модель преобразована в граф.':'';builderFeedback.className='feedback '+(ok?'good':'');
+  }
+  function pick(n){
+    if(!first){first=n;builderNodes.forEach(x=>x.classList.toggle('selected',x.dataset.n===n));return}
+    if(first===n){first=null;builderNodes.forEach(x=>x.classList.remove('selected'));return}
+    const id=norm(first,n);if(!built.includes(id))built.push(id);first=null;builderNodes.forEach(x=>x.classList.remove('selected'));drawBuilder();
+  }
+  builderNodes.forEach(n=>{n.addEventListener('click',()=>pick(n.dataset.n));n.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();pick(n.dataset.n)}})});
+  document.getElementById('builderUndo').addEventListener('click',()=>{built.pop();drawBuilder()});
+  document.getElementById('builderClear').addEventListener('click',()=>{built=[];first=null;builderNodes.forEach(x=>x.classList.remove('selected'));drawBuilder()});
+
+  // DP
+  const vals={А:1,Б:1,В:1,Г:1,Д:2,Ж:3},order=['А','Б','В','Г','Д','Ж'],full=['А = 1','Б = А = 1','В = А = 1','Г = Б = 1','Д = Б + В = 2','Ж = Г + Д = 3'],base=['А = 1','Б = А','В = А','Г = Б','Д = Б + В','Ж = Г + Д'];
+  let dpI=0;
+  function renderDP(){
+    document.querySelectorAll('#dpPlain .dp-count').forEach(t=>{const i=order.indexOf(t.dataset.count);t.textContent=i<dpI?'N='+vals[t.dataset.count]:''});
+    document.querySelectorAll('#dpRows .dp-row').forEach((r,i)=>{r.textContent=i<dpI?full[i]:base[i];r.classList.toggle('good',i<dpI)});
+    document.getElementById('dpStep').textContent=dpI>=order.length?'Разбор завершён':'Следующий шаг';
+  }
+  document.getElementById('dpStep').addEventListener('click',()=>{if(dpI<order.length)dpI++;renderDP()});
+  document.getElementById('dpReset').addEventListener('click',()=>{dpI=0;renderDP()});
+  document.getElementById('dpCheck').addEventListener('click',()=>{const v=Number(document.getElementById('dpAnswer').value),fb=document.getElementById('dpFeedback'),ok=v===3;fb.textContent=ok?'Верно!':'Проверьте суммы входящих путей.';fb.className='feedback '+(ok?'good':'bad')});
+  renderDP();
+
+  // canvas
+  const canvas=document.getElementById('board'),ctx=canvas.getContext('2d');let drawing=false,last=null,color='#1f5fdb',eraser=false;
+  const point=e=>{const r=canvas.getBoundingClientRect();return{x:(e.clientX-r.left)*canvas.width/r.width,y:(e.clientY-r.top)*canvas.height/r.height}};
+  canvas.addEventListener('pointerdown',e=>{drawing=true;last=point(e);canvas.setPointerCapture(e.pointerId)});
+  canvas.addEventListener('pointermove',e=>{if(!drawing)return;const p=point(e);ctx.lineCap='round';ctx.lineJoin='round';ctx.lineWidth=eraser?30:7;ctx.strokeStyle=eraser?'#fff':color;ctx.beginPath();ctx.moveTo(last.x,last.y);ctx.lineTo(p.x,p.y);ctx.stroke();last=p});
+  canvas.addEventListener('pointerup',()=>{drawing=false;last=null});canvas.addEventListener('pointercancel',()=>{drawing=false;last=null});
+  document.querySelectorAll('.draw-color').forEach(b=>b.addEventListener('click',()=>{color=b.dataset.color;eraser=false;document.querySelectorAll('.draw-color').forEach(x=>x.classList.toggle('primary',x===b));document.getElementById('eraser').classList.remove('primary')}));
+  document.getElementById('eraser').addEventListener('click',e=>{eraser=true;document.querySelectorAll('.draw-color').forEach(x=>x.classList.remove('primary'));e.currentTarget.classList.add('primary')});
+  document.getElementById('clearCanvas').addEventListener('click',()=>ctx.clearRect(0,0,canvas.width,canvas.height));
+
+
+  // ===== 12-task EGE trainer =====
+  const trainerTasks=[{"cat":"281","kind":"all","num":1,"level":"Базовый","start":"А","end":"Ж","levels":[["А"],["Б","В"],["Г","Д"],["Ж"]],"edges":[["А","Б"],["А","В"],["Б","Г"],["Б","Д"],["В","Д"],["Г","Ж"],["Д","Ж"]],"title":"Все пути: задача 1","condition":"Сколько существует различных путей из А в Ж?","hint":"Начните с N(А)=1. Для каждой следующей вершины сложите значения всех её непосредственных предшественников.","answer":3,"solution":"N(А)=1 → N(Б)=1 → N(В)=1 → N(Г)=1 → N(Д)=2 → N(Ж)=3"},{"cat":"281","kind":"all","num":2,"level":"Средний","start":"А","end":"Ж","levels":[["А"],["Б","В","Г"],["Д","Е"],["Ж"]],"edges":[["А","Б"],["А","В"],["А","Г"],["Б","Д"],["Б","Е"],["В","Д"],["В","Е"],["Г","Е"],["Д","Ж"],["Е","Ж"]],"title":"Все пути: задача 2","condition":"Сколько существует различных путей из А в Ж?","hint":"Все стрелки направлены слева направо. Сначала найдите N(Д) и N(Е), затем сложите их в Ж.","answer":5,"solution":"N(А)=1 → N(Б)=1 → N(В)=1 → N(Г)=1 → N(Д)=2 → N(Е)=3 → N(Ж)=5"},{"cat":"281","kind":"all","num":3,"level":"Повышенный","start":"А","end":"Ж","levels":[["А"],["Б","В"],["Г","Д"],["Е"],["Ж"]],"edges":[["А","Б"],["А","В"],["Б","Г"],["Б","Д"],["Б","Е"],["В","Д"],["В","Е"],["Д","Е"],["Г","Ж"],["Д","Ж"],["Е","Ж"]],"title":"Все пути: задача 3","condition":"Сколько существует различных путей из А в Ж?","hint":"Обратите внимание: в Е входят стрелки сразу из Б, В и Д. Значение Е — сумма трёх вкладов.","answer":7,"solution":"N(А)=1 → N(Б)=1 → N(В)=1 → N(Г)=1 → N(Д)=2 → N(Е)=4 → N(Ж)=7"},{"cat":"203","kind":"must","num":1,"level":"Базовый","start":"А","end":"Ж","must":"Д","levels":[["А"],["Б","В"],["Д"],["Е","Г"],["Ж"]],"edges":[["А","Б"],["А","В"],["Б","Д"],["В","Д"],["Д","Е"],["Д","Г"],["Е","Ж"],["Г","Ж"]],"title":"Обязательная вершина: задача 1","condition":"Сколько путей из А в Ж проходят через Д?","hint":"Посчитайте отдельно число путей А→Д и число путей Д→Ж, затем перемножьте.","answer":4,"solution":"Путей А→Д: 2. Путей Д→Ж: 2. Итого: 2 × 2 = 4."},{"cat":"203","kind":"must","num":2,"level":"Средний","start":"А","end":"Ж","must":"Г","levels":[["А"],["Б","В"],["Г"],["Д","Е"],["Ж"]],"edges":[["А","Б"],["А","В"],["А","Г"],["Б","Г"],["В","Г"],["Г","Д"],["Г","Е"],["Г","Ж"],["Д","Ж"],["Е","Ж"]],"title":"Обязательная вершина: задача 2","condition":"Сколько путей из А в Ж проходят через Г?","hint":"До Г есть несколько способов попасть из А. После Г есть прямой путь в Ж и два пути через Д и Е.","answer":9,"solution":"Путей А→Г: 3. Путей Г→Ж: 3. Итого: 3 × 3 = 9."},{"cat":"203","kind":"must","num":3,"level":"Повышенный","start":"А","end":"М","must":"Е","levels":[["А"],["Б","В"],["Г","Д"],["Е"],["Ж","К"],["М"]],"edges":[["А","Б"],["А","В"],["Б","Г"],["Б","Д"],["В","Д"],["Г","Е"],["Д","Е"],["Е","Ж"],["Е","К"],["Ж","М"],["К","М"]],"title":"Обязательная вершина: задача 3","condition":"Сколько путей из А в М проходят через Е?","hint":"Е — контрольная точка. Найдите число путей до Е и число путей от Е до М.","answer":6,"solution":"Путей А→Е: 3. Путей Е→М: 2. Итого: 3 × 2 = 6."},{"cat":"361","kind":"avoid","num":1,"level":"Базовый","start":"А","end":"Ж","avoid":"Е","levels":[["А"],["Б","В"],["Е","Д","Г"],["Ж"]],"edges":[["А","Б"],["А","В"],["Б","Е"],["Б","Д"],["В","Д"],["В","Г"],["Е","Ж"],["Д","Ж"],["Г","Ж"]],"title":"Избегаемая вершина: задача 1","condition":"Сколько путей из А в Ж не проходят через Е?","hint":"Считайте N(Е)=0. Все пути, которые попали в Е, дальше не передаются.","answer":3,"solution":"N(Е)=0. N(А)=1 → N(Б)=1 → N(В)=1 → N(Д)=2 → N(Г)=1 → N(Ж)=3. Ответ: 3."},{"cat":"361","kind":"avoid","num":2,"level":"Средний","start":"А","end":"Ж","avoid":"Д","levels":[["А"],["Б","В","Г"],["Д","Е"],["Ж"]],"edges":[["А","Б"],["А","В"],["А","Г"],["Б","Д"],["Б","Е"],["В","Д"],["В","Е"],["Г","Е"],["Д","Ж"],["Е","Ж"]],"title":"Избегаемая вершина: задача 2","condition":"Сколько путей из А в Ж не проходят через Д?","hint":"Исключите Д. После этого все допустимые пути в Ж приходят через Е.","answer":3,"solution":"N(Д)=0. N(А)=1 → N(Б)=1 → N(В)=1 → N(Г)=1 → N(Е)=3 → N(Ж)=3. Ответ: 3."},{"cat":"361","kind":"avoid","num":3,"level":"Повышенный","start":"А","end":"Ж","avoid":"Г","levels":[["А"],["Б","В"],["Г","Д","Е"],["Ж"]],"edges":[["А","Б"],["А","В"],["Б","Г"],["Б","Д"],["Б","Е"],["В","Д"],["В","Е"],["Г","Ж"],["Д","Ж"],["Е","Ж"]],"title":"Избегаемая вершина: задача 3","condition":"Сколько путей из А в Ж не проходят через Г?","hint":"Поставьте Г = 0 и продолжайте подсчёт по оставшимся ветвям через Д и Е.","answer":4,"solution":"N(Г)=0. N(А)=1 → N(Б)=1 → N(В)=1 → N(Д)=2 → N(Е)=2 → N(Ж)=4. Ответ: 4."},{"cat":"365","kind":"both","num":1,"level":"Базовый","start":"А","end":"Ж","must":"Д","avoid":"Е","levels":[["А"],["Б","В"],["Д"],["Е","Г"],["Ж"]],"edges":[["А","Б"],["А","В"],["Б","Д"],["В","Д"],["Д","Е"],["Д","Г"],["Е","Ж"],["Г","Ж"]],"title":"Два условия: задача 1","condition":"Сколько путей из А в Ж проходят через Д, но не проходят через Е?","hint":"Д обязательна, Е запрещена. До Д считаем обычным способом; после Д оставляем только ветвь, которая не идёт через Е.","answer":2,"solution":"Исключаем Е. Среди оставшихся путей считаем только те, которые проходят через Д. Получаем 2."},{"cat":"365","kind":"both","num":2,"level":"Средний","start":"А","end":"Ж","must":"Г","avoid":"В","levels":[["А"],["Б","В"],["Д"],["Г"],["Е","К"],["Ж"]],"edges":[["А","Б"],["А","В"],["Б","Г"],["В","Г"],["В","Д"],["Д","Г"],["Г","Е"],["Г","К"],["Е","Ж"],["К","Ж"]],"title":"Два условия: задача 2","condition":"Сколько путей из А в Ж проходят через Г, но не проходят через В?","hint":"Сначала исключите В. Затем посчитайте пути до обязательной вершины Г и допустимые пути после неё.","answer":2,"solution":"Исключаем В. Среди оставшихся путей считаем только те, которые проходят через Г. Получаем 2."},{"cat":"365","kind":"xor","num":3,"level":"Повышенный","start":"А","end":"Ж","xor":["Г","Д"],"levels":[["А"],["Б","В"],["Г"],["Д"],["Е"],["Ж"]],"edges":[["А","Б"],["А","В"],["Б","Г"],["Б","Д"],["В","Г"],["Г","Е"],["Г","Д"],["Д","Е"],["Е","Ж"]],"title":"Логическое условие: задача 3","condition":"Сколько путей из А в Ж проходят через Г или через Д, но не через обе эти вершины?","hint":"Разбейте условие на два непересекающихся случая: (через Г, но не Д) + (через Д, но не Г).","answer":3,"solution":"Через Г, но не Д: 2. Через Д, но не Г: 1. Складываем: 2 + 1 = 3."}];
+  let trainerCat='281', trainerNum=1;
+
+  const catNames={'281':'Все пути','203':'Обязательная вершина','361':'Избегаемая вершина','365':'Сложные условия'};
+
+  function getTrainerTask(){
+    return trainerTasks.find(t=>t.cat===trainerCat && Number(t.num)===Number(trainerNum));
+  }
+
+  function trainerNodeClass(task,n){
+    let cls='trainer-node';
+    if(task.must===n) cls+=' must';
+    if(task.avoid===n) cls+=' avoid';
+    if(Array.isArray(task.xor) && task.xor.includes(n)) cls+=' xor';
+    return cls;
+  }
+
+  function renderTrainerGraph(task){
+    const svg=document.getElementById('trainerSvg');
+    const W=920,H=500,padX=90,padY=70;
+    const levels=task.levels;
+    const pos={};
+    levels.forEach((level,li)=>{
+      const x=levels.length===1?W/2:padX + li*(W-2*padX)/(levels.length-1);
+      level.forEach((n,ni)=>{
+        const count=level.length;
+        const y=count===1?H/2:padY + ni*(H-2*padY)/(count-1);
+        pos[n]=[x,y];
+      });
+    });
+
+    const defs='<defs><marker id="trArr" markerWidth="20" markerHeight="18" refX="18" refY="9" orient="auto" markerUnits="userSpaceOnUse"><path d="M1,1 L1,17 L18,9 z" fill="#5f6f84"/></marker></defs>';
+    let edgeHtml='';
+    task.edges.forEach(([a,b])=>{
+      const A=pos[a],B=pos[b];
+      const dx=B[0]-A[0],dy=B[1]-A[1],len=Math.hypot(dx,dy)||1;
+      const ux=dx/len,uy=dy/len;
+      const r=37;
+      const x1=A[0]+ux*(r+2),y1=A[1]+uy*(r+2),x2=B[0]-ux*(r+20),y2=B[1]-uy*(r+20);
+      edgeHtml += `<line class="trainer-edge" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" marker-end="url(#trArr)"/>`;
+    });
+
+    let nodeHtml='';
+    Object.entries(pos).forEach(([n,[x,y]])=>{
+      const cls=trainerNodeClass(task,n);
+      nodeHtml += `<g class="${cls}"><circle cx="${x}" cy="${y}" r="37"/><text x="${x}" y="${y+10}" text-anchor="middle" font-size="26" font-weight="900">${n}</text></g>`;
+    });
+    svg.innerHTML=defs+'<g>'+edgeHtml+'</g><g>'+nodeHtml+'</g>';
+  }
+
+  function renderTrainer(){
+    const task=getTrainerTask();
+    if(!task)return;
+    document.querySelectorAll('.trainer-cat').forEach(b=>b.classList.toggle('active',b.dataset.cat===trainerCat));
+    document.querySelectorAll('.trainer-num').forEach(b=>b.classList.toggle('active',Number(b.dataset.num)===Number(trainerNum)));
+
+    document.getElementById('trainerCategoryLabel').textContent=catNames[task.cat]+' · тип '+task.cat;
+    document.getElementById('trainerLevel').textContent=task.level;
+    const special=document.getElementById('trainerSpecial');
+    if(task.must){special.style.display='inline-flex';special.textContent='Обязательная: '+task.must}
+    else if(task.avoid){special.style.display='inline-flex';special.textContent='Запрещённая: '+task.avoid}
+    else if(Array.isArray(task.xor)){special.style.display='inline-flex';special.textContent='Условие XOR: '+task.xor.join(' / ')}
+    else {special.style.display='none';special.textContent=''}
+
+    document.getElementById('trainerCondition').textContent=task.condition;
+    document.getElementById('trainerAnswer').value='';
+    const fb=document.getElementById('trainerFeedback');fb.textContent='';fb.className='feedback';
+    const hint=document.getElementById('trainerHint');hint.textContent=task.hint;hint.classList.remove('show');
+    const sol=document.getElementById('trainerSolution');sol.textContent=task.solution;sol.classList.remove('show');
+    document.getElementById('trainerHintBtn').textContent='Подсказка';
+    document.getElementById('trainerSolutionBtn').textContent='Разбор';
+    renderTrainerGraph(task);
+    if(typeof trainerAnnotation!=='undefined' && trainerAnnotation) trainerAnnotation.clear();
+  }
+
+  document.querySelectorAll('.trainer-cat').forEach(b=>b.addEventListener('click',()=>{trainerCat=b.dataset.cat;trainerNum=1;renderTrainer()}));
+  document.querySelectorAll('.trainer-num').forEach(b=>b.addEventListener('click',()=>{trainerNum=Number(b.dataset.num);renderTrainer()}));
+
+  document.getElementById('trainerCheck').addEventListener('click',()=>{
+    const task=getTrainerTask(),fb=document.getElementById('trainerFeedback');
+    const raw=document.getElementById('trainerAnswer').value.trim();
+    if(raw===''){fb.textContent='Введите ответ.';fb.className='feedback bad';return}
+    const val=Number(raw.replace(',','.')),ok=val===Number(task.answer);
+    fb.textContent=ok?'Верно!':'Пока нет. Используйте подсказку или проверьте подсчёт.';
+    fb.className='feedback '+(ok?'good':'bad');
+  });
+
+  document.getElementById('trainerHintBtn').addEventListener('click',e=>{
+    const p=document.getElementById('trainerHint');p.classList.toggle('show');e.currentTarget.textContent=p.classList.contains('show')?'Скрыть подсказку':'Подсказка';
+  });
+  document.getElementById('trainerSolutionBtn').addEventListener('click',e=>{
+    const p=document.getElementById('trainerSolution');p.classList.toggle('show');e.currentTarget.textContent=p.classList.contains('show')?'Скрыть разбор':'Разбор';
+  });
+
+  function trainerFlatIndex(){
+    const cats=['281','203','361','365'];return cats.indexOf(trainerCat)*3+(Number(trainerNum)-1);
+  }
+  function setTrainerFromIndex(i){
+    const cats=['281','203','361','365'];i=(i+12)%12;trainerCat=cats[Math.floor(i/3)];trainerNum=(i%3)+1;renderTrainer();
+  }
+
+  // ===== Student annotations on EGE diagrams =====
+  const annotationBoards = {};
+  function createAnnotationBoard(canvasId){
+    const canvas=document.getElementById(canvasId);
+    if(!canvas) return null;
+    const ctx=canvas.getContext('2d');
+    const state={color:'#2d66c3',eraser:false,drawing:false,last:null};
+
+    function resize(clearOnly=false){
+      const rect=canvas.getBoundingClientRect();
+      if(rect.width<2 || rect.height<2) return;
+      const dpr=Math.min(window.devicePixelRatio||1,2);
+      const newW=Math.max(2,Math.round(rect.width*dpr));
+      const newH=Math.max(2,Math.round(rect.height*dpr));
+      if(canvas.width===newW && canvas.height===newH) return;
+      let snapshot=null;
+      if(!clearOnly && canvas.width>2 && canvas.height>2){
+        snapshot=document.createElement('canvas');snapshot.width=canvas.width;snapshot.height=canvas.height;
+        snapshot.getContext('2d').drawImage(canvas,0,0);
+      }
+      canvas.width=newW;canvas.height=newH;
+      if(snapshot) ctx.drawImage(snapshot,0,0,newW,newH);
+    }
+    function pt(e){
+      const r=canvas.getBoundingClientRect();
+      return {x:(e.clientX-r.left)*(canvas.width/r.width),y:(e.clientY-r.top)*(canvas.height/r.height)};
+    }
+    function stop(){state.drawing=false;state.last=null}
+    canvas.addEventListener('pointerdown',e=>{resize();state.drawing=true;state.last=pt(e);try{canvas.setPointerCapture(e.pointerId)}catch(_){}});
+    canvas.addEventListener('pointermove',e=>{
+      if(!state.drawing) return;
+      const p=pt(e);ctx.save();ctx.lineCap='round';ctx.lineJoin='round';
+      if(state.eraser){ctx.globalCompositeOperation='destination-out';ctx.lineWidth=30;ctx.strokeStyle='rgba(0,0,0,1)'}
+      else{ctx.globalCompositeOperation='source-over';ctx.lineWidth=6;ctx.strokeStyle=state.color}
+      ctx.beginPath();ctx.moveTo(state.last.x,state.last.y);ctx.lineTo(p.x,p.y);ctx.stroke();ctx.restore();state.last=p;
+    });
+    canvas.addEventListener('pointerup',stop);canvas.addEventListener('pointercancel',stop);
+    const ro=('ResizeObserver' in window)?new ResizeObserver(()=>resize()):null;if(ro)ro.observe(canvas.parentElement);else window.addEventListener('resize',()=>resize());
+    requestAnimationFrame(()=>resize(true));
+    const api={setColor(c){state.color=c;state.eraser=false},setEraser(){state.eraser=true},clear(){ctx.clearRect(0,0,canvas.width,canvas.height)},resize};
+    annotationBoards[canvasId]=api;return api;
+  }
+  const dpAnnotation=createAnnotationBoard('dpAnnot');
+  const trainerAnnotation=createAnnotationBoard('trainerAnnot');
+  document.querySelectorAll('.annot-color').forEach(btn=>btn.addEventListener('click',()=>{
+    const id=btn.dataset.target,board=annotationBoards[id];if(!board)return;board.setColor(btn.dataset.color);
+    document.querySelectorAll(`[data-target="${id}"]`).forEach(x=>x.classList.remove('active'));btn.classList.add('active');
+  }));
+  document.querySelectorAll('.annot-tool').forEach(btn=>btn.addEventListener('click',()=>{
+    const id=btn.dataset.target,board=annotationBoards[id];if(!board)return;board.setEraser();
+    document.querySelectorAll(`[data-target="${id}"]`).forEach(x=>x.classList.remove('active'));btn.classList.add('active');
+  }));
+  document.querySelectorAll('[data-clear-annot]').forEach(btn=>btn.addEventListener('click',()=>{const b=annotationBoards[btn.dataset.clearAnnot];if(b)b.clear()}));
+
+
+  document.getElementById('trainerPrev').addEventListener('click',()=>setTrainerFromIndex(trainerFlatIndex()-1));
+  document.getElementById('trainerNext').addEventListener('click',()=>setTrainerFromIndex(trainerFlatIndex()+1));
+
+  renderTrainer();
+
+
+  rebuild();show(0);drawBuilder();renderDP();
+})();
+</script>
+</body>
+</html>

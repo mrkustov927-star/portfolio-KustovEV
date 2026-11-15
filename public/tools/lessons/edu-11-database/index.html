@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#070d1d">
+<title>Проектируем реляционную базу данных · Информатика, 11 класс</title>
+<style>
+:root{--bg:#070d1d;--bg2:#101b39;--panel:#142242;--panel2:#17284b;--txt:#f6f9ff;--muted:#bccce7;--blue:#55b7ff;--cyan:#5fe4e3;--mint:#64e5b1;--pink:#ff90b9;--amber:#ffc96a;--red:#ff8292;--border:rgba(218,232,255,.15);--shadow:0 22px 65px rgba(0,0,0,.25)}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;background:var(--bg);color:var(--txt);font-family:Inter,Segoe UI,Arial,sans-serif}body{overflow:hidden;background:radial-gradient(ellipse at 5% 2%,rgba(48,105,225,.22),transparent 37%),radial-gradient(ellipse at 95% 90%,rgba(60,197,197,.11),transparent 38%),linear-gradient(135deg,#070d1d,#0b1531 50%,#071020)}
+button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #ffe5a4;outline-offset:3px}button:disabled{cursor:default;opacity:.6}.deck{position:relative;height:100vh;height:100dvh;overflow:hidden}
+.slide{display:none;position:absolute;inset:0;overflow-y:auto;overscroll-behavior:contain;padding:6.3vh clamp(22px,6vw,100px) 8.5vh;flex-direction:column;justify-content:center;gap:0;animation:slideIn .32s ease both}.slide.active{display:flex}@keyframes slideIn{from{opacity:.2;transform:translateY(10px)}to{opacity:1;transform:none}}
+.topline{display:flex;align-items:center;gap:.75rem;color:var(--cyan);font-size:.77rem;font-weight:850;letter-spacing:.18em;text-transform:uppercase;margin:0 0 1.1rem}.topline:before{content:"";display:block;width:37px;height:2px;background:linear-gradient(90deg,var(--cyan),transparent)}h1,h2,h3,p{margin-top:0}h1{font-size:clamp(3.1rem,6.1vw,6.6rem);letter-spacing:-.065em;line-height:.96;margin-bottom:1.6rem;font-weight:900}h2{font-size:clamp(2.25rem,4.4vw,4.7rem);letter-spacing:-.055em;line-height:1.03;margin-bottom:1.45rem;font-weight:900}h3{font-size:clamp(1.2rem,1.8vw,1.75rem);letter-spacing:-.025em;line-height:1.16;margin-bottom:.65rem}p{font-size:clamp(1rem,1.5vw,1.31rem);line-height:1.55;color:var(--muted);margin-bottom:.7rem}.lead{font-size:clamp(1.22rem,1.95vw,1.72rem);max-width:970px;line-height:1.48}.tiny{font-size:.83rem;color:#a9bddc}.emph{color:var(--cyan)}.mint{color:var(--mint)}.pink{color:var(--pink)}.amber{color:var(--amber)}.strong{color:white;font-weight:850}
+.grid{display:grid;gap:clamp(10px,1.3vw,18px)}.two{grid-template-columns:repeat(2,minmax(0,1fr))}.three{grid-template-columns:repeat(3,minmax(0,1fr))}.four{grid-template-columns:repeat(4,minmax(0,1fr))}.hero{display:grid;grid-template-columns:minmax(0,1.07fr) minmax(0,.93fr);gap:clamp(20px,4vw,72px);align-items:center}
+.card{background:linear-gradient(150deg,rgba(255,255,255,.092),rgba(255,255,255,.039));border:1px solid var(--border);border-radius:24px;padding:clamp(17px,1.9vw,28px);box-shadow:var(--shadow);min-width:0}.card.compact{padding:18px}.card.noShadow{box-shadow:none}.accentCard{background:linear-gradient(150deg,rgba(90,202,224,.15),rgba(62,98,165,.095));border-color:rgba(95,228,227,.31)}.iconBox{width:60px;height:60px;display:grid;place-items:center;font-size:2rem;background:linear-gradient(135deg,rgba(84,183,255,.21),rgba(147,117,255,.17));border:1px solid rgba(255,255,255,.12);border-radius:18px;margin-bottom:.85rem}.iconBox.miniIcon{width:47px;height:47px;font-size:1.48rem;border-radius:14px}.chip{display:inline-block;vertical-align:middle;padding:.32rem .6rem;border-radius:9px;background:rgba(95,228,227,.11);border:1px solid rgba(95,228,227,.2);color:#b8ffff;font-weight:750;font-size:.84rem;margin:.15rem}.note{background:rgba(96,189,255,.085);border-left:4px solid var(--blue);border-radius:0 14px 14px 0;padding:1rem 1.15rem;max-width:1050px}.note p{margin:0;color:#e0efff}.pillRow{display:flex;gap:.52rem;flex-wrap:wrap;align-items:center}.pill{padding:.55rem .78rem;background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:999px;color:#e0edff;font-size:.92rem;font-weight:750}.eyekey{display:inline-flex;gap:.35rem;align-items:center;color:var(--amber);font-weight:850}.tagPK{color:#ffd88c;font-weight:900}.tagFK{color:#80e8ff;font-weight:900}
+.fauxDB{aspect-ratio:1.13;border-radius:34px;background:radial-gradient(circle at 50% 34%,rgba(80,183,255,.26),transparent 45%),linear-gradient(145deg,#192f55,#0a1831);border:1px solid rgba(172,218,255,.22);display:grid;place-items:center;position:relative;overflow:hidden;box-shadow:0 36px 90px rgba(0,0,0,.33)}.fauxDB:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.027) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.027) 1px,transparent 1px);background-size:27px 27px}.cylinder{position:relative;width:55%;height:54%;border-radius:50% / 14%;background:linear-gradient(90deg,#2b679c,#4292c6 47%,#1e4977);border-bottom:12px solid #18456b;box-shadow:0 20px 28px rgba(0,0,0,.4);z-index:1}.cylinder:before{content:"";position:absolute;top:-7%;left:0;width:100%;height:24%;border-radius:50%;background:linear-gradient(135deg,#91defb,#4d9acb);border:5px solid #275a89}.cylinder:after{content:"";position:absolute;top:37%;left:0;width:100%;height:12%;border-bottom:5px solid rgba(222,250,255,.67);border-radius:50%}.cylinder .dbGlyph{position:absolute;inset:25% 0 0;display:grid;place-items:center;font-size:clamp(4rem,8vw,7rem);font-weight:950;letter-spacing:-.06em;color:#c6f8ff;text-shadow:0 10px 20px rgba(0,0,0,.2)}.orbit{position:absolute;width:67px;height:67px;display:grid;place-items:center;font-size:2rem;border-radius:20px;background:linear-gradient(140deg,#234b71,#1c325b);border:1px solid rgba(152,233,255,.4);z-index:2;box-shadow:0 16px 25px rgba(0,0,0,.23)}.orbit.a{top:10%;left:6%}.orbit.b{top:11%;right:8%}.orbit.c{bottom:8%;left:8%}.orbit.d{bottom:10%;right:10%}
+.tableWrap{overflow-x:auto;border:1px solid rgba(255,255,255,.15);border-radius:17px;background:rgba(5,16,32,.35)}table{border-collapse:collapse;width:100%;font-size:clamp(.79rem,1.08vw,1.03rem)}th,td{padding:.74rem .84rem;text-align:left;white-space:nowrap;border-bottom:1px solid rgba(236,247,255,.09)}th{background:rgba(80,170,227,.17);color:#d9f9ff;font-weight:850}tr:last-child td{border-bottom:0}td{color:#e5efff}.duplicates td:nth-child(2){color:#ffd791;font-weight:800}.duplicates td:nth-child(4){color:#aff4ff;font-weight:800}.miniTable table{font-size:.9rem}.miniTable th,.miniTable td{padding:.56rem .67rem}.ghostRow{background:rgba(255,203,103,.085)}.highlightCol table td:first-child,.highlightCol table th:first-child{background:rgba(255,200,105,.15)}.highlightRow table tbody tr:nth-child(2) td{background:rgba(102,226,182,.18)}
+.btn,.option{border:1px solid var(--border);color:#f8fbff;background:rgba(255,255,255,.063);border-radius:14px;padding:.85rem 1rem;min-height:48px;transition:background .16s,border-color .16s,transform .16s}.btn:hover,.option:hover{border-color:rgba(95,228,227,.6);background:rgba(95,228,227,.115)}.btn.primary{border-color:#45b8de;background:linear-gradient(120deg,#2b87d2,#226db1);font-weight:850}.btn.primary:hover{background:linear-gradient(120deg,#3199e2,#297ecc)}.btn.secondary{color:#cdeeff;border-color:rgba(88,176,242,.32)}.btn.small{min-height:38px;padding:.55rem .75rem;font-size:.89rem;border-radius:11px}.btn:disabled:hover{transform:none}.btn.selected,.option.selected{border-color:var(--amber);background:rgba(255,201,106,.18)}.option.correct{border-color:var(--mint)!important;background:rgba(100,229,177,.16)!important}.option.wrong{border-color:var(--red)!important;background:rgba(255,130,146,.13)!important}.options{display:grid;gap:.66rem;margin-top:1rem}.options.twoOptions{grid-template-columns:repeat(2,minmax(0,1fr))}.feedback{min-height:2rem;margin-top:.82rem;font-size:1.05rem;font-weight:800;color:#e5efff}.answerBox{padding:.65rem 1rem;border-radius:12px;display:inline-block;background:rgba(100,229,177,.11);border:1px solid rgba(100,229,177,.29);font-size:1.1rem;font-weight:900}.buttonRow{display:flex;gap:.65rem;flex-wrap:wrap;align-items:center;margin-top:.7rem}
+.relationship{display:grid;grid-template-columns:minmax(0,1fr) 125px minmax(0,1fr);gap:.8rem;align-items:center}.relEdge{display:grid;place-items:center;gap:.3rem}.relEdge .relNums{color:#c8e7fa;font-weight:900;font-size:1.08rem}.relEdge .relLine{height:4px;width:100%;background:linear-gradient(90deg,var(--cyan),var(--pink));border-radius:4px}.relRow{display:flex;gap:.6rem;align-items:center;padding:.66rem .8rem;border-radius:13px;background:rgba(255,255,255,.04);margin-top:.6rem;font-size:1rem;font-weight:760;color:#deebff}.relRow .bubble{background:rgba(95,228,227,.13);border:1px solid rgba(95,228,227,.3);border-radius:9px;padding:.3rem .5rem;font-weight:900;color:var(--cyan)}
+.schema{display:grid;grid-template-columns:minmax(0,1fr) 82px minmax(0,1fr) 82px minmax(0,1fr);align-items:center;gap:.58rem;max-width:1150px;width:100%;margin:1rem auto 0}.schemaConnector{display:flex;flex-direction:column;gap:.65rem;align-items:center;justify-content:center}.connectorLine{height:4px;background:linear-gradient(90deg,#64cbe7,#e49bcd);width:100%;border-radius:8px}.connectorLabel{font-weight:900;font-size:1rem;color:#cdebf7;white-space:nowrap}.schemaArrow{height:8px;width:100%;background:linear-gradient(90deg,#65cae7,#e69cc9);border-radius:40px;position:relative}.schemaArrow:after{content:"";position:absolute;right:-3px;top:-7px;border-top:11px solid transparent;border-bottom:11px solid transparent;border-left:15px solid #e69cc9}.schemaArrow.rev{transform:scaleX(-1)}.schemaName{text-align:center;font-weight:850;color:#c9dfff;font-size:.91rem}.schemaPanel{border-radius:18px;overflow:hidden;border:1px solid var(--border);background:rgba(7,18,38,.55);min-width:0}.schemaTitle{font-weight:950;font-size:1.3rem;padding:.72rem .9rem;background:rgba(90,196,223,.18)}.schemaPanel ul{list-style:none;margin:0;padding:.3rem 0}.schemaPanel li{font-size:.99rem;padding:.53rem .85rem;border-bottom:1px solid rgba(255,255,255,.08)}.schemaPanel li:last-child{border-bottom:0}.schemaPanel.active{box-shadow:0 0 0 2px rgba(99,233,211,.5),var(--shadow)}.schemaPanel[role="button"]{cursor:pointer}.schemaPanel[role="button"]:focus-visible{outline:3px solid white;outline-offset:4px}.schemaCentral{display:flex;flex-direction:column;gap:.65rem}.schemaCentral .schemaPanel{max-width:360px;width:100%;align-self:center}.schemaband{width:100%;display:flex;justify-content:center;gap:.4rem}
+.fieldBank{display:flex;flex-wrap:wrap;gap:.52rem;justify-content:center;margin:.9rem 0}.fieldChip{min-height:43px;padding:.62rem .83rem;border-radius:999px;border:1px solid var(--border);background:rgba(255,255,255,.075);color:white;font-weight:760}.fieldChip.selected{border-color:var(--amber);background:rgba(255,201,106,.15)}.fieldChip.done{display:none}.zones{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}.zone{min-height:180px}.placed{display:inline-block;border-radius:9px;background:rgba(100,229,177,.12);border:1px solid rgba(100,229,177,.27);font-size:.88rem;font-weight:800;color:#d6ffeb;padding:.36rem .49rem;margin:.17rem}.numStat{font-size:clamp(2rem,4vw,4rem);font-weight:950;letter-spacing:-.05em;color:var(--cyan);line-height:1}
+input,select{background:#0c1a33;border:1px solid rgba(189,222,255,.35);color:white;border-radius:13px;padding:.82rem .85rem;min-width:0;width:100%;min-height:48px}input::placeholder{color:#87a1c7}.formGrid{display:grid;grid-template-columns:1fr 1fr auto;gap:.7rem;align-items:end}label{display:block;color:#d5e7fc;font-weight:750;font-size:.9rem;margin-bottom:.4rem}.dataset{display:grid;grid-template-columns:1fr 1.12fr;gap:1rem}.code{background:#071122;border:1px solid rgba(113,180,223,.24);border-radius:17px;padding:1rem 1.2rem;color:#def7ff;font-size:clamp(.83rem,1.13vw,1.05rem);font-family:Consolas,SFMono-Regular,monospace;line-height:1.65;overflow-x:auto;white-space:pre}.kw{color:#c1a3ff}.col{color:#84eec9}.str{color:#ffd28e}
+.timeline{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.65rem}.timeStep{min-height:186px}.timeStep .num{color:var(--cyan);font-size:2.3rem;font-weight:950;margin-bottom:.4rem}.desc{font-size:1rem}.twoLine{display:flex;align-items:center;gap:.7rem;margin:.7rem 0}.twoLine strong{color:white}.vs{font-size:2rem;color:var(--amber);font-weight:900;text-align:center}
+.drawer{position:fixed;right:16px;top:18px;width:min(360px,90vw);max-height:calc(100vh - 110px);overflow-y:auto;border:1px solid rgba(153,207,255,.25);background:rgba(10,25,49,.98);border-radius:19px;padding:17px;box-shadow:0 28px 85px rgba(0,0,0,.5);z-index:101;display:none}.drawer.open{display:block}.drawer h3{font-size:1.18rem;margin:0 0 12px}.drawer button.itemLink{display:block;width:100%;text-align:left;font-size:.9rem;padding:.67rem .75rem;margin:.21rem 0;min-height:35px;border-radius:9px;border:1px solid transparent;background:transparent;color:#e0efff}.drawer button.itemLink:hover,.drawer button.itemLink.active{border-color:rgba(95,228,227,.32);background:rgba(95,228,227,.11)}
+.toolbar{position:fixed;bottom:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:12px clamp(18px,3vw,42px) 18px;pointer-events:none;z-index:100;background:linear-gradient(0deg,rgba(7,13,29,.94),rgba(7,13,29,.02))}.toolbar>*{pointer-events:auto}.count{font-weight:790;color:#b8cbe6;font-size:.91rem;min-width:105px}.rightBar{display:flex;gap:.5rem;align-items:center}.round{width:42px;height:42px;border-radius:50%;border:1px solid rgba(218,232,255,.2);background:rgba(10,24,47,.82);color:#fff;font-weight:900;font-size:1.17rem;display:grid;place-items:center;backdrop-filter:blur(8px)}.round:hover{background:rgba(47,110,158,.6)}.progress{height:5px;position:fixed;bottom:0;left:0;background:linear-gradient(90deg,var(--blue),var(--cyan));transition:width .3s;z-index:110}
+.center{text-align:center;align-items:center}.center p{max-width:850px}.center .card{text-align:left}.ribbon{display:inline-flex;align-items:center;gap:.55rem;padding:.55rem .9rem;border:1px solid rgba(95,228,227,.32);border-radius:100px;color:#c6ffff;background:rgba(95,228,227,.10);font-weight:800;margin-bottom:1rem}
+@media(max-height:730px) and (min-width:901px){.slide{padding-top:38px;padding-bottom:66px;justify-content:flex-start}h2{font-size:clamp(2rem,3.6vw,3.7rem);margin-bottom:1rem}.card{padding:17px}.topline{margin-bottom:.7rem}.lead{font-size:1.22rem}.timeStep{min-height:150px}.fauxDB{max-height:490px;aspect-ratio:1.25}.dataset{gap:.7rem}}
+@media(max-width:900px){body{overflow:hidden}.slide{padding:65px 20px 85px;justify-content:flex-start}.hero,.two,.three,.four,.dataset,.zones,.timeline,.schema,.formGrid,.relationship{grid-template-columns:1fr}.fauxDB{max-height:340px}.schemaConnector{display:none}.schemaPanel{width:100%!important;max-width:none!important}.relationship .relEdge{height:75px}.relEdge .relLine{width:5px;height:100%}.topline{margin-bottom:.7rem}.slide h2{font-size:2.3rem}.slide h1{font-size:3.35rem}.options.twoOptions{grid-template-columns:1fr}.toolbar{padding:9px 14px 15px}.toolbar .round{width:39px;height:39px}.placeBox{min-height:0}.count{min-width:75px}.schema{display:flex;flex-direction:column;align-items:stretch}.hero .fauxDB{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* Объяснения и интерактивы вводного блока */
+.center{text-align:center;align-items:center}.center .iconBox{margin-left:auto;margin-right:auto}
+.giantEmoji{font-size:clamp(4rem,7.5vw,7.4rem);line-height:1.5;filter:drop-shadow(0 18px 25px rgba(0,0,0,.24))}
+.exampleQuestion{margin-top:.8rem;padding:.62rem .8rem;border-radius:12px;background:rgba(255,201,106,.095);border:1px solid rgba(255,201,106,.2);color:#ffe1ae;font-weight:750;font-size:.94rem}
+.questionTiles{display:grid;gap:.75rem;margin-top:1rem}
+.questionTiles>div{background:rgba(255,255,255,.055);border:1px solid var(--border);padding:.86rem 1rem;border-radius:14px;font-size:clamp(1.02rem,1.45vw,1.25rem)}
+.processFlow{display:grid;grid-template-columns:minmax(0,1fr) 35px minmax(0,1fr) 35px minmax(0,1fr) 35px minmax(0,1fr);gap:.55rem;align-items:center}
+.processNode{background:linear-gradient(155deg,rgba(255,255,255,.09),rgba(255,255,255,.035));border:1px solid var(--border);border-radius:19px;min-height:188px;padding:1.2rem .7rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:.45rem}
+.processNode b{font-size:clamp(.95rem,1.5vw,1.25rem)}.processNode small{color:var(--muted);line-height:1.38;font-size:.93rem}.processIcon{font-size:2.7rem;margin-bottom:.2rem}
+.accentNode{border-color:rgba(95,228,227,.55);background:linear-gradient(145deg,rgba(95,228,227,.19),rgba(100,95,230,.07))}
+.processArrow{text-align:center;color:var(--cyan);font-weight:950;font-size:2rem}
+.simpleFlow{grid-template-columns:minmax(0,1fr) 40px minmax(0,1fr) 40px minmax(0,1fr);max-width:1100px;margin:auto}
+.simpleFlow .processNode{min-height:185px}
+.smallLabel{font-size:.8rem;font-weight:800;color:var(--cyan);letter-spacing:.11em;margin-top:.9rem}
+.textField{background:#0b1d35;border:1px solid rgba(185,225,255,.25);border-radius:13px;color:white;padding:.73rem .9rem;min-height:45px;flex:1 1 240px;min-width:0;font-size:1rem}
+.textField::placeholder{color:#94abc2}
+@media(max-width:900px){
+ .processFlow,.simpleFlow{grid-template-columns:1fr}.processArrow{transform:rotate(90deg)}
+ .processNode{min-height:auto;padding:1rem}
+ .lifeGrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:520px){.lifeGrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main class="deck" id="deck">
+
+<section class="slide active" data-title="Тема урока">
+  <div class="hero">
+    <div>
+      <div class="topline">Информатика · 11 класс</div>
+      <h1>Реляционные<br><span class="emph">базы данных</span></h1>
+      <p class="lead">Проектируем структуру простой <strong class="strong">многотабличной базы данных</strong>: от идеи до связанных таблиц.</p>
+      <div class="pillRow" style="margin-top:1.6rem"><span class="pill">Таблицы</span><span class="pill">Ключи</span><span class="pill">Связи</span><span class="pill">Практика</span></div>
+      <p class="tiny" style="margin-top:1.3rem">Переключение: клавиши ← → или кнопки внизу.</p>
+    </div>
+    <div class="fauxDB" aria-hidden="true"><div class="orbit a">🎓</div><div class="orbit b">🔗</div><div class="cylinder"><div class="dbGlyph">DB</div></div><div class="orbit c">🗝️</div><div class="orbit d">📊</div></div>
+  </div>
+</section>
+
+<section class="slide" data-title="Базы данных вокруг нас">
+  <div class="topline">Начнём с жизни</div>
+  <h2>Ты пользуешься <span class="emph">базами данных</span> каждый день</h2>
+  <p class="lead">Вспомни, как быстро приложения находят именно ту информацию, которая тебе нужна.</p>
+  <div class="grid four lifeGrid">
+    <div class="card"><div class="iconBox">📚</div><h3>Библиотека</h3><p>Находит книгу по автору и показывает, доступна ли она.</p><div class="exampleQuestion">«Есть ли нужная книга?»</div></div>
+    <div class="card"><div class="iconBox">🏫</div><h3>Электронный дневник</h3><p>Показывает оценки, предметы и расписание ученика.</p><div class="exampleQuestion">«Какие оценки по математике?»</div></div>
+    <div class="card"><div class="iconBox">🛒</div><h3>Интернет-магазин</h3><p>Связывает товары, покупателей и заказы.</p><div class="exampleQuestion">«Где мой заказ?»</div></div>
+    <div class="card"><div class="iconBox">🎮</div><h3>Игровой аккаунт</h3><p>Хранит сведения об игроке и его достижениях.</p><div class="exampleQuestion">«Какой у меня уровень?»</div></div>
+  </div>
+</section>
+
+<section class="slide" data-title="Задача: найти информацию">
+  <div class="topline">Проблемная ситуация</div><h2>Представь: в школе <span class="amber">десятки кружков</span></h2>
+  <div class="hero">
+    <div>
+      <p class="lead">Ученики записываются на занятия. Каждый день нужно быстро отвечать на вопросы:</p>
+      <div class="questionTiles">
+        <div>🙋 <strong>Какие кружки посещает Аня?</strong></div>
+        <div>🤖 <strong>Кто ходит на робототехнику?</strong></div>
+        <div>👩‍🏫 <strong>Кто руководит медиацентром?</strong></div>
+      </div>
+      <div class="note" style="margin-top:1.1rem"><p>Сотни записок и случайных файлов неудобны. Нужен <strong>единый порядок хранения и поиска данных</strong>.</p></div>
+    </div>
+    <div class="card center"><div class="giantEmoji">🗂️🔎</div><h3>Как найти нужное за секунды?</h3><p>Систематизировать данные и научиться выполнять запросы.</p></div>
+  </div>
+</section>
+
+<section class="slide" data-title="Определение базы данных">
+  <div class="topline">Новое понятие</div><h2>Что такое <span class="emph">база данных</span>?</h2>
+  <div class="note"><p><strong>База данных (БД)</strong> — организованная совокупность данных о предметной области, предназначенная для хранения, поиска и обработки.</p></div>
+  <div class="grid three" style="margin-top:1.2rem">
+    <div class="card"><div class="iconBox">🗃️</div><h3>Хранит</h3><p>Например, сведения об учениках, кружках и их посещении.</p></div>
+    <div class="card"><div class="iconBox">🔎</div><h3>Помогает находить</h3><p>Например, всех учеников конкретного кружка.</p></div>
+    <div class="card"><div class="iconBox">🔄</div><h3>Позволяет изменять</h3><p>Например, добавить ученика или исправить его класс.</p></div>
+  </div>
+  <p class="lead" style="margin-top:1.2rem">Важен не сам факт хранения, а <strong class="strong">понятная структура данных</strong>, с которой удобно работать.</p>
+</section>
+
+<section class="slide" data-title="База данных и СУБД">
+  <div class="topline">Не путай два понятия</div><h2><span class="amber">БД</span> — данные. <span class="emph">СУБД</span> — программа для работы с ними</h2>
+  <div class="processFlow">
+    <div class="processNode"><div class="processIcon">👤</div><b>Человек</b><small>хочет узнать, кто в кружке</small></div>
+    <div class="processArrow">→</div>
+    <div class="processNode"><div class="processIcon">💻</div><b>Приложение</b><small>принимает запрос</small></div>
+    <div class="processArrow">→</div>
+    <div class="processNode accentNode"><div class="processIcon">⚙️</div><b>СУБД</b><small>находит и изменяет данные</small></div>
+    <div class="processArrow">⇄</div>
+    <div class="processNode"><div class="processIcon">🗄️</div><b>База данных</b><small>хранит записи</small></div>
+  </div>
+  <div class="grid two" style="margin-top:1rem">
+    <div class="card compact"><h3>База данных</h3><p>Сами организованные сведения: ученики, кружки и записи.</p></div>
+    <div class="card compact"><h3>Система управления базами данных (СУБД)</h3><p>Программное обеспечение для создания, хранения, поиска и изменения данных. Примеры: Microsoft Access, SQLite, PostgreSQL.</p></div>
+  </div>
+</section>
+
+<section class="slide" data-title="Операции с данными">
+  <div class="topline">Как работает база</div><h2>Четыре действия, которые <span class="mint">умеет СУБД</span></h2>
+  <div class="grid four">
+    <div class="card"><div class="iconBox">➕</div><h3>Добавить</h3><p>Новая Аня записалась в кружок — появилась запись.</p><div class="smallLabel">СОЗДАНИЕ</div></div>
+    <div class="card"><div class="iconBox">🔍</div><h3>Найти</h3><p>Показать всех участников робототехники.</p><div class="smallLabel">ПОИСК</div></div>
+    <div class="card"><div class="iconBox">✏️</div><h3>Изменить</h3><p>Ученик перешёл из 11А в 11Б — исправляем данные.</p><div class="smallLabel">ИЗМЕНЕНИЕ</div></div>
+    <div class="card"><div class="iconBox">🗑️</div><h3>Удалить</h3><p>Ученик перестал посещать кружок — убираем запись.</p><div class="smallLabel">УДАЛЕНИЕ</div></div>
+  </div>
+  <div class="note" style="margin-top:1.1rem"><p>Не путайте <strong>базу данных</strong> с окном программы: форма, кнопки и таблица на экране — это способы <strong>работать с данными</strong>.</p></div>
+</section>
+
+<section class="slide" data-title="Попробуй поиск в базе">
+  <div class="topline">Интерактивный пример</div><h2>Попробуй <span class="emph">найти запись</span> в базе</h2>
+  <p class="lead">Найди всех учеников робототехники или покажи все кружки Ани. Поиск срабатывает сразу.</p>
+  <div class="grid two">
+    <div class="card">
+      <label for="introSearch" class="strong">Поиск по имени, классу или кружку</label>
+      <div class="buttonRow"><input id="introSearch" class="textField" placeholder="Например: Аня или робототехника" autocomplete="off" spellcheck="false"><button id="introClear" class="btn secondary small" type="button">Очистить</button></div>
+      <div class="buttonRow"><button class="btn small searchPreset" data-search="Аня" type="button">Аня</button><button class="btn small searchPreset" data-search="Робототехника" type="button">Робототехника</button><button class="btn small searchPreset" data-search="11А" type="button">11А</button><button class="btn small searchPreset" data-search="" type="button">Все записи</button></div>
+      <div id="introSearchExplain" class="feedback" aria-live="polite">Выберите вопрос или введите текст поиска.</div>
+    </div>
+    <div class="card miniTable"><div class="pillRow" style="justify-content:space-between"><h3 style="margin:0">Результаты поиска</h3><span class="pill">Найдено: <span id="introCount">4</span></span></div>
+      <div class="tableWrap" style="margin-top:.8rem"><table><thead><tr><th>Ученик</th><th>Класс</th><th>Кружок</th></tr></thead><tbody id="introSearchBody"></tbody></table></div>
+      <p class="tiny" style="margin-top:.65rem">Это учебный пример: поиск фильтрует строки по условию.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-title="Что значит реляционная?">
+  <div class="topline">Новое понятие</div><h2>Почему база называется <span class="mint">реляционной</span>?</h2>
+  <div class="note"><p><strong>Реляционная база данных</strong> организует сведения в виде таблиц (отношений). Между таблицами можно устанавливать связи по общим значениям полей.</p></div>
+  <div class="processFlow simpleFlow" style="margin-top:1.15rem">
+    <div class="processNode"><div class="processIcon">🎒</div><b>Ученики</b><small>кто участвует</small></div>
+    <div class="processArrow">↔</div>
+    <div class="processNode accentNode"><div class="processIcon">📝</div><b>Записи</b><small>кто куда записан</small></div>
+    <div class="processArrow">↔</div>
+    <div class="processNode"><div class="processIcon">🤖</div><b>Кружки</b><small>на какие занятия</small></div>
+  </div>
+  <p class="lead" style="margin-top:1.1rem">Каждая таблица хранит <strong>свой вид сведений</strong>, а связи позволяют получить ответ сразу из нескольких таблиц.</p>
+</section>
+
+<section class="slide" data-title="Таблица, поле, запись">
+  <div class="topline">Новая тема · основные понятия</div><h2>Из чего состоит <span class="emph">таблица</span>?</h2>
+  <div class="grid two">
+    <div class="card" id="structureTableBox"><div class="tableWrap"><table><thead><tr><th>ID ученика</th><th>ФИО</th><th>Класс</th></tr></thead><tbody><tr><td>101</td><td>Аня</td><td>11А</td></tr><tr><td>102</td><td>Тимур</td><td>11Б</td></tr><tr><td>103</td><td>Маша</td><td>11А</td></tr></tbody></table></div><div class="buttonRow"><button class="btn small selected" data-structure="table" type="button">Таблица</button><button class="btn small" data-structure="field" type="button">Поле</button><button class="btn small" data-structure="record" type="button">Запись</button></div></div>
+    <div class="card accentCard"><div class="iconBox">📋</div><h3 id="structureTitle">Таблица (отношение)</h3><p id="structureDescription">Состоит из столбцов (полей) и строк (записей). В реляционной базе данных данные организованы в таблицах; между ними могут быть связи.</p><div class="note"><p><strong>Поле</strong> описывает характеристику объекта. <strong>Запись</strong> содержит сведения об одном экземпляре объекта.</p></div></div>
+  </div>
+</section>
+
+<section class="slide" data-title="Разминка по таблицам">
+  <div class="topline">Проверяем понимание</div><h2>Что такое <span class="emph">поле и запись</span>?</h2>
+  <div class="grid two">
+    <div class="card accentCard"><div class="iconBox">🕵️</div><h3 id="warmQuestion">Что называют полем таблицы?</h3><p class="tiny">Ответьте на три вопроса — они понадобятся дальше.</p><div class="pillRow"><span class="pill">Вопрос <span id="warmIndex">1</span> / 3</span><span class="pill">Верно: <span id="warmScore">0</span></span></div></div>
+    <div class="card"><div id="warmOptions" class="options"></div><div id="warmFeedback" class="feedback" aria-live="polite"></div><button id="warmNext" class="btn primary" type="button" hidden>Следующий вопрос →</button></div>
+  </div>
+</section>
+
+<section class="slide" data-title="Какие бывают типы данных?">
+  <div class="topline">Разбираем поля подробнее</div><h2>Не все поля хранят <span class="amber">одинаковые данные</span></h2>
+  <div class="grid four">
+    <div class="card"><div class="iconBox">🔤</div><h3>Текст</h3><p>ФИО, название кружка, класс <strong class="strong">«11А»</strong>.</p><span class="chip">ТЕКСТ</span></div>
+    <div class="card"><div class="iconBox">🔢</div><h3>Число</h3><p>Количество участников, номер записи <strong class="strong">101</strong>.</p><span class="chip">ЧИСЛО</span></div>
+    <div class="card"><div class="iconBox">📅</div><h3>Дата</h3><p>Когда ученик записался в кружок.</p><span class="chip">ДАТА</span></div>
+    <div class="card"><div class="iconBox">✅</div><h3>Логическое значение</h3><p>Согласие на участие: <strong class="strong">да / нет</strong>.</p><span class="chip">ДА/НЕТ</span></div>
+  </div>
+  <div class="note" style="margin-top:1.1rem"><p><strong>Тип данных поля</strong> задаёт, какие значения в нём можно хранить и как их обрабатывать. «11А» — это текст, хотя в нём есть цифры.</p></div>
+</section>
+
+<section class="slide" data-title="Зачем несколько таблиц?">
+  <div class="topline">Проблема</div><h2>Почему <span class="amber">одной таблицы</span> бывает мало?</h2>
+  <div class="grid two">
+    <div class="card"><h3>Школьные кружки: всё в одной таблице</h3>
+      <div class="tableWrap duplicates"><table><thead><tr><th>Ученик</th><th>Класс</th><th>Кружок</th><th>Руководитель</th></tr></thead><tbody>
+        <tr><td>Аня</td><td>11А</td><td>Робототехника</td><td>С. А. Иванов</td></tr>
+        <tr><td>Аня</td><td>11А</td><td>Медиацентр</td><td>О. П. Смирнова</td></tr>
+        <tr><td>Тимур</td><td>11Б</td><td>Робототехника</td><td>С. А. Иванов</td></tr>
+        <tr><td>Маша</td><td>11А</td><td>Волонтёры</td><td>Н. В. Орлова</td></tr>
+      </tbody></table></div>
+      <div class="buttonRow"><button id="repeatReveal" class="btn secondary" type="button">Показать проблему</button></div>
+    </div>
+    <div class="card accentCard" id="repeatPanel"><div class="iconBox">🤔</div><h3>Что здесь не так?</h3><p>Один ученик может заниматься в нескольких кружках, а один кружок объединяет много учеников.</p><p id="repeatAnswer" style="display:none;color:#f9e4b9;font-weight:750">Имена, классы и руководители повторяются. При изменениях придётся исправлять множество строк — можно получить противоречивые данные.</p></div>
+  </div>
+</section>
+
+<section class="slide" data-title="Два способа хранения">
+  <div class="topline">Принцип проектирования</div><h2>Храним данные <span class="mint">без лишних повторов</span></h2>
+  <div class="grid two">
+    <div class="card"><div class="iconBox">🌀</div><h3>Плохая структура</h3><p>В каждой строке записи в кружок заново пишем ФИО, класс, название кружка и преподавателя.</p><div class="pillRow"><span class="pill">Много повторов</span><span class="pill">Риск ошибок</span><span class="pill">Сложнее обновлять</span></div></div>
+    <div class="card accentCard"><div class="iconBox">🧩</div><h3>Более удачная структура</h3><p>Сохраняем данные об учениках и кружках <strong class="strong">отдельно</strong>, а записи в кружки связывают их по идентификаторам.</p><div class="pillRow"><span class="pill">Ученики</span><span class="pill">Кружки</span><span class="pill">Записи</span></div></div>
+  </div>
+  <div class="note" style="margin-top:1rem"><p>При проектировании мы выделяем <strong>сущности</strong>, их <strong>атрибуты</strong> и <strong>связи</strong> между ними.</p></div>
+</section>
+
+<section class="slide" data-title="Сущность и её свойства">
+  <div class="topline">Переходим к проектированию</div><h2>Сначала нужно понять: <span class="emph">что мы учитываем?</span></h2>
+  <div class="grid two">
+    <div class="card accentCard"><div class="iconBox">🎒</div><h3>Сущность</h3><p>Объект или понятие, сведения о котором нужно хранить.</p><div class="pillRow"><span class="pill">Ученик</span><span class="pill">Кружок</span><span class="pill">Запись в кружок</span></div></div>
+    <div class="card"><div class="iconBox">🏷️</div><h3>Атрибут</h3><p>Характеристика сущности. В таблице она превращается в поле.</p><div class="pillRow"><span class="pill">ФИО</span><span class="pill">Класс</span><span class="pill">Название кружка</span></div></div>
+  </div>
+  <p class="lead" style="margin-top:1.1rem"><strong>Пример:</strong> «Ученик» — сущность, «ФИО» и «Класс» — атрибуты, «Аня, 11А» — одна запись об ученике.</p>
+</section>
+
+<section class="slide" data-title="План проектирования">
+  <div class="topline">Алгоритм</div><h2>Пять шагов <span class="emph">проектирования БД</span></h2>
+  <div class="timeline">
+    <div class="card timeStep compact"><div class="num">01</div><h3>Сущности</h3><p class="desc">Какие объекты нужно учитывать?</p></div>
+    <div class="card timeStep compact"><div class="num">02</div><h3>Поля</h3><p class="desc">Какие свойства каждого объекта нужны?</p></div>
+    <div class="card timeStep compact"><div class="num">03</div><h3>Ключи</h3><p class="desc">Как различать записи?</p></div>
+    <div class="card timeStep compact"><div class="num">04</div><h3>Связи</h3><p class="desc">Как таблицы связаны друг с другом?</p></div>
+    <div class="card timeStep compact"><div class="num">05</div><h3>Проверка</h3><p class="desc">Нет ли повторов и нарушений целостности?</p></div>
+  </div>
+</section>
+
+<section class="slide" data-title="Шаг 1. Сущности">
+  <div class="topline">Шаг 1 · выделяем сущности</div><h2>Кто участвует в системе <span class="emph">школьных кружков</span>?</h2>
+  <div class="grid three">
+    <div class="card accentCard"><div class="iconBox">🎒</div><h3>Ученики</h3><p>Кто посещает кружки?</p><div class="pillRow"><span class="pill">Аня</span><span class="pill">Тимур</span><span class="pill">Маша</span></div></div>
+    <div class="card accentCard"><div class="iconBox">🤖</div><h3>Кружки</h3><p>Какие занятия доступны?</p><div class="pillRow"><span class="pill">Робототехника</span><span class="pill">Медиацентр</span></div></div>
+    <div class="card accentCard"><div class="iconBox">📝</div><h3>Записи</h3><p>Как узнать, кто в каком кружке состоит?</p><div class="pillRow"><span class="pill">Ученик</span><span class="pill">Кружок</span><span class="pill">Дата</span></div></div>
+  </div>
+  <p class="lead" style="margin-top:1.15rem">Получается <strong class="strong">три таблицы</strong>, каждая из которых хранит сведения о своём типе объектов или связи.</p>
+</section>
+
+<section class="slide" data-title="Шаг 2. Поля">
+  <div class="topline">Шаг 2 · определяем поля</div><h2>Что записывать <span class="mint">в каждой таблице</span>?</h2>
+  <div class="grid three">
+    <div class="card miniTable"><h3>🎒 Ученики</h3><div class="tableWrap"><table><tr><th>ID</th><th>ФИО</th><th>Класс</th></tr><tr><td>101</td><td>Аня</td><td>11А</td></tr><tr><td>102</td><td>Тимур</td><td>11Б</td></tr><tr><td>103</td><td>Маша</td><td>11А</td></tr></table></div></div>
+    <div class="card miniTable"><h3>🤖 Кружки</h3><div class="tableWrap"><table><tr><th>ID</th><th>Название</th></tr><tr><td>10</td><td>Робототехника</td></tr><tr><td>20</td><td>Медиацентр</td></tr><tr><td>30</td><td>Волонтёры</td></tr></table></div></div>
+    <div class="card miniTable"><h3>📝 Записи</h3><div class="tableWrap"><table><tr><th>ID</th><th>ID ученика</th><th>ID кружка</th></tr><tr><td>1</td><td>101</td><td>10</td></tr><tr><td>2</td><td>101</td><td>20</td></tr><tr><td>3</td><td>102</td><td>10</td></tr></table></div></div>
+  </div>
+  <p class="lead" style="margin-top:1.15rem">Зачем в каждой таблице поле <span class="amber">ID</span>? Чтобы однозначно находить записи и связывать их.</p>
+</section>
+
+<section class="slide" data-title="Почему фамилия — плохой ключ?">
+  <div class="topline">Подготовка к понятию ключа</div><h2>Что если в школе <span class="amber">два ученика с одинаковым именем</span>?</h2>
+  <div class="grid two">
+    <div class="card miniTable"><h3>Как отличить?</h3><div class="tableWrap"><table><thead><tr><th>ID</th><th>Имя</th><th>Класс</th></tr></thead><tbody><tr><td class="tagPK">101</td><td>Аня</td><td>11А</td></tr><tr><td class="tagPK">104</td><td>Аня</td><td>11Б</td></tr></tbody></table></div><div class="buttonRow"><button id="twinReveal" class="btn primary" type="button">Что надёжнее: имя или ID?</button></div></div>
+    <div class="card accentCard"><div class="iconBox">🗝️</div><h3>Имя может повторяться</h3><p>Двух разных учеников могут звать одинаково. А вот уникальный ID позволяет найти каждого без путаницы.</p><p id="twinAnswer" class="feedback" style="display:none;color:var(--mint)">✅ Надёжнее ID: 101 и 104 обозначают разные записи даже при совпадении имён.</p></div>
+  </div>
+</section>
+
+<section class="slide" data-title="Первичный ключ">
+  <div class="topline">Шаг 3 · первичный ключ</div><h2><span class="amber">Первичный ключ</span> — уникальный идентификатор</h2>
+  <div class="grid two">
+    <div class="card miniTable highlightCol"><h3>Таблица «Ученики»</h3><div class="tableWrap"><table><tr><th>🔑 ID ученика</th><th>ФИО</th><th>Класс</th></tr><tr><td>101</td><td>Аня</td><td>11А</td></tr><tr><td>102</td><td>Тимур</td><td>11Б</td></tr><tr><td>103</td><td>Маша</td><td>11А</td></tr></table></div><div class="pillRow" style="margin-top:.7rem"><span class="pill">101 ≠ 102 ≠ 103</span></div></div>
+    <div class="card accentCard"><div class="iconBox">🗝️</div><h3>Первичный ключ (PK)</h3><p>Поле или набор полей, значение которого <strong class="strong">уникально</strong> для каждой записи и не может быть пустым.</p><p>ФИО неудобно как ключ: могут встретиться полные тёзки.</p></div>
+  </div>
+</section>
+
+<section class="slide" data-title="Внешний ключ">
+  <div class="topline">Шаг 3 · внешний ключ</div><h2><span class="emph">Внешний ключ</span> связывает таблицы</h2>
+  <div class="grid two">
+    <div class="card"><div class="tableWrap"><table><tr><th>ID записи</th><th>ID ученика</th><th>ID кружка</th></tr><tr><td>1</td><td class="tagFK">101</td><td class="tagFK">10</td></tr><tr><td>2</td><td class="tagFK">101</td><td class="tagFK">20</td></tr><tr><td>3</td><td class="tagFK">102</td><td class="tagFK">10</td></tr></table></div><div class="pillRow" style="margin-top:.75rem"><span class="pill">101 → Аня</span><span class="pill">10 → Робототехника</span></div></div>
+    <div class="card accentCard"><div class="iconBox">🔗</div><h3>Внешний ключ (FK)</h3><p>Поле, которое ссылается на <strong class="strong">ключ другой таблицы</strong>.</p><p>В таблице «Записи» ID ученика указывает на строку таблицы «Ученики», а ID кружка — на строку «Кружки».</p></div>
+  </div>
+</section>
+
+<section class="slide" data-title="Читаем связанные записи">
+  <div class="topline">Тренируемся читать ссылки</div><h2>Что означает запись <span class="emph">101 → 20</span>?</h2>
+  <div class="grid three">
+    <div class="card miniTable"><h3>🎒 Ученики</h3><div class="tableWrap"><table><tr><th>ID</th><th>Имя</th></tr><tr><td>101</td><td>Аня</td></tr><tr><td>102</td><td>Тимур</td></tr></table></div></div>
+    <div class="card miniTable"><h3>📝 Записи</h3><div class="tableWrap"><table><tr><th>ID ученика</th><th>ID кружка</th></tr><tr><td class="tagFK">101</td><td class="tagFK">20</td></tr></table></div></div>
+    <div class="card miniTable"><h3>🤖 Кружки</h3><div class="tableWrap"><table><tr><th>ID</th><th>Название</th></tr><tr><td>10</td><td>Робототехника</td></tr><tr><td>20</td><td>Медиацентр</td></tr></table></div></div>
+  </div>
+  <div class="buttonRow" style="justify-content:center;margin-top:1rem"><button id="decodeReveal" class="btn primary" type="button">Расшифровать запись</button></div>
+  <div id="decodeAnswer" class="feedback" style="text-align:center;font-size:1.3rem" aria-live="polite">Сначала найдите 101 в таблице учеников и 20 в таблице кружков.</div>
+</section>
+
+<section class="slide" data-title="Один ко многим">
+  <div class="topline">Шаг 4 · типы связей</div><h2>Связь <span class="emph">«один ко многим»</span> (1:M)</h2>
+  <div class="relationship">
+    <div class="card accentCard"><div class="iconBox">🎒</div><h3>Один ученик</h3><div class="relRow">👩‍🎓 Аня <span class="bubble">ID 101</span></div></div>
+    <div class="relEdge"><div class="relNums">1 → M</div><div class="relLine"></div><p class="tiny" style="text-align:center">одна строка связана с несколькими</p></div>
+    <div class="card"><h3>Несколько записей</h3><div class="relRow">№ 1 → робототехника</div><div class="relRow">№ 2 → медиацентр</div></div>
+  </div>
+  <div class="note" style="margin-top:1.2rem"><p>В таблице «Записи» значение <strong>ID ученика</strong> может повторяться — это внешний ключ, не первичный.</p></div>
+</section>
+
+<section class="slide" data-title="Многие ко многим">
+  <div class="topline">Шаг 4 · более сложная связь</div><h2>Связь <span class="mint">«многие ко многим»</span> (M:N)</h2>
+  <div class="grid three">
+    <div class="card"><div class="iconBox">🎒</div><h3>Ученики</h3><p>Аня и Тимур могут посещать несколько кружков.</p></div>
+    <div class="card accentCard"><div class="iconBox">📝</div><h3>Записи</h3><p>Таблица-посредник хранит пары «ученик — кружок».</p></div>
+    <div class="card"><div class="iconBox">🤖</div><h3>Кружки</h3><p>Робототехнику могут посещать сразу несколько учеников.</p></div>
+  </div>
+  <div class="note" style="margin-top:1.15rem"><p>В реляционной БД связь <strong>M:N</strong> обычно реализуют через <strong>третью таблицу</strong>: две связи типа <strong>1:M</strong>.</p></div>
+</section>
+
+<section class="slide" data-title="Схема базы данных">
+  <div class="topline">Получилась структура</div><h2>Схема <span class="emph">трёх таблиц</span></h2>
+  <div class="schema" id="schemaDiagram">
+    <div class="schemaPanel" role="button" tabindex="0" data-schema="students"><div class="schemaTitle">🎒 Ученики</div><ul><li><span class="tagPK">🔑 PK</span> ID_ученика</li><li>ФИО</li><li>Класс</li></ul></div>
+    <div class="schemaConnector" aria-label="Один ученик — много записей"><div class="connectorLabel">1 : M</div><div class="connectorLine"></div></div>
+    <div class="schemaPanel" role="button" tabindex="0" data-schema="enroll"><div class="schemaTitle">📝 Записи</div><ul><li><span class="tagPK">🔑 PK</span> ID_записи</li><li><span class="tagFK">🔗 FK</span> ID_ученика</li><li><span class="tagFK">🔗 FK</span> ID_кружка</li><li>Дата_записи</li></ul></div>
+    <div class="schemaConnector" aria-label="Много записей — один кружок"><div class="connectorLabel">M : 1</div><div class="connectorLine"></div></div>
+    <div class="schemaPanel" role="button" tabindex="0" data-schema="clubs"><div class="schemaTitle">🤖 Кружки</div><ul><li><span class="tagPK">🔑 PK</span> ID_кружка</li><li>Название</li><li>Руководитель</li></ul></div>
+  </div>
+  <div id="schemaDescription" class="feedback" style="text-align:center">Нажмите на таблицу схемы, чтобы разобрать её назначение.</div>
+</section>
+
+<section class="slide" data-title="Записываемся в кружок">
+  <div class="topline">Практика · работаем с тремя таблицами</div><h2>Добавь ученика <span class="mint">в кружок</span></h2>
+  <div class="dataset">
+    <div class="card"><h3>Новая запись</h3><p class="tiny">Ученики и кружки уже существуют. Выберите пару для таблицы «Записи».</p><div class="formGrid"><div><label for="studentPick">Ученик</label><select id="studentPick"></select></div><div><label for="clubPick">Кружок</label><select id="clubPick"></select></div><button class="btn primary" id="addEnroll" type="button">Добавить</button></div><div id="enrollFeedback" class="feedback" aria-live="polite"></div><div class="buttonRow"><button id="resetEnroll" class="btn secondary small" type="button">Вернуть исходные записи</button></div></div>
+    <div class="card miniTable"><h3>Таблица «Записи»</h3><div class="tableWrap"><table><thead><tr><th>ID</th><th>ID ученика</th><th>ID кружка</th><th>Кто и куда</th></tr></thead><tbody id="enrollBody"></tbody></table></div><p class="tiny" style="margin-top:.7rem">Здесь хранятся идентификаторы. Подпись «Кто и куда» вычисляется для наглядности.</p></div>
+  </div>
+</section>
+
+<section class="slide" data-title="Распредели поля">
+  <div class="topline">Закрепление · интерактив</div><h2>Разложи <span class="emph">поля по таблицам</span></h2>
+  <p class="lead">Выбери карточку с названием поля, затем нажми на подходящую таблицу.</p>
+  <div class="zones">
+    <div class="card zone"><h3>🎒 Ученики</h3><button class="btn small" data-zone="students" type="button">Поместить сюда</button><div class="placedFields" id="zone-students"></div></div>
+    <div class="card zone"><h3>🤖 Кружки</h3><button class="btn small" data-zone="clubs" type="button">Поместить сюда</button><div class="placedFields" id="zone-clubs"></div></div>
+    <div class="card zone"><h3>📝 Записи</h3><button class="btn small" data-zone="enroll" type="button">Поместить сюда</button><div class="placedFields" id="zone-enroll"></div></div>
+  </div>
+  <div class="fieldBank" id="fieldBank"></div><div class="buttonRow" style="justify-content:center"><span class="pill" id="fieldCount">0 / 9</span><button id="resetFields" class="btn small secondary" type="button">Сначала</button></div><div class="feedback" style="text-align:center" id="fieldFeedback" aria-live="polite"></div>
+</section>
+
+<section class="slide" data-title="Проверяем целостность">
+  <div class="topline">Шаг 5 · проверка целостности</div><h2>Можно ли добавить <span class="amber">такую запись</span>?</h2>
+  <div class="grid two">
+    <div class="card accentCard"><div class="iconBox">🛡️</div><h3>Ссылочная целостность</h3><p>Если внешний ключ заполнен, он должен указывать на существующую запись в связанной таблице. В нашем примере оба внешних ключа обязательны.</p><div class="pillRow"><span class="pill">Ученики: 101, 102, 103</span><span class="pill">Кружки: 10, 20, 30</span></div></div>
+    <div class="card"><h3 id="integrityQ">ID ученика = 999, ID кружка = 10</h3><div class="options twoOptions" id="integrityOptions"><button class="option" data-integrity="yes" type="button">Можно</button><button class="option" data-integrity="no" type="button">Нельзя</button></div><div class="feedback" id="integrityFeedback" aria-live="polite"></div><button class="btn primary" id="integrityNext" type="button" hidden>Следующий случай →</button></div>
+  </div>
+</section>
+
+<section class="slide" data-title="Зачем нужны связи в запросах">
+  <div class="topline">Пример · связываем таблицы в запросе</div><h2>Как получить <span class="mint">имена вместо ID</span>?</h2>
+  <div class="dataset">
+    <div class="card"><h3>Запрос объединяет данные</h3><div class="code"><span class="kw">SELECT</span> u.ФИО, k.Название
+<span class="kw">FROM</span> Записи AS z
+<span class="kw">JOIN</span> Ученики AS u
+  <span class="kw">ON</span> z.ID_ученика = u.ID_ученика
+<span class="kw">JOIN</span> Кружки AS k
+  <span class="kw">ON</span> z.ID_кружка = k.ID_кружка;</div><p class="tiny" style="margin-top:.7rem">JOIN объединяет строки таблиц по значениям ключей.</p></div>
+    <div class="card miniTable"><h3>Результат запроса</h3><div class="buttonRow" style="margin:0 0 .8rem"><label for="resultFilter" style="margin:0">Показать:</label><select id="resultFilter" style="width:auto;min-width:185px;padding:.55rem"></select></div><div class="tableWrap"><table><thead><tr><th>Ученик</th><th>Кружок</th></tr></thead><tbody id="joinBody"></tbody></table></div></div>
+  </div>
+</section>
+
+<section class="slide" data-title="Проверь свою структуру">
+  <div class="topline">Три правила хорошей модели</div><h2>Чек-лист <span class="emph">проектировщика</span></h2>
+  <div class="grid three">
+    <div class="card"><div class="iconBox">🧠</div><h3>Одна сущность — одна таблица</h3><p>Не смешивай независимые описания разных объектов в одной строке.</p></div>
+    <div class="card"><div class="iconBox">🗝️</div><h3>У каждой записи — ключ</h3><p>Первичный ключ однозначно определяет запись.</p></div>
+    <div class="card"><div class="iconBox">🔗</div><h3>Связи — по идентификаторам</h3><p>Внешние ключи указывают на существующие записи.</p></div>
+  </div>
+  <p class="lead" style="margin-top:1.3rem">Для связи <strong class="strong">«многие ко многим»</strong> не забывай о таблице-посреднике.</p>
+</section>
+
+<section class="slide" data-title="Мини-проект: библиотека">
+  <div class="topline">Самостоятельный пример</div><h2>Спроектируем <span class="mint">школьную библиотеку</span></h2>
+  <div class="grid two">
+    <div class="card"><div class="iconBox">📚</div><h3>Даны сущности</h3><div class="pillRow"><span class="pill">Читатели</span><span class="pill">Экземпляры книг</span><span class="pill">Выдачи</span></div><p style="margin-top:1rem">Читатель может брать разные экземпляры книг, а один экземпляр может выдаваться неоднократно в разные даты.</p></div>
+    <div class="card"><h3>Какие поля нужны в «Выдачах»?</h3><div id="libOptions" class="options"></div><div class="feedback" id="libFeedback" aria-live="polite"></div></div>
+  </div>
+</section>
+
+<section class="slide" data-title="Итоговый тест">
+  <div class="topline">Проверка знаний · 12 вопросов</div><h2>Финальный <span class="emph">тест</span></h2>
+  <div class="grid two">
+    <div class="card"><div class="pillRow"><span class="pill">Вопрос <span id="testIndex">1</span> / 12</span><span class="pill">Правильных: <span id="testScore">0</span></span></div><h3 id="testQuestion" style="font-size:clamp(1.25rem,2vw,1.75rem);margin-top:1.2rem"></h3><div class="options" id="testOptions"></div><div class="feedback" id="testFeedback" aria-live="polite"></div><button class="btn primary" id="testNext" type="button" hidden>Следующий вопрос →</button></div>
+    <div class="card accentCard" style="display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center"><div class="iconBox" style="margin:0 auto .85rem">📊</div><div class="numStat" id="testBigScore">0/12</div><p id="testMotivation" class="lead">Проверь, как ты понимаешь базы данных, работу СУБД, таблицы, ключи и связи.</p><button id="testRestart" class="btn secondary" type="button" hidden>Пройти тест ещё раз</button></div>
+  </div>
+</section>
+
+<section class="slide center" data-title="Итоги урока">
+  <div class="topline">Итог урока</div><h2>Ты — <span class="mint">проектировщик БД</span>!</h2>
+  <p class="lead">Теперь ты знаешь, как из задачи получить структуру реляционной базы: выделить сущности, подобрать поля, назначить ключи и связать таблицы.</p>
+  <div class="grid three" style="max-width:1050px;width:100%;margin:1.2rem auto">
+    <div class="card"><div class="iconBox">🧱</div><h3>Таблицы</h3><p>Разделяй данные по сущностям.</p></div>
+    <div class="card"><div class="iconBox">🔑</div><h3>Ключи</h3><p>PK определяет запись, FK связывает таблицы.</p></div>
+    <div class="card"><div class="iconBox">🕸️</div><h3>Связи</h3><p>1:M и M:N помогают описать реальный мир.</p></div>
+  </div>
+  <div class="ribbon">Задание: придумай ещё одну БД из трёх связанных таблиц</div>
+</section>
+
+</main>
+<div id="drawer" class="drawer" aria-label="Оглавление"><h3>Навигация по уроку</h3><div id="drawerLinks"></div></div>
+<div class="toolbar"><div class="count"><span id="slideNum">01</span> / <span id="slideTotal">32</span></div><div class="rightBar"><button id="outlineBtn" type="button" class="round" title="Оглавление" aria-label="Оглавление">☷</button><button id="fullscreenBtn" type="button" class="round" title="На весь экран" aria-label="На весь экран">⛶</button><button id="backBtn" type="button" class="round" title="Предыдущий слайд" aria-label="Предыдущий слайд">←</button><button id="forwardBtn" type="button" class="round" title="Следующий слайд" aria-label="Следующий слайд">→</button></div></div>
+<div id="progress" class="progress"></div>
+<script>
+(function(){
+'use strict';
+const $=id=>document.getElementById(id);
+const $$=(selector,root=document)=>Array.from(root.querySelectorAll(selector));
+const slides=$$('.slide');
+let slideIndex=0;
+$('slideTotal').textContent=String(slides.length).padStart(2,'0');
+function go(n){slideIndex=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,i)=>s.classList.toggle('active',i===slideIndex));$('slideNum').textContent=String(slideIndex+1).padStart(2,'0');$('progress').style.width=((slideIndex+1)/slides.length*100)+'%';slides[slideIndex].scrollTop=0;$$('.itemLink').forEach((b,i)=>b.classList.toggle('active',i===slideIndex));$('drawer').classList.remove('open');$('outlineBtn').setAttribute('aria-expanded','false');$('backBtn').disabled=slideIndex===0;$('forwardBtn').disabled=slideIndex===slides.length-1;}
+$('backBtn').addEventListener('click',()=>go(slideIndex-1));$('forwardBtn').addEventListener('click',()=>go(slideIndex+1));
+document.addEventListener('keydown',e=>{const tag=document.activeElement?.tagName||'';if(['INPUT','SELECT','TEXTAREA'].includes(tag))return;if($('drawer').classList.contains('open')&&e.key==='Escape'){$('drawer').classList.remove('open');return;}if(['ArrowRight','PageDown'].includes(e.key)){e.preventDefault();go(slideIndex+1)}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(slideIndex-1)}});
+slides.forEach((s,i)=>{const b=document.createElement('button');b.type='button';b.className='itemLink';b.textContent=String(i+1).padStart(2,'0')+'  '+s.dataset.title;b.addEventListener('click',()=>go(i));$('drawerLinks').append(b)});
+$('outlineBtn').addEventListener('click',()=>{const o=$('drawer').classList.toggle('open');$('outlineBtn').setAttribute('aria-expanded',String(o))});
+$('fullscreenBtn').addEventListener('click',()=>{if(document.fullscreenElement){document.exitFullscreen?.()}else{document.documentElement.requestFullscreen?.().catch(()=>{})}});
+
+
+// Поиск в учебных записях: функция выбора строк без изменения исходных данных
+const introRows=[
+ {name:'Аня',className:'11А',club:'Робототехника'},
+ {name:'Аня',className:'11А',club:'Медиацентр'},
+ {name:'Тимур',className:'11Б',club:'Робототехника'},
+ {name:'Маша',className:'11А',club:'Волонтёры'}
+];
+function renderIntroSearch(){
+ const query=$('introSearch').value.trim().toLocaleLowerCase('ru');
+ const result=introRows.filter(x=>[x.name,x.className,x.club].some(v=>v.toLocaleLowerCase('ru').includes(query)));
+ const tbody=$('introSearchBody');tbody.replaceChildren();
+ result.forEach(x=>{const row=document.createElement('tr');[x.name,x.className,x.club].forEach(v=>{const cell=document.createElement('td');cell.textContent=v;row.append(cell)});tbody.append(row)});
+ if(result.length===0){const row=document.createElement('tr'),cell=document.createElement('td');cell.colSpan=3;cell.textContent='Совпадений нет';row.append(cell);tbody.append(row)}
+ $('introCount').textContent=result.length;
+ $('introSearchExplain').textContent=query?'🔎 СУБД выбрала '+result.length+' из '+introRows.length+' записей, соответствующих условию поиска.':'Показаны все '+introRows.length+' записи. Попробуй найти нужную часть таблицы.';
+}
+$('introSearch').addEventListener('input',renderIntroSearch);
+$('introClear').addEventListener('click',()=>{$('introSearch').value='';renderIntroSearch();$('introSearch').focus()});
+$$('.searchPreset').forEach(btn=>btn.addEventListener('click',()=>{$('introSearch').value=btn.dataset.search;renderIntroSearch()}));
+renderIntroSearch();
+$('twinReveal').addEventListener('click',()=>{$('twinAnswer').style.display='block';$('twinReveal').textContent='ID различает записи';$('twinReveal').disabled=true});
+$('decodeReveal').addEventListener('click',()=>{$('decodeAnswer').textContent='✅ Аня (ID 101) записана в «Медиацентр» (ID 20).';$('decodeAnswer').style.color='var(--mint)';$('decodeReveal').disabled=true});
+
+// Проблема повторов
+$('repeatReveal').addEventListener('click',()=>{const shown=$('repeatAnswer').style.display!=='none';$('repeatAnswer').style.display=shown?'none':'block';$('repeatReveal').textContent=shown?'Показать проблему':'Скрыть подсказку'});
+
+// Универсальные функции викторин
+function makeChoices(container,options,onChoose){container.innerHTML='';options.forEach((option,index)=>{const b=document.createElement('button');b.type='button';b.className='option';b.textContent=option;b.addEventListener('click',()=>onChoose(index,b));container.append(b)});}
+function paintChoices(container,chosen,correct){$$('.option',container).forEach((b,i)=>{b.disabled=true;b.classList.toggle('correct',i===correct);b.classList.toggle('wrong',i===chosen&&chosen!==correct)})}
+
+// Разминка
+const warm=[
+ {q:'Что называют полем таблицы?',a:['Столбец с характеристикой','Строку с данными','Всю базу целиком'],c:0,why:'Поле — столбец, описывающий характеристику объекта.'},
+ {q:'Что называют записью таблицы?',a:['Название столбца','Строку с данными об объекте','Имя файла'],c:1,why:'Запись — строка со значениями всех полей для одного объекта.'},
+ {q:'Зачем нужен уникальный идентификатор?',a:['Для украшения таблицы','Чтобы уменьшить размер шрифта','Чтобы различать записи'],c:2,why:'Идентификатор позволяет однозначно найти нужную запись.'}
+];let wi=0,ws=0,wlock=false;
+function renderWarm(){if(wi>=warm.length){$('warmQuestion').textContent='Разминка завершена!';$('warmOptions').innerHTML='';$('warmFeedback').textContent='Результат: '+ws+' из '+warm.length+'. Переходим к новой теме.';$('warmNext').hidden=true;return;}const x=warm[wi];$('warmIndex').textContent=wi+1;$('warmScore').textContent=ws;$('warmQuestion').textContent=x.q;$('warmFeedback').textContent='';$('warmNext').hidden=true;wlock=false;makeChoices($('warmOptions'),x.a,(i)=>{if(wlock)return;wlock=true;if(i===x.c)ws++;$('warmScore').textContent=ws;paintChoices($('warmOptions'),i,x.c);$('warmFeedback').textContent=(i===x.c?'✅ ':'❌ ')+x.why;$('warmNext').hidden=false;$('warmNext').textContent=wi===warm.length-1?'Показать итог →':'Следующий вопрос →'})}
+$('warmNext').addEventListener('click',()=>{wi++;renderWarm()});renderWarm();
+
+// Изучение таблиц
+const structureDefs={table:['Таблица (отношение)','Содержит столбцы (поля) и строки (записи). Каждая строка описывает один объект или факт.'],field:['Поле (атрибут)','Столбец таблицы: например, ФИО или Класс. Для каждого поля определяют тип данных.'],record:['Запись (строка)','Совокупность значений полей об одном объекте: например, 102, Тимур, 11Б.']};
+$$('[data-structure]').forEach(b=>b.addEventListener('click',()=>{const mode=b.dataset.structure;$$('[data-structure]').forEach(x=>x.classList.toggle('selected',x===b));$('structureTableBox').classList.toggle('highlightCol',mode==='field');$('structureTableBox').classList.toggle('highlightRow',mode==='record');$('structureTitle').textContent=structureDefs[mode][0];$('structureDescription').textContent=structureDefs[mode][1]}));
+
+// Схема
+const schemaText={students:'Ученики: каждая строка описывает одного ученика. ID_ученика — первичный ключ.',clubs:'Кружки: хранят название и руководителя каждого кружка. ID_кружка — первичный ключ.',enroll:'Записи: связывает ученика с кружком. Есть собственный первичный ключ и два внешних ключа.'};
+$$('[data-schema]').forEach(panel=>{const select=()=>{$$('[data-schema]').forEach(p=>p.classList.toggle('active',p===panel));$('schemaDescription').textContent=schemaText[panel.dataset.schema]};panel.addEventListener('click',select);panel.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();select()}})});
+
+const students=[{id:101,name:'Аня',grade:'11А'},{id:102,name:'Тимур',grade:'11Б'},{id:103,name:'Маша',grade:'11А'}];
+const clubs=[{id:10,name:'Робототехника'},{id:20,name:'Медиацентр'},{id:30,name:'Волонтёры'}];
+const seed=[{id:1,studentId:101,clubId:10},{id:2,studentId:101,clubId:20},{id:3,studentId:102,clubId:10},{id:4,studentId:103,clubId:30}];
+let enroll=seed.map(x=>({...x}));
+const getStudent=id=>students.find(x=>x.id===id);const getClub=id=>clubs.find(x=>x.id===id);
+for(const s of students){$('studentPick').add(new Option(s.name+' · '+s.grade+' (ID '+s.id+')',s.id));$('resultFilter').add(new Option(s.name,s.id))};$('resultFilter').add(new Option('Все ученики','all'),0);for(const c of clubs)$('clubPick').add(new Option(c.name+' (ID '+c.id+')',c.id));
+function renderEnroll(){const body=$('enrollBody');body.innerHTML='';for(const r of enroll){const tr=document.createElement('tr');[r.id,r.studentId,r.clubId,getStudent(r.studentId).name+' → '+getClub(r.clubId).name].forEach(value=>{const td=document.createElement('td');td.textContent=value;tr.append(td)});body.append(tr)}renderJoin()}
+$('addEnroll').addEventListener('click',()=>{const s=Number($('studentPick').value),c=Number($('clubPick').value);const f=$('enrollFeedback');if(!getStudent(s)||!getClub(c)){f.textContent='❌ Выбранная запись не существует.';return}if(enroll.some(x=>x.studentId===s&&x.clubId===c)){f.textContent='⚠️ Такая пара «ученик — кружок» уже есть. Повторная запись не нужна.';return}const newId=Math.max(0,...enroll.map(x=>x.id))+1;enroll.push({id:newId,studentId:s,clubId:c});f.textContent='✅ Добавлена запись № '+newId+'. Внешние ключи указывают на существующие таблицы.';renderEnroll()});
+$('resetEnroll').addEventListener('click',()=>{enroll=seed.map(x=>({...x}));$('enrollFeedback').textContent='Исходные данные восстановлены.';renderEnroll()});
+
+// Раскладка полей
+const fields=[
+ {label:'ID ученика (PK)',zone:'students'}, {label:'ФИО',zone:'students'}, {label:'Класс',zone:'students'},
+ {label:'ID кружка (PK)',zone:'clubs'}, {label:'Название кружка',zone:'clubs'}, {label:'Руководитель',zone:'clubs'},
+ {label:'ID записи (PK)',zone:'enroll'}, {label:'ID ученика (FK)',zone:'enroll'}, {label:'ID кружка (FK)',zone:'enroll'}
+];
+const bankOrder=[3,1,7,4,2,6,0,8,5];let fieldSelected=null;let fieldDone=new Set();
+function renderFieldBank(){const bank=$('fieldBank');bank.innerHTML='';bankOrder.forEach(i=>{if(fieldDone.has(i))return;const b=document.createElement('button');b.type='button';b.className='fieldChip'+(fieldSelected===i?' selected':'');b.textContent=fields[i].label;b.addEventListener('click',()=>{fieldSelected=i;$('fieldFeedback').textContent='Теперь нажми «Поместить сюда» под подходящей таблицей.';renderFieldBank()});bank.append(b)});$('fieldCount').textContent=fieldDone.size+' / '+fields.length}
+$$('[data-zone]').forEach(b=>b.addEventListener('click',()=>{const f=$('fieldFeedback');if(fieldSelected===null){f.textContent='Сначала выбери поле в нижней части слайда.';return}const item=fields[fieldSelected];if(item.zone!==b.dataset.zone){f.textContent='❌ Не сюда. Подумай, какую сущность описывает поле.';return}const chip=document.createElement('span');chip.className='placed';chip.textContent=item.label;$('zone-'+item.zone).append(chip);fieldDone.add(fieldSelected);fieldSelected=null;renderFieldBank();f.textContent=fieldDone.size===fields.length?'🏆 Все девять полей распределены верно!':'✅ Правильно! Выбери следующее поле.'}));
+$('resetFields').addEventListener('click',()=>{fieldSelected=null;fieldDone=new Set();['students','clubs','enroll'].forEach(z=>$('zone-'+z).innerHTML='');$('fieldFeedback').textContent='';renderFieldBank()});renderFieldBank();
+
+// Ссылочная целостность
+const integrity=[
+ {q:'ID ученика = 999, ID кружка = 10',correct:'no',why:'Ученика с ID 999 нет в таблице «Ученики». Внешняя ссылка нарушена.'},
+ {q:'ID ученика = 102, ID кружка = 20',correct:'yes',why:'Оба идентификатора существуют. Такая пара допустима.'},
+ {q:'ID ученика = 101, ID кружка = 77',correct:'no',why:'Кружка с ID 77 нет в таблице «Кружки».'},
+ {q:'ID ученика = 103, ID кружка = 30',correct:'yes',why:'Оба внешних ключа ссылаются на существующие записи. В самой учебной БД такая пара уже есть: это отдельное правило проверки повторов.'}
+];let integrityIdx=0,integrityLock=false;
+function renderIntegrity(){const x=integrity[integrityIdx];$('integrityQ').textContent=x.q;$('integrityFeedback').textContent='';$('integrityNext').hidden=true;$$('[data-integrity]').forEach(b=>{b.disabled=false;b.classList.remove('correct','wrong')});integrityLock=false}
+$$('[data-integrity]').forEach(b=>b.addEventListener('click',()=>{if(integrityLock)return;integrityLock=true;const x=integrity[integrityIdx];const answer=b.dataset.integrity;$$('[data-integrity]').forEach(o=>{o.disabled=true;o.classList.toggle('correct',o.dataset.integrity===x.correct);o.classList.toggle('wrong',o===b&&answer!==x.correct)});$('integrityFeedback').textContent=(answer===x.correct?'✅ ':'❌ ')+x.why;$('integrityNext').hidden=false;$('integrityNext').textContent=integrityIdx===integrity.length-1?'Начать примеры заново':'Следующий случай →'}));
+$('integrityNext').addEventListener('click',()=>{integrityIdx=(integrityIdx+1)%integrity.length;renderIntegrity()});renderIntegrity();
+function renderJoin(){const v=$('resultFilter').value||'all',rows=v==='all'?enroll:enroll.filter(x=>x.studentId===Number(v));const body=$('joinBody');body.innerHTML='';for(const r of rows){const tr=document.createElement('tr');for(const text of [getStudent(r.studentId).name,getClub(r.clubId).name]){const td=document.createElement('td');td.textContent=text;tr.append(td)}body.append(tr)}if(!rows.length){const tr=document.createElement('tr');const td=document.createElement('td');td.colSpan=2;td.textContent='Нет записей';tr.append(td);body.append(tr)}}
+$('resultFilter').addEventListener('change',renderJoin);renderEnroll();
+
+// Библиотека
+const libOpts=['ID читателя (FK), ID книги (FK), дата выдачи, дата возврата','ФИО читателя, название книги и всё без ключей','Только название книги и фамилия библиотекаря','ID класса, номер компьютера, дата урока'];let libLocked=false;
+makeChoices($('libOptions'),libOpts,(i)=>{if(libLocked)return;libLocked=true;paintChoices($('libOptions'),i,0);$('libFeedback').textContent=i===0?'✅ Верно! Таблица «Выдачи» должна связывать читателя и книгу, а также хранить сведения о выдаче.':'❌ Здесь нужны ссылки на читателя и книгу, а также даты выдачи и возврата.'});
+
+// Финальный тест
+const test=[
+ {q:'Что такое база данных?',opts:['Организованная совокупность данных для хранения и обработки','Любой документ без структуры','Только изображение таблицы','Программа для создания рисунков'],c:0,why:'В БД данные организованы так, чтобы их было удобно хранить, находить и обрабатывать.'},
+ {q:'Что означает сокращение СУБД?',opts:['Система управления базами данных','Система универсальных бинарных документов','Список учебных баз данных','Система ускорения браузера'],c:0,why:'СУБД — программа, которая управляет созданием, хранением и обработкой данных.'},
+ {q:'Какое действие выполняет поиск участников кружка?',opts:['Удаление','Изменение','Поиск (выборка)','Добавление'],c:2,why:'Поиск извлекает из базы записи, удовлетворяющие условию, не изменяя их.'},
+ {q:'Какой тип данных у значения «11А» в поле «Класс»?',opts:['Дата','Текст','Логический','Вещественное число'],c:1,why:'«11А» содержит букву и является обозначением класса, поэтому хранится как текст.'},
+ {q:'Что такое запись в таблице?',opts:['Название столбца','Строка таблицы','Название базы','Тип шрифта'],c:1,why:'Запись — строка с данными об одном объекте или факте.'},
+ {q:'Какое свойство обязательно у первичного ключа?',opts:['Повторяться в каждой строке','Содержать имя человека','Однозначно определять запись','Содержать только буквы'],c:2,why:'Первичный ключ уникален для каждой записи и не должен быть пустым.'},
+ {q:'Зачем нужен внешний ключ?',opts:['Чтобы выделять цветом строки','Чтобы связать запись с другой таблицей','Чтобы хранить пароль','Чтобы отсортировать слова'],c:1,why:'Внешний ключ ссылается на ключ записи в другой таблице.'},
+ {q:'Один ученик может иметь несколько строк в таблице «Записи». Какой тип связи между «Учениками» и «Записями»?',opts:['Один ко многим (1:M)','Один к одному (1:1)','Многие ко многим напрямую','Связи нет'],c:0,why:'Одному ученику соответствует несколько записей: связь 1:M.'},
+ {q:'Зачем нужна таблица «Записи» между учениками и кружками?',opts:['Хранить все оценки','Реализовать связь многие ко многим','Хранить имена руководителей','Удалить таблицу «Ученики»'],c:1,why:'Таблица-посредник хранит пары «ученик — кружок» и превращает M:N в две связи 1:M.'},
+ {q:'Можно ли добавить запись с ID ученика = 999, если такого ученика нет?',opts:['Да, всегда','Только для первой строки','Нет, нарушится ссылочная целостность','Да, если кружок существует'],c:2,why:'Внешний ключ должен указывать на существующую запись таблицы учеников.'},
+ {q:'Где хранить название кружка, чтобы оно не повторялось для каждого участника?',opts:['В каждой записи ученика','В таблице «Кружки»','В поле «Класс»','В идентификаторе записи'],c:1,why:'Название относится к кружку и хранится в его таблице; в записях используется ID кружка.'},
+ {q:'Какие поля в таблице «Записи» являются внешними ключами?',opts:['Дата и ID записи','ФИО и класс','ID ученика и ID кружка','Название и руководитель'],c:2,why:'Они указывают на записи таблиц «Ученики» и «Кружки».'}
+ ];let ti=0,ts=0,tlock=false;
+function renderTest(){if(ti>=test.length){$('testQuestion').textContent='Тест завершён!';$('testOptions').innerHTML='';$('testFeedback').textContent='Результат: '+ts+' из '+test.length+'.';$('testNext').hidden=true;$('testRestart').hidden=false;$('testMotivation').textContent=ts>=9?'Отличный результат!':ts>=7?'Хорошо! Вспомни вопросы, где были ошибки.':'Повтори определения, типы данных и связи, затем попробуй снова.';return}const x=test[ti];$('testQuestion').textContent=x.q;$('testIndex').textContent=ti+1;$('testScore').textContent=ts;$('testBigScore').textContent=ts+'/'+test.length;$('testFeedback').textContent='';$('testNext').hidden=true;tlock=false;makeChoices($('testOptions'),x.opts,(i)=>{if(tlock)return;tlock=true;if(i===x.c)ts++;$('testScore').textContent=ts;$('testBigScore').textContent=ts+'/'+test.length;paintChoices($('testOptions'),i,x.c);$('testFeedback').textContent=(i===x.c?'✅ ':'❌ ')+x.why;$('testNext').hidden=false;$('testNext').textContent=ti===test.length-1?'Показать результат →':'Следующий вопрос →'})}
+$('testNext').addEventListener('click',()=>{ti++;renderTest()});$('testRestart').addEventListener('click',()=>{ti=0;ts=0;tlock=false;$('testRestart').hidden=true;$('testMotivation').textContent='Проверь, как ты понимаешь базы данных, работу СУБД, таблицы, ключи и связи.';renderTest()});renderTest();
+go(0);
+})();
+</script>
+</body>
+</html>

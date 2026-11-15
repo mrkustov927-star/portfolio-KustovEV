@@ -1,0 +1,186 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Информация и единицы измерения — 7 класс</title><style>
+:root{--bg:#07111f;--bg2:#0b1f38;--text:#f7fbff;--muted:#b9cadd;--cyan:#4fd8ff;--violet:#a78bfa;--green:#5ee6a8;--yellow:#ffd166;--red:#ff7087;--line:rgba(255,255,255,.13);--shadow:0 24px 70px rgba(0,0,0,.34)}
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:linear-gradient(135deg,var(--bg),var(--bg2));color:var(--text);font-family:Inter,"Segoe UI",Arial,sans-serif}
+body{background:radial-gradient(circle at 15% 15%,rgba(79,216,255,.1),transparent 30%),radial-gradient(circle at 85% 82%,rgba(167,139,250,.12),transparent 32%),linear-gradient(135deg,var(--bg),var(--bg2))}
+.deck{height:100vh;position:relative}.slide{position:absolute;inset:0;padding:6vh 6vw 9vh;display:flex;flex-direction:column;justify-content:center;opacity:0;pointer-events:none;transform:translateX(30px) scale(.988);transition:.4s}.slide.active{opacity:1;pointer-events:auto;transform:none}
+.eyebrow{display:flex;align-items:center;gap:.55rem;text-transform:uppercase;letter-spacing:.16em;font-weight:850;font-size:.75rem;color:var(--cyan);margin-bottom:.9rem}.eyebrow:before{content:"";width:34px;height:2px;background:linear-gradient(90deg,var(--cyan),transparent)}
+h1{font-size:clamp(2.9rem,6vw,6rem);line-height:.94;margin:.04em 0 .3em;letter-spacing:-.055em}h2{font-size:clamp(2.1rem,4.35vw,4.45rem);line-height:1;margin:.04em 0 .42em;letter-spacing:-.045em}h3{font-size:clamp(1.12rem,1.85vw,1.58rem);margin:.1em 0 .45em}
+p{font-size:clamp(1rem,1.45vw,1.26rem);line-height:1.5;color:var(--muted);margin:.34rem 0}.lead{font-size:clamp(1.18rem,1.95vw,1.65rem);max-width:980px}.accent{color:var(--cyan)}.violet{color:#c9c1ff}.good{color:var(--green)}.warn{color:var(--yellow)}.bad{color:var(--red)}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:4vw}.grid{display:grid;gap:1rem}.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}.g5{grid-template-columns:repeat(5,minmax(0,1fr))}
+.card{background:linear-gradient(155deg,rgba(255,255,255,.08),rgba(255,255,255,.035));border:1px solid var(--line);border-radius:23px;padding:1.2rem;box-shadow:var(--shadow);backdrop-filter:blur(9px)}.center{text-align:center;align-items:center}.center .lead{margin-left:auto;margin-right:auto}
+.icon{width:62px;height:62px;border-radius:18px;display:grid;place-items:center;font-size:2rem;margin-bottom:.8rem;background:linear-gradient(135deg,rgba(79,216,255,.20),rgba(167,139,250,.18));border:1px solid rgba(255,255,255,.12)}.big{font-size:clamp(4.6rem,10vw,9rem);filter:drop-shadow(0 16px 22px rgba(0,0,0,.32))}
+.definition{border-left:4px solid var(--cyan);padding:.9rem 1.05rem;background:rgba(79,216,255,.065);border-radius:0 16px 16px 0}.list{display:grid;gap:.65rem;margin-top:.85rem}.item{display:flex;gap:.75rem;align-items:flex-start;padding:.72rem .82rem;border-radius:14px;background:rgba(255,255,255,.045)}.item>span:first-child{font-size:1.3rem}.mini{font-size:.9rem;color:#94abc2}
+.compare{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:center}.vs{font-size:2rem;font-weight:900;color:var(--yellow)}.signal{width:100%;max-width:500px}.sense{min-height:170px;display:flex;flex-direction:column;justify-content:space-between}.sense .emoji{font-size:2.8rem}
+.unitStair{display:grid;grid-template-columns:repeat(5,1fr);gap:.7rem;align-items:end;margin-top:1rem}.unit{border-radius:20px;border:1px solid var(--line);background:rgba(255,255,255,.05);padding:1rem;text-align:center}.unit:nth-child(1){min-height:115px}.unit:nth-child(2){min-height:140px}.unit:nth-child(3){min-height:165px}.unit:nth-child(4){min-height:190px}.unit:nth-child(5){min-height:215px}.unit b{font-size:1.7rem;display:block}
+.bits{display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center;margin:1rem 0}.bit{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font-size:1.35rem;font-weight:900;border:1px solid var(--line);background:rgba(255,255,255,.055)}
+.quiz{display:grid;grid-template-columns:1.12fr .88fr;gap:1rem}.choices{display:grid;gap:.68rem;margin-top:1rem}button.choice,button.action{appearance:none;border:1px solid var(--line);background:rgba(255,255,255,.055);color:var(--text);padding:.92rem 1rem;border-radius:15px;text-align:left;font-size:1rem;cursor:pointer;transition:.2s}button.choice:hover,button.action:hover{transform:translateY(-2px);border-color:rgba(79,216,255,.55);background:rgba(79,216,255,.08)}button.correct{border-color:var(--green)!important;background:rgba(94,230,168,.12)!important}button.wrong{border-color:var(--red)!important;background:rgba(255,112,135,.11)!important}.feedback{min-height:2rem;margin-top:.7rem;font-weight:800}.score{font-size:clamp(3rem,8vw,7rem);font-weight:900;letter-spacing:-.06em}
+.badge{padding:.45rem .68rem;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.05);font-weight:800;color:#dce8f6;display:inline-flex}.propChoices{display:grid;grid-template-columns:repeat(2,1fr);gap:.65rem}
+.converter{display:grid;grid-template-columns:1fr auto 1fr;gap:.8rem;align-items:center}.converter select,.converter input{width:100%;padding:.85rem .9rem;border-radius:14px;border:1px solid var(--line);background:#0b1b2e;color:#fff;font-size:1rem}.convResult{font-size:clamp(1.8rem,4vw,3.5rem);font-weight:900;color:var(--green);word-break:break-word}
+.sortGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem}.sortZone{min-height:205px}.sortPlaced{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.7rem}.placed{padding:.4rem .55rem;border-radius:10px;background:rgba(94,230,168,.1);border:1px solid rgba(94,230,168,.28);font-size:.87rem;font-weight:800}.sortBank{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-top:1rem}.sortChip{appearance:none;border:1px solid var(--line);background:rgba(255,255,255,.055);color:var(--text);padding:.58rem .75rem;border-radius:999px;font-weight:800;cursor:pointer}.sortChip.selected{border-color:var(--yellow);background:rgba(255,209,102,.12)}.sortChip.done{display:none}
+.nav{position:fixed;right:24px;bottom:18px;display:flex;gap:.55rem;z-index:30}.nav button{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:rgba(6,17,31,.78);color:white;font-size:1.25rem;cursor:pointer}.counter{position:fixed;left:24px;bottom:20px;color:#91a8c0;font-size:.88rem;z-index:30}.progress{position:fixed;left:0;bottom:0;height:5px;width:0;background:linear-gradient(90deg,var(--cyan),var(--violet));transition:.35s;z-index:31}
+@media(max-width:900px){html,body{overflow:auto}.slide{position:relative;min-height:100vh;display:none;padding:72px 22px 88px}.slide.active{display:flex}.hero,.g2,.g3,.g4,.g5,.quiz,.compare,.converter,.sortGrid{grid-template-columns:1fr}.unitStair{grid-template-columns:1fr}.unit{min-height:auto!important}.propChoices{grid-template-columns:1fr}.vs{display:none}}
+</style></head><body><div class="deck"><section class="slide">
+<div class="hero">
+ <div><div class="eyebrow">Информатика · 7 класс</div><h1>Информация<br>и её <span class="accent">измерение</span></h1>
+ <p class="lead">Как мы получаем информацию, какими свойствами она обладает и почему компьютер считает её в битах и байтах?</p></div>
+ <div class="card center"><div class="big">💾✨</div><h3>От сообщения — к данным</h3></div>
+</div></section><section class="slide">
+<div class="eyebrow">Разминка</div><h2>Что «весит» больше?</h2>
+<p class="lead">Расположите мысленно от меньшего объёма данных к большему.</p>
+<div class="grid g4">
+ <div class="card center"><div class="big" style="font-size:4rem">📝</div><h3>Короткий текст</h3></div>
+ <div class="card center"><div class="big" style="font-size:4rem">📷</div><h3>Фотография</h3></div>
+ <div class="card center"><div class="big" style="font-size:4rem">🎵</div><h3>Песня</h3></div>
+ <div class="card center"><div class="big" style="font-size:4rem">🎬</div><h3>Фильм</h3></div>
+</div>
+<p class="lead" style="margin-top:1rem">Чтобы сравнивать объём данных, нужны единицы измерения.</p></section><section class="slide">
+<div class="eyebrow">Информация вокруг нас</div><div class="hero">
+ <div><h2>Что такое <span class="accent">информация</span>?</h2>
+ <div class="definition"><p><strong>Информация для человека</strong> — содержание сигналов и сообщений, которое расширяет знания об окружающем мире и происходящих в нём процессах.</p></div>
+ <div class="list"><div class="item"><span>🗣️</span><div><strong>Речь людей</strong><br><span class="mini">разговор, объяснение, сообщение</span></div></div>
+ <div class="item"><span>📚</span><div><strong>Тексты</strong><br><span class="mini">книги, сайты, инструкции</span></div></div>
+ <div class="item"><span>🌦️</span><div><strong>Природа и приборы</strong><br><span class="mini">звуки, свет, температура, часы</span></div></div></div></div>
+ <div class="card center"><div class="big">🌍➡️🧠</div><p>Мир посылает сигналы — человек получает информацию.</p></div>
+</div></section><section class="slide">
+<div class="eyebrow">Сигналы</div><h2>Какими бывают сигналы?</h2>
+<div class="grid g5">
+ <div class="card center"><div class="icon">💡</div><h3>Световые</h3></div>
+ <div class="card center"><div class="icon">🔊</div><h3>Звуковые</h3></div>
+ <div class="card center"><div class="icon">🌡️</div><h3>Тепловые</h3></div>
+ <div class="card center"><div class="icon">⚙️</div><h3>Механические</h3></div>
+ <div class="card center"><div class="icon">⚡</div><h3>Электрические</h3></div>
+</div></section><section class="slide">
+<div class="eyebrow">Два типа сигналов</div><div class="compare">
+ <div class="card"><h3>〰️ Непрерывный</h3><p>Принимает бесконечное множество значений из некоторого диапазона.</p>
+ <svg class="signal" viewBox="0 0 420 170"><line x1="35" y1="140" x2="390" y2="140" stroke="#ffffff55" stroke-width="2"/><line x1="35" y1="25" x2="35" y2="140" stroke="#ffffff55" stroke-width="2"/><path d="M35 105 C80 25,120 25,165 105 S250 180,295 100 S350 20,390 85" fill="none" stroke="#4fd8ff" stroke-width="6"/></svg><p class="mini">Пример: температура воздуха.</p></div>
+ <div class="vs">VS</div>
+ <div class="card"><h3>▥ Дискретный</h3><p>Принимает конечное число отдельных значений, которые можно пронумеровать.</p>
+ <svg class="signal" viewBox="0 0 420 170"><line x1="35" y1="140" x2="390" y2="140" stroke="#ffffff55" stroke-width="2"/><line x1="35" y1="25" x2="35" y2="140" stroke="#ffffff55" stroke-width="2"/><path d="M35 125 H90 V85 H145 V125 H200 V45 H255 V85 H310 V45 H365 V125 H390" fill="none" stroke="#a78bfa" stroke-width="6"/></svg><p class="mini">Пример: сигнал светофора.</p></div>
+</div></section><section class="slide">
+<div class="eyebrow">Интерактив</div><h2>Непрерывный или дискретный?</h2>
+<div class="quiz"><div class="card"><h3 id="sigQ" style="font-size:1.7rem"></h3><div class="choices">
+<button class="choice sigBtn" data-v="continuous">〰️ Непрерывный</button><button class="choice sigBtn" data-v="discrete">▥ Дискретный</button></div>
+<div id="sigF" class="feedback"></div><button id="sigNext" class="action" style="display:none">Следующий пример →</button></div>
+<div class="card center"><div class="big" style="font-size:6rem">📡</div><p>Спросите себя: сигнал меняется плавно или имеет отдельные состояния?</p></div></div></section><section class="slide">
+<div class="eyebrow">Виды информации</div><h2>Как человек воспринимает информацию?</h2>
+<div class="grid g5">
+ <div class="card sense"><div class="emoji">👀</div><div><h3>Визуальная</h3><p>зрение</p></div></div>
+ <div class="card sense"><div class="emoji">👂</div><div><h3>Аудиальная</h3><p>слух</p></div></div>
+ <div class="card sense"><div class="emoji">👃</div><div><h3>Обонятельная</h3><p>запах</p></div></div>
+ <div class="card sense"><div class="emoji">👅</div><div><h3>Вкусовая</h3><p>вкус</p></div></div>
+ <div class="card sense"><div class="emoji">✋</div><div><h3>Тактильная</h3><p>осязание</p></div></div>
+</div></section><section class="slide">
+<div class="eyebrow">Свойства информации</div><h2>Когда информации можно доверять и использовать?</h2>
+<div class="grid g3">
+ <div class="card"><div class="icon">🎯</div><h3>Объективность</h3><p>Не зависит от чьего-либо мнения.</p></div>
+ <div class="card"><div class="icon">✅</div><h3>Достоверность</h3><p>Отражает истинное положение дел.</p></div>
+ <div class="card"><div class="icon">🧩</div><h3>Полнота</h3><p>Её достаточно для понимания и решения.</p></div>
+ <div class="card"><div class="icon">⏰</div><h3>Актуальность</h3><p>Важна и существенна сейчас.</p></div>
+ <div class="card"><div class="icon">🛠️</div><h3>Полезность</h3><p>Помогает решить конкретную задачу.</p></div>
+ <div class="card"><div class="icon">💬</div><h3>Понятность</h3><p>Выражена на доступном получателю языке.</p></div>
+</div></section><section class="slide">
+<div class="eyebrow">Информационный детектив</div><h2>Какое свойство информации здесь главное?</h2>
+<div class="quiz"><div class="card center"><div id="propE" class="big" style="font-size:6rem">🌧️</div><p id="propCase" class="lead"></p><div><span class="badge">Случай <span id="propN">1</span>/6</span> <span class="badge">Счёт: <span id="propS">0</span></span></div></div>
+<div class="card"><div id="propChoices" class="propChoices"></div><div id="propF" class="feedback"></div><button id="propNext" class="action" style="display:none">Следующий случай →</button></div></div></section><section class="slide">
+<div class="eyebrow">Информация и данные</div><div class="hero"><div><h2>Когда информация становится <span class="accent">данными</span>?</h2>
+<div class="definition"><p><strong>Данные</strong> — информация, представленная в виде, пригодном для обработки автоматическими средствами при возможном участии человека.</p></div>
+<p class="lead" style="margin-top:1rem">Компьютер хранит и обрабатывает данные: текст, изображения, звук, видео, числа.</p></div>
+<div class="card center"><div class="big">💬➡️💾</div><p>Сообщение записали в цифровом виде — получили данные.</p></div></div></section><section class="slide">
+<div class="eyebrow">Переходим к измерению</div><h2>Чем измерять объём данных?</h2>
+<div class="grid g3"><div class="card center"><div class="big" style="font-size:4.3rem">📏</div><h3>метр</h3><p>длина</p></div>
+<div class="card center"><div class="big" style="font-size:4.3rem">⚖️</div><h3>килограмм</h3><p>масса</p></div>
+<div class="card center"><div class="big" style="font-size:4.3rem">💾</div><h3>бит и байт</h3><p>объём данных</p></div></div></section><section class="slide">
+<div class="eyebrow">Минимальная единица</div><h2>Бит — выбор между двумя вариантами</h2>
+<div class="bits"><div class="bit">0</div><div class="bit">1</div></div>
+<div class="definition" style="max-width:900px;margin:auto"><p><strong>1 бит</strong> — минимальная единица цифровой информации. Бит принимает одно из двух значений: 0 или 1.</p></div>
+<p class="lead center" style="margin-top:1rem">Да / нет · включено / выключено · истина / ложь</p></section><section class="slide">
+<div class="eyebrow">Байт</div><h2>8 бит = <span class="good">1 байт</span></h2>
+<div class="bits"><div class="bit">1</div><div class="bit">0</div><div class="bit">1</div><div class="bit">1</div><div class="bit">0</div><div class="bit">0</div><div class="bit">1</div><div class="bit">0</div></div>
+<p class="lead center"><strong>1 байт = 8 бит</strong></p><p class="center">В одном байте возможно 256 различных комбинаций нулей и единиц.</p></section><section class="slide">
+<div class="eyebrow">Лестница единиц</div><h2>От байта до терабайта</h2>
+<div class="unitStair">
+ <div class="unit"><b>Б</b><span>байт</span><p>8 бит</p></div>
+ <div class="unit"><b>КБ</b><span>килобайт</span><p>1024 Б</p></div>
+ <div class="unit"><b>МБ</b><span>мегабайт</span><p>1024 КБ</p></div>
+ <div class="unit"><b>ГБ</b><span>гигабайт</span><p>1024 МБ</p></div>
+ <div class="unit"><b>ТБ</b><span>терабайт</span><p>1024 ГБ</p></div>
+</div>
+<p class="mini center" style="margin-top:1rem">В школьных задачах обычно используют множитель 1024 между соседними единицами.</p></section><section class="slide">
+<div class="eyebrow">Почему 1024?</div><div class="hero"><div><h2>Потому что компьютер — <span class="violet">двоичная система</span></h2>
+<div class="definition"><p><strong>1024 = 2<sup>10</sup></strong></p></div><p class="lead">Поэтому привычная школьная «лестница» единиц строится на степенях двойки.</p></div>
+<div class="card center"><div class="big" style="font-size:6rem">0️⃣1️⃣</div><p><strong>1 КБ = 1024 Б</strong><br><strong>1 МБ = 1024 КБ</strong><br><strong>1 ГБ = 1024 МБ</strong></p></div></div></section><section class="slide">
+<div class="eyebrow">Главное правило</div><h2>Как переводить единицы?</h2>
+<div class="compare"><div class="card center"><div class="big" style="font-size:4.5rem">⬇️</div><h3>В меньшие</h3><p class="lead"><strong>умножаем на 1024</strong></p><p>3 МБ = 3072 КБ</p></div>
+<div class="vs">↔</div><div class="card center"><div class="big" style="font-size:4.5rem">⬆️</div><h3>В большие</h3><p class="lead"><strong>делим на 1024</strong></p><p>4096 КБ = 4 МБ</p></div></div>
+<p class="center warn" style="margin-top:1rem"><strong>Между битами и байтами — ×8 или ÷8.</strong></p></section><section class="slide">
+<div class="eyebrow">Интерактивный конвертер</div><h2>Проверь перевод единиц</h2>
+<div class="card" style="max-width:1050px;margin:auto;width:100%"><div class="converter">
+<div><input id="cv" type="number" value="2" min="0"><select id="cf"><option value="bit">бит</option><option value="B">байт</option><option value="KB" selected>КБ</option><option value="MB">МБ</option><option value="GB">ГБ</option></select></div>
+<div style="font-size:2rem;text-align:center">➡️</div>
+<div><select id="ct"><option value="bit">бит</option><option value="B" selected>байт</option><option value="KB">КБ</option><option value="MB">МБ</option><option value="GB">ГБ</option></select><div id="cr" class="convResult">2048</div></div>
+</div><p id="ce" class="mini"></p></div></section><section class="slide">
+<div class="eyebrow">Пример</div><div class="hero"><div><h2>Сколько фотографий поместится?</h2>
+<div class="definition"><p>Свободно <strong>1 ГБ</strong>. Одна фотография занимает <strong>4 МБ</strong>.</p></div>
+<div class="list"><div class="item"><span>1️⃣</span><div>1 ГБ = 1024 МБ</div></div><div class="item"><span>2️⃣</span><div>1024 ÷ 4 = 256</div></div></div>
+<p class="lead good"><strong>Ответ: 256 фотографий.</strong></p></div><div class="card center"><div class="big">📸📸</div><p>Если каждая фотография занимает ровно 4 МБ.</p></div></div></section><section class="slide">
+<div class="eyebrow">Задача 1</div><h2>4 КБ = ? байт</h2>
+<div class="quiz"><div class="card"><div class="choices"><button class="choice simple" data-group="a" data-ok="0">4000 байт</button><button class="choice simple" data-group="a" data-ok="1">4096 байт</button><button class="choice simple" data-group="a" data-ok="0">32 байта</button></div><div id="fa" class="feedback"></div></div>
+<div class="card center"><p class="lead"><strong>4 × 1024 = ?</strong></p><p>Переходим в меньшую единицу — умножаем.</p></div></div></section><section class="slide">
+<div class="eyebrow">Задача 2</div><h2>8192 бита = ?</h2>
+<div class="quiz"><div class="card"><div class="choices"><button class="choice simple" data-group="b" data-ok="0">8192 байта</button><button class="choice simple" data-group="b" data-ok="1">1024 байта = 1 КБ</button><button class="choice simple" data-group="b" data-ok="0">8 КБ</button></div><div id="fb" class="feedback"></div></div>
+<div class="card center"><div class="big" style="font-size:5rem">8️⃣➡️1️⃣</div><p><strong>8 бит = 1 байт</strong></p></div></div></section><section class="slide">
+<div class="eyebrow">Задача 3 · интерактив</div><h2>Распределите информацию по способу восприятия</h2>
+<div class="sortGrid"><div class="card sortZone"><h3>👀 Визуальная</h3><button class="action sortTarget" data-t="visual">Поместить сюда</button><div id="zvisual" class="sortPlaced"></div></div>
+<div class="card sortZone"><h3>👂 Аудиальная</h3><button class="action sortTarget" data-t="audio">Поместить сюда</button><div id="zaudio" class="sortPlaced"></div></div>
+<div class="card sortZone"><h3>✋ Тактильная</h3><button class="action sortTarget" data-t="touch">Поместить сюда</button><div id="ztouch" class="sortPlaced"></div></div></div>
+<div id="sortBank" class="sortBank"></div><div style="text-align:center"><span class="badge">Выбрано: <span id="sortSel">ничего</span></span> <span class="badge">Верно: <span id="sortScore">0</span>/6</span> <button id="sortReset" class="action">Сначала</button></div><div id="sortF" class="feedback center"></div></section><section class="slide">
+<div class="eyebrow">Задача 4</div><h2>Сколько файлов поместится?</h2>
+<div class="quiz"><div class="card"><h3>Свободно 2 ГБ. Один файл занимает 8 МБ. Сколько файлов можно сохранить?</h3>
+<div class="choices"><button class="choice simple" data-group="c" data-ok="0">128</button><button class="choice simple" data-group="c" data-ok="1">256</button><button class="choice simple" data-group="c" data-ok="0">2048</button></div><div id="fc" class="feedback"></div></div>
+<div class="card"><h3>План</h3><p>2 ГБ = 2048 МБ</p><p>2048 ÷ 8 = ?</p></div></div></section><section class="slide">
+<div class="eyebrow">Финальный тест</div><div class="quiz"><div class="card"><h3 id="qText" style="font-size:1.55rem"></h3><div id="qChoices" class="choices"></div><div id="qF" class="feedback"></div><button id="qNext" class="action" style="display:none">Следующий вопрос →</button></div>
+<div class="card center"><div class="mini">Результат</div><div id="score" class="score">0/8</div><p>Проверка по всей теме.</p></div></div></section><section class="slide">
+<div class="eyebrow">Самое главное</div><h2>Что нужно запомнить?</h2>
+<div class="grid g3"><div class="card"><div class="icon">📡</div><h3>Информация и сигналы</h3><p>Сигналы бывают непрерывными и дискретными.</p></div>
+<div class="card"><div class="icon">✅</div><h3>Свойства информации</h3><p>Объективность, достоверность, полнота, актуальность, полезность, понятность.</p></div>
+<div class="card"><div class="icon">💾</div><h3>Единицы</h3><p>1 Б = 8 бит; 1 КБ = 1024 Б; 1 МБ = 1024 КБ; 1 ГБ = 1024 МБ.</p></div></div></section></div><div class="counter"><span id="num">1</span> / <span id="total"></span></div><div class="nav"><button id="prev">←</button><button id="next">→</button></div><div class="progress" id="progress"></div><script>
+const slides=[...document.querySelectorAll('.slide')];let cur=0;
+const num=document.getElementById('num'),prog=document.getElementById('progress');document.getElementById('total').textContent=slides.length;
+function show(i){cur=Math.max(0,Math.min(slides.length-1,i));slides.forEach((s,n)=>s.classList.toggle('active',n===cur));num.textContent=cur+1;prog.style.width=((cur+1)/slides.length*100)+'%'}
+document.getElementById('prev').addEventListener('click',()=>show(cur-1));document.getElementById('next').addEventListener('click',()=>show(cur+1));
+document.addEventListener('keydown',e=>{if(['INPUT','SELECT','TEXTAREA','BUTTON'].includes(document.activeElement.tagName))return;if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();show(cur+1)}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();show(cur-1)}});
+
+/* signals */
+const sd=[['Электронный счётчик шагов: 5234','discrete','Число шагов принимает отдельные целые значения.'],['Температура воздуха в течение дня','continuous','Температура изменяется плавно.'],['Светофор: красный, жёлтый, зелёный','discrete','Есть конечный набор состояний.'],['Уровень воды при медленном наливании','continuous','Уровень меняется плавно.']];let sx=0,sl=false;
+function rs(){document.getElementById('sigQ').textContent=sd[sx][0];document.getElementById('sigF').textContent='';document.getElementById('sigNext').style.display='none';document.querySelectorAll('.sigBtn').forEach(b=>b.classList.remove('correct','wrong'));sl=false}
+document.querySelectorAll('.sigBtn').forEach(b=>b.addEventListener('click',()=>{if(sl)return;sl=true;const ok=b.dataset.v===sd[sx][1];b.classList.add(ok?'correct':'wrong');document.querySelectorAll('.sigBtn').forEach(x=>{if(x.dataset.v===sd[sx][1])x.classList.add('correct')});const f=document.getElementById('sigF');f.textContent=(ok?'✅ ':'❌ ')+sd[sx][2];f.style.color=ok?'var(--green)':'var(--red)';document.getElementById('sigNext').style.display='block'}));
+document.getElementById('sigNext').addEventListener('click',()=>{sx=(sx+1)%sd.length;rs()});rs();
+
+/* properties */
+const pd=[['🌧️','Завтра прогулка, а вам показывают прогноз погоды за прошлый год.','Актуальность'],['🗺️','В инструкции написано только: «Идите туда». Адреса и направления нет.','Полнота'],['📰','В сообщении говорится о событии, которого на самом деле не было.','Достоверность'],['🌐','Очень важная инструкция написана на незнакомом вам языке.','Понятность'],['🌡️','Термометр показывает +18 °C, а кто-то говорит: «По-моему, +30».','Объективность'],['🏝️','Инструкция по добыванию воды особенно пригодилась человеку на необитаемом острове.','Полезность']];
+const pn=['Объективность','Достоверность','Полнота','Актуальность','Полезность','Понятность'];let px=0,ps=0,pl=false;
+function rp(){const d=pd[px];document.getElementById('propE').textContent=d[0];document.getElementById('propCase').textContent=d[1];document.getElementById('propN').textContent=px+1;document.getElementById('propS').textContent=ps;const box=document.getElementById('propChoices');box.innerHTML='';pn.forEach(n=>{const b=document.createElement('button');b.className='choice';b.textContent=n;b.addEventListener('click',()=>ap(b,n));box.appendChild(b)});document.getElementById('propF').textContent='';document.getElementById('propNext').style.display='none';pl=false}
+function ap(b,n){if(pl)return;pl=true;const ok=n===pd[px][2];if(ok)ps++;[...document.querySelectorAll('#propChoices .choice')].forEach(x=>{if(x.textContent===pd[px][2])x.classList.add('correct')});if(!ok)b.classList.add('wrong');document.getElementById('propS').textContent=ps;const f=document.getElementById('propF');f.textContent=ok?'✅ Верно!':'❌ Правильный ответ: '+pd[px][2];f.style.color=ok?'var(--green)':'var(--red)';document.getElementById('propNext').style.display='block'}
+document.getElementById('propNext').addEventListener('click',()=>{if(px<pd.length-1){px++;rp()}else{document.getElementById('propChoices').innerHTML='<div class="definition"><p><strong>Результат: '+ps+' из 6.</strong></p></div>';document.getElementById('propF').textContent=ps===6?'🏆 Отлично!':'👍 Хорошо. Повторите свойства, если были ошибки.';document.getElementById('propNext').style.display='none'}});rp();
+
+/* converter */
+const tb={bit:1,B:8,KB:8192,MB:8388608,GB:8589934592},lab={bit:'бит',B:'байт',KB:'КБ',MB:'МБ',GB:'ГБ'};
+function cv(){const v=Math.max(0,Number(document.getElementById('cv').value)||0),f=document.getElementById('cf').value,t=document.getElementById('ct').value,r=v*tb[f]/tb[t],show=Number.isInteger(r)?r:parseFloat(r.toFixed(6));document.getElementById('cr').textContent=show.toLocaleString('ru-RU');document.getElementById('ce').textContent=v+' '+lab[f]+' = '+show.toLocaleString('ru-RU')+' '+lab[t]}
+['cv','cf','ct'].forEach(id=>document.getElementById(id).addEventListener('input',cv));cv();
+
+/* simple tasks */
+document.querySelectorAll('.simple').forEach(b=>b.addEventListener('click',()=>{const g=b.dataset.group,all=[...document.querySelectorAll('.simple[data-group="'+g+'"]')];all.forEach(x=>x.classList.remove('correct','wrong'));const ok=b.dataset.ok==='1';b.classList.add(ok?'correct':'wrong');const f=document.getElementById('f'+g);const texts={a:'Верно: 4 × 1024 = 4096 байт.',b:'Верно: 8192 ÷ 8 = 1024 байта = 1 КБ.',c:'Верно: 2 ГБ = 2048 МБ; 2048 ÷ 8 = 256.'};f.textContent=ok?'✅ '+texts[g]:'❌ Попробуйте ещё раз.';f.style.color=ok?'var(--green)':'var(--red)'}));
+
+/* sorting */
+const items=[['фотография','visual'],['мелодия','audio'],['текст на экране','visual'],['школьный звонок','audio'],['шероховатость ткани','touch'],['температура кружки рукой','touch']];let sel=null,done=new Set(),sc=0;
+function rb(){const bank=document.getElementById('sortBank');bank.innerHTML='';items.forEach((it,i)=>{const b=document.createElement('button');b.className='sortChip'+(sel===i?' selected':'')+(done.has(i)?' done':'');b.textContent=it[0];b.addEventListener('click',()=>{if(done.has(i))return;sel=i;document.getElementById('sortSel').textContent=it[0];document.getElementById('sortF').textContent='Теперь выберите группу.';render()});bank.appendChild(b)});document.getElementById('sortScore').textContent=sc}
+function render(){rb()}
+document.querySelectorAll('.sortTarget').forEach(b=>b.addEventListener('click',()=>{const f=document.getElementById('sortF');if(sel===null){f.textContent='Сначала выберите карточку.';f.style.color='var(--yellow)';return}const it=items[sel];if(it[1]!==b.dataset.t){f.textContent='❌ Подумайте, каким органом чувств это воспринимается.';f.style.color='var(--red)';return}const sp=document.createElement('span');sp.className='placed';sp.textContent=it[0];document.getElementById('z'+it[1]).appendChild(sp);done.add(sel);sc++;sel=null;document.getElementById('sortSel').textContent='ничего';f.textContent=sc===items.length?'🏆 Всё распределено верно!':'✅ Верно!';f.style.color='var(--green)';rb()}));
+document.getElementById('sortReset').addEventListener('click',()=>{sel=null;done=new Set();sc=0;['visual','audio','touch'].forEach(x=>document.getElementById('z'+x).innerHTML='');document.getElementById('sortSel').textContent='ничего';document.getElementById('sortF').textContent='';rb()});rb();
+
+/* final quiz */
+const qz=[['Минимальная единица цифровой информации?',['Байт','Бит','Килобайт'],1],['Сколько бит в одном байте?',['8','10','1024'],0],['1 КБ в школьных задачах — это…',['100 байт','1000 байт','1024 байта'],2],['Какой сигнал принимает конечное число значений?',['Непрерывный','Дискретный'],1],['Если сведения отражают истинное положение дел, они…',['актуальны','достоверны','понятны'],1],['3 МБ — это…',['3072 КБ','3000 КБ','24 КБ'],0],['4096 КБ — это…',['2 МБ','4 МБ','8 МБ'],1],['Информацию с помощью слуха называют…',['визуальной','тактильной','аудиальной'],2]];let qi=0,qs=0,ql=false;
+function rq(){const q=qz[qi];document.getElementById('qText').textContent=(qi+1)+'. '+q[0];const box=document.getElementById('qChoices');box.innerHTML='';q[1].forEach((t,i)=>{const b=document.createElement('button');b.className='choice';b.textContent=t;b.addEventListener('click',()=>aq(b,i));box.appendChild(b)});document.getElementById('qF').textContent='';document.getElementById('qNext').style.display='none';document.getElementById('score').textContent=qs+'/8';ql=false}
+function aq(b,i){if(ql)return;ql=true;const q=qz[qi],ok=i===q[2];if(ok)qs++;[...document.getElementById('qChoices').children].forEach((x,n)=>{if(n===q[2])x.classList.add('correct')});if(!ok)b.classList.add('wrong');const f=document.getElementById('qF');f.textContent=ok?'✅ Верно!':'❌ Посмотрите правильный ответ.';f.style.color=ok?'var(--green)':'var(--red)';document.getElementById('score').textContent=qs+'/8';document.getElementById('qNext').style.display='block';document.getElementById('qNext').textContent=qi===qz.length-1?'Показать результат →':'Следующий вопрос →'}
+document.getElementById('qNext').addEventListener('click',()=>{if(qi<qz.length-1){qi++;rq()}else{document.getElementById('qText').textContent='Тест завершён';document.getElementById('qChoices').innerHTML='<p class="lead">Результат: <strong>'+qs+' из 8</strong>.</p>';document.getElementById('qF').textContent=qs===8?'🏆 Отлично!':qs>=6?'👍 Хорошо! Разберите ошибки.':'🔁 Повторите ключевые правила и попробуйте снова.';document.getElementById('qNext').style.display='none'}});rq();show(0);
+</script></body></html>

@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Программное обеспечение — 10 класс</title>
+<style>
+:root{
+  --bg:#06111f; --bg2:#0b1d33; --card:#102743; --text:#f8fbff; --muted:#b8cadc;
+  --cyan:#55d6ff; --violet:#9b8cff; --green:#55e6a5; --yellow:#ffd166; --red:#ff6b81;
+  --line:rgba(255,255,255,.13); --shadow:0 26px 70px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:Inter,"Segoe UI",Arial,sans-serif}
+body{
+  background:
+    radial-gradient(circle at 12% 18%,rgba(85,214,255,.11),transparent 30%),
+    radial-gradient(circle at 86% 78%,rgba(155,140,255,.13),transparent 31%),
+    linear-gradient(135deg,var(--bg),var(--bg2));
+}
+.deck{height:100vh;position:relative}
+.slide{
+  position:absolute; inset:0; padding:6vh 6.4vw 9vh; opacity:0; transform:translateX(30px) scale(.988);
+  pointer-events:none; transition:.4s ease; display:flex; flex-direction:column; justify-content:center;
+}
+.slide.active{opacity:1;transform:none;pointer-events:auto}
+.eyebrow{display:flex;align-items:center;gap:.55rem;text-transform:uppercase;letter-spacing:.16em;font-weight:800;font-size:.76rem;color:var(--cyan);margin-bottom:.9rem}
+.eyebrow:before{content:"";width:34px;height:2px;background:linear-gradient(90deg,var(--cyan),transparent)}
+h1{font-size:clamp(2.8rem,6.1vw,6.2rem);line-height:.94;margin:.05em 0 .3em;letter-spacing:-.055em}
+h2{font-size:clamp(2.15rem,4.5vw,4.6rem);line-height:1;margin:.05em 0 .4em;letter-spacing:-.045em}
+h3{font-size:clamp(1.15rem,2vw,1.65rem);margin:.1em 0 .45em}
+p{font-size:clamp(1rem,1.55vw,1.3rem);line-height:1.48;color:var(--muted);margin:.35rem 0}
+.lead{font-size:clamp(1.18rem,2vw,1.7rem);max-width:980px}
+.accent{color:var(--cyan)} .violet{color:#c0b8ff} .good{color:var(--green)} .warn{color:var(--yellow)} .bad{color:var(--red)}
+.hero{display:grid;grid-template-columns:1.12fr .88fr;align-items:center;gap:4.4vw}
+.grid{display:grid;gap:1rem}.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{
+  background:linear-gradient(155deg,rgba(255,255,255,.08),rgba(255,255,255,.035));
+  border:1px solid var(--line);border-radius:23px;padding:1.25rem;box-shadow:var(--shadow);backdrop-filter:blur(9px)
+}
+.icon{width:62px;height:62px;border-radius:18px;display:grid;place-items:center;font-size:2rem;margin-bottom:.85rem;background:linear-gradient(135deg,rgba(85,214,255,.22),rgba(155,140,255,.20));border:1px solid rgba(255,255,255,.12)}
+.tag{display:inline-block;padding:.34rem .62rem;border-radius:10px;background:rgba(85,214,255,.11);color:var(--cyan);font-weight:800;margin:.18rem .15rem .1rem 0;font-size:.86rem}
+.mini{font-size:.9rem;color:#93abc2}
+.bigEmoji{font-size:clamp(4.5rem,10vw,9rem);filter:drop-shadow(0 16px 22px rgba(0,0,0,.32))}
+.device{position:relative;aspect-ratio:4/3;border-radius:30px;padding:20px;background:linear-gradient(145deg,#173253,#0e1f35);border:1px solid rgba(255,255,255,.16);box-shadow:0 35px 90px rgba(0,0,0,.48)}
+.screen{height:100%;border-radius:21px;overflow:hidden;position:relative;background:radial-gradient(circle at 25% 30%,rgba(85,214,255,.33),transparent 28%),radial-gradient(circle at 75% 70%,rgba(155,140,255,.30),transparent 31%),linear-gradient(145deg,#081726,#10294a)}
+.screen:after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:28px 28px}
+.screenCenter{position:absolute;inset:0;display:grid;place-items:center;z-index:2}
+.list{display:grid;gap:.65rem;margin-top:.9rem}
+.item{display:flex;gap:.75rem;align-items:flex-start;padding:.72rem .82rem;border-radius:14px;background:rgba(255,255,255,.045)}
+.item>span:first-child{font-size:1.3rem}
+.formula{font-size:clamp(1.7rem,3.5vw,3.8rem);font-weight:900;letter-spacing:-.04em;padding:1.1rem 1.3rem;border-radius:22px;background:rgba(255,255,255,.06);border:1px solid var(--line);display:inline-block}
+.center{text-align:center;align-items:center}.center .lead{margin-left:auto;margin-right:auto}
+.busWrap{max-width:1100px;width:100%;margin:1rem auto 0}
+.layerStack{display:grid;gap:.6rem;max-width:900px;margin:1rem auto}
+.layer{padding:1.05rem 1.2rem;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.05);display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.layer b{font-size:1.15rem}.layer small{color:var(--muted)}
+.definition{border-left:4px solid var(--cyan);padding:.9rem 1.1rem;background:rgba(85,214,255,.07);border-radius:0 16px 16px 0}
+.compare{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:center}.vs{font-size:2rem;font-weight:900;color:var(--yellow)}
+.appWall{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem}
+.appTile{min-height:130px;border-radius:20px;padding:1rem;border:1px solid var(--line);background:rgba(255,255,255,.05);display:flex;flex-direction:column;justify-content:space-between}
+.appTile .e{font-size:2.2rem}.appTile strong{font-size:1.05rem}
+.quizWrap{display:grid;grid-template-columns:1.12fr .88fr;gap:1.1rem}
+.choices{display:grid;gap:.7rem;margin-top:1rem}
+button.choice,button.action{
+  appearance:none;border:1px solid var(--line);background:rgba(255,255,255,.055);color:var(--text);padding:.92rem 1.05rem;border-radius:15px;text-align:left;font-size:1rem;cursor:pointer;transition:.2s
+}
+button.choice:hover,button.action:hover{transform:translateY(-2px);border-color:rgba(85,214,255,.55);background:rgba(85,214,255,.08)}
+button.correct{border-color:var(--green)!important;background:rgba(85,230,165,.12)!important}
+button.wrong{border-color:var(--red)!important;background:rgba(255,107,129,.11)!important}
+.feedback{min-height:2rem;margin-top:.7rem;font-weight:800}
+.nav{position:fixed;right:24px;bottom:18px;display:flex;gap:.55rem;z-index:30}
+.nav button{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:rgba(6,17,31,.75);color:white;font-size:1.25rem;cursor:pointer;backdrop-filter:blur(11px)}
+.counter{position:fixed;left:24px;bottom:20px;color:#91a8c0;font-size:.88rem;z-index:30}
+.progress{position:fixed;left:0;bottom:0;height:5px;width:0;background:linear-gradient(90deg,var(--cyan),var(--violet));transition:.35s;z-index:31}
+.score{font-size:clamp(3rem,8vw,7rem);font-weight:900;letter-spacing:-.06em}
+.note{font-size:.9rem;color:#91a8c0}
+.pill{display:inline-flex;align-items:center;gap:.45rem;padding:.5rem .75rem;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.045);font-weight:700;color:#dce8f6;margin:.2rem}
+.arrow{font-size:1.8rem;color:var(--cyan);font-weight:900}
+
+/* Интерактив на повторение */
+.detective{display:grid;grid-template-columns:.8fr 1.2fr;gap:1.1rem;align-items:stretch}
+.detectiveVisual{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;min-height:310px}
+.detectiveClue{font-size:clamp(1.25rem,2.2vw,1.8rem);line-height:1.35;color:var(--text);font-weight:800;margin:.6rem 0 1rem}
+.detectiveMeta{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center;margin-top:.7rem}
+.badge{padding:.45rem .68rem;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.05);font-weight:800;color:#dce8f6}
+.detectiveOptions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem}
+.detectiveOptions .choice{text-align:center;min-height:78px;display:flex;align-items:center;justify-content:center;font-weight:800}
+
+/* Интерактивная сортировка */
+.sortLayout{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.9rem;margin-top:.8rem}
+.sortZone{min-height:210px;position:relative;transition:.2s}
+.sortZone.selectedTarget{border-color:rgba(85,214,255,.65);background:rgba(85,214,255,.08)}
+.sortPlaced{display:flex;flex-wrap:wrap;gap:.42rem;margin-top:.75rem;align-content:flex-start}
+.sortPlaced .placed{padding:.42rem .58rem;border-radius:10px;background:rgba(85,230,165,.11);border:1px solid rgba(85,230,165,.32);font-size:.87rem;font-weight:800;color:#dfffee}
+.sortBank{display:flex;flex-wrap:wrap;gap:.55rem;justify-content:center;margin-top:1rem}
+.sortChip{appearance:none;border:1px solid var(--line);background:rgba(255,255,255,.055);color:var(--text);padding:.6rem .78rem;border-radius:999px;font-weight:800;cursor:pointer;transition:.18s}
+.sortChip:hover{transform:translateY(-2px);border-color:rgba(85,214,255,.55)}
+.sortChip.selected{border-color:var(--yellow);background:rgba(255,209,102,.12);box-shadow:0 0 0 2px rgba(255,209,102,.08) inset}
+.sortChip.done{display:none}
+.sortStatus{display:flex;justify-content:center;gap:.7rem;flex-wrap:wrap;margin-top:.8rem}
+.sortZone button{width:100%;text-align:center;margin-top:.45rem}
+@media(max-width:900px){
+  .detective,.sortLayout{grid-template-columns:1fr}
+  .detectiveOptions{grid-template-columns:1fr}
+}
+@media(max-width:900px){
+  html,body{overflow:auto}.slide{position:relative;min-height:100vh;display:none;padding:72px 22px 88px}.slide.active{display:flex}
+  .hero,.g2,.g3,.g4,.quizWrap,.compare{grid-template-columns:1fr}.appWall{grid-template-columns:repeat(2,1fr)}.vs{display:none}
+  .nav{right:14px;bottom:12px}.counter{left:14px;bottom:16px}
+}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<section class="slide active">
+  <div class="hero">
+    <div>
+      <div class="eyebrow">Информатика · 10 класс</div>
+      <h1>Программное<br><span class="accent">обеспечение</span></h1>
+      <p class="lead">Как «железо» компьютера превращается в инструмент для учёбы, творчества, общения и программирования?</p>
+    </div>
+    <div class="device"><div class="screen"><div class="screenCenter"><div class="bigEmoji">💻</div></div></div></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Разминка · вспоминаем прошлый урок</div>
+  <h2>🕵️ Компьютерный детектив</h2>
+  <p class="lead">Угадайте компонент компьютера по описанию. За каждый правильный ответ — 1 балл.</p>
+  <div class="detective" style="margin-top:.9rem">
+    <div class="card detectiveVisual">
+      <div id="detectiveEmoji" class="bigEmoji">🧠</div>
+      <div id="detectiveClue" class="detectiveClue">Я выполняю команды программ и обрабатываю данные. Кто я?</div>
+      <div class="detectiveMeta">
+        <span class="badge">Вопрос <span id="detectiveNum">1</span>/6</span>
+        <span class="badge">Счёт: <span id="detectiveScore">0</span></span>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Выберите ответ</h3>
+      <div id="detectiveOptions" class="detectiveOptions"></div>
+      <div id="detectiveFeedback" class="feedback" aria-live="polite"></div>
+      <button id="detectiveNext" class="action" type="button" style="display:none;margin-top:.6rem">Следующая загадка →</button>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Вспоминаем</div>
+  <h2>Что находится <span class="accent">внутри компьютера</span>?</h2>
+  <div class="grid g4" style="margin-top:1.1rem">
+    <div class="card"><div class="icon">🧠</div><h3>Процессор</h3><p>Выполняет команды программ и обрабатывает данные.</p></div>
+    <div class="card"><div class="icon">⚡</div><h3>Оперативная память</h3><p>Хранит данные и программы, с которыми компьютер работает сейчас.</p></div>
+    <div class="card"><div class="icon">💾</div><h3>Накопитель</h3><p>Долговременно хранит программы и данные: SSD, HDD.</p></div>
+    <div class="card"><div class="icon">🖥️</div><h3>Устройства ввода-вывода</h3><p>Клавиатура, мышь, монитор, принтер, камера и другие устройства.</p></div>
+  </div>
+  <p class="lead" style="margin-top:1.2rem">Все эти устройства должны <strong>обмениваться данными и командами</strong>.</p>
+</section>
+
+<section class="slide center">
+  <div class="eyebrow">Вспоминаем</div>
+  <h2>Магистрально‑модульный принцип</h2>
+  <p class="lead">Компьютер состоит из отдельных функциональных модулей, которые взаимодействуют через общую магистраль.</p>
+  <div class="busWrap card">
+    <svg viewBox="0 0 1000 430" width="100%" aria-label="Магистрально-модульная схема компьютера">
+      <defs><linearGradient id="bus" x1="0" x2="1"><stop stop-color="#55d6ff"/><stop offset="1" stop-color="#9b8cff"/></linearGradient></defs>
+      <rect x="60" y="30" width="210" height="95" rx="20" fill="#173553" stroke="#ffffff35"/>
+      <rect x="395" y="30" width="210" height="95" rx="20" fill="#173553" stroke="#ffffff35"/>
+      <rect x="730" y="30" width="210" height="95" rx="20" fill="#173553" stroke="#ffffff35"/>
+      <text x="165" y="75" text-anchor="middle" fill="#fff" font-size="24" font-weight="700">Процессор</text>
+      <text x="500" y="68" text-anchor="middle" fill="#fff" font-size="22" font-weight="700">Оперативная</text>
+      <text x="500" y="96" text-anchor="middle" fill="#fff" font-size="22" font-weight="700">память</text>
+      <text x="835" y="67" text-anchor="middle" fill="#fff" font-size="22" font-weight="700">Устройства</text>
+      <text x="835" y="95" text-anchor="middle" fill="#fff" font-size="22" font-weight="700">ввода-вывода</text>
+
+      <line x1="165" y1="125" x2="165" y2="205" stroke="#55d6ff" stroke-width="5"/>
+      <line x1="500" y1="125" x2="500" y2="205" stroke="#55d6ff" stroke-width="5"/>
+      <line x1="835" y1="125" x2="835" y2="205" stroke="#55d6ff" stroke-width="5"/>
+
+      <rect x="70" y="195" width="860" height="82" rx="20" fill="url(#bus)" opacity=".92"/>
+      <text x="500" y="232" text-anchor="middle" fill="#06111f" font-size="27" font-weight="900">СИСТЕМНАЯ МАГИСТРАЛЬ</text>
+      <text x="500" y="258" text-anchor="middle" fill="#06111f" font-size="17" font-weight="700">данные • адреса • управляющие сигналы</text>
+
+      <line x1="500" y1="277" x2="500" y2="335" stroke="#9b8cff" stroke-width="5"/>
+      <rect x="395" y="335" width="210" height="65" rx="18" fill="#173553" stroke="#ffffff35"/>
+      <text x="500" y="375" text-anchor="middle" fill="#fff" font-size="23" font-weight="700">Накопитель</text>
+    </svg>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Ключевое понятие</div>
+  <h2>Что значит <span class="violet">«модульный»</span>?</h2>
+  <div class="grid g2">
+    <div class="card">
+      <div class="icon">🧩</div>
+      <h3>Модули можно менять и добавлять</h3>
+      <p>Например, установить больше оперативной памяти, заменить накопитель, подключить новое устройство.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🛣️</div>
+      <h3>Магистраль связывает модули</h3>
+      <p>По ней между устройствами передаются данные, адреса и управляющие сигналы.</p>
+    </div>
+  </div>
+  <div class="definition" style="margin-top:1.2rem">
+    <p><strong>Магистрально‑модульный принцип:</strong> компьютер строится из отдельных модулей, связанных общей системой обмена информацией.</p>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Переходим к новой теме</div>
+  <div class="hero">
+    <div>
+      <h2>Все устройства подключены.<br><span class="warn">А что заставит их работать вместе?</span></h2>
+      <p class="lead">Процессор умеет выполнять команды, память — хранить данные, принтер — печатать. Но кто организует их совместную работу?</p>
+    </div>
+    <div class="card center">
+      <div class="bigEmoji">🤔</div>
+      <h3>Одного «железа» недостаточно</h3>
+      <p>Компьютеру нужны программы.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide center">
+  <div class="eyebrow">Два уровня компьютерной системы</div>
+  <h2><span class="accent">Hardware</span> + <span class="violet">Software</span></h2>
+  <div class="grid g2" style="max-width:1050px;margin-top:1rem">
+    <div class="card"><div class="icon">🖥️</div><h3>Аппаратное обеспечение</h3><p>Устройства, из которых состоит компьютер.</p></div>
+    <div class="card"><div class="icon">🧩</div><h3>Программное обеспечение</h3><p>Программы, которые управляют работой компьютера и помогают решать задачи.</p></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Определения</div>
+  <h2>Программа и программное обеспечение</h2>
+  <div class="grid g2">
+    <div class="card">
+      <div class="icon">📜</div>
+      <h3>Программа</h3>
+      <p>Последовательность команд, которую компьютер выполняет для обработки данных и получения результата.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🧩</div>
+      <h3>Программное обеспечение (ПО)</h3>
+      <p>Совокупность программ, обеспечивающих обработку данных и работу компьютерной системы.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Главная классификация</div>
+  <h2>Три большие группы ПО</h2>
+  <div class="grid g3">
+    <div class="card"><div class="icon">🧠</div><h3>Системное ПО</h3><p>Обеспечивает работу компьютера, его устройств и взаимодействие с программами.</p><span class="tag">ОС</span><span class="tag">драйверы</span><span class="tag">утилиты</span></div>
+    <div class="card"><div class="icon">🎯</div><h3>Прикладное ПО</h3><p>Предназначено для решения конкретных задач пользователя.</p><span class="tag">браузеры</span><span class="tag">редакторы</span><span class="tag">игры</span></div>
+    <div class="card"><div class="icon">🧑‍💻</div><h3>Системы программирования</h3><p>Предназначены для создания, перевода и отладки новых программ.</p><span class="tag">IDE</span><span class="tag">трансляторы</span><span class="tag">отладчики</span></div>
+  </div>
+</section>
+
+<section class="slide center">
+  <div class="eyebrow">Как всё связано</div>
+  <h2>От пользователя до «железа»</h2>
+  <div class="layerStack">
+    <div class="layer"><b>👤 Пользователь</b><small>хочет выполнить задачу</small></div>
+    <div class="arrow">↓</div>
+    <div class="layer"><b>🎯 Прикладное ПО</b><small>браузер, редактор, игра, мессенджер</small></div>
+    <div class="arrow">↓</div>
+    <div class="layer"><b>🧠 Системное ПО</b><small>ОС, драйверы, служебные программы</small></div>
+    <div class="arrow">↓</div>
+    <div class="layer"><b>🖥️ Аппаратное обеспечение</b><small>процессор, память, накопитель, устройства</small></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Системное ПО</div>
+  <h2>Что относится к <span class="accent">системному ПО</span>?</h2>
+  <div class="grid g3">
+    <div class="card">
+      <div class="icon">🪟</div><h3>Операционная система</h3>
+      <p>Комплекс программ, который обеспечивает взаимодействие пользователя и прикладных программ с аппаратными средствами компьютера.</p>
+      <span class="tag">Windows</span><span class="tag">Linux</span><span class="tag">macOS</span><span class="tag">Android</span>
+    </div>
+    <div class="card">
+      <div class="icon">🔌</div><h3>Драйвер</h3>
+      <p>Специальная программа, обеспечивающая обмен данными между операционной системой и устройством.</p>
+      <span class="tag">принтер</span><span class="tag">видеокарта</span><span class="tag">звук</span>
+    </div>
+    <div class="card">
+      <div class="icon">🧰</div><h3>Утилита</h3>
+      <p>Служебная программа для проверки, настройки и обслуживания компьютера.</p>
+      <span class="tag">антивирус</span><span class="tag">архиватор</span><span class="tag">файловый менеджер</span>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Системное ПО · примеры</div>
+  <h2>Системные программы вокруг нас</h2>
+  <div class="appWall">
+    <div class="appTile"><div class="e">🪟</div><strong>Операционная система</strong><span class="mini">управляет ресурсами</span></div>
+    <div class="appTile"><div class="e">🖨️</div><strong>Драйвер принтера</strong><span class="mini">связывает ОС и принтер</span></div>
+    <div class="appTile"><div class="e">🎮</div><strong>Драйвер видеокарты</strong><span class="mini">обеспечивает работу графики</span></div>
+    <div class="appTile"><div class="e">🛡️</div><strong>Антивирус</strong><span class="mini">проверяет и защищает систему</span></div>
+    <div class="appTile"><div class="e">🗜️</div><strong>Архиватор</strong><span class="mini">сжимает и распаковывает данные</span></div>
+    <div class="appTile"><div class="e">📁</div><strong>Файловый менеджер</strong><span class="mini">работает с файлами и папками</span></div>
+    <div class="appTile"><div class="e">💽</div><strong>Проверка диска</strong><span class="mini">ищет ошибки накопителя</span></div>
+    <div class="appTile"><div class="e">🌐</div><strong>Сетевая утилита</strong><span class="mini">проверяет соединение и маршрут</span></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Прикладное ПО</div>
+  <h2>Что такое <span class="good">прикладная программа</span>?</h2>
+  <div class="definition">
+    <p><strong>Прикладное программное обеспечение</strong> — программы, предназначенные для решения конкретных пользовательских задач.</p>
+  </div>
+  <p class="lead" style="margin-top:1.1rem">Главный вопрос: <strong>«Какую задачу пользователя решает эта программа?»</strong></p>
+  <div class="grid g3" style="margin-top:.8rem">
+    <div class="card"><div class="icon">📝</div><h3>Работа с информацией</h3><p>Тексты, таблицы, базы данных, презентации.</p></div>
+    <div class="card"><div class="icon">🎨</div><h3>Творчество</h3><p>Графика, музыка, видео, 3D-модели.</p></div>
+    <div class="card"><div class="icon">🌐</div><h3>Общение и интернет</h3><p>Браузеры, почта, мессенджеры.</p></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Прикладное ПО · примеры</div>
+  <h2>Для каждой задачи — своё приложение</h2>
+  <div class="appWall">
+    <div class="appTile"><div class="e">🌐</div><strong>Браузер</strong><span class="mini">работа с веб‑страницами</span></div>
+    <div class="appTile"><div class="e">📝</div><strong>Текстовый процессор</strong><span class="mini">создание документов</span></div>
+    <div class="appTile"><div class="e">📊</div><strong>Табличный процессор</strong><span class="mini">расчёты и таблицы</span></div>
+    <div class="appTile"><div class="e">🎨</div><strong>Графический редактор</strong><span class="mini">изображения и фотографии</span></div>
+    <div class="appTile"><div class="e">🎬</div><strong>Видеоредактор</strong><span class="mini">монтаж видео</span></div>
+    <div class="appTile"><div class="e">💬</div><strong>Мессенджер</strong><span class="mini">общение</span></div>
+    <div class="appTile"><div class="e">🗺️</div><strong>Навигатор</strong><span class="mini">маршруты и карты</span></div>
+    <div class="appTile"><div class="e">🎮</div><strong>Компьютерная игра</strong><span class="mini">досуг и развлечения</span></div>
+    <div class="appTile"><div class="e">🏗️</div><strong>САПР</strong><span class="mini">чертежи и проектирование</span></div>
+    <div class="appTile"><div class="e">🎵</div><strong>Аудиоредактор</strong><span class="mini">запись и обработка звука</span></div>
+    <div class="appTile"><div class="e">📽️</div><strong>Презентации</strong><span class="mini">слайды для выступления</span></div>
+    <div class="appTile"><div class="e">📚</div><strong>Обучающая программа</strong><span class="mini">тренажёры и курсы</span></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Сравниваем</div>
+  <h2>Системное или прикладное?</h2>
+  <div class="compare">
+    <div class="card">
+      <div class="icon">🧠</div><h3>Системное ПО</h3>
+      <p><strong>Для чего?</strong> Чтобы работала компьютерная система.</p>
+      <p><strong>С кем взаимодействует?</strong> С оборудованием, ОС и другими программами.</p>
+      <p><strong>Примеры:</strong> ОС, драйверы, утилиты.</p>
+    </div>
+    <div class="vs">VS</div>
+    <div class="card">
+      <div class="icon">🎯</div><h3>Прикладное ПО</h3>
+      <p><strong>Для чего?</strong> Чтобы пользователь решил конкретную задачу.</p>
+      <p><strong>С кем взаимодействует?</strong> С пользователем через возможности ОС.</p>
+      <p><strong>Примеры:</strong> браузер, редактор, игра, навигатор.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Системы программирования</div>
+  <div class="hero">
+    <div>
+      <h2>Как создают <span class="violet">новые программы</span>?</h2>
+      <div class="definition"><p><strong>Система программирования</strong> — программные средства для создания и отладки новых программ.</p></div>
+      <div class="list">
+        <div class="item"><span>⌨️</span><div><strong>Редактор кода</strong><br><span class="mini">написание программы</span></div></div>
+        <div class="item"><span>⚙️</span><div><strong>Транслятор</strong><br><span class="mini">перевод текста программы в форму, которую может выполнить компьютер</span></div></div>
+        <div class="item"><span>🐞</span><div><strong>Отладчик</strong><br><span class="mini">поиск ошибок в программе</span></div></div>
+      </div>
+    </div>
+    <div class="card center"><div class="bigEmoji">🧑‍💻</div><h3>Примеры</h3><p>Visual Studio, PyCharm, Code::Blocks и другие среды разработки.</p></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Проверяем понимание</div>
+  <h2>К какой группе относится программа?</h2>
+  <div class="quizWrap">
+    <div class="card">
+      <h3 id="classifyName" style="font-size:2rem">Браузер</h3>
+      <p id="classifyHint">Помогает пользователю открывать сайты.</p>
+      <div class="choices">
+        <button class="choice" onclick="classify('system',this)">🧠 Системное ПО</button>
+        <button class="choice" onclick="classify('app',this)">🎯 Прикладное ПО</button>
+        <button class="choice" onclick="classify('dev',this)">🧑‍💻 Система программирования</button>
+      </div>
+      <div id="classifyFeedback" class="feedback"></div>
+    </div>
+    <div class="card">
+      <h3>Подсказка</h3>
+      <p>Смотрите не на значок и не на место установки, а на <strong>назначение программы</strong>.</p>
+      <button class="action" onclick="nextClassify()" style="margin-top:1rem">Другой пример →</button>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Установка программ</div>
+  <h2>Скачать и установить — не одно и то же</h2>
+  <div class="compare">
+    <div class="card center"><div class="bigEmoji">⬇️</div><h3>Скачать</h3><p>Получить установочный файл или пакет.</p></div>
+    <div class="vs">≠</div>
+    <div class="card center"><div class="bigEmoji">🛠️</div><h3>Установить</h3><p>Разместить необходимые файлы и настроить программу для работы.</p></div>
+  </div>
+  <div class="grid g2" style="margin-top:1rem">
+    <div class="card"><h3>Инсталляция</h3><p>Установка и настройка программы на компьютере пользователя.</p></div>
+    <div class="card"><h3>Дистрибутив</h3><p>Набор файлов, предназначенный для установки программы.</p></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Лицензии</div>
+  <h2>У программы есть правила использования</h2>
+  <div class="definition"><p><strong>Лицензия</strong> — соглашение, в котором определены права и обязанности правообладателя и пользователя программы.</p></div>
+  <div class="grid g4" style="margin-top:1rem">
+    <div class="card"><div class="icon">💳</div><h3>Коммерческое</h3><p>Право использования обычно приобретают.</p></div>
+    <div class="card"><div class="icon">⏳</div><h3>Shareware</h3><p>Пробная работа с ограничениями.</p></div>
+    <div class="card"><div class="icon">🎁</div><h3>Freeware</h3><p>Можно использовать бесплатно по условиям лицензии.</p></div>
+    <div class="card"><div class="icon">🔓</div><h3>Open source</h3><p>Исходный код доступен по условиям открытой лицензии.</p></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Задача 1</div>
+  <h2>Найдите лишнее</h2>
+  <div class="quizWrap">
+    <div class="card">
+      <p class="lead">Windows · Linux · Android · графический редактор</p>
+      <div class="choices">
+        <button class="choice" onclick="odd(this,false)">Windows</button>
+        <button class="choice" onclick="odd(this,false)">Linux</button>
+        <button class="choice" onclick="odd(this,false)">Android</button>
+        <button class="choice" onclick="odd(this,true)">Графический редактор</button>
+      </div>
+      <div id="oddFeedback" class="feedback"></div>
+    </div>
+    <div class="card"><h3>Объясните ответ</h3><p>Не просто назовите лишнее, а укажите, к каким группам ПО относятся все четыре примера.</p></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Задача 2 · интерактив</div>
+  <h2>Разложите программы по трём группам</h2>
+  <p class="lead">1. Нажмите на программу. 2. Нажмите на подходящую группу. Правильный ответ переместится в неё.</p>
+
+  <div class="sortLayout">
+    <div class="card sortZone" data-sort-target="system">
+      <h3>🧠 Системное ПО</h3>
+      <p class="mini">Обеспечивает работу компьютера и устройств.</p>
+      <button class="action sortTargetBtn" type="button" data-target="system">Поместить сюда</button>
+      <div id="sort-system" class="sortPlaced"></div>
+    </div>
+    <div class="card sortZone" data-sort-target="app">
+      <h3>🎯 Прикладное ПО</h3>
+      <p class="mini">Решает конкретные задачи пользователя.</p>
+      <button class="action sortTargetBtn" type="button" data-target="app">Поместить сюда</button>
+      <div id="sort-app" class="sortPlaced"></div>
+    </div>
+    <div class="card sortZone" data-sort-target="dev">
+      <h3>🧑‍💻 Системы программирования</h3>
+      <p class="mini">Инструменты для создания и отладки программ.</p>
+      <button class="action sortTargetBtn" type="button" data-target="dev">Поместить сюда</button>
+      <div id="sort-dev" class="sortPlaced"></div>
+    </div>
+  </div>
+
+  <div id="sortBank" class="sortBank"></div>
+  <div class="sortStatus">
+    <span class="badge">Выбрано: <span id="sortSelected">ничего</span></span>
+    <span class="badge">Правильно: <span id="sortScore">0</span>/9</span>
+    <button id="sortReset" class="action" type="button">Начать заново</button>
+  </div>
+  <div id="sortFeedback" class="feedback" style="text-align:center" aria-live="polite"></div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Задача 3</div>
+  <h2>Что понадобится новому компьютеру?</h2>
+  <p class="lead">Пользователь хочет печатать документы, искать информацию в интернете, обрабатывать фотографии и изучать Python.</p>
+  <div class="grid g2" style="margin-top:1rem">
+    <div class="card">
+      <h3>Подберите ПО</h3>
+      <p>Назовите минимум по одному подходящему типу программы для каждой задачи.</p>
+    </div>
+    <div class="card">
+      <h3>И классифицируйте</h3>
+      <p>Для каждой выбранной программы укажите: системное ПО, прикладное ПО или система программирования.</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow">Финальный тест</div>
+  <div class="quizWrap">
+    <div class="card">
+      <h3 id="qText" style="font-size:1.55rem"></h3>
+      <div id="qChoices" class="choices"></div>
+      <div id="qFeedback" class="feedback"></div>
+      <button id="qNext" class="action" onclick="quizNext()" style="display:none;margin-top:.5rem">Следующий вопрос →</button>
+    </div>
+    <div class="card center"><div class="mini">Результат</div><div id="score" class="score">0/7</div><p>Проверьте, насколько уверенно вы различаете виды ПО.</p></div>
+  </div>
+</section>
+
+<section class="slide center">
+  <div class="eyebrow">Итог</div>
+  <h2>Компьютер работает как <span class="accent">единая система</span></h2>
+  <div class="grid g3" style="max-width:1200px;margin-top:1rem">
+    <div class="card"><div class="icon">🖥️</div><h3>Аппаратная часть</h3><p>Модули компьютера обмениваются информацией через магистраль.</p></div>
+    <div class="card"><div class="icon">🧠</div><h3>Системное ПО</h3><p>Организует работу компьютера и его устройств.</p></div>
+    <div class="card"><div class="icon">🎯</div><h3>Прикладное ПО</h3><p>Помогает человеку решать конкретные задачи.</p></div>
+  </div>
+</section>
+
+</div>
+
+<div class="counter"><span id="num">1</span> / <span id="total"></span></div>
+<div class="nav"><button onclick="prevSlide()" title="Назад">←</button><button onclick="nextSlide()" title="Вперёд">→</button></div>
+<div class="progress" id="progress"></div>
+
+<script>
+const slides=[...document.querySelectorAll('.slide')]; let current=0;
+document.getElementById('total').textContent=slides.length;
+function showSlide(i){current=Math.max(0,Math.min(slides.length-1,i));slides.forEach((s,n)=>s.classList.toggle('active',n===current));document.getElementById('num').textContent=current+1;document.getElementById('progress').style.width=((current+1)/slides.length*100)+'%'}
+function nextSlide(){showSlide(current+1)} function prevSlide(){showSlide(current-1)}
+document.addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();nextSlide()}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();prevSlide()}});
+
+/* ===== Разминка «Компьютерный детектив» ===== */
+const detectiveData = [
+  {
+    emoji:'🧠',
+    clue:'Я выполняю команды программ и обрабатываю данные. Кто я?',
+    options:['Процессор','Оперативная память','SSD','Монитор'],
+    correct:0,
+    why:'Процессор выполняет команды и обрабатывает данные.'
+  },
+  {
+    emoji:'⚡',
+    clue:'Я храню данные и программы только во время работы компьютера. После выключения содержимое исчезает. Кто я?',
+    options:['SSD','Оперативная память','Процессор','Клавиатура'],
+    correct:1,
+    why:'Оперативная память хранит данные временно, пока компьютер работает.'
+  },
+  {
+    emoji:'💾',
+    clue:'Я сохраняю файлы и программы даже после выключения питания. Кто я?',
+    options:['Оперативная память','Монитор','Накопитель SSD/HDD','Процессор'],
+    correct:2,
+    why:'Накопитель предназначен для долговременного хранения данных.'
+  },
+  {
+    emoji:'⌨️',
+    clue:'Я передаю компьютеру данные от пользователя: буквы, числа и команды. К какой группе устройств я отношусь?',
+    options:['Устройство вывода','Устройство ввода','Внутренняя память','Процессор'],
+    correct:1,
+    why:'Клавиатура — устройство ввода информации.'
+  },
+  {
+    emoji:'🖥️',
+    clue:'Я показываю пользователю результат работы компьютера. К какой группе устройств я отношусь?',
+    options:['Устройство вывода','Устройство ввода','Накопитель','Оперативная память'],
+    correct:0,
+    why:'Монитор — устройство вывода информации.'
+  },
+  {
+    emoji:'🛣️',
+    clue:'Через меня модули компьютера обмениваются данными, адресами и управляющими сигналами. Что это?',
+    options:['Файл','Системная магистраль','Программа','Жёсткий диск'],
+    correct:1,
+    why:'Системная магистраль связывает основные модули компьютера.'
+  }
+];
+let detectiveIndex = 0;
+let detectivePoints = 0;
+let detectiveLocked = false;
+
+function renderDetective(){
+  const d = detectiveData[detectiveIndex];
+  const emoji = document.getElementById('detectiveEmoji');
+  if(!emoji) return;
+  emoji.textContent = d.emoji;
+  document.getElementById('detectiveClue').textContent = d.clue;
+  document.getElementById('detectiveNum').textContent = detectiveIndex + 1;
+  document.getElementById('detectiveScore').textContent = detectivePoints;
+  const box = document.getElementById('detectiveOptions');
+  box.innerHTML = '';
+  d.options.forEach((label, idx) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'choice';
+    b.textContent = label;
+    b.addEventListener('click', () => answerDetective(b, idx));
+    box.appendChild(b);
+  });
+  document.getElementById('detectiveFeedback').textContent = '';
+  document.getElementById('detectiveNext').style.display = 'none';
+  detectiveLocked = false;
+}
+
+function answerDetective(btn, idx){
+  if(detectiveLocked) return;
+  detectiveLocked = true;
+  const d = detectiveData[detectiveIndex];
+  const ok = idx === d.correct;
+  const buttons = [...document.querySelectorAll('#detectiveOptions .choice')];
+  buttons.forEach((b,i) => {
+    if(i === d.correct) b.classList.add('correct');
+  });
+  if(!ok) btn.classList.add('wrong');
+  if(ok) detectivePoints++;
+  document.getElementById('detectiveScore').textContent = detectivePoints;
+  const f = document.getElementById('detectiveFeedback');
+  f.textContent = (ok ? '✅ Верно! ' : '❌ Не совсем. ') + d.why;
+  f.style.color = ok ? 'var(--green)' : 'var(--red)';
+  const next = document.getElementById('detectiveNext');
+  next.style.display = 'block';
+  next.textContent = detectiveIndex === detectiveData.length - 1 ? 'Показать итог →' : 'Следующая загадка →';
+}
+
+function nextDetective(){
+  if(detectiveIndex < detectiveData.length - 1){
+    detectiveIndex++;
+    renderDetective();
+  }else{
+    const box = document.getElementById('detectiveOptions');
+    box.innerHTML = '<div class="definition"><p><strong>Результат: '+detectivePoints+' из '+detectiveData.length+'.</strong><br>Теперь вспомним, как эти устройства связаны между собой.</p></div>';
+    document.getElementById('detectiveFeedback').textContent =
+      detectivePoints === detectiveData.length ? '🏆 Отличная разминка!' :
+      detectivePoints >= 4 ? '👍 Хорошо! Основные компоненты вы помните.' :
+      '🔁 Ничего страшного: следующие слайды помогут быстро повторить тему.';
+    document.getElementById('detectiveNext').style.display = 'none';
+  }
+}
+const detectiveNextBtn = document.getElementById('detectiveNext');
+if(detectiveNextBtn) detectiveNextBtn.addEventListener('click', nextDetective);
+renderDetective();
+
+/* ===== Интерактивная сортировка ПО ===== */
+const sortItems = [
+  {name:'драйвер принтера', type:'system'},
+  {name:'браузер', type:'app'},
+  {name:'Visual Studio', type:'dev'},
+  {name:'антивирус', type:'system'},
+  {name:'видеоредактор', type:'app'},
+  {name:'операционная система', type:'system'},
+  {name:'игра', type:'app'},
+  {name:'PyCharm', type:'dev'},
+  {name:'архиватор', type:'system'}
+];
+let sortSelectedIndex = null;
+let sortCorrect = 0;
+let sortDone = new Set();
+
+function renderSortBank(){
+  const bank = document.getElementById('sortBank');
+  if(!bank) return;
+  bank.innerHTML = '';
+  sortItems.forEach((item, idx) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'sortChip' + (sortSelectedIndex === idx ? ' selected' : '') + (sortDone.has(idx) ? ' done' : '');
+    b.textContent = item.name;
+    b.dataset.index = idx;
+    b.addEventListener('click', () => selectSortItem(idx));
+    bank.appendChild(b);
+  });
+  document.getElementById('sortSelected').textContent =
+    sortSelectedIndex === null ? 'ничего' : sortItems[sortSelectedIndex].name;
+  document.getElementById('sortScore').textContent = sortCorrect;
+}
+
+function selectSortItem(idx){
+  if(sortDone.has(idx)) return;
+  sortSelectedIndex = idx;
+  const f = document.getElementById('sortFeedback');
+  f.textContent = 'Теперь выберите одну из трёх групп.';
+  f.style.color = 'var(--yellow)';
+  renderSortBank();
+}
+
+function putSortItem(target){
+  const f = document.getElementById('sortFeedback');
+  if(sortSelectedIndex === null){
+    f.textContent = 'Сначала выберите программу внизу.';
+    f.style.color = 'var(--yellow)';
+    return;
+  }
+  const item = sortItems[sortSelectedIndex];
+  if(item.type !== target){
+    f.textContent = '❌ Пока неверно. Подумайте, для чего нужна программа «'+item.name+'».';
+    f.style.color = 'var(--red)';
+    return;
+  }
+  const destination = document.getElementById('sort-' + target);
+  const span = document.createElement('span');
+  span.className = 'placed';
+  span.textContent = item.name;
+  destination.appendChild(span);
+  sortDone.add(sortSelectedIndex);
+  sortCorrect++;
+  f.textContent = '✅ Верно! «'+item.name+'» на своём месте.';
+  f.style.color = 'var(--green)';
+  sortSelectedIndex = null;
+  renderSortBank();
+
+  if(sortCorrect === sortItems.length){
+    f.textContent = '🏆 Отлично! Все 9 программ распределены правильно.';
+  }
+}
+
+document.querySelectorAll('.sortTargetBtn').forEach(btn => {
+  btn.addEventListener('click', () => putSortItem(btn.dataset.target));
+});
+
+const sortResetBtn = document.getElementById('sortReset');
+if(sortResetBtn){
+  sortResetBtn.addEventListener('click', () => {
+    sortSelectedIndex = null;
+    sortCorrect = 0;
+    sortDone = new Set();
+    ['system','app','dev'].forEach(t => {
+      const el = document.getElementById('sort-' + t);
+      if(el) el.innerHTML = '';
+    });
+    const f = document.getElementById('sortFeedback');
+    f.textContent = '';
+    renderSortBank();
+  });
+}
+renderSortBank();
+
+const classifyData=[
+{name:'Браузер',hint:'Помогает пользователю открывать сайты.',ans:'app',why:'Прикладное ПО: решает задачу пользователя.'},
+{name:'Драйвер принтера',hint:'Обеспечивает взаимодействие ОС с принтером.',ans:'system',why:'Системное ПО: обеспечивает работу устройства.'},
+{name:'PyCharm',hint:'Используется для написания и отладки программ.',ans:'dev',why:'Это система программирования.'},
+{name:'Антивирус',hint:'Проверяет компьютер и помогает защищать систему.',ans:'system',why:'Это служебное системное ПО.'},
+{name:'Видеоредактор',hint:'Позволяет пользователю монтировать видео.',ans:'app',why:'Это прикладное ПО.'},
+{name:'Операционная система',hint:'Управляет ресурсами компьютера и запуском программ.',ans:'system',why:'Это основа системного ПО.'},
+{name:'Текстовый процессор',hint:'Позволяет создавать и оформлять документы.',ans:'app',why:'Это прикладное ПО.'},
+{name:'Visual Studio',hint:'Среда для создания и отладки программ.',ans:'dev',why:'Это система программирования.'}
+];
+let ci=0;
+function classify(ans,btn){
+  const classifyCard=document.getElementById('classifyName').closest('.card');
+  classifyCard.querySelectorAll('.choices .choice').forEach(b=>b.classList.remove('correct','wrong'));
+  const d=classifyData[ci], ok=ans===d.ans; btn.classList.add(ok?'correct':'wrong');
+  const f=document.getElementById('classifyFeedback'); f.textContent=(ok?'✅ ':'❌ ')+d.why; f.style.color=ok?'var(--green)':'var(--red)';
+}
+function nextClassify(){ci=(ci+1)%classifyData.length;const d=classifyData[ci];document.getElementById('classifyName').textContent=d.name;document.getElementById('classifyHint').textContent=d.hint;document.getElementById('classifyFeedback').textContent='';const card=document.getElementById('classifyName').closest('.card');card.querySelectorAll('.choices .choice').forEach(b=>b.classList.remove('correct','wrong'))}
+function odd(btn,ok){btn.parentElement.querySelectorAll('.choice').forEach(b=>b.classList.remove('correct','wrong'));btn.classList.add(ok?'correct':'wrong');const f=document.getElementById('oddFeedback');f.textContent=ok?'✅ Верно. Три примера — операционные системы, графический редактор — прикладное ПО.':'❌ Сравните назначение всех четырёх программ.';f.style.color=ok?'var(--green)':'var(--red)'}
+
+const quiz=[
+{q:'Что связывает модули компьютера при магистрально‑модульном принципе?',a:['Общая магистраль','Только накопитель','Только процессор'],c:0},
+{q:'Какое ПО управляет ресурсами компьютера и обеспечивает работу устройств?',a:['Системное','Прикладное','Только игры'],c:0},
+{q:'К чему относится браузер?',a:['Системное ПО','Прикладное ПО','Система программирования'],c:1},
+{q:'Для чего нужен драйвер?',a:['Для обмена данными между ОС и устройством','Для создания презентаций','Для написания текста'],c:0},
+{q:'Что такое утилита?',a:['Служебная программа для проверки и настройки компьютера','Любая компьютерная игра','Язык программирования'],c:0},
+{q:'Что используют для создания и отладки новых программ?',a:['Системы программирования','Только браузеры','Только драйверы'],c:0},
+{q:'Какой вопрос лучше всего помогает определить прикладное ПО?',a:['Какую задачу пользователя решает программа?','Какого цвета её значок?','На каком диске она установлена?'],c:0}
+];
+let qi=0,qs=0,locked=false;
+function renderQuiz(){
+  const q=quiz[qi];document.getElementById('qText').textContent=(qi+1)+'. '+q.q;
+  const box=document.getElementById('qChoices');box.innerHTML='';
+  q.a.forEach((t,i)=>{const b=document.createElement('button');b.className='choice';b.textContent=t;b.onclick=()=>answerQuiz(b,i);box.appendChild(b)});
+  document.getElementById('qFeedback').textContent='';document.getElementById('qNext').style.display='none';document.getElementById('score').textContent=qs+'/7';locked=false;
+}
+function answerQuiz(btn,i){
+  if(locked)return;locked=true;const q=quiz[qi],ok=i===q.c;if(ok)qs++;
+  [...btn.parentElement.children].forEach((b,n)=>{if(n===q.c)b.classList.add('correct')});if(!ok)btn.classList.add('wrong');
+  const f=document.getElementById('qFeedback');f.textContent=ok?'✅ Верно!':'❌ Посмотрите правильный ответ.';f.style.color=ok?'var(--green)':'var(--red)';
+  document.getElementById('score').textContent=qs+'/7';document.getElementById('qNext').style.display='block';document.getElementById('qNext').textContent=qi===quiz.length-1?'Показать результат →':'Следующий вопрос →';
+}
+function quizNext(){
+  if(qi<quiz.length-1){qi++;renderQuiz()}else{
+    document.getElementById('qText').textContent='Тест завершён';
+    document.getElementById('qChoices').innerHTML='<p class="lead">Результат: <strong>'+qs+' из 7</strong>.</p>';
+    const f=document.getElementById('qFeedback');f.textContent=qs===7?'🏆 Отлично!':qs>=5?'👍 Хорошо! Разберите оставшиеся ошибки.':'🔁 Повторите определения и попробуйте ещё раз.';
+    document.getElementById('qNext').style.display='none';
+  }
+}
+renderQuiz();showSlide(0);
+</script>
+</body>
+</html>

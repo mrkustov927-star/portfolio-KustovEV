@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#081326">
+<title>Логическая лаборатория — Информатика, 8 класс</title>
+<style>
+:root{--bg:#071121;--blue:#55d9ff;--violet:#b19aff;--pink:#ff99c8;--mint:#5fe8be;--yellow:#ffdb82;--white:#f5f9ff;--muted:#bad0e6;--line:rgba(126,190,241,.24);--deep:#0a1a31}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;overflow:hidden;font-family:Inter,"Segoe UI",Arial,sans-serif;background:#071121;color:var(--white)}
+body{background:radial-gradient(ellipse 46% 66% at 9% 8%,#153c614f,transparent),radial-gradient(ellipse 45% 62% at 91% 89%,#4c31734c,transparent),linear-gradient(130deg,#060d1b,#0a1e33)}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.26;background:linear-gradient(90deg,transparent 98%,#ffffff12 100%),linear-gradient(transparent 98%,#ffffff10 100%);background-size:42px 42px}
+#stage{height:100dvh;position:relative;isolation:isolate}
+.slide{position:absolute;inset:0;padding:clamp(55px,6.2vh,78px) clamp(24px,5vw,90px) clamp(72px,8vh,92px);display:none;overflow-y:auto}
+.slide.active{display:flex;flex-direction:column;justify-content:center;animation:enter .28s ease}
+@keyframes enter{from{opacity:.6;transform:translateX(12px)}to{opacity:1;transform:none}}
+.eyebrow{color:var(--blue);font-size:clamp(.68rem,1vw,.88rem);font-weight:900;letter-spacing:.18em;text-transform:uppercase;margin-bottom:clamp(9px,1.4vh,20px);display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:"";height:2px;width:34px;background:var(--blue);box-shadow:0 0 12px var(--blue)}
+h1{font-size:clamp(3rem,6.5vw,7.4rem);line-height:.94;letter-spacing:-.067em;margin:0 0 24px;font-weight:950;max-width:1100px}
+h2{font-size:clamp(2rem,4.2vw,4.9rem);letter-spacing:-.055em;line-height:1.05;margin:0 0 16px;font-weight:930}
+h3{font-size:clamp(1.2rem,2vw,2.2rem);letter-spacing:-.024em;margin:0 0 9px}
+p{line-height:1.48;color:var(--muted);font-size:clamp(.99rem,1.5vw,1.55rem);margin:7px 0 13px}
+.lead{font-size:clamp(1.17rem,1.9vw,2rem);max-width:900px}.cyan{color:var(--blue)}.pink{color:var(--pink)}.mint{color:var(--mint)}.yellow{color:var(--yellow)}.violet{color:var(--violet)}
+.grid{display:grid;gap:clamp(12px,1.3vw,23px)}.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}.hero{display:grid;grid-template-columns:1.12fr .88fr;align-items:center;gap:3vw}
+.glass{border:1px solid var(--line);border-radius:26px;background:linear-gradient(145deg,#2a4a686e,#0b1c33d9 58%,#252d5973);box-shadow:inset 0 1px #ffffff26,0 17px 50px #0006,0 0 22px #2380c51c;backdrop-filter:blur(10px);padding:clamp(16px,1.7vw,29px);min-width:0}
+.glass.soft{background:linear-gradient(145deg,#1c3e573c,#0b1c33af)}
+.callout{border-left:4px solid var(--blue);padding:14px 20px;background:#5ed6ff12;border-radius:0 14px 14px 0;color:#e2f3ff;font-size:clamp(1.04rem,1.65vw,1.7rem);line-height:1.4}
+.small{font-size:clamp(.85rem,1.13vw,1.15rem);color:#a8c2db}.bigformula{display:inline-block;font-size:clamp(2rem,4.3vw,4.6rem);font-weight:900;font-family:ui-monospace,"Cascadia Code",Consolas,monospace;letter-spacing:.01em;color:#effaff;line-height:1.2}
+.symbol{font-family:ui-monospace,Consolas,monospace;font-size:clamp(3rem,6vw,6rem);font-weight:900;line-height:1.08}
+.heroScene{position:relative;min-height:300px;display:flex;align-items:center;justify-content:center;border-radius:28px;background:radial-gradient(circle at 48% 53%,#2b6b925b,transparent 62%);border:1px solid #78dfff1f;overflow:hidden}
+.heroScene::before,.heroScene::after{content:"";position:absolute;border-radius:50%;border:1px solid #8ce7ff3e;width:66%;aspect-ratio:1;box-shadow:0 0 55px #16aaf02a}.heroScene::after{width:86%;opacity:.48}
+.mascot{width:clamp(100px,11vw,180px);height:auto;max-height:240px;filter:drop-shadow(0 18px 16px #0008);position:relative;z-index:1;flex:0 0 auto}
+.mascot.smallbot{width:clamp(80px,8vw,130px)}.characters{display:flex;align-items:end;justify-content:center;gap:clamp(2px,1vw,20px);flex-wrap:nowrap}
+.nameplate{font-size:clamp(.7rem,1.2vw,1rem);font-weight:900;text-align:center;margin-top:7px;color:#edf8ff}
+.character{display:flex;flex-direction:column;align-items:center;min-width:0}.character p{text-align:center;font-size:.93rem;margin:3px 0}
+.avatarrow{display:flex;gap:15px;align-items:center}.avatarrow .mascot{width:clamp(56px,6vw,96px)}.avatarrow p{margin:0}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;background:#ffffff0a;border:1px solid var(--line);border-radius:100px;color:#d8edff;font-weight:760;font-size:clamp(.88rem,1.12vw,1.11rem);margin:3px}
+.row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}.stack{display:flex;flex-direction:column;gap:12px}.stack>*{margin-top:0;margin-bottom:0}
+.LED{width:44px;height:44px;border-radius:50%;border:2px solid #ffffff35;background:#41526a;box-shadow:inset 0 3px 8px #0008;transition:.2s}
+.LED.on{background:var(--mint);box-shadow:0 0 36px #5fe8beb0,0 0 0 8px #5fe8be20}
+.switchRow{display:flex;gap:15px;align-items:center;flex-wrap:wrap;margin:12px 0}
+.toggle{appearance:none;border:1px solid #8edbff47;border-radius:999px;padding:12px 20px;min-width:105px;min-height:52px;font-family:inherit;font-size:clamp(1rem,1.4vw,1.32rem);font-weight:900;color:#e1eefa;background:#1d3552;cursor:pointer;transition:.2s}
+.toggle.on{background:#5cecc22b;border-color:#5cecc2;color:var(--mint);box-shadow:0 0 15px #5ee8be26}
+.btn{font-family:inherit;font-size:clamp(.9rem,1.14vw,1.15rem);font-weight:850;appearance:none;cursor:pointer;border:1px solid #8edbff55;border-radius:13px;padding:12px 17px;min-height:44px;background:#5bcbff16;color:#effaff;transition:.18s}
+.btn:hover,.toggle:hover,.pick:hover{transform:translateY(-2px);border-color:#8eeaff;background-color:#5bcbff2c}.btn:focus-visible,.toggle:focus-visible,.pick:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
+.btn.primary{background:linear-gradient(125deg,#6be3ff,#a7b9ff);color:#082038;border-color:transparent;box-shadow:0 4px 21px #4fc9ff2b}.btn.primary:hover{background:linear-gradient(125deg,#a6f1ff,#d5cdff)}
+.pick{font-family:inherit;font-size:clamp(.96rem,1.25vw,1.22rem);font-weight:800;line-height:1.27;appearance:none;cursor:pointer;color:#e9f5ff;border:1px solid var(--line);background:#ffffff0b;border-radius:15px;padding:13px 17px;min-height:53px;text-align:left;transition:.18s}
+.pick.good{border-color:var(--mint);background:#5fe8be18}.pick.bad{border-color:#ff8297;background:#ff829718}.choices{display:grid;gap:10px;margin:14px 0}.choices.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.feedback{color:var(--yellow);font-size:clamp(.94rem,1.17vw,1.22rem);min-height:24px;font-weight:800;line-height:1.4}.feedback.ok{color:var(--mint)}.feedback.err{color:var(--pink)}
+.truth{width:100%;border-collapse:separate;border-spacing:0 7px;text-align:center;font-size:clamp(1rem,1.4vw,1.4rem)}.truth th{color:#a9cbe5;font-size:.86em;font-weight:800;padding:6px}.truth td{padding:11px 12px;background:#ffffff0b}.truth tr td:first-child{border-radius:12px 0 0 12px}.truth tr td:last-child{border-radius:0 12px 12px 0}.truth tbody tr.active td{background:#5de8ff22;box-shadow:inset 0 1px #84e4ff30}.truth .one{color:var(--mint);font-weight:900}.truth .zero{color:#ffb4c7;font-weight:900}.truth select{border-radius:9px;background:#0f2942;color:#fff;border:1px solid #6aa6da65;padding:8px 10px;font-size:1rem;min-width:64px}
+.gate{display:flex;align-items:center;justify-content:center;gap:18px;border-radius:21px;min-height:140px;background:radial-gradient(circle at center,#234d6652,transparent 80%);border:1px dashed #9ac5e947}
+.gate .arrow{font-size:clamp(2rem,3vw,3.5rem);color:var(--blue)}.gate .gateName{font-size:clamp(1.2rem,2.1vw,2.4rem);color:#defaff;font-weight:940;font-family:ui-monospace,Consolas,monospace}
+.expression{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;letter-spacing:.015em;font-weight:890;font-size:clamp(1.7rem,3.1vw,3.4rem);color:#edf9ff;line-height:1.5}
+.miniEq{font-size:clamp(1.25rem,1.7vw,1.8rem);font-family:ui-monospace,Consolas,monospace;color:#e6f9ff;font-weight:780}
+.stepBox{border:1px solid #6bd6ff35;border-radius:17px;padding:13px;background:#58caff0d;font-size:clamp(1.05rem,1.45vw,1.45rem);font-weight:760}
+.stepBox.hiddenStep{opacity:.25;filter:blur(3px)}
+.tag{color:#aad9ec;font-size:.85rem;letter-spacing:.12em;font-weight:900;text-transform:uppercase}
+#menu{position:fixed;inset:0;z-index:100;background:#041020ec;backdrop-filter:blur(20px);display:none;padding:5vh 5vw;overflow:auto}#menu.open{display:block}
+.menuHead{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}.menuGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.menuItem{padding:14px;text-align:left;border-radius:14px;appearance:none;cursor:pointer;font-family:inherit;color:#eaf7ff;background:#ffffff0a;border:1px solid #ffffff23;font-weight:720}.menuItem span{display:block;color:var(--blue);font-size:.78rem;letter-spacing:.1em;margin-bottom:4px}
+.bottom{position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px clamp(16px,3vw,45px) 16px;pointer-events:none}
+.bottom>*{pointer-events:auto}.bottom .btn{background:#07162de6;backdrop-filter:blur(8px);padding:9px 15px;min-height:40px}.bottom .btn.primary{background:linear-gradient(125deg,#6be3ff,#a7b9ff);color:#082038;border-color:transparent}.bottom .btn:disabled{opacity:.38;cursor:not-allowed;transform:none}.status{font-size:.92rem;color:#c1d8ed;font-weight:840;font-variant-numeric:tabular-nums;white-space:nowrap}
+.progress{position:fixed;bottom:0;left:0;height:4px;background:linear-gradient(90deg,var(--blue),var(--violet),var(--mint));width:0;z-index:55;transition:width .28s}
+.quizScores{font-family:ui-monospace,Consolas,monospace;font-weight:950;font-size:clamp(3.2rem,6vw,7rem);color:var(--mint)}
+@media(max-width:980px){.hero{grid-template-columns:1fr}.heroScene{min-height:200px}.characters .mascot{width:100px}.slide{justify-content:flex-start!important;padding-top:70px}.g3,.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.menuGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){html,body{overflow:auto}#stage{height:auto;min-height:100svh}.slide{position:relative;min-height:100svh;padding:78px 18px 95px;display:none;overflow:visible}.slide.active{display:flex}.g2,.g3,.g4,.choices.two{grid-template-columns:1fr}.bottom{padding:8px 10px 12px}.bottom .btn{font-size:.79rem;padding:7px 10px}.glass{padding:15px;border-radius:19px}.heroScene{min-height:170px}.characters .mascot{width:72px}.menuGrid{grid-template-columns:1fr}.truth td{padding:8px 5px}.truth th{padding:4px}h1{font-size:clamp(2.7rem,11vw,4rem)}h2{font-size:clamp(2rem,8vw,3rem)}}
+@media(prefers-reduced-motion:reduce){.slide.active{animation:none}.btn,.toggle,.pick,.progress{transition:none}}
+</style>
+</head>
+<body>
+<svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+ <linearGradient id="gradBot" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#80e6ff"/><stop offset="1" stop-color="#457ef3"/></linearGradient>
+ <linearGradient id="gradFox" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffbb86"/><stop offset="1" stop-color="#ff78be"/></linearGradient>
+ <linearGradient id="gradOwl" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#9dffdb"/><stop offset="1" stop-color="#60b7d9"/></linearGradient>
+ <symbol id="beep" viewBox="0 0 190 236"><circle cx="95" cy="114" r="84" fill="#43ceff" opacity=".07"/><path d="M95 25V47" stroke="#8eeaff" stroke-width="8" stroke-linecap="round"/><circle cx="95" cy="20" r="11" fill="#adf4ff"/><path d="M48 166Q95 144 142 166L153 206Q95 234 37 206Z" fill="url(#gradBot)" stroke="#9de9ff" stroke-width="5"/><rect x="19" y="51" width="152" height="125" rx="47" fill="url(#gradBot)" stroke="#d0fbff" stroke-width="5"/><rect x="32" y="79" width="126" height="74" rx="28" fill="#0c2540"/><ellipse cx="68" cy="114" rx="14" ry="19" fill="#8cfbff"/><ellipse cx="124" cy="114" rx="14" ry="19" fill="#8cfbff"/><rect x="78" y="138" width="34" height="6" rx="3" fill="#64d8ff"/><rect x="8" y="101" width="18" height="34" rx="9" fill="#56b6ed"/><rect x="164" y="101" width="18" height="34" rx="9" fill="#56b6ed"/><rect x="77" y="187" width="36" height="18" rx="9" fill="#103554"/><circle cx="95" cy="195" r="6" fill="#83fcd7"/></symbol>
+ <symbol id="spark" viewBox="0 0 190 236"><circle cx="95" cy="114" r="85" fill="#ff8ece" opacity=".08"/><path d="M30 72L51 7L87 51M160 72L139 7L103 51" fill="url(#gradFox)" stroke="#ffcfaa" stroke-width="5"/><path d="M42 174Q95 153 148 174L159 204Q97 234 31 204Z" fill="url(#gradFox)" stroke="#ffd0af" stroke-width="5"/><path d="M24 100Q23 42 94 41Q169 42 166 100L149 153Q95 204 41 153Z" fill="url(#gradFox)" stroke="#ffdeb7" stroke-width="5"/><path d="M35 111Q94 87 155 111L142 157Q94 178 48 157Z" fill="#ffefd5"/><ellipse cx="66" cy="114" rx="11" ry="16" fill="#152a50"/><ellipse cx="122" cy="114" rx="11" ry="16" fill="#152a50"/><path d="M91 133L99 133L95 140Z" fill="#f3869a"/><path d="M83 146Q95 157 107 146" stroke="#d77392" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M30 82Q95 63 159 82" stroke="#5869bd" stroke-width="8" fill="none"/><path d="M45 92H82M107 92H145" stroke="#3a488a" stroke-width="5"/><path d="M82 92H107" stroke="#3a488a" stroke-width="5"/><circle cx="94" cy="195" r="12" fill="#fff0c4"/></symbol>
+ <symbol id="logic" viewBox="0 0 190 236"><circle cx="95" cy="114" r="82" fill="#79eab6" opacity=".08"/><path d="M34 65L45 27L79 50M156 65L145 27L112 50" fill="url(#gradOwl)" stroke="#b5ffdf" stroke-width="5"/><ellipse cx="95" cy="129" rx="79" ry="89" fill="url(#gradOwl)" stroke="#b7fbe1" stroke-width="5"/><circle cx="65" cy="112" r="37" fill="#133452" stroke="#d0ffeb" stroke-width="5"/><circle cx="126" cy="112" r="37" fill="#133452" stroke="#d0ffeb" stroke-width="5"/><circle cx="67" cy="112" r="16" fill="#e8fff3"/><circle cx="126" cy="112" r="16" fill="#e8fff3"/><circle cx="70" cy="113" r="7" fill="#173b4e"/><circle cx="129" cy="113" r="7" fill="#173b4e"/><path d="M94 130L81 144L108 144Z" fill="#ffdf8f"/><path d="M58 165Q95 187 133 165" fill="none" stroke="#c5ffeb" stroke-width="5" stroke-linecap="round"/><path d="M38 191L66 202M152 191L124 202" stroke="#82dabb" stroke-width="9" stroke-linecap="round"/></symbol>
+ </defs>
+</svg>
+<div id="stage">
+
+<section class="slide active" data-label="Старт миссии">
+ <div class="eyebrow">Информатика · 8 класс · Миссия 01</div>
+ <div class="hero">
+  <div><h1>ЛОГИЧЕСКАЯ<br><span class="cyan">ЛАБОРАТОРИЯ</span></h1><p class="lead">Как компьютер принимает решения, если знает только два ответа: <b class="mint">ИСТИНА</b> и <b class="pink">ЛОЖЬ</b>?</p><div class="row"><span class="pill">Высказывания</span><span class="pill">НЕ · И · ИЛИ</span><span class="pill">Приоритет</span></div></div>
+  <div class="heroScene"><div class="characters"><div class="character"><svg class="mascot"><use href="#beep"/></svg><div class="nameplate">БИП</div></div><div class="character"><svg class="mascot"><use href="#spark"/></svg><div class="nameplate">ИСКРА</div></div><div class="character"><svg class="mascot"><use href="#logic"/></svg><div class="nameplate">ЛОГИК</div></div></div></div>
+ </div>
+</section>
+
+<section class="slide" data-label="Знакомство с героями">
+ <div class="eyebrow">Команда лаборатории</div><h2>Три героя. Одна <span class="cyan">миссия</span>.</h2>
+ <div class="grid g3">
+  <div class="glass"><svg class="mascot smallbot"><use href="#beep"/></svg><h3>Бип</h3><p>Робот, которому нужны только <b>0</b> и <b>1</b>. Он объяснит, что такое логическое значение.</p></div>
+  <div class="glass"><svg class="mascot smallbot"><use href="#spark"/></svg><h3>Искра</h3><p>Проверяет сложные ситуации и задаёт каверзные вопросы.</p></div>
+  <div class="glass"><svg class="mascot smallbot"><use href="#logic"/></svg><h3>Логик</h3><p>Знает правила операций НЕ, И, ИЛИ и порядок их выполнения.</p></div>
+ </div>
+</section>
+
+<section class="slide" data-label="Открой дверь лаборатории">
+ <div class="eyebrow">Разминка · открой дверь</div><h2>Два условия для входа</h2>
+ <div class="grid g2">
+  <div class="glass"><p class="lead">Дверь откроется, если <b class="cyan">есть пропуск И введён код</b>.</p><div class="switchRow"><b>Есть пропуск — A</b><button type="button" id="entryA" class="toggle">0 · НЕТ</button></div><div class="switchRow"><b>Код верный — B</b><button type="button" id="entryB" class="toggle">0 · НЕТ</button></div><div class="miniEq">A ∧ B = <span id="entryValue" class="yellow">0</span></div></div>
+  <div class="glass" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center"><div style="font-size:clamp(4.5rem,8vw,8rem)" id="doorIcon">🔒</div><h3 id="doorLabel">ДВЕРЬ ЗАКРЫТА</h3><p id="doorReason">Попробуйте изменить условия.</p></div>
+ </div>
+</section>
+
+<section class="slide" data-label="Что такое высказывание?">
+ <div class="eyebrow">Разбираемся в понятиях</div><div class="avatarrow"><svg class="mascot"><use href="#spark"/></svg><h2>Что такое <span class="pink">высказывание</span>?</h2></div>
+ <div class="callout"><b>Высказывание</b> — повествовательное предложение, о котором можно однозначно сказать: оно <b>истинно</b> или <b>ложно</b>.</div>
+ <div class="grid g3" style="margin-top:17px"><div class="glass"><span class="tag">Истинно</span><h3 class="mint">2 + 2 = 4</h3><p>Высказывание. Оно верное.</p></div><div class="glass"><span class="tag">Ложно</span><h3 class="pink">7 &lt; 3</h3><p>Высказывание. Оно неверное.</p></div><div class="glass"><span class="tag">Не высказывание</span><h3 class="yellow">Открой книгу!</h3><p>Это побуждение, а не утверждение.</p></div></div>
+</section>
+
+<section class="slide" data-label="Тренажёр высказываний">
+ <div class="eyebrow">Интерактив · детектор высказываний</div><h2>Высказывание или <span class="yellow">нет</span>?</h2>
+ <div class="grid g2"><div class="glass"><span class="tag" id="statementCount">Ситуация 1/6</span><div class="expression" id="statementQuestion" style="min-height:115px">Москва — столица России.</div><div class="choices two"><button class="pick" data-statement="yes" type="button">Да, высказывание</button><button class="pick" data-statement="no" type="button">Нет, не высказывание</button></div><div id="statementFeedback" class="feedback" aria-live="polite"></div><button id="statementNext" type="button" class="btn primary" hidden>Следующий пример →</button></div>
+ <div class="glass"><svg class="mascot smallbot"><use href="#spark"/></svg><h3>Подсказка Искры</h3><p>Не нужно угадывать, верна ли фраза. Достаточно понять: <b>можно ли вообще назвать её истинной или ложной?</b></p><span class="pill">Правильных: <b id="statementScore">0</b> / 6</span></div></div>
+</section>
+
+<section class="slide" data-label="Истина и ложь">
+ <div class="eyebrow">Два логических значения</div><h2>Компьютеру достаточно <span class="cyan">двух значений</span></h2>
+ <div class="grid g2"><div class="glass" style="text-align:center"><div class="symbol mint">1</div><h3>ИСТИНА</h3><p>Да · Верно · TRUE</p></div><div class="glass" style="text-align:center"><div class="symbol pink">0</div><h3>ЛОЖЬ</h3><p>Нет · Неверно · FALSE</p></div></div>
+ <p class="lead" style="margin-top:14px">Например, высказывание «9 делится на 3» имеет значение <b class="mint">1</b>, а «9 — чётное число» — <b class="pink">0</b>.</p>
+</section>
+
+<section class="slide" data-label="Угадай логическое значение">
+ <div class="eyebrow">Интерактив · истина или ложь</div><h2>Чему равно высказывание?</h2>
+ <div class="grid g2"><div class="glass"><span class="tag" id="truthCount">Вопрос 1/5</span><div class="expression" id="truthQuestion" style="min-height:106px">7 &gt; 3</div><div class="choices two"><button class="pick" data-truth="1" type="button">1 — ИСТИНА</button><button class="pick" data-truth="0" type="button">0 — ЛОЖЬ</button></div><div id="truthFeedback" class="feedback" aria-live="polite"></div><button id="truthNext" class="btn primary" type="button" hidden>Следующий вопрос →</button></div><div class="glass"><div class="avatarrow"><svg class="mascot"><use href="#beep"/></svg><div><h3>Бип уже готов!</h3><p>В логических операциях не бывает третьего варианта ответа.</p></div></div><span class="pill">Верных: <b id="truthScore">0</b> / 5</span></div></div>
+</section>
+
+<section class="slide" data-label="Логические переменные">
+ <div class="eyebrow">Запись короткими символами</div><h2>Заменим предложения <span class="cyan">буквами</span></h2>
+ <div class="grid g2"><div class="glass"><h3>A = «Сегодня идёт дождь»</h3><p>Значение A зависит от фактической погоды.</p><div class="bigformula">A ∈ {0, 1}</div></div><div class="glass"><h3>B = «Я взял зонт»</h3><p>Значение B может быть истинным или ложным.</p><div class="bigformula">B ∈ {0, 1}</div></div></div><p class="lead" style="margin-top:17px">Из простых высказываний можно составлять <b>сложные</b> с помощью логических операций.</p>
+</section>
+
+<section class="slide" data-label="Операция НЕ">
+ <div class="eyebrow">Операция 1 из 3</div><div class="avatarrow"><svg class="mascot"><use href="#logic"/></svg><h2><span class="violet">НЕ</span> — отрицание</h2></div>
+ <div class="grid g2"><div class="glass"><p>Отрицание меняет логическое значение на противоположное.</p><div class="bigformula">¬A</div><div class="switchRow"><b>Высказывание A:</b><button id="notA" class="toggle" type="button">0 · ЛОЖЬ</button></div><div class="gate"><div class="symbol" id="notIn">0</div><span class="arrow">→</span><div class="gateName">НЕ</div><span class="arrow">→</span><div class="symbol mint" id="notOut">1</div></div></div><div class="glass"><h3>Таблица истинности НЕ</h3><table class="truth"><thead><tr><th>A</th><th>¬A</th></tr></thead><tbody><tr id="notRow0"><td class="zero">0</td><td class="one">1</td></tr><tr id="notRow1"><td class="one">1</td><td class="zero">0</td></tr></tbody></table><p><b class="violet">Правило:</b> если A истинно, НЕ A ложно — и наоборот.</p></div></div>
+</section>
+
+<section class="slide" data-label="Отрицание на практике">
+ <div class="eyebrow">Объясняет Искра</div><h2>Как правильно сказать <span class="violet">«НЕ»</span>?</h2>
+ <div class="grid g2"><div class="glass"><p class="small">Исходное высказывание</p><h3>«Число 12 — нечётное»</h3><div class="callout">ЛОЖЬ · 0</div><p class="small">После отрицания</p><h3>«Неверно, что число 12 — нечётное»</h3><div class="callout"><span class="mint">ИСТИНА · 1</span></div></div><div class="glass"><h3>Не перепутай!</h3><p>Отрицание должно <b>полностью менять смысл</b> высказывания, а не просто добавлять случайное слово «не».</p><div class="avatarrow"><svg class="mascot"><use href="#spark"/></svg><p>¬0 = 1 и ¬1 = 0 — это две строки одной таблицы.</p></div></div></div>
+</section>
+
+<section class="slide" data-label="Операция И">
+ <div class="eyebrow">Операция 2 из 3</div><h2><span class="cyan">И</span> — логическое умножение</h2>
+ <div class="callout"><b>A ∧ B</b> истинно <b>только тогда, когда оба</b> высказывания истинны.</div>
+ <div class="grid g2" style="margin-top:16px"><div class="glass"><h3>Поездка состоится, если:</h3><p>Есть билет <b>И</b> есть разрешение.</p><div class="miniEq">1 ∧ 1 = <span class="mint">1</span></div><div class="miniEq">1 ∧ 0 = <span class="pink">0</span></div></div><div class="glass"><h3>Формула</h3><div class="bigformula">A ∧ B</div><p>Также называется <b>конъюнкция</b>.</p></div></div>
+</section>
+
+<section class="slide" data-label="Логический турникет И">
+ <div class="eyebrow">Интерактив · проверяем конъюнкцию</div><h2>Управляй турникетом <span class="cyan">И</span></h2>
+ <div class="grid g2"><div class="glass"><div class="switchRow"><b>Есть билет A</b><button id="andA" class="toggle" type="button">0 · НЕТ</button></div><div class="switchRow"><b>Есть разрешение B</b><button id="andB" class="toggle" type="button">0 · НЕТ</button></div><div class="gate"><span class="bigformula" id="andExpr">0 ∧ 0</span><span class="arrow">→</span><div id="andLamp" class="LED"></div></div><div class="miniEq" style="margin-top:9px">A ∧ B = <b id="andValue" class="pink">0</b></div></div><div class="glass"><h3>Таблица истинности И</h3><table class="truth"><thead><tr><th>A</th><th>B</th><th>A ∧ B</th></tr></thead><tbody id="andRows"></tbody></table><p class="small">Переключите A и B и посмотрите, как подсвечивается нужная строка.</p></div></div>
+</section>
+
+<section class="slide" data-label="Операция ИЛИ">
+ <div class="eyebrow">Операция 3 из 3</div><h2><span class="yellow">ИЛИ</span> — логическое сложение</h2>
+ <div class="callout"><b>A ∨ B</b> истинно, когда <b>хотя бы одно</b> высказывание истинно.</div>
+ <div class="grid g2" style="margin-top:16px"><div class="glass"><h3>Приз можно получить, если:</h3><p>Решил задачу <b>ИЛИ</b> выиграл викторину.</p><div class="miniEq">1 ∨ 0 = <span class="mint">1</span></div><div class="miniEq">1 ∨ 1 = <span class="mint">1</span></div></div><div class="glass"><h3>Внимание!</h3><p>В логике «ИЛИ» означает <b>одно, другое или оба сразу</b>.</p><div class="bigformula">A ∨ B</div><p>Название — <b>дизъюнкция</b>.</p></div></div>
+</section>
+
+<section class="slide" data-label="Логический турникет ИЛИ">
+ <div class="eyebrow">Интерактив · проверяем дизъюнкцию</div><h2>Запусти лампу <span class="yellow">ИЛИ</span></h2>
+ <div class="grid g2"><div class="glass"><div class="switchRow"><b>Решил задачу A</b><button id="orA" class="toggle" type="button">0 · НЕТ</button></div><div class="switchRow"><b>Выиграл викторину B</b><button id="orB" class="toggle" type="button">0 · НЕТ</button></div><div class="gate"><span class="bigformula" id="orExpr">0 ∨ 0</span><span class="arrow">→</span><div id="orLamp" class="LED"></div></div><div class="miniEq" style="margin-top:9px">A ∨ B = <b id="orValue" class="pink">0</b></div></div><div class="glass"><h3>Таблица истинности ИЛИ</h3><table class="truth"><thead><tr><th>A</th><th>B</th><th>A ∨ B</th></tr></thead><tbody id="orRows"></tbody></table><p class="small">Даже когда оба условия истинны, результат равен 1.</p></div></div>
+</section>
+
+<section class="slide" data-label="Сравнение И и ИЛИ">
+ <div class="eyebrow">Сравни три операции</div><h2>А что будет с <span class="cyan">одними и теми же</span> числами?</h2>
+ <div class="glass"><table class="truth"><thead><tr><th>A</th><th>B</th><th>A ∧ B (И)</th><th>A ∨ B (ИЛИ)</th></tr></thead><tbody><tr><td class="zero">0</td><td class="zero">0</td><td class="zero">0</td><td class="zero">0</td></tr><tr><td class="zero">0</td><td class="one">1</td><td class="zero">0</td><td class="one">1</td></tr><tr><td class="one">1</td><td class="zero">0</td><td class="zero">0</td><td class="one">1</td></tr><tr><td class="one">1</td><td class="one">1</td><td class="one">1</td><td class="one">1</td></tr></tbody></table></div>
+ <p class="lead">Главное различие: <b>И требует выполнения двух условий</b>, а <b>ИЛИ — хотя бы одного</b>.</p>
+</section>
+
+<section class="slide" data-label="Собери таблицу истинности">
+ <div class="eyebrow">Интерактив · заполни таблицу</div><h2>Ты — главный <span class="mint">логик</span></h2>
+ <div class="grid g2"><div class="glass"><table class="truth" id="truthFill"><thead><tr><th>A</th><th>B</th><th>A ∧ B</th><th>A ∨ B</th></tr></thead><tbody></tbody></table><div class="row"><button id="truthFillCheck" class="btn primary" type="button">Проверить таблицу</button><button id="truthFillReset" class="btn" type="button">Очистить</button></div><div id="truthFillFeedback" class="feedback" aria-live="polite"></div></div><div class="glass"><svg class="mascot smallbot"><use href="#logic"/></svg><h3>Алгоритм</h3><p>Для каждой строки определите оба результата. Всего нужно заполнить <b>8 клеток</b>.</p><p class="small">1 — истинно, 0 — ложно. Если ошиблись, исправьте клетку и проверьте ещё раз.</p></div></div>
+</section>
+
+<section class="slide" data-label="Узнай операцию по условию">
+ <div class="eyebrow">Интерактив · переведи с русского языка</div><h2>Какой знак <span class="yellow">подходит</span>?</h2>
+ <div class="grid g2"><div class="glass"><span id="operatorCount" class="tag">Ситуация 1/6</span><h3 id="operatorCase" style="min-height:85px">Для награды нужно выполнить оба задания.</h3><div class="choices"><button class="pick opPick" data-op="not" type="button">¬ НЕ</button><button class="pick opPick" data-op="and" type="button">∧ И</button><button class="pick opPick" data-op="or" type="button">∨ ИЛИ</button></div><div id="operatorFeedback" class="feedback" aria-live="polite"></div><button id="operatorNext" class="btn primary" type="button" hidden>Следующая ситуация →</button></div><div class="glass"><div class="avatarrow"><svg class="mascot"><use href="#spark"/></svg><div><h3>Искра напоминает</h3><p><b>оба</b> → И; <b>хотя бы одно</b> → ИЛИ; <b>неверно, что</b> → НЕ.</p></div></div><span class="pill">Верных: <b id="operatorScore">0</b> / 6</span></div></div>
+</section>
+
+<section class="slide" data-label="Приоритет операций">
+ <div class="eyebrow">Самое важное правило</div><h2>В каком порядке <span class="cyan">считать</span>?</h2>
+ <div class="grid g3"><div class="glass"><div class="tag">Сначала</div><div class="symbol violet">( )</div><h3>Скобки</h3><p>Если они есть, выполняем выражение внутри.</p></div><div class="glass"><div class="tag">1-е действие</div><div class="symbol cyan">¬</div><h3>НЕ</h3><p>Отрицание имеет наивысший приоритет из трёх операций.</p></div><div class="glass"><div class="tag">2-е → 3-е действие</div><div class="row"><span class="symbol mint">∧</span><span class="symbol yellow">∨</span></div><h3>И, затем ИЛИ</h3><p>Конъюнкция раньше дизъюнкции.</p></div></div>
+ <p class="lead" style="margin-top:15px">Запомни: <span class="violet">скобки</span> → <span class="cyan">НЕ</span> → <span class="mint">И</span> → <span class="yellow">ИЛИ</span>.</p>
+</section>
+
+<section class="slide" data-label="Зачем нужны скобки?">
+ <div class="eyebrow">Интерактив · скобки меняют значение</div><h2>Одинаковые буквы — <span class="pink">разные результаты</span></h2>
+ <div class="grid g2"><div class="glass"><div class="expression">¬A ∨ B ∧ C</div><div class="expression" style="color:var(--blue);font-size:clamp(1.3rem,2.5vw,2.5rem)">¬A ∨ (B ∧ C)</div><div class="switchRow"><b>A</b><button type="button" class="toggle" id="precA">0 · ЛОЖЬ</button><b>B</b><button type="button" class="toggle" id="precB">0 · ЛОЖЬ</button><b>C</b><button type="button" class="toggle" id="precC">0 · ЛОЖЬ</button></div><div class="stepBox">По правилам: <span id="precTrue" class="mint">1</span></div></div><div class="glass"><h3>А если поставить другие скобки?</h3><div class="expression" style="font-size:clamp(1.3rem,2.4vw,2.5rem)">(¬A ∨ B) ∧ C</div><div class="stepBox">С другими скобками: <span id="precFalse" class="pink">0</span></div><div class="feedback" id="precFeedback">При A = B = C = 0 результаты различаются!</div></div></div>
+</section>
+
+<section class="slide" data-label="Решаем по шагам">
+ <div class="eyebrow">Разбор · не путай порядок</div><h2>Вычислим <span class="cyan">¬A ∨ B ∧ C</span></h2>
+ <div class="glass"><div class="row"><span class="pill">A = 0</span><span class="pill">B = 1</span><span class="pill">C = 0</span></div><div class="expression" style="margin:7px 0 13px">¬0 ∨ 1 ∧ 0</div><div class="grid g3" id="explainSteps"><div class="stepBox hiddenStep">1. НЕ: ¬0 = <span class="mint">1</span></div><div class="stepBox hiddenStep">2. И: 1 ∧ 0 = <span class="pink">0</span></div><div class="stepBox hiddenStep">3. ИЛИ: 1 ∨ 0 = <span class="mint">1</span></div></div><div class="row" style="margin-top:15px"><button id="explainNext" class="btn primary" type="button">Показать шаг →</button><button id="explainReset" class="btn" type="button">Сначала</button><div class="feedback" id="explainFeedback"></div></div></div>
+</section>
+
+<section class="slide" data-label="Тренажёр выражений">
+ <div class="eyebrow">Интерактив · вычисли логическое выражение</div><h2>Найди <span class="mint">значение</span></h2>
+ <div class="grid g2"><div class="glass"><span class="tag" id="evalCount">Задание 1/4</span><h3 id="evalValues">A = 1, B = 0</h3><div class="expression" id="evalExpr">¬A ∨ B</div><div class="choices two"><button class="pick evalPick" type="button" data-eval="0">0 · ЛОЖЬ</button><button class="pick evalPick" type="button" data-eval="1">1 · ИСТИНА</button></div><div id="evalFeedback" class="feedback" aria-live="polite"></div><button id="evalNext" class="btn primary" type="button" hidden>Следующее выражение →</button></div><div class="glass"><div class="avatarrow"><svg class="mascot"><use href="#logic"/></svg><div><h3>Порядок — наш помощник</h3><p>Сначала скобки, затем НЕ, потом И, затем ИЛИ.</p></div></div><span class="pill">Верных: <b id="evalScore">0</b> / 4</span></div></div>
+</section>
+
+<section class="slide" data-label="Задача из жизни">
+ <div class="eyebrow">Задача с условием</div><h2>Пойдём на <span class="yellow">экскурсию</span>?</h2>
+ <div class="grid g2"><div class="glass"><p>Экскурсия состоится, если <b>есть разрешение родителей</b> и при этом <b>хорошая погода или поездка проходит в музее</b>.</p><div class="callout">A ∧ (B ∨ C)</div><div class="row" style="margin-top:14px"><span class="pill">A = 1</span><span class="pill">B = 0</span><span class="pill">C = 1</span></div><div class="choices two"><button class="pick tripPick" data-trip="1" type="button">Экскурсия состоится</button><button class="pick tripPick" data-trip="0" type="button">Экскурсия не состоится</button></div><div id="tripFeedback" class="feedback" aria-live="polite"></div></div><div class="glass"><svg class="mascot smallbot"><use href="#spark"/></svg><h3>Перевод условий</h3><p>A — разрешение получено.</p><p>B — хорошая погода.</p><p>C — экскурсия в музее.</p></div></div>
+</section>
+
+<section class="slide" data-label="Повтори три главных правила">
+ <div class="eyebrow">Повторение перед проверкой</div><h2>Логика за <span class="cyan">20 секунд</span></h2>
+ <div class="grid g3"><div class="glass"><div class="symbol violet">¬</div><h3>НЕ</h3><p>Меняет 1 на 0, а 0 на 1.</p></div><div class="glass"><div class="symbol mint">∧</div><h3>И</h3><p>Только два истинных условия дают 1.</p></div><div class="glass"><div class="symbol yellow">∨</div><h3>ИЛИ</h3><p>Хотя бы одно истинное условие даёт 1.</p></div></div>
+ <div class="callout" style="margin-top:15px"><b>Приоритет:</b> скобки → НЕ → И → ИЛИ.</div>
+</section>
+
+<section class="slide" data-label="Итоговый тест">
+ <div class="eyebrow">Финальная миссия · проверка знаний</div><h2>Пройди <span class="cyan">логический тест</span></h2>
+ <div class="grid g2"><div class="glass"><span id="quizCount" class="tag">Вопрос 1 из 10</span><h3 id="quizQuestion" style="min-height:75px">Что такое высказывание?</h3><div class="choices" id="quizChoices"></div><div id="quizFeedback" class="feedback" aria-live="polite"></div><div class="row"><button id="quizNext" class="btn primary" type="button" hidden>Следующий вопрос →</button><button id="quizRestart" class="btn" type="button" hidden>Пройти снова</button></div></div><div class="glass" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center"><svg class="mascot smallbot"><use href="#beep"/></svg><div class="quizScores"><span id="quizScore">0</span>/10</div><p id="quizScoreText">Думай самостоятельно. После ответа появится объяснение.</p></div></div>
+</section>
+
+<section class="slide" data-label="Миссия выполнена">
+ <div class="eyebrow">Логическая лаборатория · финал</div><div class="hero"><div><h1 style="font-size:clamp(2.8rem,5.8vw,6rem)">МИССИЯ<br><span class="mint">ВЫПОЛНЕНА!</span></h1><p class="lead">Теперь ты умеешь отличать высказывания, определять истину и ложь, применять НЕ, И, ИЛИ и вычислять выражения по правилам приоритета.</p><div class="row"><span class="pill">ИСТИНА = 1</span><span class="pill">ЛОЖЬ = 0</span><span class="pill">¬ → ∧ → ∨</span></div></div><div class="heroScene"><div class="characters"><div class="character"><svg class="mascot"><use href="#beep"/></svg><div class="nameplate">БИП</div></div><div class="character"><svg class="mascot"><use href="#spark"/></svg><div class="nameplate">ИСКРА</div></div><div class="character"><svg class="mascot"><use href="#logic"/></svg><div class="nameplate">ЛОГИК</div></div></div></div></div>
+</section>
+</div>
+<nav class="bottom" aria-label="Навигация по презентации"><div class="row"><button class="btn" id="menuOpen" type="button" aria-label="Оглавление">☰ Оглавление</button><span class="status" id="position">01 / 24</span></div><div class="row"><button class="btn" id="prev" type="button">← Назад</button><button class="btn primary" id="next" type="button">Вперёд →</button><button class="btn" id="fullscreen" type="button" title="На весь экран">⛶</button></div></nav>
+<div id="progress" class="progress"></div>
+<div id="menu" role="dialog" aria-modal="true" aria-label="Оглавление"><div class="menuHead"><h2>Оглавление</h2><button id="menuClose" class="btn">✕ Закрыть</button></div><div class="menuGrid" id="menuGrid"></div></div>
+<script>
+'use strict';
+const $=id=>document.getElementById(id);
+const slides=[...document.querySelectorAll('.slide')];let slideIndex=0;
+function showSlide(index){slideIndex=Math.max(0,Math.min(slides.length-1,index));slides.forEach((s,i)=>s.classList.toggle('active',i===slideIndex));$('position').textContent=String(slideIndex+1).padStart(2,'0')+' / '+slides.length;$('progress').style.width=((slideIndex+1)/slides.length*100)+'%';$('next').disabled=slideIndex===slides.length-1;$('prev').disabled=slideIndex===0;window.scrollTo(0,0)}
+$('prev').onclick=()=>showSlide(slideIndex-1);$('next').onclick=()=>showSlide(slideIndex+1);
+function closeMenu(){$('menu').classList.remove('open')}
+$('menuOpen').onclick=()=>$('menu').classList.add('open');$('menuClose').onclick=closeMenu;
+slides.forEach((slide,i)=>{const b=document.createElement('button');b.className='menuItem';b.type='button';b.innerHTML='<span>'+String(i+1).padStart(2,'0')+'</span>'+slide.dataset.label;b.onclick=()=>{showSlide(i);closeMenu()};$('menuGrid').append(b)});
+$('fullscreen').onclick=()=>{if(document.fullscreenElement){document.exitFullscreen?.()}else{document.documentElement.requestFullscreen?.().catch(()=>{})}};
+document.addEventListener('keydown',e=>{if($('menu').classList.contains('open')){if(e.key==='Escape')closeMenu();return}if(['INPUT','SELECT','TEXTAREA','BUTTON'].includes(document.activeElement?.tagName))return;if(e.key==='ArrowRight'||e.key==='PageDown'){e.preventDefault();showSlide(slideIndex+1)}if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();showSlide(slideIndex-1)}});
+
+const switches={};
+function switchBind(id,listener,initial=0){switches[id]=initial;$(id).onclick=()=>{switches[id]=1-switches[id];renderSwitch(id);listener?.()};renderSwitch(id)}
+function renderSwitch(id){const v=switches[id],b=$(id);b.textContent=v?'1 · ДА':'0 · НЕТ';b.classList.toggle('on',Boolean(v));b.setAttribute('aria-pressed',String(Boolean(v)))}
+function setFeedback(id,text,kind){$(id).textContent=text;$(id).className='feedback '+(kind||'')}
+switchBind('entryA',renderDoor);switchBind('entryB',renderDoor);
+function renderDoor(){const pass=switches.entryA && switches.entryB;$('entryValue').textContent=Number(Boolean(pass));$('doorIcon').textContent=pass?'🔓':'🔒';$('doorLabel').textContent=pass?'ДВЕРЬ ОТКРЫТА':'ДВЕРЬ ЗАКРЫТА';$('doorReason').textContent=pass?'Оба условия выполнены.':'Нужно выполнить оба условия сразу.'}
+renderDoor();
+
+function createPager(items,idPrefix,cb){let i=0,score=0,locked=false;const el=id=>$(idPrefix+id);function render(){const q=items[i];el('Count').textContent=(idPrefix==='statement'?'Ситуация ':'Вопрос ')+(i+1)+'/'+items.length;el('Question').textContent=q.text;el('Feedback').textContent='';el('Feedback').className='feedback';el('Next').hidden=true;document.querySelectorAll('[data-'+(idPrefix==='statement'?'statement':'truth')+']').forEach(b=>{b.disabled=false;b.classList.remove('good','bad')});locked=false}function answer(value,btn){if(locked)return;locked=true;const q=items[i],ok=value===q.ans;score+=Number(ok);el('Score').textContent=score;setFeedback(idPrefix+'Feedback',(ok?'✅ ':'❌ ')+q.why,ok?'ok':'err');btn.classList.add(ok?'good':'bad');el('Next').hidden=false;document.querySelectorAll('[data-'+(idPrefix==='statement'?'statement':'truth')+']').forEach(b=>b.disabled=true);el('Next').textContent=i===items.length-1?'Завершить →':'Следующий пример →'}function next(){if(i<items.length-1){i++;render()}else{el('Question').textContent='Готово! Результат: '+score+'/'+items.length;el('Next').hidden=true;el('Feedback').textContent=score===items.length?'🏆 Отлично!':'Разберите ошибки вместе с классом.';document.querySelectorAll('[data-'+(idPrefix==='statement'?'statement':'truth')+']').forEach(b=>b.disabled=true)}}return{render,answer,next}}
+const statementGame=createPager([
+ {text:'Москва — столица России.',ans:'yes',why:'Это утверждение, которое можно оценить как истинное.'},
+ {text:'5 × 6 = 40.',ans:'yes',why:'Даже ложное утверждение является высказыванием.'},
+ {text:'Сколько сейчас времени?',ans:'no',why:'Вопрос не имеет значения «истина» или «ложь».'},
+ {text:'Закрой окно!',ans:'no',why:'Команда — это не высказывание.'},
+ {text:'12 делится на 3.',ans:'yes',why:'Это определённое истинное утверждение.'},
+ {text:'x + 2 = 7.',ans:'no',why:'Значение x неизвестно; без него это высказывательная форма, а не определённое высказывание.'}
+],'statement');
+document.querySelectorAll('[data-statement]').forEach(b=>b.onclick=()=>statementGame.answer(b.dataset.statement,b));$('statementNext').onclick=statementGame.next;statementGame.render();
+const truthGame=createPager([
+ {text:'7 > 3',ans:'1',why:'7 больше 3: истина.'},
+ {text:'2 + 2 = 5',ans:'0',why:'2 + 2 = 4, поэтому это ложь.'},
+ {text:'В треугольнике четыре угла.',ans:'0',why:'У треугольника три угла.'},
+ {text:'0 < 1',ans:'1',why:'0 действительно меньше 1.'},
+ {text:'9 делится на 3 без остатка.',ans:'1',why:'9 ÷ 3 = 3: истина.'}
+],'truth');
+document.querySelectorAll('[data-truth]').forEach(b=>b.onclick=()=>truthGame.answer(b.dataset.truth,b));$('truthNext').onclick=truthGame.next;truthGame.render();
+function renderNot(){const a=switches.notA;$('notIn').textContent=a;$('notOut').textContent=1-a;$('notRow0').classList.toggle('active',a===0);$('notRow1').classList.toggle('active',a===1)}
+switchBind('notA',renderNot);renderNot();
+function renderGate(op){const a=switches[op+'A'],b=switches[op+'B'],res=op==='and'?(a&&b):(a||b);$(op+'Expr').textContent=a+' '+(op==='and'?'∧':'∨')+' '+b;$(op+'Value').textContent=Number(Boolean(res));$(op+'Value').className=res?'mint':'pink';$(op+'Lamp').classList.toggle('on',Boolean(res));[...$(op+'Rows').children].forEach(row=>row.classList.toggle('active',row.dataset.key===a+','+b))}
+for(const op of ['and','or']){const body=$(op+'Rows');for(const [a,b] of [[0,0],[0,1],[1,0],[1,1]]){const result=op==='and'?a&b:a|b;const tr=document.createElement('tr');tr.dataset.key=a+','+b;tr.innerHTML='<td class="'+(a?'one':'zero')+'">'+a+'</td><td class="'+(b?'one':'zero')+'">'+b+'</td><td class="'+(result?'one':'zero')+'">'+result+'</td>';body.appendChild(tr)}switchBind(op+'A',()=>renderGate(op));switchBind(op+'B',()=>renderGate(op));renderGate(op)}
+
+const fillTbody=document.querySelector('#truthFill tbody');for(const [a,b] of [[0,0],[0,1],[1,0],[1,1]]){let tr=document.createElement('tr');tr.innerHTML='<td>'+a+'</td><td>'+b+'</td>'+['and','or'].map(type=>'<td><select aria-label="'+(type==='and'?'И':'ИЛИ')+' при '+a+' и '+b+'" data-a="'+a+'" data-b="'+b+'" data-type="'+type+'"><option value="">?</option><option value="0">0</option><option value="1">1</option></select></td>').join('');fillTbody.appendChild(tr)}
+$('truthFillCheck').onclick=()=>{let ok=0,filled=0;for(const select of document.querySelectorAll('#truthFill select')){const a=Number(select.dataset.a),b=Number(select.dataset.b),right=select.dataset.type==='and'?(a&b):(a|b);if(select.value!=='')filled++;if(select.value===String(right)){ok++;select.style.borderColor='var(--mint)'}else select.style.borderColor='var(--pink)'}setFeedback('truthFillFeedback',filled<8?'Заполнено '+filled+'/8. Правильно: '+ok+'/8.':ok===8?'🏆 Отлично! Все 8 клеток верны.':'Правильно '+ok+'/8. Исправь розовые клетки. ',ok===8?'ok':'err')};
+$('truthFillReset').onclick=()=>{document.querySelectorAll('#truthFill select').forEach(s=>{s.value='';s.style.borderColor=''});setFeedback('truthFillFeedback','','')};
+
+const opCases=[
+ {text:'Для награды нужно выполнить оба задания.',ans:'and',why:'Оба — это операция И.'},
+ {text:'Достаточно прийти с билетом или с пригласительным.',ans:'or',why:'Хватит хотя бы одного условия: ИЛИ.'},
+ {text:'Неверно, что сегодня выходной.',ans:'not',why:'Неверно, что… — отрицание НЕ.'},
+ {text:'Робот поедет, когда включены оба датчика.',ans:'and',why:'Требуются два истинных сигнала одновременно.'},
+ {text:'Лампа горит, если нажата хотя бы одна кнопка.',ans:'or',why:'Достаточно одной истинной кнопки.'},
+ {text:'Задача состоит в том, чтобы изменить ответ на противоположный.',ans:'not',why:'Противоположное значение даёт НЕ.'}
+];let opIndex=0,opScore=0,opLocked=false;
+function renderOp(){const d=opCases[opIndex];$('operatorCount').textContent='Ситуация '+(opIndex+1)+'/'+opCases.length;$('operatorCase').textContent=d.text;setFeedback('operatorFeedback','','');$('operatorNext').hidden=true;opLocked=false;document.querySelectorAll('.opPick').forEach(b=>{b.disabled=false;b.classList.remove('good','bad')})}
+document.querySelectorAll('.opPick').forEach(b=>b.onclick=()=>{if(opLocked)return;opLocked=true;const d=opCases[opIndex],ok=b.dataset.op===d.ans;opScore+=Number(ok);$('operatorScore').textContent=opScore;setFeedback('operatorFeedback',(ok?'✅ ':'❌ ')+d.why,ok?'ok':'err');b.classList.add(ok?'good':'bad');$('operatorNext').hidden=false;document.querySelectorAll('.opPick').forEach(x=>x.disabled=true)});
+$('operatorNext').onclick=()=>{if(opIndex<opCases.length-1){opIndex++;renderOp()}else{$('operatorCase').textContent='Готово! '+opScore+'/'+opCases.length;$('operatorNext').hidden=true;setFeedback('operatorFeedback','Умеешь выбирать логическую операцию по смыслу!','ok')}};renderOp();
+
+function renderPrec(){const a=switches.precA,b=switches.precB,c=switches.precC;const regular=(!a)||(b&&c),withOther=((!a)||b)&&c;$('precTrue').textContent=Number(regular);$('precFalse').textContent=Number(withOther);$('precTrue').className=regular?'mint':'pink';$('precFalse').className=withOther?'mint':'pink';$('precFeedback').textContent=regular===withOther?'Сейчас результаты одинаковы. Измените A, B или C.':'Результаты различаются — значит скобки важны!'}
+for(const name of ['A','B','C'])switchBind('prec'+name,renderPrec);renderPrec();
+let revealed=0;
+function drawExplain(){[...document.querySelectorAll('#explainSteps .stepBox')].forEach((b,i)=>b.classList.toggle('hiddenStep',i>=revealed));$('explainFeedback').textContent=revealed===3?'Ответ: 1 (истина).':'Показано шагов: '+revealed+' из 3';}
+$('explainNext').onclick=()=>{revealed=Math.min(3,revealed+1);drawExplain()};$('explainReset').onclick=()=>{revealed=0;drawExplain()};drawExplain();
+
+const evalCases=[
+ {values:'A = 1, B = 0',expr:'¬A ∨ B',ans:0,why:'¬1 = 0; 0 ∨ 0 = 0.'},
+ {values:'A = 1, B = 0, C = 1',expr:'A ∧ (B ∨ C)',ans:1,why:'0 ∨ 1 = 1; 1 ∧ 1 = 1.'},
+ {values:'A = 0, B = 1',expr:'¬(A ∨ B)',ans:0,why:'0 ∨ 1 = 1; ¬1 = 0.'},
+ {values:'A = 0, B = 1, C = 0',expr:'¬A ∨ B ∧ C',ans:1,why:'¬0 = 1; 1 ∧ 0 = 0; 1 ∨ 0 = 1.'}
+];let evalIndex=0,evalScore=0,evalLocked=false;
+function renderEval(){const d=evalCases[evalIndex];$('evalCount').textContent='Задание '+(evalIndex+1)+'/'+evalCases.length;$('evalValues').textContent=d.values;$('evalExpr').textContent=d.expr;setFeedback('evalFeedback','','');$('evalNext').hidden=true;evalLocked=false;document.querySelectorAll('.evalPick').forEach(b=>{b.classList.remove('good','bad');b.disabled=false})}
+document.querySelectorAll('.evalPick').forEach(b=>b.onclick=()=>{if(evalLocked)return;evalLocked=true;const d=evalCases[evalIndex],ok=Number(b.dataset.eval)===d.ans;evalScore+=Number(ok);$('evalScore').textContent=evalScore;setFeedback('evalFeedback',(ok?'✅ ':'❌ ')+d.why,ok?'ok':'err');b.classList.add(ok?'good':'bad');document.querySelectorAll('.evalPick').forEach(x=>x.disabled=true);$('evalNext').hidden=false});
+$('evalNext').onclick=()=>{if(evalIndex<evalCases.length-1){evalIndex++;renderEval()}else{$('evalExpr').textContent='Тренировка завершена: '+evalScore+'/4';$('evalNext').hidden=true;setFeedback('evalFeedback','Переходим к финальной миссии.','ok')}};renderEval();
+let tripLocked=false;document.querySelectorAll('.tripPick').forEach(b=>b.onclick=()=>{if(tripLocked)return;tripLocked=true;const ok=b.dataset.trip==='1';setFeedback('tripFeedback',(ok?'✅ ':'❌ ')+'B ∨ C = 0 ∨ 1 = 1; A ∧ 1 = 1. Экскурсия состоится.',ok?'ok':'err');b.classList.add(ok?'good':'bad');document.querySelectorAll('.tripPick').forEach(x=>x.disabled=true)});
+
+const quiz=[
+ {q:'Что из перечисленного является логическим высказыванием?',opts:['Как дела?','Закрой дверь!','5 × 5 = 25','Напиши число.'],a:2,why:'Утверждение 5 × 5 = 25 можно оценить как истинное.'},
+ {q:'Какое значение имеет высказывание «10 < 4»?',opts:['1','0','2','Зависит от погоды'],a:1,why:'10 не меньше 4, значит высказывание ложно: 0.'},
+ {q:'Чему равно ¬1?',opts:['1','0','2','Нельзя вычислить'],a:1,why:'Отрицание меняет истину на ложь.'},
+ {q:'Чему равно 1 ∧ 0?',opts:['1','0','2','Неопределённо'],a:1,why:'Для операции И оба условия должны быть истинны.'},
+ {q:'Чему равно 0 ∨ 1?',opts:['0','2','1','Неопределённо'],a:2,why:'Для ИЛИ достаточно одного истинного условия.'},
+ {q:'Чему равно 1 ∨ 1?',opts:['0','1','2','10'],a:1,why:'Логическое ИЛИ — включающее: оба истинных условия дают 1.'},
+ {q:'Что выполняется раньше в ¬A ∨ B ∧ C?',opts:['ИЛИ','И','НЕ','Все одновременно'],a:2,why:'Без скобок первым выполняется НЕ, затем И, затем ИЛИ.'},
+ {q:'Если A = 1, B = 0, чему равно ¬A ∨ B?',opts:['0','1','2','3'],a:0,why:'¬1 = 0 и 0 ∨ 0 = 0.'},
+ {q:'Чему равно (1 ∨ 0) ∧ 0?',opts:['1','2','0','Не определено'],a:2,why:'В скобках 1, затем 1 ∧ 0 = 0.'},
+ {q:'Когда A ∧ B равно 1?',opts:['A = 0, B = 0','A = 0, B = 1','A = 1, B = 0','A = 1, B = 1'],a:3,why:'И истинно только при A = 1 и B = 1.'}
+];let quizIndex=0,quizScore=0,quizLocked=false;
+function renderQuiz(){const d=quiz[quizIndex];$('quizCount').textContent='Вопрос '+(quizIndex+1)+' из 10';$('quizQuestion').textContent=d.q;const wrap=$('quizChoices');wrap.innerHTML='';d.opts.forEach((choice,i)=>{const b=document.createElement('button');b.className='pick';b.type='button';b.textContent=choice;b.onclick=()=>answerQuiz(i,b);wrap.appendChild(b)});quizLocked=false;$('quizNext').hidden=true;$('quizRestart').hidden=true;setFeedback('quizFeedback','','')}
+function answerQuiz(i,btn){if(quizLocked)return;quizLocked=true;const d=quiz[quizIndex],ok=i===d.a;quizScore+=Number(ok);$('quizScore').textContent=quizScore;btn.classList.add(ok?'good':'bad');[...$('quizChoices').children].forEach((b,j)=>{b.disabled=true;if(j===d.a)b.classList.add('good')});setFeedback('quizFeedback',(ok?'✅ ':'❌ ')+d.why,ok?'ok':'err');$('quizNext').hidden=false;$('quizNext').textContent=quizIndex===quiz.length-1?'Показать итог →':'Следующий вопрос →'}
+$('quizNext').onclick=()=>{if(quizIndex<quiz.length-1){quizIndex++;renderQuiz()}else{$('quizQuestion').textContent='Тест завершён!';$('quizChoices').innerHTML='';$('quizNext').hidden=true;$('quizRestart').hidden=false;$('quizScoreText').textContent=quizScore===10?'🏆 Отлично! Ты настоящий логик.':quizScore>=7?'Хороший результат! Повтори вопросы, в которых ошибся.':'Повтори таблицы истинности и приоритет операций.';setFeedback('quizFeedback','Правильных ответов: '+quizScore+' из 10.',quizScore>=7?'ok':'err')}};
+$('quizRestart').onclick=()=>{quizIndex=0;quizScore=0;$('quizScore').textContent='0';$('quizScoreText').textContent='Думай самостоятельно. После ответа появится объяснение.';renderQuiz()};renderQuiz();showSlide(0);
+</script>
+</body></html>

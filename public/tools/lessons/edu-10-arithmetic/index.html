@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>Арифметика в системах счисления — 10 класс</title>
+<style>
+:root{--paper:#f8f6ef;--ink:#17253a;--muted:#62718a;--blue:#3158ef;--blue2:#223fba;--orange:#ff7654;--mint:#c9f1d9;--lilac:#e6dcff;--yellow:#ffe5a3;--line:#dae0e8;--ok:#16774c;--bad:#c33b4b;--shadow:0 16px 38px rgba(29,46,89,.08)}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden;background:var(--paper);color:var(--ink);font-family:Inter,"Segoe UI",Arial,sans-serif}
+body{background-image:radial-gradient(#2f50aa12 .85px,transparent .85px);background-size:18px 18px}
+.deck{height:100vh;position:relative}
+.slide{position:absolute;inset:0;padding:83px clamp(28px,6vw,98px) 93px;display:flex;flex-direction:column;justify-content:center;opacity:0;transform:translateX(28px);pointer-events:none;transition:opacity .3s ease,transform .3s ease;overflow:auto}
+.slide.active{opacity:1;transform:none;pointer-events:auto}
+.slide::before{content:"";position:absolute;right:-60px;top:8%;height:240px;width:240px;border:30px solid #3158ef08;border-radius:50%;pointer-events:none}
+.topbar{position:fixed;left:clamp(18px,4vw,60px);right:clamp(18px,4vw,60px);top:22px;display:flex;align-items:center;justify-content:space-between;z-index:40;gap:12px}
+.brand{font-size:12px;font-weight:950;text-transform:uppercase;letter-spacing:.16em;display:flex;align-items:center;gap:9px}
+.brandmark{background:var(--blue);color:white;border-radius:10px;display:inline-grid;place-items:center;width:33px;height:33px;font-size:20px}
+.navhead{display:flex;align-items:center;gap:10px}
+.navhead button{border:1px solid #ccd5ea;background:#fff;color:var(--ink);font-weight:800;padding:9px 13px;border-radius:12px;cursor:pointer}
+.progressrail{position:fixed;top:0;left:0;width:100%;height:5px;background:#e4e8f2;z-index:60}.progress{height:100%;width:0;background:linear-gradient(90deg,var(--orange),var(--blue));transition:width .35s}
+.footbar{position:fixed;left:clamp(18px,4vw,60px);right:clamp(18px,4vw,60px);bottom:21px;display:flex;align-items:center;justify-content:space-between;z-index:40;pointer-events:none}
+.counter{font-size:12px;letter-spacing:.07em;font-weight:850;color:var(--muted)}
+.navbottom{display:flex;gap:9px;pointer-events:auto}.navbottom button{height:46px;width:46px;border:1px solid #cfd9ed;border-radius:15px;background:white;color:var(--ink);font-size:23px;font-weight:850;cursor:pointer;box-shadow:var(--shadow)}.navbottom button.next{background:var(--blue);color:white;border-color:var(--blue)}
+h1,h2,h3,p{margin-top:0}h1{font-size:clamp(48px,6.6vw,104px);line-height:.92;letter-spacing:-.072em;margin-bottom:26px;font-weight:950}h2{font-size:clamp(33px,4.55vw,72px);line-height:1.02;letter-spacing:-.062em;margin-bottom:25px;font-weight:930}h3{font-size:clamp(18px,1.75vw,26px);letter-spacing:-.025em;margin-bottom:11px}
+p{font-size:clamp(16px,1.43vw,21px);line-height:1.48;color:var(--muted);margin-bottom:14px}.lead{font-size:clamp(19px,1.85vw,28px);line-height:1.38;max-width:930px}.tiny{font-size:14px;color:var(--muted)}
+.kicker{font-size:12px;font-weight:950;text-transform:uppercase;letter-spacing:.17em;color:var(--blue);display:flex;align-items:center;gap:9px;margin-bottom:17px}.kicker::before{content:"";display:block;height:3px;width:32px;background:var(--orange);border-radius:4px}
+.blue{color:var(--blue)}.orange{color:#ee6344}.muted{color:var(--muted)}.white{color:#fff}.good{color:var(--ok)}
+.grid{display:grid;gap:18px}.cols2{grid-template-columns:1fr 1fr}.cols3{grid-template-columns:repeat(3,minmax(0,1fr))}.cols4{grid-template-columns:repeat(4,minmax(0,1fr))}.split{display:grid;grid-template-columns:1fr .92fr;align-items:center;gap:clamp(20px,4vw,70px)}
+.card{background:white;border:1px solid #dce2ed;border-radius:24px;padding:clamp(20px,2.25vw,34px);box-shadow:var(--shadow);min-width:0}.card p:last-child{margin-bottom:0}
+.card.lilac{background:var(--lilac)}.card.mint{background:var(--mint)}.card.yellow{background:var(--yellow)}.card.dark{background:var(--ink);color:white}.card.dark p{color:#dce4f3}.card.bluecard{background:var(--blue);color:#fff;border-color:var(--blue)}.card.bluecard p{color:#e1e8ff}
+.chip{border:1px solid #d5ddeb;border-radius:12px;background:#fff;padding:8px 12px;font-weight:800;display:inline-block;margin:3px 4px 3px 0}
+.badge{border-radius:999px;background:#edf0fb;color:var(--blue2);display:inline-block;padding:7px 11px;font-size:12px;font-weight:950;letter-spacing:.07em;text-transform:uppercase}
+.heroart{position:relative;min-height:350px;display:flex;align-items:center;justify-content:center}
+.artboard{position:relative;width:100%;max-width:555px;min-height:400px;border:3px solid var(--ink);border-radius:29px;background:#e5dcff;transform:rotate(2deg);box-shadow:18px 20px 0 var(--yellow);overflow:hidden;display:grid;place-items:center}
+.artboard::before{content:"";position:absolute;width:470px;height:470px;background:var(--blue);border-radius:50%;top:-200px;right:-180px}.artboard::after{content:"";position:absolute;width:270px;height:270px;background:var(--orange);border-radius:50%;bottom:-155px;left:-80px}
+.artdigits{z-index:3;position:relative;transform:rotate(-2deg);line-height:.92;text-align:center;font-size:clamp(70px,9vw,142px);font-weight:980;letter-spacing:-.1em;color:var(--ink);text-shadow:4px 5px 0 #fff}.artdigits small{display:block;font-size:21px;letter-spacing:.15em;color:var(--blue);margin-top:15px;text-shadow:none}
+.squiggle{position:absolute;top:8%;right:8%;font-size:56px;font-weight:900;color:var(--orange);transform:rotate(20deg)}
+.formula{font-size:clamp(25px,3.2vw,49px);font-weight:950;letter-spacing:-.04em;line-height:1.2;color:var(--ink)}.math{font-family:ui-monospace,SFMono-Regular,Consolas,"Courier New",monospace;letter-spacing:.01em}
+.huge{font-size:clamp(50px,7.5vw,118px);font-weight:980;letter-spacing:-.08em;line-height:1}
+.def{border-left:6px solid var(--blue);padding:12px 21px;background:#ecf0ff;border-radius:0 17px 17px 0}.def p{color:var(--ink);margin:0;font-weight:600}
+.example{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.number{padding:10px 17px;background:#f1f3fb;border-radius:14px;font-size:clamp(23px,3vw,45px);font-weight:900}.number b{color:var(--blue)}
+.steps{display:grid;gap:11px}.step{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--line);padding:14px 19px;border-radius:17px;font-size:clamp(17px,1.5vw,23px)}.stepnum{background:var(--blue);color:#fff;min-width:32px;height:32px;display:grid;place-items:center;border-radius:10px;font-size:14px;font-weight:950}
+.stair{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.stairslot{background:#fff;border:1px solid var(--line);padding:22px 10px;border-radius:20px;text-align:center}.stairslot strong{display:block;font-size:42px;letter-spacing:-.05em}.stairslot small{font-size:14px;color:var(--muted)}
+.truthtable{width:100%;border-collapse:separate;border-spacing:8px}.truthtable td,.truthtable th{border-radius:13px;padding:13px;text-align:center;font-size:clamp(16px,1.55vw,23px);font-weight:900;background:#fff}.truthtable th{background:var(--ink);color:white}.truthtable td.emph{background:var(--mint)}
+button{font-family:inherit}button.primary,button.ghost,button.answer,button.segment{cursor:pointer;border-radius:13px;font-size:17px;min-height:45px;padding:10px 17px;font-weight:850;transition:transform .15s,background .15s,border-color .15s}button.primary{background:var(--blue);color:white;border:2px solid var(--blue)}button.ghost{background:white;color:var(--ink);border:2px solid #d7deec}button.answer{background:white;color:var(--ink);border:2px solid #d7deec;text-align:left}button.answer:hover,button.ghost:hover,button.segment:hover{border-color:var(--blue);transform:translateY(-1px)}button.answer.correct{background:var(--mint);border-color:#43b982}button.answer.wrong{background:#ffe2e4;border-color:#fa7b8d}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+.options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:13px 0}.feedback{min-height:27px;font-size:17px;font-weight:850;margin:12px 0;color:var(--blue)}.feedback.error{color:var(--bad)}.feedback.success{color:var(--ok)}
+input,select{border:2px solid #d5ddeb;background:#fff;color:var(--ink);border-radius:14px;padding:11px 15px;font-size:18px;min-width:0}input{width:100%}label{font-size:13px;font-weight:950;color:var(--muted);display:block;margin-bottom:7px;letter-spacing:.035em}.controlrow{display:flex;flex-wrap:wrap;gap:12px;align-items:end}.controlrow>div{flex:1;min-width:100px}
+.trace{display:grid;gap:10px}.tracebox{background:#fff;border-radius:18px;padding:14px 20px;border:1px solid var(--line)}.tracebox.active{border-color:var(--blue);box-shadow:0 0 0 3px #3158ef14}.tracebox h3{font-size:18px;margin:0 0 5px}.tracebox p{font-size:18px;color:var(--ink);margin:0}
+.columnmath{background:var(--ink);color:white;border-radius:24px;padding:24px;box-shadow:var(--shadow);min-height:220px;display:flex;flex-direction:column;justify-content:center;align-items:center;overflow:auto}
+.columnmath .mono{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:clamp(30px,3.5vw,55px);font-weight:950;white-space:pre;letter-spacing:.09em;line-height:1.15;text-align:right}.carryrow{color:#ffbf86}.resultrow{color:#80f2b6}.smallline{height:3px;width:65%;background:#fff;opacity:.7;margin:7px auto}
+.slidecall{padding:13px 18px;background:#fff2db;border:1px solid #ffdc9c;border-radius:15px;font-size:clamp(16px,1.45vw,21px);color:var(--ink);font-weight:700}
+.drilllayout{display:grid;grid-template-columns:1fr 1.1fr;gap:18px;align-items:stretch}.digitfield{display:grid;grid-template-columns:1fr 1fr;gap:10px}.digitfield select{width:100%}.diagrambox{background:var(--lilac);border-radius:20px;padding:18px;border:2px dashed #a79bf1}.digitbox{width:55px;height:55px;display:grid;place-items:center;background:#fff;border:2px solid #cfdbef;border-radius:13px;font-weight:950;font-size:27px}.digitbox.active{border-color:var(--orange);background:#fff0c9}.digitbox.done{border-color:#72cda0;background:var(--mint)}
+#drillCells{display:flex;gap:5px;justify-content:center;flex-wrap:nowrap;overflow-x:auto;padding:8px 3px}.cellcol{display:grid;gap:5px;justify-items:center}.cellcol .caption{font-size:12px;color:#53637b;font-weight:950}
+.multrows{display:grid;gap:8px}.multrow{font-family:ui-monospace,Consolas,monospace;font-size:clamp(23px,2.9vw,42px);font-weight:950;letter-spacing:.18em;text-align:right;padding:8px 16px;background:white;border-radius:13px;border:1px solid var(--line)}.multrow.revealed{background:var(--mint)}
+.quizscore{font-size:clamp(55px,7vw,112px);letter-spacing:-.08em;font-weight:1000;color:var(--blue)}.resultstamp{display:inline-grid;place-items:center;min-width:95px;height:95px;border:6px solid var(--orange);transform:rotate(-12deg);font-size:28px;color:var(--orange);font-weight:950;border-radius:50%}
+.menu{position:fixed;top:75px;right:clamp(18px,4vw,60px);z-index:70;width:min(350px,calc(100vw - 36px));max-height:76vh;overflow:auto;background:#fff;border:2px solid var(--ink);box-shadow:var(--shadow);padding:14px;border-radius:20px;display:none}.menu.open{display:block}.menu button{width:100%;text-align:left;border:0;background:transparent;padding:11px;border-radius:11px;font-size:15px;font-weight:750;cursor:pointer}.menu button:hover{background:#f0f2fc}.menu h3{margin:4px 10px}
+@media(max-height:760px) and (min-width:901px){.slide{padding-top:65px;padding-bottom:75px}.card{padding:17px 20px}.heroart{min-height:300px}.artboard{min-height:295px}.grid{gap:12px}h1{font-size:clamp(46px,6vw,86px)}h2{font-size:clamp(31px,4.2vw,58px)}.steps{gap:7px}.step{padding:9px 12px}}
+@media(max-width:900px){html,body{overflow:auto}.deck{height:auto;min-height:100vh}.slide{position:relative;display:none;min-height:100vh;overflow:visible;padding:92px 22px 95px}.slide.active{display:flex}.split,.cols2,.cols3,.cols4,.stair,.drilllayout{grid-template-columns:1fr}.artboard{min-height:280px;max-width:420px}.heroart{min-height:300px}.options{grid-template-columns:1fr}.grid{gap:11px}.topbar{left:15px;right:15px}.footbar{left:17px;right:17px}.brand{font-size:10px}.brandmark{width:28px;height:28px}.navhead button{padding:8px}.math .formula{font-size:30px}.columnmath .mono{font-size:32px}.slideshort{display:none}}
+@media(prefers-reduced-motion:reduce){.slide,.progress,button{transition:none!important}}
+
+/* =======================================================
+   NEON GLASS EDITION — graphite, transparent layers, light lines
+   ======================================================= */
+:root{
+  --paper:#050e1d; --ink:#f4f9ff; --muted:#b6c7df;
+  --blue:#62cfff; --blue2:#89a6ff; --orange:#ffd28a;
+  --mint:#193d42;--lilac:#222648;--yellow:#3a2b2a;
+  --line:rgba(141,207,255,.19);--ok:#76efbf;--bad:#ff91a8;
+  --shadow:0 22px 60px rgba(0,0,0,.26),0 1px 0 rgba(255,255,255,.04) inset;
+}
+html,body{background:#050e1d;color:var(--ink)}
+body{
+ background:
+   radial-gradient(ellipse 65% 60% at 72% 55%,rgba(25,105,197,.20),transparent 68%),
+   radial-gradient(ellipse 45% 54% at 11% 20%,rgba(0,133,226,.15),transparent 72%),
+   radial-gradient(circle at 85% 10%,rgba(87,93,171,.12),transparent 35%),
+   linear-gradient(133deg,#07111e,#061122 55%,#0b1c2f);
+}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+ background-image:linear-gradient(rgba(145,212,255,.031) 1px,transparent 1px),linear-gradient(90deg,rgba(145,212,255,.031) 1px,transparent 1px);
+ background-size:52px 52px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.55),rgba(0,0,0,.15));}
+body:after{content:"";position:fixed;left:0;right:0;bottom:-34vh;height:52vh;border-radius:50%;background:rgba(24,120,225,.08);filter:blur(95px);pointer-events:none;z-index:0}
+.deck,.slide{position:relative}.deck{height:100vh}
+.slide{position:absolute;inset:0;padding:86px clamp(30px,5.9vw,98px) 87px;overflow:auto}
+.slide::before{content:"";position:absolute;right:-90px;top:7%;height:340px;width:340px;border:1px solid rgba(74,191,255,.12);box-shadow:0 0 80px rgba(61,175,255,.05);border-radius:50%;pointer-events:none}
+.slide::after{content:"";position:absolute;right:16%;bottom:8%;width:140px;height:140px;border:1px solid rgba(74,191,255,.10);border-radius:38px;transform:rotate(-12deg);pointer-events:none}
+.topbar{top:17px;gap:8px}
+.brand{color:#ebf8ff;font-size:12px;letter-spacing:.135em}
+.brandmark{background:linear-gradient(140deg,#2aa9ed,#8dd9ff);box-shadow:0 0 20px rgba(56,180,255,.43);color:#011e32;border:1px solid #98e6ff}
+.navhead{gap:8px}.navhead button{background:rgba(13,35,58,.72);color:#e8f7ff;border:1px solid rgba(109,200,255,.29);backdrop-filter:blur(20px);box-shadow:inset 0 1px 0 rgba(255,255,255,.07)}
+.navhead button:hover,.navbottom button:hover{border-color:#89deff;box-shadow:0 0 18px rgba(58,183,255,.17)}
+.progressrail{background:#0c2335;height:3px}.progress{background:linear-gradient(90deg,#187ad8,#75e2ff);box-shadow:0 0 12px #54cdff}
+.counter{color:#a4bed6}.navbottom button{background:rgba(13,36,58,.87);color:#eaf8ff;border:1px solid rgba(141,206,255,.31);box-shadow:0 8px 22px rgba(0,0,0,.2);backdrop-filter:blur(15px)}
+.navbottom button.next{background:linear-gradient(130deg,#1c87c9,#56bded);border-color:#91dfff;color:#031626;box-shadow:0 0 19px rgba(43,173,244,.29)}
+h1,h2,h3{color:#f4f9ff;text-shadow:0 1px 0 rgba(255,255,255,.02)}
+h1{font-size:clamp(50px,6.1vw,94px);letter-spacing:-.062em}
+h2{font-size:clamp(33px,4.4vw,68px)}
+p,.tiny{color:var(--muted)}
+.kicker{color:#6fe0ff;font-size:12px}.kicker::before{background:linear-gradient(90deg,#7cdfff,rgba(124,223,255,0));box-shadow:0 0 11px rgba(118,218,255,.6)}
+.blue{color:#83dcff!important}.orange{color:#ffd18b!important}.good{color:#7dffc3!important}.white{color:#fff}
+.card{position:relative;background:linear-gradient(154deg,rgba(27,57,88,.76),rgba(9,26,49,.69));border:1px solid var(--line);box-shadow:var(--shadow);backdrop-filter:blur(21px);-webkit-backdrop-filter:blur(21px);border-radius:23px}
+.card:before{content:"";position:absolute;inset:1px;pointer-events:none;border:1px solid rgba(255,255,255,.025);border-radius:22px}
+.card p{color:#c4d4e7}
+.card.lilac{background:linear-gradient(140deg,rgba(40,51,98,.76),rgba(19,28,62,.83));border-color:rgba(161,156,255,.26)}
+.card.mint{background:linear-gradient(145deg,rgba(14,69,79,.76),rgba(9,43,57,.83));border-color:rgba(95,225,218,.25)}
+.card.yellow{background:linear-gradient(145deg,rgba(79,59,48,.68),rgba(43,39,47,.78));border-color:rgba(255,202,140,.28)}
+.card.dark{background:linear-gradient(145deg,rgba(11,29,55,.88),rgba(4,13,30,.88));border-color:rgba(104,193,255,.32)}
+.card.dark p,.card.bluecard p{color:#e0eeff}
+.card.bluecard{background:linear-gradient(135deg,#164c7a,#0e335d);border-color:#69cfff;color:#f5faff}
+.chip,.badge{color:#b8eaff;background:rgba(39,105,150,.16);border:1px solid rgba(117,208,255,.26);border-radius:999px;box-shadow:0 0 12px rgba(37,169,241,.055) inset}
+.badge{font-size:11px;letter-spacing:.055em}
+.heroart{perspective:950px;isolation:isolate;min-height:395px}
+.heroart:before{content:"";position:absolute;z-index:-2;width:330px;height:330px;border-radius:50%;background:#0088ff;filter:blur(110px);opacity:.22;right:4%;top:8%}
+.artboard{
+ min-height:375px;max-width:550px;overflow:visible;
+ background:linear-gradient(145deg,rgba(63,129,170,.21),rgba(10,33,69,.83) 45%,rgba(5,18,39,.91));
+ border:2px solid rgba(131,218,255,.83);border-radius:26px;
+ transform:perspective(950px) rotateY(-12deg) rotateX(6deg) rotateZ(0deg);
+ box-shadow:0 0 3px #fff inset,0 0 17px rgba(75,190,255,.45),0 0 40px rgba(30,152,255,.2),24px 30px 74px rgba(0,0,0,.6);
+ backdrop-filter:blur(16px);
+}
+.artboard:before{content:"";position:absolute;top:0;left:0;right:0;width:auto;height:52px;border-radius:23px 23px 0 0;background:linear-gradient(180deg,rgba(117,188,232,.13),rgba(90,159,207,.04));border-bottom:1px solid rgba(141,215,255,.15)}
+.artboard:after{content:"";position:absolute;top:22px;left:22px;bottom:auto;width:10px;height:10px;border-radius:50%;background:#ffab91;box-shadow:18px 0 #ffd38b,36px 0 #72e6c5,0 0 0 3px rgba(255,255,255,.035)}
+.artdigits{transform:none;color:#f4f9ff;text-shadow:0 0 14px rgba(76,201,255,.28);font-size:clamp(74px,8.1vw,123px);line-height:1.02;letter-spacing:-.085em;padding-top:30px}
+.artdigits small{font-size:clamp(11px,1.05vw,15px);color:#9bddff;letter-spacing:.16em;margin-top:22px;text-shadow:none}
+.squiggle{color:#6dccff;filter:drop-shadow(0 0 8px rgba(68,175,255,.6))}
+.formula{color:#f4f9ff}.huge{color:#f2f8ff}
+.def{background:linear-gradient(90deg,rgba(30,110,167,.25),rgba(12,35,61,.58));border-left-color:#62d4ff;border-top:1px solid rgba(88,198,255,.16);border-right:1px solid rgba(88,198,255,.10);border-bottom:1px solid rgba(88,198,255,.12)}.def p{color:#e7f3ff}
+.number{background:rgba(55,130,177,.16);color:#ecf7ff;border:1px solid rgba(125,200,255,.15)}.number b{color:#77d8ff}
+.step,.tracebox,.stairslot{background:linear-gradient(130deg,rgba(29,58,91,.74),rgba(11,32,54,.86));border-color:rgba(134,199,245,.18);color:#edf6ff}
+.stepnum{background:#146b9b;color:#d6f4ff;border:1px solid rgba(137,226,255,.3)}
+.stairslot strong{color:#87dfff}.stairslot p{color:#d9e6f3}.stairslot small{color:#a1b7cf}
+.truthtable td{background:rgba(25,56,80,.75);color:#f4faff;border:1px solid rgba(123,198,250,.14)}
+.truthtable th{background:#103d62;color:#ecfaff}.truthtable td.emph{background:rgba(18,100,90,.66);color:#c8ffe9}
+button.primary{background:linear-gradient(135deg,#1978b8,#5fceff);border:1px solid rgba(122,224,255,.77);color:#041628;box-shadow:0 0 20px rgba(64,167,234,.16)}
+button.ghost,button.answer,button.segment{background:rgba(28,65,97,.65);color:#eff9ff;border:1px solid rgba(141,206,255,.22)}
+button.answer:hover,button.ghost:hover,button.segment:hover{background:rgba(46,105,144,.65);border-color:#68d2ff}
+button.answer.correct{background:rgba(33,113,94,.8);border-color:#6bffca;color:#fff}
+button.answer.wrong{background:rgba(135,54,72,.66);border-color:#ff8fa3;color:#fff}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #9ae6ff;outline-offset:3px}
+button:disabled{opacity:.46;cursor:default;filter:saturate(.5)}
+.feedback{color:#81deff}.feedback.error{color:#ff9cba}.feedback.success{color:#75f6c0}
+input,select{background:#091c33;border:1px solid rgba(141,210,255,.30);color:#f4f9ff;box-shadow:0 1px 0 rgba(255,255,255,.04) inset}
+input::placeholder{color:#829bb8}
+select option{color:#f4f9ff;background:#0b2036}
+label{color:#bed4e8}
+.tracebox h3,.tracebox p{color:#eef8ff}.tracebox.active{border-color:#7bdfff;box-shadow:0 0 0 2px rgba(80,197,255,.13),0 0 30px rgba(65,192,255,.06)}
+.columnmath{background:linear-gradient(155deg,rgba(10,34,61,.95),rgba(4,14,31,.96));border:1px solid rgba(113,207,255,.48);box-shadow:0 0 20px rgba(48,178,255,.12),var(--shadow)}
+.columnmath .mono{color:#f4f8ff}.carryrow{color:#ffd593}.resultrow{color:#7affc0}
+.slidecall{background:rgba(116,77,42,.20);border-color:rgba(255,192,116,.35);color:#ffe2bc}
+.diagrambox{background:rgba(19,49,79,.79);border:1px dashed rgba(117,212,255,.48)}
+.digitbox{background:rgba(22,49,76,.96);border:1px solid rgba(116,199,251,.28);color:#f1faff}
+.digitbox.active{background:rgba(30,97,138,.85);border-color:#7ad9ff;box-shadow:0 0 20px rgba(63,188,255,.19)}
+.digitbox.done{background:rgba(25,101,92,.81);border-color:#78e9ca}
+.cellcol .caption{color:#acc8df}
+.multrow{background:rgba(15,40,66,.85);border-color:rgba(112,201,254,.25);color:#e9f7ff}.multrow.revealed{background:rgba(27,96,92,.80);color:#d0ffeb}
+.quizscore{color:#78dcff;text-shadow:0 0 30px rgba(94,213,255,.19)}.resultstamp{border-color:#87dcff;color:#87dcff}
+.menu{background:rgba(8,28,49,.97);border:1px solid rgba(122,211,255,.45);backdrop-filter:blur(24px);box-shadow:0 25px 90px rgba(0,0,0,.45),0 0 25px rgba(40,174,243,.13)}
+.menu h3{color:#eefaff}.menu button{color:#cfebff}.menu button:hover{background:rgba(73,147,198,.22)}
+/* New pedagogical slides */
+.neon-kbd{font-family:ui-monospace,Consolas,monospace;font-weight:850;font-size:clamp(22px,2.5vw,35px);line-height:1.22;letter-spacing:.03em;color:#e8f8ff;white-space:pre;display:block}
+.compare-math{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.compare-math .card{min-width:0;text-align:center;padding:24px 16px}
+.compare-math pre{font-family:ui-monospace,Consolas,monospace;font-size:clamp(24px,2.5vw,38px);font-weight:900;line-height:1.15;text-align:right;width:max-content;max-width:100%;margin:14px auto;color:#f1fbff}
+.compare-math .call{color:#73e3fd;font-size:15px;font-weight:800}
+.sourceexercise{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:stretch}
+.sourcestamp{font-size:12px;color:#8cb8d6;margin-top:15px}
+
+/* Compact dense source comparison so it stays clear on a projector. */
+.slide[data-title="Один пример — два основания"] h2{font-size:clamp(33px,3.65vw,53px);margin-bottom:16px}
+.slide[data-title="Один пример — два основания"] .card{padding:18px 22px}
+.slide[data-title="Один пример — два основания"] .neon-kbd{font-size:clamp(23px,2.0vw,29px);line-height:1.13;margin:10px auto}
+.slide[data-title="Один пример — два основания"] .card p{font-size:17px;margin-top:10px}
+.slide[data-title="Один пример — два основания"] .def{margin-top:11px!important}
+.slide[data-title="Один пример — два основания"] .def p{font-size:16px}
+@media(max-height:760px) and (min-width:901px){.slide{padding-top:62px;padding-bottom:65px}.card{padding:16px 19px}.artboard{min-height:270px}.heroart{min-height:270px}h1{font-size:clamp(44px,5.5vw,77px)}h2{font-size:clamp(31px,4vw,58px)}.compare-math pre{font-size:25px}}
+@media(max-width:900px){.deck{height:auto;min-height:100vh}.slide{position:relative;display:none;overflow:visible;min-height:100vh;padding:86px 22px 95px}.slide.active{display:flex}.artboard{min-height:275px;transform:none}.artdigits{font-size:78px}.compare-math,.sourceexercise{grid-template-columns:1fr}.compare-math pre{font-size:28px}.topbar{left:14px;right:14px}.navhead{gap:4px}.navhead button{font-size:12px}}
+@media(prefers-reduced-motion:reduce){.artboard{transform:none}}
+
+
+/* ТЕТРАДНАЯ МАТЕМАТИЧЕСКАЯ ЗАПИСЬ — в точности по разрядам */
+.calc-notebook{
+  background:linear-gradient(145deg,rgba(5,18,37,.97),rgba(10,36,66,.96));
+  border:1.5px solid rgba(90,207,255,.53);border-radius:23px;
+  box-shadow:inset 0 0 0 1px rgba(115,215,255,.09),0 0 32px rgba(25,170,255,.15);
+  padding:20px 24px;color:#f2faff;display:flex;flex-direction:column;justify-content:center;
+  min-width:0;overflow:hidden;
+}
+.calc-notebook-title{font-size:11px;font-weight:850;letter-spacing:.12em;color:#76dfff;text-transform:uppercase;margin-bottom:12px}
+.calc-notation{
+  display:block;width:max-content;max-width:100%;align-self:center;
+  font-family:"Cascadia Mono","DejaVu Sans Mono",Consolas,"Courier New",monospace;
+  font-variant-ligatures:none;font-variant-numeric:tabular-nums;
+  font-size:clamp(26px,3.3vw,48px);font-weight:750;
+  line-height:1.28;letter-spacing:0;white-space:pre;text-align:left;
+  padding:0;margin:0 0 8px;background:transparent;overflow:visible;color:#fff;
+}
+.calc-notebook.compact .calc-notation{font-size:clamp(26px,2.7vw,36px)}
+.calc-notebook .calc-cue{font-size:13px;line-height:1.5;color:#b6d4e7;text-align:center;margin-top:9px}
+.calc-carries{color:#ffcf88;text-shadow:0 0 10px rgba(255,187,71,.45)}
+.calc-result{color:#92ffd6;font-weight:900;text-shadow:0 0 10px rgba(96,255,182,.28)}
+.calc-emphasis{background:rgba(46,187,255,.26);border-radius:5px;outline:1px solid rgba(79,202,255,.53)}
+.calc-future{color:rgba(196,214,234,.42)}
+.calc-subline{color:#80dfff}
+.calc-multiply-board{font-family:"DejaVu Sans Mono",Consolas,monospace;}
+.calc-multiply-board .calc-row,.calc-multiply-board .calc-separator{
+  font-family:"Cascadia Mono","DejaVu Sans Mono",Consolas,"Courier New",monospace;
+  font-variant-numeric:tabular-nums;white-space:pre;letter-spacing:0;
+  font-size:clamp(27px,3.0vw,44px);line-height:1.23;font-weight:780;
+  width:max-content;max-width:100%;align-self:center;
+}
+.calc-multiply-board .calc-row{min-width:9.5ch}
+.calc-multiply-board .calc-separator{color:#84d6f9}
+.calc-multiply-board .calc-part{transition:opacity .24s, color .24s}
+.calc-multiply-board .calc-answer{color:#96ffd3}
+.calc-multiply-board .calc-note{font-family:Inter,"Segoe UI",sans-serif;letter-spacing:0;font-size:12px;color:#afd4e9;vertical-align:middle}
+.calc-multiply-board .calc-part.revealed{background:none;color:#8affce;text-shadow:0 0 15px rgba(87,255,169,.4)}
+.compare-math .calc-notebook{padding:11px;border-radius:14px;box-shadow:none;margin:12px 0}
+.compare-math .calc-notation{font-size:clamp(25px,2.45vw,37px);margin:0 auto}
+.compare-math .calc-notebook-title{font-size:9px;margin-bottom:6px}
+.compare-math .calc-cue{display:none}
+.slide[data-title="Один пример — два основания"] .calc-notebook{padding:12px;margin-top:12px}
+.slide[data-title="Один пример — два основания"] .calc-notation{font-size:clamp(22px,2.25vw,30px);line-height:1.13}
+.slide[data-title="Один пример — два основания"] .calc-notebook-title{font-size:10px}
+.slide[data-title="Один пример — два основания"] .calc-cue{font-size:11px}
+.drill-columns-notebook{padding:17px 12px!important;border:1px solid rgba(78,204,255,.32);border-radius:16px;background:rgba(5,24,46,.93);overflow-x:auto}
+.drill-columns-notebook .digitbox{border-color:rgba(93,191,255,.44);background:rgba(16,45,76,.84);color:#fff}
+.drill-columns-notebook .digitbox.done{background:rgba(30,110,94,.65);color:#b5ffe3}
+.drill-columns-notebook .digitbox.active{background:rgba(33,114,168,.56);color:white}
+@media(max-width:900px){.calc-notebook{padding:15px}.calc-notation{font-size:clamp(25px,7vw,38px)}.calc-multiply-board .calc-row,.calc-multiply-board .calc-separator{font-size:clamp(23px,6vw,35px)}.calc-multiply-board .calc-note{font-size:10px}.compare-math .calc-notation{font-size:30px}}
+@media(max-height:760px) and (min-width:901px){.calc-notebook{padding:15px}.calc-notation{font-size:clamp(28px,3vw,40px);line-height:1.18}.calc-multiply-board .calc-row,.calc-multiply-board .calc-separator{font-size:clamp(24px,2.4vw,35px);line-height:1.12}}
+.calc-carries .carry-glyph{display:inline-block;width:1ch;text-align:center;vertical-align:baseline}
+.calc-carries .carry-glyph > span{display:inline-block;transform:scale(.70) translateY(-.2em);transform-origin:center}
+</style>
+</head>
+<body>
+<div class="progressrail"><div class="progress" id="progress"></div></div>
+<header class="topbar"><div class="brand"><span class="brandmark">∑</span><span>ИНФОРМАТИКА / 10 КЛАСС</span></div><div class="navhead"><span class="badge" id="sectionName">Введение</span><button aria-expanded="false" id="menuBtn" type="button">☷ Разделы</button><button id="fullBtn" title="На весь экран" type="button">⛶</button></div></header>
+<aside aria-label="Оглавление" class="menu" id="menu"><h3>Перейти к разделу</h3></aside>
+<div class="deck" id="deck">
+<section class="slide active" data-section="Введение" data-title="Арифметика в системах счисления">
+<div class="split">
+<div><div class="kicker">Математика компьютера</div><h1>Сложение.<br/><span class="blue">Умножение.</span><br/>Другие основания.</h1><p class="lead">Как складывать и умножать числа в двоичной, восьмеричной и шестнадцатеричной системах?</p><span class="chip">10 класс</span><span class="chip">Примеры по шагам</span><span class="chip">Интерактив</span></div>
+<div class="heroart"><div class="artboard"><div class="artdigits">1+1<br/>=10<small>АРИФМЕТИКА · ОСНОВАНИЕ 2</small></div></div><div class="squiggle">✳</div></div>
+</div>
+</section>
+<section class="slide" data-section="Введение" data-title="Вспомним десятичное сложение">
+<div class="kicker">Начнём с привычного</div><h2>Почему <span class="orange">28 + 17 = 45</span>?</h2>
+<div class="split"><div class="card"><h3>Сложение по разрядам</h3><div class="steps"><div class="step"><span class="stepnum">1</span><span>Единицы: <b>8 + 7 = 15</b> → пишем 5, <b>1 десяток переносим</b>.</span></div><div class="step"><span class="stepnum">2</span><span>Десятки: <b>2 + 1 + 1 = 4</b>.</span></div><div class="step"><span class="stepnum">3</span><span>Получаем <b>45</b>.</span></div></div></div><div aria-label="Запись сложения 28 и 17 в системе счисления с основанием 10" class="calc-notebook" role="img"><div class="calc-notebook-title">ЗАПИСЬ В СТОЛБИК · ОСНОВАНИЕ 10</div><pre class="calc-notation auto-add" data-a="28" data-b="17" data-base="10"></pre><div class="calc-cue">Перенос пишем <b>над следующим разрядом</b>.</div></div></div>
+</section>
+<section class="slide" data-section="Введение" data-title="Вопрос с подвохом">
+<div class="kicker">Разминка</div><h2>Может ли <span class="blue">1 + 1 = 10</span>?</h2>
+<div class="split"><div class="card"><h3>Выберите объяснение</h3><div class="options" id="warmOptions"><button class="answer" data-correct="1" type="button">Да, если запись двоичная</button><button class="answer" data-correct="0" type="button">Нет, такого быть не может</button><button class="answer" data-correct="0" type="button">Только при умножении</button><button class="answer" data-correct="0" type="button">Только в восьмеричной системе</button></div><div aria-live="polite" class="feedback" id="warmFeedback"></div></div><div class="card mint"><div class="huge blue">10₂</div><h3>Это число два</h3><p>В двоичной системе после цифры 1 идёт запись 10₂ — так же, как в десятичной после 9 идёт 10₁₀.</p></div></div>
+</section>
+<section class="slide" data-section="Введение" data-title="Общее правило арифметики">
+<div class="kicker">Ключевая мысль</div><h2>Алгоритм <span class="blue">тот же</span>.<br/>Правило переноса — другое.</h2>
+<div class="grid cols3"><div class="card yellow"><div class="huge">10</div><h3>Десятичная</h3><p>Перенос возникает, когда сумма разряда достигает 10.</p></div><div class="card lilac"><div class="huge">2</div><h3>Двоичная</h3><p>Перенос появляется уже при сумме 2.</p></div><div class="card mint"><div class="huge">16</div><h3>Шестнадцатеричная</h3><p>Перенос появляется при сумме 16.</p></div></div>
+</section>
+<section class="slide" data-section="Введение" data-title="Основание и разрешённые цифры">
+<div class="kicker">Повторяем системы счисления</div><h2>Основание показывает, <span class="orange">когда переносить</span></h2>
+<div class="stair"><div class="stairslot"><strong>2</strong><p>0, 1</p><small>двоичная</small></div><div class="stairslot"><strong>8</strong><p>0–7</p><small>восьмеричная</small></div><div class="stairslot"><strong>10</strong><p>0–9</p><small>десятичная</small></div><div class="stairslot"><strong>16</strong><p>0–9, A–F</p><small>шестнадцатеричная</small></div></div>
+<div class="slidecall" style="margin-top:16px">В записи числа с основанием <b>q</b> каждая цифра должна быть меньше <b>q</b>. Например, цифры 2 в двоичном числе быть не может.</div>
+</section>
+<section class="slide" data-section="Сложение" data-title="Как работает перенос">
+<div class="kicker">Новое правило</div><h2>Сумма разряда <span class="blue">≥ основания?</span><br/>Пора переносить!</h2>
+<div class="def"><p>Складываем две цифры и перенос из предыдущего разряда. <b>Цифра ответа — остаток от деления суммы на основание; перенос — целая часть от деления.</b></p></div>
+<div class="grid cols3" style="margin-top:22px"><div class="card"><span class="badge">Основание 2</span><div class="formula">1 + 1 = <span class="blue">10₂</span></div><p>Пишем 0, переносим 1.</p></div><div class="card"><span class="badge">Основание 8</span><div class="formula">7 + 6 = <span class="blue">15₈</span></div><p>13₁₀ = 1×8 + 5.</p></div><div class="card"><span class="badge">Основание 16</span><div class="formula">A + 7 = <span class="blue">11₁₆</span></div><p>17₁₀ = 1×16 + 1.</p></div></div>
+</section>
+<section class="slide" data-section="Сложение" data-title="Таблица двоичного сложения">
+<div class="kicker">Сложение в двоичной</div><h2>Всего <span class="blue">четыре</span> пары цифр</h2>
+<div class="split"><div class="card"><table class="truthtable"><thead><tr><th>+</th><th>0</th><th>1</th></tr></thead><tbody><tr><th>0</th><td>0</td><td>1</td></tr><tr><th>1</th><td>1</td><td class="emph">10</td></tr></tbody></table></div><div class="card yellow"><h3>И ещё одна комбинация</h3><div class="huge blue">11₂</div><p class="lead">1 + 1 + 1 = 3₁₀ = 11₂.</p><p>Когда к двум единицам добавляется перенос, пишем <b>1</b> и снова переносим <b>1</b>.</p></div></div>
+</section>
+<section class="slide" data-section="Сложение" data-title="Как правильно оформлять вычисление">
+<div class="kicker">Главное · оформление в тетради</div>
+<h2>Сложение столбиком: <span class="blue">как это записывается</span></h2>
+<div class="split">
+<div class="calc-notebook"><div class="calc-notebook-title">ОБРАЗЕЦ ЗАПИСИ · ДВОИЧНАЯ СИСТЕМА</div><pre class="calc-notation auto-add" data-a="1011" data-b="1101" data-base="2"></pre></div>
+<div class="card lilac"><div class="steps">
+<div class="step"><span class="stepnum">1</span><span><b>Разряды строго друг под другом</b>: единицы под единицами, двойки под двойками.</span></div>
+<div class="step"><span class="stepnum">2</span><span><b>Знак «+» ставим слева</b> от второго слагаемого, снизу проводим общую черту.</span></div>
+<div class="step"><span class="stepnum">3</span><span><b>Перенос записываем маленькой цифрой сверху</b> именно над следующим разрядом.</span></div>
+<div class="step"><span class="stepnum">4</span><span><b>Ответ пишем под чертой справа налево</b>, последний перенос дописываем в начале.</span></div>
+</div></div>
+</div>
+</section><section class="slide" data-section="Сложение" data-title="Двоичная сумма: шаг за шагом">
+<div class="kicker">Подробный разбор</div><h2><span class="blue">1011₂ + 1101₂</span></h2>
+<div class="split"><div class="calc-notebook"><div class="calc-notebook-title">ПОШАГОВАЯ ЗАПИСЬ · ОСНОВАНИЕ 2</div><pre aria-live="polite" class="calc-notation" id="walkMath"></pre><div class="calc-cue">Красный разряд — вычисляем сейчас. Голубые цифры — переносы.</div></div><div class="card"><span class="badge">Разряд за разрядом</span><h3 id="walkTitle" style="margin-top:15px">Начнём с единиц справа</h3><p id="walkExplain">Нажимайте «Следующий шаг» — будем считать справа налево и следить за переносом.</p><div class="controlrow" style="margin-top:18px"><button class="primary" id="walkNext" type="button">Показать шаг →</button><button class="ghost" id="walkReset" type="button">Сначала ↺</button></div><p class="tiny" id="walkCount">Шаг 0 из 5</p></div></div>
+</section>
+<section class="slide" data-section="Сложение" data-title="Почему результат пятизначный">
+<div class="kicker">Куда делась единица?</div><h2>Перенос из последнего разряда <span class="orange">не исчезает</span></h2>
+<div class="split"><div class="card mint"><div class="formula math">1011₂<br/>+ 1101₂<br/>───────<br/><span class="blue">11000₂</span></div></div><div><h3>Проверка через десятичную</h3><p class="lead"><b>1011₂ = 11₁₀</b><br/><b>1101₂ = 13₁₀</b></p><p class="lead">11 + 13 = <b>24</b> = <b>11000₂</b>.</p><div class="slidecall">Если из старшего разряда остался перенос 1, он становится новой крайней левой цифрой ответа.</div></div></div>
+</section>
+<section class="slide" data-section="Сложение" data-title="Найди ошибку">
+<div class="kicker">Не попадись!</div><h2>Что забыли при сложении?</h2>
+<div class="split"><div class="card dark" style="text-align:center"><p style="color:#fff">Ученик записал:</p><div class="formula math" style="color:#fff">111₂ + 1₂ = <span style="color:#ffb5a5">110₂</span></div></div><div class="card"><h3>В чём ошибка?</h3><div class="options" id="mistakeOptions"><button class="answer" data-good="1" type="button">Не учтён перенос через несколько разрядов</button><button class="answer" data-good="0" type="button">Нужно использовать основание 8</button><button class="answer" data-good="0" type="button">У двоичных чисел нельзя складывать единицы</button><button class="answer" data-good="0" type="button">Результат должен быть 111₂</button></div><div class="feedback" id="mistakeFeedback"></div></div></div>
+</section>
+<section class="slide" data-section="Сложение" data-title="Восьмеричная система">
+<div class="kicker">Основание 8</div><h2><span class="blue">57₈ + 36₈</span> = ?</h2>
+<div class="split"><div class="card"><div class="steps"><div class="step"><span class="stepnum">1</span><span><b>7 + 6 = 13₁₀ = 15₈.</b> Пишем 5, переносим 1.</span></div><div class="step"><span class="stepnum">2</span><span><b>5 + 3 + 1 = 9₁₀ = 11₈.</b> Пишем 1, переносим 1.</span></div><div class="step"><span class="stepnum">3</span><span>Приписываем перенос <b>1</b> слева.</span></div></div></div><div aria-label="Запись сложения 57 и 36 в системе счисления с основанием 8" class="calc-notebook" role="img"><div class="calc-notebook-title">ЗАПИСЬ В СТОЛБИК · ОСНОВАНИЕ 8</div><pre class="calc-notation auto-add" data-a="57" data-b="36" data-base="8"></pre><div class="calc-cue">Перенос пишем <b>над следующим разрядом</b>.</div></div></div>
+</section>
+<section class="slide" data-section="Сложение" data-title="Шестнадцатеричная система">
+<div class="kicker">Основание 16</div><h2><span class="blue">A7₁₆ + 5B₁₆</span> = ?</h2>
+<div class="split"><div class="card"><div class="steps"><div class="step"><span class="stepnum">1</span><span><b>7 + B(11) = 18₁₀ = 12₁₆.</b> Пишем 2, переносим 1.</span></div><div class="step"><span class="stepnum">2</span><span><b>A(10) + 5 + 1 = 16₁₀ = 10₁₆.</b> Пишем 0, переносим 1.</span></div><div class="step"><span class="stepnum">3</span><span>Ставим перенос <b>1</b> слева → <b>102₁₆</b>.</span></div></div></div><div aria-label="Запись сложения A7 и 5B в системе счисления с основанием 16" class="calc-notebook" role="img"><div class="calc-notebook-title">ЗАПИСЬ В СТОЛБИК · ОСНОВАНИЕ 16</div><pre class="calc-notation auto-add" data-a="A7" data-b="5B" data-base="16"></pre><div class="calc-cue">Перенос пишем <b>над следующим разрядом</b>.</div></div></div>
+</section>
+<section class="slide" data-section="Сложение" data-title="Сравним три системы">
+<div class="kicker">Одно правило — три системы</div><h2>Не путайте <span class="blue">основание</span> и цифру ответа</h2>
+<div class="grid cols3"><div class="card lilac"><span class="badge">2</span><h3 style="margin-top:12px">1 + 1 = 2₁₀</h3><div class="huge blue">10₂</div><p>Цифра 0, перенос 1.</p></div><div class="card mint"><span class="badge">8</span><h3 style="margin-top:12px">7 + 6 = 13₁₀</h3><div class="huge blue">15₈</div><p>Цифра 5, перенос 1.</p></div><div class="card yellow"><span class="badge">16</span><h3 style="margin-top:12px">A + 7 = 17₁₀</h3><div class="huge blue">11₁₆</div><p>Цифра 1, перенос 1.</p></div></div>
+</section>
+<section class="slide" data-section="Сложение" data-title="Один пример — три системы">
+<div class="kicker">Сравниваем системы · пример по мотивам § 4.10</div>
+<h2>15 + 6 = <span class="blue">21</span>.<br/>Но как <span class="orange">выглядит</span> ответ?</h2>
+<div class="compare-math">
+<div class="card"><span class="badge">Двоичная · основание 2</span><div aria-label="Запись сложения 1111 и 110 в системе счисления с основанием 2" class="calc-notebook" role="img"><div class="calc-notebook-title">ЗАПИСЬ В СТОЛБИК · ОСНОВАНИЕ 2</div><pre class="calc-notation auto-add" data-a="1111" data-b="110" data-base="2"></pre><div class="calc-cue">Перенос пишем <b>над следующим разрядом</b>.</div></div><div class="call">1111₂ + 110₂ = 10101₂</div><p class="tiny">Цифры только 0 и 1. Перенос возникает уже при сумме 2.</p></div>
+<div class="card lilac"><span class="badge">Восьмеричная · основание 8</span><div aria-label="Запись сложения 17 и 6 в системе счисления с основанием 8" class="calc-notebook" role="img"><div class="calc-notebook-title">ЗАПИСЬ В СТОЛБИК · ОСНОВАНИЕ 8</div><pre class="calc-notation auto-add" data-a="17" data-b="6" data-base="8"></pre><div class="calc-cue">Перенос пишем <b>над следующим разрядом</b>.</div></div><div class="call">17₈ + 6₈ = 25₈</div><p class="tiny">7 + 6 = 13₁₀ = 15₈. Записываем 5, переносим 1.</p></div>
+<div class="card mint"><span class="badge">Шестнадцатеричная · основание 16</span><div aria-label="Запись сложения F и 6 в системе счисления с основанием 16" class="calc-notebook" role="img"><div class="calc-notebook-title">ЗАПИСЬ В СТОЛБИК · ОСНОВАНИЕ 16</div><pre class="calc-notation auto-add" data-a="F" data-b="6" data-base="16"></pre><div class="calc-cue">Перенос пишем <b>над следующим разрядом</b>.</div></div><div class="call">F₁₆ + 6₁₆ = 15₁₆</div><p class="tiny">15 + 6 = 21₁₀ = 1×16 + 5. Записываем 5 и переносим 1.</p></div>
+</div>
+<p class="sourcestamp">Во всех случаях значение суммы одно: 21₁₀. Проверять можно переводом в десятичную систему.</p>
+</section>
+<section class="slide" data-section="Сложение" data-title="Тренажёр: правила">
+<div class="kicker">Самостоятельная практика</div><h2>Ты управляешь <span class="blue">переносом</span></h2>
+<div class="split"><div class="card yellow"><h3>Как работает тренажёр</h3><div class="steps"><div class="step"><span class="stepnum">1</span><span>Выберите основание и пример.</span></div><div class="step"><span class="stepnum">2</span><span>Для текущего разряда введите <b>цифру суммы</b> и <b>перенос</b>.</span></div><div class="step"><span class="stepnum">3</span><span>Получите проверку и двигайтесь к следующему разряду.</span></div></div></div><div class="card bluecard"><div class="huge white">Σ</div><h3>Напоминание</h3><p>Если сумма в разряде равна <b>S</b>, а основание равно <b>q</b>, то:</p><p class="formula" style="color:white">S = q × перенос + цифра</p></div></div>
+</section>
+<section class="slide" data-section="Сложение" data-title="Интерактивный тренажёр сложения">
+<div class="kicker">Интерактив · сложение</div><h2>Сложи <span class="blue">столбиком</span> сам</h2>
+<div class="drilllayout">
+<div class="card"><div class="controlrow"><div><label for="drillSelect">Выбери пример</label><select id="drillSelect" style="width:100%"></select></div><button class="ghost" id="drillReset" type="button">↺ Сначала</button></div><div aria-label="Разряды примера" class="drill-columns-notebook" id="drillCells" style="margin-top:16px"></div><div class="slidecall" id="drillPrompt" style="margin-top:10px">Начните с крайнего правого разряда.</div><p class="tiny" id="drillProgress" style="margin-top:12px"></p></div>
+<div class="card lilac"><h3>Текущий разряд</h3><div class="digitfield"><div><label for="drillDigit">Цифра ответа (0–F)</label><select id="drillDigit"></select></div><div><label for="drillCarry">Перенос налево</label><select id="drillCarry"><option value="0">0</option><option value="1">1</option></select></div></div><div class="controlrow" style="margin-top:18px"><button class="primary" id="drillCheck" type="button">Проверить разряд</button><button class="ghost" disabled="" id="drillNext" type="button">Следующий →</button></div><div aria-live="polite" class="feedback" id="drillFeedback"></div><div class="formula math" id="drillSolution" style="margin-top:8px"></div></div>
+</div>
+</section>
+<section class="slide" data-section="Сложение" data-title="Самопроверка">
+<div class="kicker">Проверяем навык</div><h2>Сколько будет <span class="blue">3F₁₆ + 2D₁₆</span>?</h2>
+<div class="split"><div class="card"><h3>Выберите правильный ответ</h3><div class="options" id="addQuizOptions"><button class="answer" data-good="0" type="button">5C₁₆</button><button class="answer" data-good="1" type="button">6C₁₆</button><button class="answer" data-good="0" type="button">7C₁₆</button><button class="answer" data-good="0" type="button">6B₁₆</button></div><div class="feedback" id="addQuizFeedback"></div></div><div class="card mint"><h3>Алгоритм</h3><p>Начните справа: <b>F + D</b>.</p><p>Затем сложите <b>3 + 2 + перенос</b>.</p><p>В этой системе <b>10₁₀ = A₁₆</b>.</p></div></div>
+</section>
+<section class="slide" data-section="Умножение" data-title="Как устроено умножение">
+<div class="kicker">Новая операция</div><h2>А умножение? <span class="orange">Логика та же</span></h2>
+<div class="split"><div class="card"><h3>Вспомним десятичную</h3><p class="lead"><b>23 × 3 = 69</b></p><div class="steps"><div class="step"><span class="stepnum">1</span><span>3 × 3 = 9 → пишем 9.</span></div><div class="step"><span class="stepnum">2</span><span>2 × 3 = 6 → пишем 6.</span></div></div></div><div class="card yellow"><h3>При другом основании</h3><p>Умножаем цифры в разряде, учитываем перенос, записываем цифру результата и переносим оставшееся в следующий разряд.</p><div class="huge blue">×q</div></div></div>
+</section>
+<section class="slide" data-section="Умножение" data-title="Таблица двоичного умножения">
+<div class="kicker">Двоичное умножение</div><h2>Таблица ещё проще, чем для сложения</h2>
+<div class="split"><div class="card"><table class="truthtable"><thead><tr><th>×</th><th>0</th><th>1</th></tr></thead><tbody><tr><th>0</th><td>0</td><td>0</td></tr><tr><th>1</th><td>0</td><td class="emph">1</td></tr></tbody></table></div><div class="card mint"><h3>Главное правило</h3><p class="lead"><b>× 0</b> даёт строку нулей.</p><p class="lead"><b>× 1</b> повторяет число.</p><p>После этого остаётся правильно сдвинуть строки и сложить их <b>в двоичной системе</b>.</p></div></div>
+</section>
+<section class="slide" data-section="Умножение" data-title="Как записывать умножение столбиком">
+<div class="kicker">Главное · оформление в тетради</div>
+<h2>Умножение столбиком: <span class="blue">каждая строка на своём месте</span></h2>
+<div class="split">
+<div class="calc-notebook"><div class="calc-notebook-title">ОБРАЗЕЦ · 101₂ × 110₂</div><pre class="calc-notation">    101
+×   110
+────────
+    000
+   1010
+  10100
+────────
+  11110</pre></div>
+<div class="card lilac"><div class="steps">
+<div class="step"><span class="stepnum">1</span><span>Множители пишем <b>один под другим</b> с выравниванием последних цифр.</span></div>
+<div class="step"><span class="stepnum">2</span><span>Умножаем на цифры второго множителя <b>справа налево</b>.</span></div>
+<div class="step"><span class="stepnum">3</span><span>Каждое новое частичное произведение <b>сдвигаем на один разряд влево</b>.</span></div>
+<div class="step"><span class="stepnum">4</span><span>Частичные произведения <b>складываем столбиком</b> в той же системе счисления.</span></div>
+</div></div>
+</div>
+</section><section class="slide" data-section="Умножение" data-title="Пошаговое умножение столбиком">
+<div class="kicker">Подробный пример</div><h2><span class="blue">1011₂ × 101₂</span></h2>
+<div class="split"><div class="card"><div class="calc-notebook calc-multiply-board"><div class="calc-notebook-title">УМНОЖАЕМ 1011₂ НА 101₂ — СТОЛБИКОМ</div>
+<div class="calc-row">    1011</div>
+<div class="calc-row">×    101</div>
+<div class="calc-separator">────────</div>
+<div class="calc-row calc-part" id="mulRow1" style="opacity:.24">    1011 <span class="calc-note">← × 1</span></div>
+<div class="calc-row calc-part" id="mulRow2" style="opacity:.24">   00000 <span class="calc-note">← × 0, сдвиг 1</span></div>
+<div class="calc-row calc-part" id="mulRow3" style="opacity:.24">  101100 <span class="calc-note">← × 1, сдвиг 2</span></div>
+<div class="calc-separator">────────</div>
+<div class="calc-row calc-part calc-answer" id="mulRow4" style="opacity:.24">  110111</div>
+<div class="calc-cue">Каждое частичное произведение — <b>отдельная строка</b>.</div>
+</div></div><div class="card yellow"><h3 id="mulTitle">Найдём частичные произведения</h3><p id="mulExplain">Умножаем 1011₂ на каждую цифру 101₂ справа налево. Каждую новую строку сдвигаем на один разряд.</p><div class="controlrow" style="margin-top:15px"><button class="primary" id="mulNext" type="button">Показать шаг →</button><button class="ghost" id="mulReset" type="button">Сначала ↺</button></div><div class="feedback" id="mulFeedback"></div></div></div>
+</section>
+<section class="slide" data-section="Умножение" data-title="Сдвиг при умножении">
+<div class="kicker">Сдвиг разрядов</div><h2>Умножение на <span class="blue">10₂</span> — просто сдвиг</h2>
+<div class="grid cols2"><div class="card lilac"><div class="formula math">1011₂ × 10₂<br/>= <span class="blue">10110₂</span></div><p>10₂ — это число 2. Умножение на 2 сдвигает двоичную запись на один разряд влево.</p></div><div class="card mint"><div class="formula math">1011₂ × 100₂<br/>= <span class="blue">101100₂</span></div><p>100₂ — это число 4. Умножение на 4 сдвигает двоичную запись на два разряда влево.</p></div></div>
+</section>
+<section class="slide" data-section="Умножение" data-title="Умножение в 8 и 16">
+<div class="kicker">Тот же принцип</div><h2>Умножаем в <span class="orange">восьмеричной</span> и <span class="blue">шестнадцатеричной</span></h2>
+<div class="grid cols2"><div class="card yellow"><span class="badge">Основание 8</span><h3 style="margin-top:15px">7₈ × 6₈</h3><div class="formula">7 × 6 = 42₁₀</div><p>42 = 5×8 + 2. Пишем <b>2</b>, переносим <b>5</b>.</p><div class="huge blue" style="font-size:64px">52₈</div></div><div class="card lilac"><span class="badge">Основание 16</span><h3 style="margin-top:15px">B₁₆ × 3₁₆</h3><div class="formula">11 × 3 = 33₁₀</div><p>33 = 2×16 + 1. Пишем <b>1</b>, переносим <b>2</b>.</p><div class="huge blue" style="font-size:64px">21₁₆</div></div></div>
+</section>
+<section class="slide" data-section="Умножение" data-title="Один пример — два основания">
+<div class="kicker">Умножение · пример по мотивам § 4.10</div>
+<h2>5 × 6 = 30.<br/><span class="blue">Математика та же.</span></h2>
+<div class="grid cols3">
+<div class="card"><span class="badge">Десятичная</span><div class="formula math" style="margin-top:18px">5 × 6 = 30</div><p>Проверяем обычным умножением.</p></div>
+<div class="card lilac"><span class="badge">Двоичная</span><div class="calc-notebook"><div class="calc-notebook-title">УМНОЖЕНИЕ В СТОЛБИК · ОСНОВАНИЕ 2</div><pre class="calc-notation">     101
+×    110
+  ──────
+     000
+    1010
+   10100
+  ──────
+   11110</pre><div class="calc-cue">Каждую частичную строку пишем <b>со сдвигом влево</b>.</div></div><p>Две ненулевые строки — сдвинутые копии 101₂.</p></div>
+<div class="card mint"><span class="badge">Восьмеричная</span><div class="calc-notebook"><div class="calc-notebook-title">УМНОЖЕНИЕ В СТОЛБИК · ОСНОВАНИЕ 8</div><pre class="calc-notation">    5
+×   6
+  ───
+   36</pre><div class="calc-cue">Каждую частичную строку пишем <b>со сдвигом влево</b>.</div></div><p>5 × 6 = 30₁₀ = 3×8 + 6 → 36₈.</p></div>
+</div>
+<div class="def" style="margin-top:13px"><p><b>Проверка:</b> 11110₂ = 30₁₀ = 36₈. При умножении в столбик тоже важно основание.</p></div>
+</section>
+<section class="slide" data-section="Практика" data-title="Тренажёр умножения">
+<div class="kicker">Интерактив · умножение</div><h2>Реши сам и <span class="blue">проверь результат</span></h2>
+<div class="split"><div class="card"><label for="mulExercise">Выбери пример</label><select id="mulExercise" style="width:100%"></select><div class="formula math" id="mulProblem" style="margin:18px 0">101₂ × 11₂ = ?</div><label for="mulInput">Введи результат без указания основания</label><input autocomplete="off" id="mulInput" placeholder="Например: 1111" spellcheck="false" type="text"/><div class="controlrow" style="margin-top:13px"><button class="primary" id="mulCheck" type="button">Проверить</button><button class="ghost" id="mulReveal" type="button">Показать решение</button></div><div aria-live="polite" class="feedback" id="mulAnswerFeedback"></div></div><div class="card mint"><h3>Как рассуждать</h3><p id="mulTip">Начните с младшей цифры второго множителя и складывайте сдвинутые частичные произведения.</p><div class="slidecall">Подсказка: запись ответа тоже должна использовать цифры выбранной системы счисления.</div></div></div>
+</section>
+<section class="slide" data-section="Практика" data-title="Быстрый блиц сложения">
+<div class="kicker">Закрепление</div><h2>Блиц: <span class="blue">один разряд</span></h2>
+<div class="split"><div class="card"><h3 id="quickQuestion">В двоичной системе: 1 + 1 + 1 = ?</h3><div class="options" id="quickOptions"></div><div class="feedback" id="quickFeedback"></div><button class="primary" id="quickNext" style="display:none" type="button">Следующий вопрос →</button></div><div class="card yellow"><div class="huge blue">0–F</div><h3>Не спеши!</h3><p>Для каждого задания вычисляй сумму в обычных числах, а потом переводи её в требуемую систему счисления.</p></div></div>
+</section>
+<section class="slide" data-section="Практика" data-title="Самостоятельная работа">
+<div class="kicker">Закрепление</div><h2>Самостоятельно. <span class="orange">Два ответа</span></h2>
+<div class="grid cols2"><div class="card"><h3>Задача A · сложение</h3><div class="formula math" style="margin:13px 0">10101₂ + 111₂</div><label for="indA">Ответ в двоичной системе</label><input id="indA" placeholder="Введите двоичное число"/><button class="primary" id="indCheckA" style="margin-top:13px" type="button">Проверить</button><div class="feedback" id="indFeedA"></div></div><div class="card"><h3>Задача Б · умножение</h3><div class="formula math" style="margin:13px 0">17₈ × 3₈</div><label for="indB">Ответ в восьмеричной системе</label><input id="indB" placeholder="Введите восьмеричное число"/><button class="primary" id="indCheckB" style="margin-top:13px" type="button">Проверить</button><div class="feedback" id="indFeedB"></div></div></div>
+</section>
+<section class="slide" data-section="Практика" data-title="Задание из учебника">
+<div class="kicker">Закрепление · по мотивам § 4.15</div>
+<h2>Решите без калькулятора:<br/><span class="blue">37₈ + 75₈</span></h2>
+<div class="sourceexercise">
+<div class="card"><p class="lead">Сложите восьмеричные числа столбиком. Введите ответ <b>в восьмеричной системе</b>.</p><div class="calc-notebook compact"><div class="calc-notebook-title">ПЕРЕПИШИ СТОЛБИК В ТЕТРАДЬ</div><pre class="calc-notation">   37
+ + 75
+ ─────
+  ???</pre></div>
+<label for="bookExercise">Ваш ответ (без индекса основания)</label>
+<input autocomplete="off" id="bookExercise" inputmode="numeric" placeholder="Например: 123" spellcheck="false"/>
+<div class="controlrow" style="margin-top:13px"><button class="primary" id="bookCheck" type="button">Проверить</button><button class="ghost" id="bookHint" type="button">Объяснить шаги</button></div>
+<div aria-live="polite" class="feedback" id="bookFeedback"></div></div>
+<div class="card lilac"><h3>Проверь логику переноса</h3><div class="steps"><div class="step"><span class="stepnum">1</span><span>Сложи <b>7 и 5</b>. При сумме ≥ 8 перенеси единицу.</span></div><div class="step"><span class="stepnum">2</span><span>В следующем разряде сложи <b>3 и 7</b> и поступивший перенос.</span></div><div class="step"><span class="stepnum">3</span><span>Оставшийся перенос запиши слева.</span></div></div><p class="sourcestamp">Основано на упражнении 4.17 из пособия book.kbsu.ru.</p></div>
+</div>
+</section>
+<section class="slide" data-section="Практика" data-title="Опорная памятка">
+<div class="kicker">Перед тестом</div><h2>Памятка: всё на <span class="blue">одном экране</span></h2>
+<div class="grid cols3"><div class="card lilac"><h3>① Основание</h3><p>Двоичная — 2, восьмеричная — 8, шестнадцатеричная — 16.</p></div><div class="card mint"><h3>② Сложение</h3><p>Цифры + перенос. Если сумма не меньше основания, выделяем перенос.</p></div><div class="card yellow"><h3>③ Умножение</h3><p>Умножаем поразрядно, сдвигаем частичные произведения, складываем их в нужной системе.</p></div></div>
+<div class="def" style="margin-top:17px"><p><b>Самопроверка:</b> переведи оба числа и ответ в десятичную систему. Значения должны совпасть.</p></div>
+</section>
+<section class="slide" data-section="Тест" data-title="Итоговый тест">
+<div class="kicker">Финал · 12 вопросов</div><h2>Что ты теперь <span class="blue">умеешь?</span></h2>
+<div class="split"><div class="card"><span class="badge" id="testNum">Вопрос 1 / 12</span><h3 id="testQuestion" style="margin-top:18px;font-size:clamp(20px,2.1vw,32px)">Загрузка задания…</h3><div class="options" id="testOptions"></div><div aria-live="polite" class="feedback" id="testFeedback"></div><button class="primary" id="testNext" style="display:none" type="button">Следующий вопрос →</button><button class="ghost" id="testRestart" style="display:none" type="button">Пройти ещё раз ↺</button></div><div class="card yellow" style="display:grid;place-items:center;text-align:center"><div><div class="quizscore" id="testScore">0/12</div><h3>Правильных ответов</h3><p>За каждый правильный ответ — 1 балл.</p><div class="resultstamp" id="testFinalMessage" style="display:none">WOW</div></div></div></div>
+</section>
+<section class="slide" data-section="Итог" data-title="Финиш">
+<div class="kicker">Отличная работа!</div><div class="split"><div><h1>У чисел<br/><span class="blue">разный язык.</span><br/>Логика — одна.</h1><p class="lead">Теперь ты можешь складывать и умножать числа не только в десятичной системе — и объяснять каждый перенос.</p></div><div class="heroart"><div class="artboard" style="background:var(--mint)"><div class="artdigits" style="font-size:clamp(60px,8vw,120px)">∑ ×<small>ПРАКТИКА → ПОНИМАНИЕ</small></div></div></div></div>
+</section>
+</div>
+<footer class="footbar"><span class="counter" id="counter">01 / 27</span><div class="navbottom"><button aria-label="Предыдущий слайд" id="prev" type="button">←</button><button aria-label="Следующий слайд" class="next" id="next" type="button">→</button></div></footer>
+<script>
+'use strict';
+const q = (id)=>document.getElementById(id);
+const slides=[...document.querySelectorAll('.slide')];
+let current=0;
+function showSlide(idx){current=Math.min(Math.max(0,idx),slides.length-1);slides.forEach((s,i)=>s.classList.toggle('active',i===current));q('counter').textContent=String(current+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');q('progress').style.width=(100*(current+1)/slides.length)+'%';q('sectionName').textContent=slides[current].dataset.section;toggleMenu(false)}
+q('prev').addEventListener('click',()=>showSlide(current-1));q('next').addEventListener('click',()=>showSlide(current+1));
+document.addEventListener('keydown',e=>{if(['INPUT','TEXTAREA','SELECT','BUTTON'].includes(document.activeElement.tagName))return;if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();showSlide(current+1)}else if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();showSlide(current-1)}else if(e.key==='Escape')toggleMenu(false)});
+function toggleMenu(open){q('menu').classList.toggle('open',open);q('menuBtn').setAttribute('aria-expanded',String(open))}
+q('menuBtn').addEventListener('click',()=>toggleMenu(!q('menu').classList.contains('open')));
+q('fullBtn').addEventListener('click',async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await document.documentElement.requestFullscreen()}catch(_){}});
+const sections=[...new Set(slides.map(s=>s.dataset.section))];sections.forEach(section=>{const i=slides.findIndex(s=>s.dataset.section===section);const b=document.createElement('button');b.type='button';b.textContent=String(i+1).padStart(2,'0')+' · '+section;b.addEventListener('click',()=>showSlide(i));q('menu').append(b)});
+function onChoice(container,feedback,goodField,messageGood,messageBad){q(container).addEventListener('click',e=>{const b=e.target.closest('button');if(!b||!q(container).contains(b))return;const ok=b.dataset[goodField]==='1';q(container).querySelectorAll('button').forEach(x=>x.classList.remove('correct','wrong'));b.classList.add(ok?'correct':'wrong');const el=q(feedback);el.className='feedback '+(ok?'success':'error');el.textContent=ok?messageGood:messageBad})}
+onChoice('warmOptions','warmFeedback','correct','Верно! 1 + 1 = 10₂: одна двойка и ноль единиц.','Проверь основание: в двоичной системе используются только 0 и 1.');
+onChoice('mistakeOptions','mistakeFeedback','good','Верно: 111₂ + 1₂ = 1000₂. Перенос проходит через три разряда.','В двоичном сложении единицы можно складывать, но нельзя терять перенос.');
+onChoice('addQuizOptions','addQuizFeedback','good','Верно! F + D = 28₁₀ = 1C₁₆, затем 3 + 2 + 1 = 6. Ответ 6C₁₆.','Проверь: F = 15 и D = 13. Перенос должен перейти в следующий разряд.');
+
+
+// Рендер «в тетради»: каждый знак занимает ровно одну символьную колонку.
+function renderColumnAddition(a,b,base,seen=null){
+ const digs='0123456789ABCDEF';
+ const width=Math.max(a.length,b.length)+1;
+ const A=a.padStart(width,' '), B=b.padStart(width,' ');
+ const carries=Array(width).fill(' '), answer=Array(width).fill(' ');
+ let carry=0;
+ for(let j=0;j<width;j++){
+   const idx=width-1-j;
+   const da=digs.indexOf(A[idx].trim()||'0'), db=digs.indexOf(B[idx].trim()||'0');
+   const sum=da+db+carry;
+   answer[idx]=digs[sum%base];
+   carry=Math.floor(sum/base);
+   if(j+1<width && carry) carries[idx-1]=String(carry);
+ }
+ if(answer[0]==='0' && A[0]===' ' && B[0]===' ') answer[0]=' ';
+ const visible=seen===null?width:Math.min(width,Math.max(0,seen));
+ const mask=(digits,mode)=>digits.map((c,i)=>{
+   const processed=(width-1-i)<visible;
+   if(mode==='answer')return processed?c:'·';
+   if(mode==='carry')return (width-1-i)<=visible?c:' ';
+   return c;
+ }).join('');
+ const aOut=A, bOut=B;
+ const note=mask(carries,'carry'), result=mask(answer,'answer');
+ const carryMarkup=[...note].map(ch=>ch===' '?' ':'<span class="carry-glyph"><span>'+ch+'</span></span>').join('');
+ const safe=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+ const active=seen!==null && seen<width?width-1-seen:-1;
+ const highlight=(line,p)=>p<0?safe(line):safe(line.slice(0,p))+'<span class="calc-emphasis">'+safe(line[p])+'</span>'+safe(line.slice(p+1));
+ return '<span class="calc-carries">  '+carryMarkup+'</span>\n'
+   +'  '+highlight(aOut,active)+'\n'
+   +'+ '+highlight(bOut,active)+'\n'
+   +'<span class="calc-subline">  '+ '─'.repeat(width)+'</span>\n'
+   +'<span class="calc-result">  '+safe(result)+'</span>';
+}
+document.querySelectorAll('pre.auto-add').forEach(el=>{
+ el.innerHTML=renderColumnAddition(el.dataset.a,el.dataset.b,Number(el.dataset.base));
+});
+
+// Анимированное сложение столбиком по шагам
+const walk=[
+ {title:'Разряд единиц',text:'1 + 1 = 2₁₀ = 10₂. Пишем 0, переносим 1 в следующий разряд.',row:'   1011\\n + 1101\\n ──────\\n   ???0'},
+ {title:'Разряд двоек',text:'1 + 0 + перенос 1 = 2₁₀ = 10₂. Пишем 0, переносим 1.',row:'   1011\\n + 1101\\n ──────\\n   ??00'},
+ {title:'Разряд четвёрок',text:'0 + 1 + перенос 1 = 2₁₀ = 10₂. Пишем 0, переносим 1.',row:'   1011\\n + 1101\\n ──────\\n   ?000'},
+ {title:'Разряд восьмёрок',text:'1 + 1 + перенос 1 = 3₁₀ = 11₂. Пишем 1, переносим 1.',row:'   1011\\n + 1101\\n ──────\\n   1000'},
+ {title:'Последний перенос',text:'После старшего разряда остался перенос 1 — записываем его перед ответом. Получаем 11000₂.',row:'    1011\\n  + 1101\\n  ──────\\n  11000'}
+];
+let walkIdx=0;
+function renderWalk(){
+ q('walkMath').innerHTML=renderColumnAddition('1011','1101',2,walkIdx);
+ if(walkIdx===0){
+   q('walkTitle').textContent='Начнём с единиц справа';
+   q('walkExplain').textContent='Цифры слагаемых строго под соответствующими разрядами. Вычислим справа налево.';
+ }else{
+   const w=walk[walkIdx-1];
+   q('walkTitle').textContent=w.title;
+   q('walkExplain').textContent=w.text;
+ }
+ q('walkCount').textContent='Шаг '+walkIdx+' из '+walk.length;
+ q('walkNext').disabled=walkIdx===walk.length;
+ q('walkNext').textContent=walkIdx===walk.length?'Готово ✓':'Показать шаг →';
+}
+q('walkNext').addEventListener('click',()=>{if(walkIdx<walk.length){walkIdx++;renderWalk()}});q('walkReset').addEventListener('click',()=>{walkIdx=0;renderWalk()});renderWalk();
+
+// Арифметика разрядов в основаниях 2/8/16
+const DIGITS='0123456789ABCDEF';
+const drills=[{base:2,a:'1011',b:'1101'},{base:2,a:'11010',b:'10111'},{base:8,a:'57',b:'36'},{base:8,a:'275',b:'46'},{base:16,a:'A7',b:'5B'},{base:16,a:'3F',b:'2D'}];
+let dState;
+function drillInit(){const item=drills[Number(q('drillSelect').value)||0];dState={...item,n:Math.max(item.a.length,item.b.length),i:0,carry:0,results:[],validated:false,done:false};q('drillFeedback').textContent='';q('drillSolution').textContent='';q('drillCarry').value='0';renderDrill()}
+drills.forEach((ex,i)=>{const o=document.createElement('option');o.value=i;o.textContent=`${ex.a}₍${ex.base}₎ + ${ex.b}₍${ex.base}₎`;q('drillSelect').append(o)});
+function padded(s,i){return DIGITS.indexOf(s[s.length-1-i]||'0')}
+function rebuildDigits(base){const el=q('drillDigit');const prev=el.value;el.innerHTML='';for(let j=0;j<base;j++){const opt=document.createElement('option');opt.value=DIGITS[j];opt.textContent=DIGITS[j];el.append(opt)}el.value=(prev&&DIGITS.indexOf(prev)<base)?prev:'0'}
+function renderDrill(){const d=dState;rebuildDigits(d.base);const cells=q('drillCells');cells.innerHTML='';const n=d.n;for(let place=n;place>=0;place--){const col=document.createElement('div');col.className='cellcol';const label=document.createElement('div');label.className='caption';label.textContent=place===n?'перенос':`разряд ${place+1}`;const top=document.createElement('div');top.className='digitbox';top.textContent=place===n?'·':(d.a.padStart(n,'0')[n-1-place]);const bottom=document.createElement('div');bottom.className='digitbox';bottom.textContent=place===n?'·':(d.b.padStart(n,'0')[n-1-place]);const result=document.createElement('div');result.className='digitbox';const completed=place<n && place<d.i;result.textContent=place===n?(d.done&&d.carry?DIGITS[d.carry]:'·'):(completed?d.results[place]:'?');if(place===d.i&&!d.done)result.classList.add('active');if(completed)result.classList.add('done');col.append(label,top,bottom,result);cells.append(col)}
+q('drillProgress').textContent=d.done?'Все разряды вычислены!':`Шаг ${d.i+1} из ${d.n}; перенос в текущий разряд: ${d.carry}`;
+if(!d.done){const av=padded(d.a,d.i),bv=padded(d.b,d.i);q('drillPrompt').textContent=`В разряде ${d.i+1}: ${DIGITS[av]} + ${DIGITS[bv]} + перенос ${d.carry}. Запиши цифру и новый перенос.`}else{q('drillPrompt').textContent='Правильно! Сумма вычислена по всем разрядам.'}
+q('drillCheck').disabled=d.done||d.validated;q('drillNext').disabled=d.done||!d.validated;q('drillNext').textContent=d.i===d.n-1?'Завершить →':'Следующий →'}
+q('drillSelect').addEventListener('change',drillInit);q('drillReset').addEventListener('click',drillInit);
+q('drillCheck').addEventListener('click',()=>{const d=dState;if(d.done||d.validated)return;const av=padded(d.a,d.i),bv=padded(d.b,d.i),total=av+bv+d.carry,unit=total%d.base,carry=Math.floor(total/d.base);const chosen=q('drillDigit').value,wantedCarry=Number(q('drillCarry').value);const ok=chosen===DIGITS[unit]&&wantedCarry===carry;const f=q('drillFeedback');f.className='feedback '+(ok?'success':'error');if(ok){d.validated=true;f.textContent=`Верно! ${DIGITS[av]} + ${DIGITS[bv]} + ${d.carry} = ${total}₁₀ = ${carry}×${d.base} + ${unit}.`;q('drillCheck').disabled=true;q('drillNext').disabled=false}else{f.textContent=`Пока не сходится. Сумма в этом разряде — ${total}₁₀. Раздели её на ${d.base}: остаток — цифра, целая часть — перенос.`}});
+q('drillNext').addEventListener('click',()=>{const d=dState;if(!d.validated||d.done)return;const total=padded(d.a,d.i)+padded(d.b,d.i)+d.carry;d.results[d.i]=DIGITS[total%d.base];d.carry=Math.floor(total/d.base);d.i++;d.validated=false;q('drillFeedback').textContent='';q('drillCarry').value='0';q('drillDigit').value='0';if(d.i>=d.n){d.done=true;const result=(d.carry?DIGITS[d.carry]:'')+d.results.slice().reverse().join('');q('drillFeedback').className='feedback success';q('drillFeedback').textContent='Отлично! Все разряды вычислены правильно.';q('drillSolution').textContent=`${d.a} + ${d.b} = ${result} (осн. ${d.base})`;}renderDrill()});q('drillSelect').value='0';drillInit();
+
+// Множители с показом частичных произведений
+const mulDesc=[['Шаг 1: умножаем на младшую 1','1 × 1011₂ = 1011₂. Первая строка стоит без сдвига.'],['Шаг 2: умножаем на 0','0 × 1011₂ = 0. Вторая строка — нули со сдвигом на один разряд.'],['Шаг 3: умножаем на старшую 1','1 × 1011₂ = 1011₂; сдвиг на два разряда даёт 101100₂.'],['Шаг 4: складываем строки','001011₂ + 000000₂ + 101100₂ = 110111₂. Проверка: 11 × 5 = 55.']];let mulStep=0;
+function renderMul(){q('mulTitle').textContent=mulStep?mulDesc[mulStep-1][0]:'Найдём частичные произведения';q('mulExplain').textContent=mulStep?mulDesc[mulStep-1][1]:'Умножаем 1011₂ на каждую цифру 101₂ справа налево. Каждую новую строку сдвигаем на один разряд.';for(let i=1;i<=4;i++){const el=q('mulRow'+i);el.style.opacity=i<=mulStep?'1':'.24';el.classList.toggle('revealed',i===mulStep)}q('mulNext').disabled=mulStep>=4;q('mulNext').textContent=mulStep>=4?'Готово ✓':'Показать шаг →';q('mulFeedback').textContent=mulStep===4?'Итог: 1011₂ × 101₂ = 110111₂.':''}
+q('mulNext').addEventListener('click',()=>{if(mulStep<4)mulStep++;renderMul()});q('mulReset').addEventListener('click',()=>{mulStep=0;renderMul()});renderMul();
+
+// Тренажёр умножения
+const multiplications=[{b:2,a:'101',x:'11',tip:'5×3=15, но ответ нужен двоичный.'},{b:2,a:'110',x:'101',tip:'Шесть, умноженное на пять. Не забудьте сдвиги частичных произведений.'},{b:8,a:'17',x:'3',tip:'7×3=21₁₀: выделите перенос в восьмеричной системе.'},{b:8,a:'23',x:'4',tip:'3×4=12₁₀, то есть 14₈; перенос перейдёт в следующий разряд.'},{b:16,a:'B',x:'4',tip:'B = 11₁₀. 11×4=44₁₀: поделите результат на 16.'}];
+for(let i=0;i<multiplications.length;i++){const m=multiplications[i],o=document.createElement('option');o.value=i;o.textContent=`${m.a}₍${m.b}₎ × ${m.x}₍${m.b}₎`;q('mulExercise').append(o)}
+function mulCurrent(){return multiplications[Number(q('mulExercise').value)||0]}
+function renderMulExercise(){const m=mulCurrent();q('mulProblem').textContent=`${m.a}₍${m.b}₎ × ${m.x}₍${m.b}₎ = ?`;q('mulTip').textContent=m.tip;q('mulInput').value='';q('mulAnswerFeedback').textContent=''}
+q('mulExercise').addEventListener('change',renderMulExercise);
+function expectedMul(m){return (parseInt(m.a,m.b)*parseInt(m.x,m.b)).toString(m.b).toUpperCase()}
+function normalized(s){return s.trim().toUpperCase().replace(/^0+(?=[0-9A-F])/,'')}
+q('mulCheck').addEventListener('click',()=>{const m=mulCurrent(),ans=normalized(q('mulInput').value),ok=ans===expectedMul(m);const el=q('mulAnswerFeedback');el.className='feedback '+(ok?'success':'error');el.textContent=ok?'Верно! '+m.a+'₍'+m.b+'₎ × '+m.x+'₍'+m.b+'₎ = '+ans+'₍'+m.b+'₎.':'Попробуй ещё раз. Проверь арифметику и цифры выбранной системы.'});
+q('mulReveal').addEventListener('click',()=>{const m=mulCurrent();q('mulAnswerFeedback').className='feedback';q('mulAnswerFeedback').textContent=`Решение: ${parseInt(m.a,m.b)} × ${parseInt(m.x,m.b)} = ${parseInt(m.a,m.b)*parseInt(m.x,m.b)}₁₀ = ${expectedMul(m)}₍${m.b}₎.`});renderMulExercise();
+
+// Короткий блиц
+const quick=[{q:'В двоичной системе: 1 + 1 + 1 = ?',opts:['10₂','11₂','100₂','101₂'],a:1,why:'Сумма равна 3₁₀, а 3₁₀ = 11₂.'},{q:'В восьмеричной системе: 7 + 6 = ?',opts:['13₈','14₈','15₈','16₈'],a:2,why:'7+6=13₁₀=15₈.'},{q:'В шестнадцатеричной системе: F + 1 = ?',opts:['10₁₆','F1₁₆','11₁₆','20₁₆'],a:0,why:'F=15₁₀, F+1=16₁₀=10₁₆.'},{q:'В восьмеричной системе: 5 + 5 = ?',opts:['10₈','12₈','14₈','15₈'],a:1,why:'5+5=10₁₀=12₈.'}];let qi=0,qlocked=false;
+function renderQuick(){const d=quick[qi];q('quickQuestion').textContent=d.q;q('quickOptions').innerHTML='';d.opts.forEach((o,i)=>{const b=document.createElement('button');b.type='button';b.className='answer';b.textContent=o;b.addEventListener('click',()=>{if(qlocked)return;qlocked=true;[...q('quickOptions').children].forEach((z,j)=>{if(j===d.a)z.classList.add('correct')});if(i!==d.a)b.classList.add('wrong');q('quickFeedback').textContent=(i===d.a?'Верно! ':'Почти. ')+d.why;q('quickFeedback').className='feedback '+(i===d.a?'success':'error');q('quickNext').style.display='inline-block'});q('quickOptions').append(b)});q('quickFeedback').textContent='';q('quickNext').style.display='none';qlocked=false}
+q('quickNext').addEventListener('click',()=>{qi=(qi+1)%quick.length;renderQuick()});renderQuick();
+
+// Задачи с вводом результата
+function checkIndependent(input,feedback,expected,explanation){const ans=normalized(q(input).value),f=q(feedback),ok=ans===expected;f.className='feedback '+(ok?'success':'error');f.textContent=ok?'Правильно! '+explanation:'Пока неверно. Проверь разряды и перенос.'}
+q('indCheckA').addEventListener('click',()=>checkIndependent('indA','indFeedA','11100','10101₂=21, 111₂=7; 21+7=28₁₀=11100₂.'));
+q('indCheckB').addEventListener('click',()=>checkIndependent('indB','indFeedB','55','17₈=15₁₀, 15×3=45₁₀=55₈.'));
+
+// Итоговый тест: результат и объяснение после каждого ответа
+const test=[
+ {q:'Чему равно 1₂ + 1₂?',opts:['1₂','2₂','10₂','11₂'],a:2,why:'Две единицы образуют один разряд двоек: 10₂.'},
+ {q:'Чему равно 1₂ + 1₂ + 1₂?',opts:['10₂','11₂','100₂','101₂'],a:1,why:'3₁₀=11₂: пишем 1, переносим 1.'},
+ {q:'101₂ + 11₂ = ?',opts:['111₂','1000₂','1001₂','1010₂'],a:1,why:'5₁₀+3₁₀=8₁₀=1000₂.'},
+ {q:'1111₂ + 1₂ = ?',opts:['1110₂','10000₂','10001₂','11111₂'],a:1,why:'15₁₀+1=16₁₀=10000₂.'},
+ {q:'57₈ + 26₈ = ?',opts:['103₈','104₈','105₈','115₈'],a:2,why:'47₁₀+22₁₀=69₁₀=105₈.'},
+ {q:'17₈ + 7₈ = ?',opts:['25₈','26₈','27₈','30₈'],a:1,why:'15₁₀+7₁₀=22₁₀=26₈.'},
+ {q:'A₁₆ + 7₁₆ = ?',opts:['F₁₆','10₁₆','11₁₆','12₁₆'],a:2,why:'10+7=17₁₀=11₁₆.'},
+ {q:'2F₁₆ + 1₁₆ = ?',opts:['20₁₆','2E₁₆','30₁₆','3F₁₆'],a:2,why:'F+1=16₁₀, значит 0 и перенос 1: 30₁₆.'},
+ {q:'101₂ × 11₂ = ?',opts:['1101₂','1110₂','1111₂','10001₂'],a:2,why:'5₁₀×3₁₀=15₁₀=1111₂.'},
+ {q:'1101₂ × 10₂ = ?',opts:['11010₂','10110₂','11100₂','10011₂'],a:0,why:'Умножение на 10₂ сдвигает запись на один разряд: 11010₂.'},
+ {q:'7₈ × 6₈ = ?',opts:['42₈','50₈','52₈','54₈'],a:2,why:'7×6=42₁₀, а 42₁₀=52₈.'},
+ {q:'B₁₆ × 3₁₆ = ?',opts:['1F₁₆','20₁₆','21₁₆','22₁₆'],a:2,why:'B=11₁₀; 11×3=33₁₀=21₁₆.'}
+];let testI=0,score=0,testLocked=false;
+function renderTest(){if(testI>=test.length){q('testNum').textContent='Тест завершён';q('testQuestion').textContent='Твой результат: '+score+' из '+test.length;q('testOptions').innerHTML='';q('testFeedback').textContent=score>=10?'Отлично! Ты уверенно владеешь арифметикой разных оснований.':score>=7?'Хороший результат! Пересмотри задания с ошибками.':'Повтори правила переноса и умножения столбиком — и попробуй снова.';q('testFeedback').className='feedback '+(score>=10?'success':'');q('testNext').style.display='none';q('testRestart').style.display='inline-block';q('testFinalMessage').style.display='inline-grid';return}
+ const d=test[testI];q('testNum').textContent='Вопрос '+(testI+1)+' / '+test.length;q('testQuestion').textContent=d.q;q('testOptions').innerHTML='';d.opts.forEach((o,i)=>{const b=document.createElement('button');b.className='answer';b.type='button';b.textContent=o;b.addEventListener('click',()=>{if(testLocked)return;testLocked=true;const correct=i===d.a;if(correct)score++;[...q('testOptions').children].forEach((btn,j)=>{if(j===d.a)btn.classList.add('correct')});if(!correct)b.classList.add('wrong');q('testFeedback').textContent=(correct?'Верно! ':'Разбор: ')+d.why;q('testFeedback').className='feedback '+(correct?'success':'error');q('testNext').style.display='inline-block';q('testNext').textContent=testI===test.length-1?'Показать результат →':'Следующий вопрос →';q('testScore').textContent=score+'/'+test.length});q('testOptions').append(b)});testLocked=false;q('testFeedback').textContent='';q('testNext').style.display='none'}
+q('testNext').addEventListener('click',()=>{testI++;renderTest()});q('testRestart').addEventListener('click',()=>{testI=0;score=0;testLocked=false;q('testScore').textContent='0/'+test.length;q('testRestart').style.display='none';q('testFinalMessage').style.display='none';renderTest()});renderTest();
+showSlide(0);
+
+// Дополнительное задание из учебника — проверка ввода и раскрытие решения.
+q('bookCheck').addEventListener('click',()=>{
+ const v=q('bookExercise').value.trim().replaceAll(' ','');
+ const f=q('bookFeedback');
+ if(!/^[0-7]+$/.test(v)){f.className='feedback error';f.textContent='Введите число только восьмеричными цифрами: 0–7.';return}
+ if(parseInt(v,8)===92){f.className='feedback success';f.textContent='Верно: 37₈ + 75₈ = 134₈. Проверка: 31 + 61 = 92₁₀.'}
+ else{f.className='feedback error';f.textContent='Ответ пока неверный. Вспомни перенос, когда сумма разряда достигает 8.'}
+});
+q('bookHint').addEventListener('click',()=>{
+ const f=q('bookFeedback');f.className='feedback';f.textContent='Единицы: 7 + 5 = 12₁₀ = 14₈ → 4, перенос 1. Восьмёрки: 3 + 7 + 1 = 11₁₀ = 13₈ → 3, перенос 1. Ответ 134₈.'
+});
+
+</script>
+</body>
+</html>
