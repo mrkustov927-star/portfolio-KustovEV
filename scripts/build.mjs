@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import vm from 'node:vm';
 const projects=JSON.parse(fs.readFileSync('data/projects.json','utf8'));
 const categories=JSON.parse(fs.readFileSync('data/categories.json','utf8'));
 const e=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -7,6 +8,12 @@ const cover=(p,i)=>`<span class="cover ${p.preview?'cover-image'+(p.format==='si
 const cards=projects.map((p,i)=>`<article class="project-card"><button class="card-open" type="button" data-project="${p.id}" aria-label="Подробнее: ${e(p.title)}">${cover(p,i)}<span class="card-body"><span class="card-category">${e(categories.find(x=>x.id===p.category)?.label||p.category)}</span><h3>${e(p.title)}</h3><p>${e(p.summary)}</p><span class="card-tags">${p.tags.map(t=>`<span>${e(t)}</span>`).join('')}</span></span></button><div class="card-footer"><span class="status-dot ${p.ready?'':'pending'}"></span><span>${e(p.status)}</span><button class="card-arrow" type="button" data-project="${p.id}" aria-label="Открыть карточку ${e(p.title)}">↗</button><button class="bookmark" type="button" data-save="${p.id}" aria-pressed="false" aria-label="В избранное: ${e(p.title)}">☆</button></div></article>`).join('\n');
 let html=fs.readFileSync('src/template.html','utf8').replace('<div class="project-grid" id="project-grid"></div>',`<div class="project-grid" id="project-grid">${cards}</div>`);
 html=html.replace('<p id="results-count" role="status" aria-live="polite"></p>',`<p id="results-count" role="status" aria-live="polite">${projects.length} работ</p>`);
+const statsContext={window:{}};vm.createContext(statsContext);
+vm.runInContext(fs.readFileSync('public/materials.js','utf8'),statsContext);
+const pageCount=Object.values(statsContext.window.PORTFOLIO_MATERIALS.galleries).reduce((n,a)=>n+a.length,0);
+html=html.replace(/(<b id="total-stat">)[^<]*(<\/b>)/,(_,a,b)=>a+projects.length+b)
+.replace(/(<b id="materials-stat">)[^<]*(<\/b>)/,(_,a,b)=>a+pageCount+b)
+.replace(/(<b id="sites-stat">)[^<]*(<\/b>)/,(_,a,b)=>a+projects.filter(p=>p.format==='site').length+b);
 fs.writeFileSync('public/index.html',html);
 fs.writeFileSync('public/projects.js','window.PORTFOLIO_CATEGORIES = '+JSON.stringify(categories)+';\nwindow.PORTFOLIO_PROJECTS = '+JSON.stringify(projects)+';\n');
 fs.writeFileSync('public/styles.css',fs.readFileSync('src/base.css','utf8')+'\n'+fs.readFileSync('src/enhancements.css','utf8'));

@@ -93,7 +93,8 @@
     $("viewer-image").src=g.src;$("viewer-image").alt=g.title;
     $("viewer-counter").textContent=(viewingIndex+1)+' / '+p.gallery.length;
     $("viewer-download").href=g.src;$("viewer-download").download=g.title+'.webp';
-    $("viewer-original").href=g.src;
+    $("viewer-original").href=g.original || g.src;
+    $("viewer-original").textContent=g.original ? "Оригинал в ChatGPT ↗" : "Открыть отдельно ↗";
     if(!viewer.open)viewer.showModal();
   }
   document.addEventListener("click", async event => {
@@ -110,6 +111,7 @@
     const copy = event.target.closest("[data-copy]");
     if (copy) {
       const url = new URL(location.href); url.hash = `work/${copy.dataset.copy}`;
+      url.searchParams.delete("_vercel_share"); url.searchParams.delete("x-vercel-protection-bypass"); url.searchParams.delete("x-vercel-set-bypass-cookie");
       try { await navigator.clipboard.writeText(url.href); toast("Ссылка на разработку скопирована"); }
       catch { toast("Ссылку можно скопировать из адресной строки"); }
     }

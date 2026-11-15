@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Модель развития ВК-сообщества — Движение Первых Кемского округа</title>
+  <style>
+    :root {
+      --red: #E30613;
+      --red-dark: #B9000B;
+      --blue: #1746A2;
+      --blue-soft: #EEF4FF;
+      --green: #1F9D68;
+      --yellow: #FFE8A3;
+      --bg: #F4F6FA;
+      --card: #FFFFFF;
+      --text: #1F2933;
+      --muted: #667085;
+      --line: #E5E7EB;
+      --shadow: 0 18px 44px rgba(15, 23, 42, 0.10);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Arial, "Helvetica Neue", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% 4%, rgba(227, 6, 19, .10), transparent 26%),
+        radial-gradient(circle at 88% 0%, rgba(23, 70, 162, .11), transparent 26%),
+        linear-gradient(180deg, #FFFFFF, var(--bg) 22%);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .wrap {
+      width: min(1200px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 22px 0 54px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 360px;
+      border-radius: 34px;
+      box-shadow: var(--shadow);
+      background:
+        linear-gradient(120deg, rgba(227, 6, 19, .96), rgba(227, 6, 19, .78) 45%, rgba(23, 70, 162, .92)),
+        url("data:image/svg+xml,%3Csvg width='220' height='220' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='rgba(255,255,255,0.22)' stroke-width='2'%3E%3Cpath d='M0 110h220M110 0v220M35 35l150 150M185 35L35 185'/%3E%3Ccircle cx='110' cy='110' r='70'/%3E%3C/g%3E%3C/svg%3E");
+      color: white;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 78% 25%, rgba(255,255,255,.22), transparent 22%),
+        linear-gradient(180deg, transparent, rgba(0,0,0,.24));
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      padding: 34px;
+      min-height: 360px;
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 26px;
+      align-items: end;
+    }
+
+    .logo-row {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      margin-bottom: 26px;
+    }
+
+    .logo {
+      width: 112px;
+      height: 112px;
+      border-radius: 30px;
+      background: #fff;
+      color: var(--red);
+      display: grid;
+      place-items: center;
+      font-size: 34px;
+      font-weight: 900;
+      line-height: .95;
+      text-align: center;
+      box-shadow: 0 16px 34px rgba(0,0,0,.22);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 13px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.28);
+      backdrop-filter: blur(8px);
+      font-weight: 700;
+      font-size: 13px;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(32px, 5vw, 58px);
+      line-height: 1.02;
+      letter-spacing: -.04em;
+    }
+
+    .hero p {
+      margin: 16px 0 0;
+      max-width: 720px;
+      font-size: 19px;
+      line-height: 1.5;
+      opacity: .96;
+    }
+
+    .hero-panel {
+      background: rgba(255,255,255,.13);
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 28px;
+      padding: 22px;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-panel h3 {
+      margin: 0 0 12px;
+      font-size: 20px;
+    }
+
+    .hero-panel ol {
+      margin: 0;
+      padding-left: 20px;
+      line-height: 1.55;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 46px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 800;
+      transition: .18s;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn.white {
+      background: #fff;
+      color: var(--red);
+      box-shadow: 0 12px 24px rgba(0,0,0,.12);
+    }
+
+    .btn.ghost {
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.42);
+      background: rgba(255,255,255,.10);
+    }
+
+    .nav {
+      position: sticky;
+      top: 10px;
+      z-index: 10;
+      margin: 18px 0;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      padding: 10px;
+      background: rgba(255,255,255,.92);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      box-shadow: 0 10px 30px rgba(15,23,42,.08);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav a {
+      padding: 9px 13px;
+      border-radius: 999px;
+      color: #374151;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .nav a:hover {
+      background: var(--blue-soft);
+      color: var(--blue);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 340px;
+      gap: 22px;
+    }
+
+    section.card, aside .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 10px 28px rgba(15,23,42,.05);
+      padding: 24px;
+      margin-bottom: 22px;
+    }
+
+    .card h2 {
+      margin: 0 0 12px;
+      font-size: 28px;
+      letter-spacing: -.025em;
+    }
+
+    .lead {
+      color: var(--muted);
+      line-height: 1.55;
+      margin: 0 0 18px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .tile {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 17px;
+      background: linear-gradient(180deg, #fff, #FAFBFF);
+      min-height: 140px;
+    }
+
+    .tile:hover {
+      border-color: rgba(227, 6, 19, .28);
+      box-shadow: 0 12px 26px rgba(15,23,42,.07);
+    }
+
+    .tile .emoji {
+      width: 48px;
+      height: 48px;
+      border-radius: 17px;
+      display: grid;
+      place-items: center;
+      background: rgba(227, 6, 19, .08);
+      font-size: 24px;
+      margin-bottom: 13px;
+    }
+
+    .tile:nth-child(even) .emoji { background: var(--blue-soft); }
+
+    .tile h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .tile p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.44;
+    }
+
+    .step-list {
+      display: grid;
+      gap: 12px;
+      counter-reset: step;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 14px;
+      align-items: start;
+      padding: 15px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #FAFBFE;
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      width: 44px;
+      height: 44px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: var(--red);
+      color: #fff;
+      font-weight: 900;
+      font-size: 19px;
+    }
+
+    .step b { display: block; margin-bottom: 4px; }
+    .step span { color: var(--muted); line-height: 1.45; }
+
+    .rubric {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+    }
+
+    .rubric-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: var(--blue-soft);
+      flex: 0 0 auto;
+    }
+
+    .rubric b { display: block; margin-bottom: 4px; }
+    .rubric span { color: var(--muted); font-size: 14px; line-height: 1.42; }
+
+    .table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: white;
+    }
+
+    .table th, .table td {
+      padding: 13px 14px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      line-height: 1.4;
+    }
+
+    .table th {
+      background: #F8FAFC;
+      text-align: left;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      color: #475467;
+    }
+
+    .table tr:last-child td { border-bottom: none; }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .tag {
+      display: inline-flex;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: #F1F4F9;
+      color: #475467;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .tag.red {
+      background: rgba(227, 6, 19, .09);
+      color: var(--red-dark);
+    }
+
+    .bot-box {
+      background:
+        radial-gradient(circle at 20% 12%, rgba(255,255,255,.25), transparent 22%),
+        linear-gradient(150deg, var(--blue), #557ED9);
+      color: white;
+      border: 0 !important;
+    }
+
+    .bot-box .lead, .bot-box p { color: rgba(255,255,255,.86); }
+
+    .bot-flow {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .bot-flow div {
+      padding: 11px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.13);
+      border: 1px solid rgba(255,255,255,.18);
+      font-weight: 700;
+    }
+
+    .side-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .side-link {
+      display: block;
+      padding: 14px;
+      border-radius: 17px;
+      border: 1px solid var(--line);
+      background: #FAFBFE;
+    }
+
+    .side-link b {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .side-link span {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.38;
+    }
+
+    .month-plan {
+      display: grid;
+      gap: 12px;
+    }
+
+    .week {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 14px;
+      padding: 14px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #FAFBFE;
+    }
+
+    .week b {
+      color: var(--red);
+    }
+
+    .week span {
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .accent {
+      border-color: rgba(227, 6, 19, .18) !important;
+      background:
+        linear-gradient(135deg, rgba(227, 6, 19, .07), transparent 45%),
+        white !important;
+    }
+
+    .print-note {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 16px;
+    }
+
+    @media (max-width: 1020px) {
+      .hero-inner, .layout { grid-template-columns: 1fr; }
+      .grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .grid-3 { grid-template-columns: repeat(2, 1fr); }
+      .nav { border-radius: 24px; }
+    }
+
+    @media (max-width: 640px) {
+      .wrap { width: min(100% - 16px, 1200px); padding-top: 8px; }
+      .hero { border-radius: 24px; }
+      .hero-inner { padding: 22px; }
+      .logo { width: 82px; height: 82px; border-radius: 22px; font-size: 26px; }
+      .logo-row { align-items: flex-start; }
+      .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
+      section.card, aside .card { padding: 17px; }
+      .week { grid-template-columns: 1fr; }
+      .table { font-size: 14px; }
+      .table th, .table td { padding: 11px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="logo-row">
+            <div class="logo">ПЕР<br>ВЫЕ</div>
+            <div>
+              <span class="badge">Модель развития сообщества ВКонтакте</span>
+              <h1>Первые Кемского муниципального округа</h1>
+            </div>
+          </div>
+          <p>Официальная шапка, аватар и бренд сохраняются. Улучшаем внутреннюю структуру: закреп, меню, навигацию, рубрики, бот, конкурсы и понятные входы для детей, родителей и педагогов.</p>
+          <div class="hero-actions">
+            <a class="btn white" href="#start">С чего начать</a>
+            <a class="btn ghost" href="#menu">Меню</a>
+            <a class="btn ghost" href="#bot">ИИ-бот</a>
+          </div>
+        </div>
+        <div class="hero-panel">
+          <h3>Цель на первый месяц</h3>
+          <ol>
+            <li>Сделать закреплённый пост-карту.</li>
+            <li>Собрать рабочее меню из 8 разделов.</li>
+            <li>Запустить 5 постоянных рубрик.</li>
+            <li>Подготовить ИИ-бота и первый конкурс.</li>
+          </ol>
+        </div>
+      </div>
+    </header>
+
+    <nav class="nav">
+      <a href="#start">Старт</a>
+      <a href="#menu">Меню</a>
+      <a href="#texts">Разделы</a>
+      <a href="#rubrics">Рубрики</a>
+      <a href="#calendar">Календарь</a>
+      <a href="#bot">ИИ-бот</a>
+      <a href="#tasks">План</a>
+    </nav>
+
+    <div class="layout">
+      <main>
+        <section class="card accent" id="start">
+          <h2>Первое улучшение: закреплённый пост-карта</h2>
+          <p class="lead">Закреп должен быть не отчётом, а входной дверью в сообщество. Его задача — за 10–15 секунд объяснить человеку, куда нажать и что можно сделать.</p>
+          <div class="step-list">
+            <div class="step">
+              <div>
+                <b>Школьнику или студенту</b>
+                <span>Показать проекты, конкурсы, волонтёрство, медиа, патриотические события, творчество и семейные активности.</span>
+              </div>
+            </div>
+            <div class="step">
+              <div>
+                <b>Родителю</b>
+                <span>Дать спокойную информацию: кто организует, где фото, как задать вопрос, зачем ребёнку участие.</span>
+              </div>
+            </div>
+            <div class="step">
+              <div>
+                <b>Педагогу и куратору</b>
+                <span>Показать, где искать сроки, положения, материалы, инструкции и куда присылать новости первичной организации.</span>
+              </div>
+            </div>
+            <div class="step">
+              <div>
+                <b>Активисту</b>
+                <span>Предложить роли: волонтёр, медиаволонтёр, ведущий, фотограф, автор новости, участник команды.</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card" id="menu">
+          <h2>Меню сообщества: 8 рабочих кнопок</h2>
+          <p class="lead">Каждая кнопка должна вести в отдельный пост, статью, альбом, раздел или сообщения сообщества. Так меню станет не декоративным, а полезным.</p>
+          <div class="grid-4">
+            <div class="tile">
+              <div class="emoji">🚩</div>
+              <h3>Вступить</h3>
+              <p>Инструкция по регистрации и участию в Движении Первых.</p>
+            </div>
+            <div class="tile">
+              <div class="emoji">🏆</div>
+              <h3>Проекты</h3>
+              <p>Актуальные конкурсы, проекты, сроки и ссылки.</p>
+            </div>
+            <div class="tile">
+              <div class="emoji">📅</div>
+              <h3>События</h3>
+              <p>Ближайшие мероприятия, акции и встречи.</p>
+            </div>
+            <div class="tile">
+              <div class="emoji">📸</div>
+              <h3>Фото/Видео</h3>
+              <p>Альбомы, клипы, видео и моменты событий.</p>
+            </div>
+            <div class="tile">
+              <div class="emoji">❤️</div>
+              <h3>Родителям</h3>
+              <p>Ответы о пользе, безопасности, сопровождении и участии детей.</p>
+            </div>
+            <div class="tile">
+              <div class="emoji">📚</div>
+              <h3>Педагогам</h3>
+              <p>Материалы, сроки, положения и новости первичных организаций.</p>
+            </div>
+            <div class="tile">
+              <div class="emoji">📣</div>
+              <h3>Предложить новость</h3>
+              <p>Инструкция для школ, детских садов и учреждений.</p>
+            </div>
+            <div class="tile">
+              <div class="emoji">✨</div>
+              <h3>ИИ-картинка</h3>
+              <p>Генерация изображения по фото и ключевым словам.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="card" id="texts">
+          <h2>Содержание разделов меню</h2>
+          <p class="lead">Ниже — компактная логика наполнения. Это можно превратить в посты или статьи ВК.</p>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Раздел</th>
+                <th>Что внутри</th>
+                <th>Главная польза</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>Вступить</b></td>
+                <td>Кто может участвовать, как зарегистрироваться, как выбрать первичную организацию, что делать после регистрации.</td>
+                <td>Снимает страх «я не знаю, с чего начать».</td>
+              </tr>
+              <tr>
+                <td><b>Проекты</b></td>
+                <td>Название проекта, для кого, срок, что сделать, ссылка, контакт для вопросов.</td>
+                <td>Упрощает сложную структуру официальной регистрации.</td>
+              </tr>
+              <tr>
+                <td><b>События</b></td>
+                <td>Мероприятия недели/месяца: дата, место, участники, как попасть.</td>
+                <td>Показывает, что сообщество живое прямо сейчас.</td>
+              </tr>
+              <tr>
+                <td><b>Родителям</b></td>
+                <td>Что даёт ребёнку участие, как проходят мероприятия, где фото, кто отвечает, куда писать.</td>
+                <td>Укрепляет доверие взрослых.</td>
+              </tr>
+              <tr>
+                <td><b>Педагогам</b></td>
+                <td>Сроки, положения, материалы, отчётные публикации, как прислать новость.</td>
+                <td>Помогает кураторам и советникам быстро ориентироваться.</td>
+              </tr>
+              <tr>
+                <td><b>ИИ-картинка</b></td>
+                <td>Правила, стили, ключевые слова, ссылка на сообщения сообщества.</td>
+                <td>Даёт игровой и вирусный инструмент вовлечения.</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="card" id="rubrics">
+          <h2>Постоянные рубрики</h2>
+          <p class="lead">Рубрики превращают ленту из набора отчётов в узнаваемый медиапроект.</p>
+          <div class="grid-2">
+            <div class="rubric">
+              <div class="rubric-icon">👤</div>
+              <div><b>Первые лица</b><span>Короткие истории активистов, волонтёров, участников и тех, кто делает события живыми.</span></div>
+            </div>
+            <div class="rubric">
+              <div class="rubric-icon">🌊</div>
+              <div><b>Кемь Первых</b><span>Локальная идентичность: Север, Белое море, Рабочеостровск, посёлки, люди и места округа.</span></div>
+            </div>
+            <div class="rubric">
+              <div class="rubric-icon">⏱️</div>
+              <div><b>Проект за минуту</b><span>Короткое объяснение проекта: кому подходит, что сделать, срок, ссылка.</span></div>
+            </div>
+            <div class="rubric">
+              <div class="rubric-icon">🧡</div>
+              <div><b>Родителям спокойно</b><span>Ответы на вопросы родителей без сложной терминологии и лишнего официоза.</span></div>
+            </div>
+            <div class="rubric">
+              <div class="rubric-icon">🎯</div>
+              <div><b>Миссия недели</b><span>Челлендж, фотоохота, доброе дело, семейное задание или небольшой квиз.</span></div>
+            </div>
+            <div class="rubric">
+              <div class="rubric-icon">🎬</div>
+              <div><b>Первые в кадре</b><span>Клипы, закулисье, лучшие моменты мероприятий и короткие видеоистории.</span></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card" id="calendar">
+          <h2>Контент-сетка на неделю</h2>
+          <p class="lead">Реалистичная схема без перегруза: 3 поста, 2–4 клипа, истории в активные дни.</p>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>День</th>
+                <th>Формат</th>
+                <th>Пример темы</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>Понедельник</b></td>
+                <td>Навигация / анонс</td>
+                <td>Что ждёт Первых Кемского округа на этой неделе.</td>
+              </tr>
+              <tr>
+                <td><b>Среда</b></td>
+                <td>История / польза</td>
+                <td>Первые лица, Родителям спокойно или Проект за минуту.</td>
+              </tr>
+              <tr>
+                <td><b>Пятница</b></td>
+                <td>Интерактив</td>
+                <td>Квиз, миссия недели, фотоохота, голосование.</td>
+              </tr>
+              <tr>
+                <td><b>После события</b></td>
+                <td>Живой итог</td>
+                <td>Главный момент дня, благодарность, фото, следующий шаг.</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="card bot-box" id="bot">
+          <h2>ИИ-бот «Картинка Первых»</h2>
+          <p class="lead">Бот может стать отличительной функцией сообщества: пользователь загружает фото, выбирает стиль, добавляет ключевые слова и получает тематическое изображение.</p>
+          <div class="grid-2">
+            <div>
+              <h3>Стили первой версии</h3>
+              <div class="tag-row">
+                <span class="tag">День молодёжи</span>
+                <span class="tag">День семьи, любви и верности</span>
+                <span class="tag">Кемлянин</span>
+                <span class="tag">Активист Первых Кемского округа</span>
+              </div>
+            </div>
+            <div>
+              <h3>Ключевые слова</h3>
+              <div class="tag-row">
+                <span class="tag">Белое море</span>
+                <span class="tag">ромашки</span>
+                <span class="tag">семья</span>
+                <span class="tag">волонтёр</span>
+                <span class="tag">лето</span>
+                <span class="tag">Кемь</span>
+              </div>
+            </div>
+          </div>
+          <div class="bot-flow">
+            <div>1. Пользователь нажимает «Создать изображение»</div>
+            <div>2. Бот показывает правила и просит фото</div>
+            <div>3. Пользователь выбирает стиль</div>
+            <div>4. Пользователь добавляет ключевые слова</div>
+            <div>5. Бот возвращает готовую картинку</div>
+          </div>
+        </section>
+
+        <section class="card" id="tasks">
+          <h2>План внедрения на 30 дней</h2>
+          <p class="lead">Последовательность, чтобы улучшение было управляемым и не превратилось в хаос.</p>
+          <div class="month-plan">
+            <div class="week">
+              <b>Неделя 1</b>
+              <span>Закреплённый пост, структура меню, разделы «Вступить», «Родителям», «Предложить новость».</span>
+            </div>
+            <div class="week">
+              <b>Неделя 2</b>
+              <span>Разделы «Проекты», «События», «Фото/Видео», «Педагогам» и виджет «Сейчас важно».</span>
+            </div>
+            <div class="week">
+              <b>Неделя 3</b>
+              <span>Запуск рубрик: «Первые лица», «Кемь Первых», «Проект за минуту», «Родителям спокойно».</span>
+            </div>
+            <div class="week">
+              <b>Неделя 4</b>
+              <span>Тест ИИ-бота, первый квиз или фотоохота, публикация итогов и сбор обратной связи.</span>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <aside>
+        <section class="card accent">
+          <h2>Что сделать первым</h2>
+          <div class="side-list">
+            <a class="side-link" href="#start"><b>1. Закреп</b><span>Опубликовать и закрепить пост «С чего начать?».</span></a>
+            <a class="side-link" href="#menu"><b>2. Меню</b><span>Привязать 8 кнопок к понятным разделам.</span></a>
+            <a class="side-link" href="#calendar"><b>3. Сетка</b><span>Соблюдать ритм: 3 поста в неделю + клипы.</span></a>
+            <a class="side-link" href="#bot"><b>4. Бот</b><span>Запустить генератор картинок как интерактив.</span></a>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Виджет «Сейчас важно»</h2>
+          <p class="lead">Его стоит обновлять раз в неделю.</p>
+          <div class="side-list">
+            <div class="side-link"><b>День молодёжи</b><span>Анонс, программа, участие, фото.</span></div>
+            <div class="side-link"><b>День семьи</b><span>Семейные активности и конкурс.</span></div>
+            <div class="side-link"><b>Фото с события</b><span>Быстрый переход в альбом.</span></div>
+            <div class="side-link"><b>Задать вопрос</b><span>Сообщения сообщества.</span></div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Мини-чек-лист новости</h2>
+          <div class="step-list">
+            <div class="step"><div><b>Название</b><span>Что произошло?</span></div></div>
+            <div class="step"><div><b>Место и дата</b><span>Где и когда?</span></div></div>
+            <div class="step"><div><b>Участники</b><span>Кто был вовлечён?</span></div></div>
+            <div class="step"><div><b>Фото</b><span>5–10 чётких кадров.</span></div></div>
+            <div class="step"><div><b>Согласие</b><span>Можно ли публиковать?</span></div></div>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>Тон сообщества</h2>
+          <div class="tag-row">
+            <span class="tag red">живой</span>
+            <span class="tag red">тёплый</span>
+            <span class="tag red">понятный</span>
+            <span class="tag red">северный</span>
+            <span class="tag red">уважительный</span>
+            <span class="tag red">без официоза</span>
+          </div>
+        </section>
+      </aside>
+    </div>
+
+    <p class="print-note">Демонстрационный HTML-прототип. Реальные ссылки, фотографии и ID сообщества нужно заменить при внедрении.</p>
+  </div>
+</body>
+</html>

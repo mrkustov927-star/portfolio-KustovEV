@@ -1692,5 +1692,1573 @@
         "sourceId": "libfile_f7fd433362fc819197a97ba27a7354a8"
       }
     ]
-  }
+  },
+  "audits": [
+    {
+      "date": "2026-11-15",
+      "scope": "Expanded portfolio audit",
+      "sources": [
+        {
+          "library_file_id": "libfile_a24f19014568819195f48ea9fd8e6527",
+          "name": "Превью_20_карточек_лото_Первые.png",
+          "group": "loto"
+        },
+        {
+          "library_file_id": "libfile_511d738e1fdc81919d6b91812261a99b",
+          "name": "20_карточек_лото_Первые_лицевые_стороны.pdf",
+          "group": "loto"
+        },
+        {
+          "library_file_id": "libfile_e0e6d7d4f9288191a7d2c5f9d0aecf8f",
+          "name": "Редактируемые_исходники_20_карточек_лото_Первые.zip",
+          "group": "loto"
+        },
+        {
+          "library_file_id": "libfile_16e798591bc481918533c15e45d75425",
+          "name": "20_карточек_лото_Первые_оборотные_стороны.pdf",
+          "group": "loto"
+        },
+        {
+          "library_file_id": "libfile_2f9cf989314c8191abca8ad30f3e2d82",
+          "name": "Рабочая_книга_Жемчужный_лабиринт_возможностей.pdf",
+          "group": "labyrinth"
+        },
+        {
+          "library_file_id": "libfile_1e37e9c5a15081919a4016d871f0b811",
+          "name": "Цветные_квест_листы_Символы_России.zip",
+          "group": "symbols"
+        },
+        {
+          "library_file_id": "libfile_4780430eef3c81919dc1d1b760c1cc24",
+          "name": "Лист_5_9_класс_цветной.png",
+          "group": "symbols"
+        },
+        {
+          "library_file_id": "libfile_0fe70e3fd28c819195777d616448e1c6",
+          "name": "Лист_4_7-8_классы_цветной.png",
+          "group": "symbols"
+        },
+        {
+          "library_file_id": "libfile_90208c61f4c88191a4f84da24063d8c5",
+          "name": "Лист_3_5-6_классы_цветной.png",
+          "group": "symbols"
+        },
+        {
+          "library_file_id": "libfile_5c619c02a900819197dcb20d80b31a1f",
+          "name": "Лист_2_3-4_классы_цветной.png",
+          "group": "symbols"
+        },
+        {
+          "library_file_id": "libfile_02f8173ffa408191b3a78e7447321213",
+          "name": "Лист_1_1-2_классы_цветной.png",
+          "group": "symbols"
+        },
+        {
+          "library_file_id": "libfile_383a6f68891081919d34c907b8b56b15",
+          "name": "План команды школы актива.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_4d1095bd64b481918fa3ae631ad44bd5",
+          "name": "Команда 4: общение и разногласия.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_c2c1876bd1e48191838ab60ec877513b",
+          "name": "Инициатива команды и помощь наставника.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_957fbaf1d70481918f75300c8f98755a",
+          "name": "Как включить новичков в работу.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_5abd01ac35b48191b7db164be26ff6b2",
+          "name": "Команда 3: распределяем работу вместе.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_cfec8ccaeaa481919137438f4aba59ef",
+          "name": "Команда и общая цель встречи.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_efe71c333e7081919a7825561d449adc",
+          "name": "Как увидеть результат: мишень и факты.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_073c81d811588191878b5f45a3a9d245",
+          "name": "Как передавать ответственность шаг за шагом.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_352bc7bdbecc8191929782fd389391c6",
+          "name": "Как организовать общее дело.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_8f5f1684f01c819199112635c8000c11",
+          "name": "Как помочь идее стать делом.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_82fe869508288191a8415ee18a8dafb6",
+          "name": "Чек-лист встречи: до, во время, после.png",
+          "group": "mentor"
+        },
+        {
+          "library_file_id": "libfile_b45cac552a5081918f8dc905cbf828d1",
+          "name": "Материалы и контакты для наставников.png",
+          "group": "mentor"
+        },
+        {
+          "library_file_id": "libfile_6cf57243c6dc8191a6d88b4766c1fdf4",
+          "name": "Границы и поддержка наставника.png",
+          "group": "mentor"
+        },
+        {
+          "library_file_id": "libfile_e2c1f9f575348191a326a0521590e7bb",
+          "name": "Самопроверка наставника.png",
+          "group": "mentor"
+        },
+        {
+          "library_file_id": "libfile_a5c8b43a941c8191a89ecd399a80eb3a",
+          "name": "После общего дела: итоги и изменения.png",
+          "group": "mentor"
+        },
+        {
+          "library_file_id": "libfile_4fecd429c550819185d78a1b3eedd5c0",
+          "name": "Обновлённый пункт о поддержке участника.png",
+          "group": "mentor"
+        },
+        {
+          "library_file_id": "libfile_21cfe893d54c8191832b5decd786fa08",
+          "name": "Как дать развивающую обратную связь.png",
+          "group": "mentor"
+        },
+        {
+          "library_file_id": "libfile_73909bd3e8d0819187cc64bb9da04f70",
+          "name": "Как включить каждого в общее дело.png",
+          "group": "mentor"
+        },
+        {
+          "library_file_id": "libfile_f214d2ad545481918d63d1418e593ca0",
+          "name": "От идеи к делу: план команды.png",
+          "group": "mentor"
+        },
+        {
+          "library_file_id": "libfile_ef8d42c977308191be428638bb338266",
+          "name": "Повестка встречи Совета первых.png",
+          "group": "mentor"
+        },
+        {
+          "library_file_id": "libfile_e93c6fb051548191a08c10a6223d82a1",
+          "name": "Страница наставника: четыре трудные ситуации.png",
+          "group": "mentor"
+        },
+        {
+          "library_file_id": "libfile_a80b04e6dbcc819187499e3513672cd3",
+          "name": "Разговор с подростком.png",
+          "group": "mentor"
+        },
+        {
+          "library_file_id": "libfile_ea34773ccfe48191ac9195b306c7adfe",
+          "name": "Первая встреча: знакомство и договорённости.png",
+          "group": "mentor"
+        },
+        {
+          "library_file_id": "libfile_95b52d96b0c08191bc8f73826dc2dbde",
+          "name": "Роль наставника: ответственность и договорённости.png",
+          "group": "mentor"
+        },
+        {
+          "library_file_id": "libfile_d0469eb99e248191800342e0ec995f57",
+          "name": "Рабочая тетрадь наставника Первых.png",
+          "group": "mentor"
+        },
+        {
+          "library_file_id": "libfile_eaa6858853dc81918afbff648d9f72ad",
+          "name": "Карточка ведущего: Убеди нас за минуту.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_7e81841bc16c8191ae94d70c6bf58902",
+          "name": "Собрать всех одной идеей.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_2ed9c4ceae288191b5a3feea5c1e8f24",
+          "name": "Урок, которого ещё нет.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_9525386df73881919f710281d00088b9",
+          "name": "Миллион на одно дело.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_2aecb27213048191acc998f380755033",
+          "name": "Гость с другой планеты: выступи убедительно.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_4d45a8a9ad788191a6cdc3ab9e42d381",
+          "name": "Школа в ваших руках.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_9065edd35d348191a0ca95a8e13ba813",
+          "name": "Общее дело.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_092f3fbf874081918515cfedc7aa2bdc",
+          "name": "Флагманы возможностей(1).png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_41d341b166148191b8416ba2e27fa7dc",
+          "name": "Октябрьское дело совет школы.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_30766609abd48191b036a0d76e86b218",
+          "name": "Самоорганизация: план дня.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_7413c35a56848191a3c766903e66bf9b",
+          "name": "Самопрезентация юноши перед аудиторией.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_6b3bd96c49588191bb80cde5931e90ef",
+          "name": "Медиаактивности: команда в кадре.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_ec65f6f3c6ec819196eb5e4a3a24065a",
+          "name": "Лидерство и команда в действии.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_3ba06a6d29d4819185ecf144007c8a99",
+          "name": "Музыкальная пауза(1).png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_0ad1400d94608191845e9f2e2c3e9a48",
+          "name": "Школа актива: идеи в действии.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_6f793b55dcdc81918c570ff9a44ec5c7",
+          "name": "ЗНАКОМСТВО.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_f487d9a2b8c481919f852dee1d08a032",
+          "name": "Посвящение в наставники(2).png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_4e5460a7e4ec81919fad8fdecd3266ae",
+          "name": "Самопрезентация и публичные выступления(1).png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_965ee81ad0488191936150f48a3f1d18",
+          "name": "Самопрезентация и публичные выступления.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_8911422c5e3c8191b5ea279d32545afa",
+          "name": "Команда 3 — Школа актива.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_7a28289663588191a7a348d4e10bc6a7",
+          "name": "Команда 1: Школа актива.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_09b007258c588191b669379896a159f8",
+          "name": "Карточка команды 4: Школа актива.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_718c84e040348191a72fed190e09a0c2",
+          "name": "Карточка команды 5 — школа актива.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_50478c8b7eb08191902d7bf8cd098eb6",
+          "name": "Команда 2: школа актива.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_e9dcfc71e9608191bdd0754ace1ef7e9",
+          "name": "Памятка ведущему школы актива.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_abee97b57450819193270cf664a51e6a",
+          "name": "Пять табличек команд «Школа актива».png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_76604e5491208191ab81d043d3b77f2f",
+          "name": "Обещание наставников школы актива.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_4ea93d1150148191acff6d32c22378de",
+          "name": "Памятка наставнику школы актива.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_5c41d6520ab881918fa5a4d05b4899af",
+          "name": "Мой следующий шаг — лист рефлексии.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_8b38fe9450a4819197919bc30398f347",
+          "name": "Три синие карточки для тайминга.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_a056223cb2e881919f6e0752537bf450",
+          "name": "Обещание наставников.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_0b645f516cc88191b2f327cf150df0fb",
+          "name": "Школа актива Советов Первых.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_5946524ae10881918da3d4e5668861df",
+          "name": "Бейджи школы актива: участник и наставник.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_822c39c660f08191ba124dd13c6f5743",
+          "name": "Группа 2 — участие новичков.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_87ca1c4dfc4881918b53b2404edcabf8",
+          "name": "Карточка группы 5: Инициатива и наставник.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_46ce16f3dcfc819185726b7faf9bdf86",
+          "name": "Группа 4: общение и разногласия.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_94752319de3881918fb7d5a4dc9b355c",
+          "name": "Группа 3: ответственность.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_b01902526938819193b12cabcb63f239",
+          "name": "Карточка группы 1: общая цель.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_5594acfd2c508191b301098a3050d23b",
+          "name": "Наше ближайшее дело.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_2353bf1a0dc881918c072d9c5a0148e8",
+          "name": "Организуй свой день: задачи, отдых и резерв.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_e6e0edff70e881918cfc5dbc13047447",
+          "name": "Карточка самопрезентации Представь себя.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_c295faa8e2448191a88489392da911f9",
+          "name": "Новое условие.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_a234b39b64a08191b372b6473eb5ab36",
+          "name": "План команды: рабочий лист.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_f31554444774819188e2d35207a348f7",
+          "name": "Инициатива и наставник: школьное дело.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_41f013dcdf688191a91b1db20bb32e99",
+          "name": "Школьное дело: как команде договориться.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_7e30a47c147481918ca81b164c1393df",
+          "name": "Участие новичков в школьном деле.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_fdffb224f7c881918211481ecc924e4a",
+          "name": "Распределяем ответственность в школьной команде.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_0f559dc78d988191a7f82a363e839f09",
+          "name": "Общая цель школьного дела.png",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_13ce79f116548191bafc22c1c655481b",
+          "name": "Школа_актива_инструкции_к_заданиям.pptx",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_2a9dd58b21e08191bdfeebef673b4a89",
+          "name": "Карточки_на_стол_экономия_тонера.pdf",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_815a0daf5ac88191a03f406d919fc78a",
+          "name": "Таблички_команд_А4(1).pdf",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_f749891f1c488191b71baabc4c489474",
+          "name": "Таблички_команд_А4(1).pptx",
+          "group": "school-visuals"
+        },
+        {
+          "library_file_id": "libfile_feb80441f4308191971de938baf2d6f1",
+          "name": "Как объединить экспертов: идеи участников.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_13a42be3be5c8191bc2bac8f7287ce8a",
+          "name": "Пять идей для объединения экспертов(2).png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_a826e89f4d6c8191ab0b31940d4e138d",
+          "name": "Бумажный корабль идей экспертов.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_dfdfb05a1be08191a120abaee12edd9f",
+          "name": "Пять идей для объединения экспертов(1).png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_bd259f4ebd7c81919e76628234d5ef7a",
+          "name": "Пять идей для объединения экспертов.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_e8da6e4351248191bb6731bc7967111e",
+          "name": "Карта идей: как объединить экспертов.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_8a6014fbd1fc8191af236a64693369f7",
+          "name": "Дети создают цифровой проект с ИИ.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_839072a9b1408191904b928f53492ada",
+          "name": "Игра, шаги и достижения команды.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_17ace54d366c8191b0c1610378c8f159",
+          "name": "Право выбора: три пути.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_2809f45588548191bf53c0dc7b6c28cb",
+          "name": "Понятные условия: чек-лист, комикс и видео.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_00945b39a1a081918c060f5b22f7ba80",
+          "name": "От проблемы к полезному делу.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_09db64cd77e48191bbc886ece07e9a92",
+          "name": "Идеи участников для конкурсных заданий.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_9a2a49c8e820819191515a0c40abfbe7",
+          "name": "Четыре этапа к маяку.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_ba5e3f9643548191b1afaea5eb740552",
+          "name": "Путь нового эксперта: четыре шага.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_3789c59d9000819180496a054497dc61",
+          "name": "Четыре шага роста профессионального сообщества.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_e60c6f55eae881918bf55cebcb44656a",
+          "name": "Сборник опыта экспертов на голубом столе.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_19953e9702988191ac45a1e5ae5a29fd",
+          "name": "Четыре сцены экспертного сообщества.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_8c81f96809b88191952bea22d68efc36",
+          "name": "Вопрос № 2 у маяка.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_e92de4f05d4c8191ba01a657f8a36b5c",
+          "name": "Бумажный корабль, эксперты и молодёжь.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_eeb1f3a22fa0819185678078b65d17db",
+          "name": "Путь эксперта: от сообщества к обмену опытом.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_e405225d915881919e7866c2cd440507",
+          "name": "Юные команды: идеи, эксперты и сотрудничество.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_6532e7087bec819183f93c34e429df85",
+          "name": "Сборник с маяком и бумажным корабликом.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_bc2311cf8b00819189746f0ba773c0d3",
+          "name": "Поддержка детского творчества.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_3619a5e278d88191977d4818b1ed18f8",
+          "name": "Объективность: факты, критерии, честная оценка.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_47223187b3a881919836912658f55b72",
+          "name": "Эксперт и дети обсуждают путь улучшения.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_e512f74fc7fc8191b66f61bad829bc28",
+          "name": "Знания и опыт: критерии, опыт и контекст.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_ce4056346660819183f48de26dd4d1ea",
+          "name": "Эксперт слушает голос ребёнка.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_5c53941f2ef4819197b448a7a8f8cec8",
+          "name": "Весы эксперта: аудитор или наставник.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_07cdfe89ef648191866c50afca356f30",
+          "name": "Роль: Движение первых.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_236017d6bca4819180e2c27967767bb2",
+          "name": "Честность материалов: авторство и источники.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_6d0a6729d8d88191af7d46445c9ff56d",
+          "name": "Как преодолеть сложности оценки.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_d165dd832d7c8191abad128a3b40b943",
+          "name": "Дети создают, взрослый поддерживает.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_3465f42bd9f48191859910f3e0420458",
+          "name": "Подготовка экспертов: три шага.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_c8ca4f64531c8191a316dcbef13502c5",
+          "name": "Развивающая обратная связь: опыт, рекомендации, рефлексия.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_00c68dace4dc8191b76e5bfede44576e",
+          "name": "Технические условия: интернет, платформа, поддержка.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_ef7aab41174481919425c17b154ed24e",
+          "name": "Использование ИИ: проверка и решение команды.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_ae82138b878c8191926a1d561b16e94b",
+          "name": "Экспертная оценка детского проекта.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_8d59926f2fd0819181b4d1ede3bdc425",
+          "name": "Дети предлагают, наставник помогает.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_5546b305da288191946a9368d812e16e",
+          "name": "Разные трактовки — общее понимание.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_a9dca0c909f48191961700c68e917530",
+          "name": "Обратная связь: следующий шаг.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_c43876c0fc74819186b7b48751feb72c",
+          "name": "Условия участия: время, интернет и ресурсы.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_1dadeabb098081918d17e132dbef8b71",
+          "name": "Команда детей создаёт проект.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_3e6ef6bee1cc8191954697ac2cfc0721",
+          "name": "Дети решают, наставник помогает.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_bb90d03e33748191b6a1a3512c11a887",
+          "name": "От идеи до проведения мероприятия.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_f879819639c88191bf24bc4fdd1304a9",
+          "name": "Голоса школьников: предложил, помог, узнал.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_4dc48a8a220c81918e8cfa03d2bf9972",
+          "name": "Распределение ролей: идея, план, действие.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_798efa2f9d7c8191a1e22c53583a6d47",
+          "name": "От вопроса к понятному заданию.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_660109b918048191906a5e1bdd1ef3f4",
+          "name": "Ясные задания: объяснять и консультировать.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_6b10a257b7b88191b723bf8da9b9fb41",
+          "name": "Вклад взрослых и помощь наставников.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_c17bc56b18d08191b3c00dfacb0051fd",
+          "name": "Процесс работы: маяк и кораблик.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_462e9ec3758881919cde140d4403ead5",
+          "name": "Распределение ролей в команде.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_53be3a7b94448191beb8d571ddfdf590",
+          "name": "Голос участников: маяк и кораблик.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_fd666ed53fc48191a768ee8a69cf59b4",
+          "name": "Вопрос № 2: детская инициатива.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_91efa06941308191a8c65f1b34694752",
+          "name": "Делиться опытом и развивать идеи.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_e1987659ec948191ad7b4568de3b65ab",
+          "name": "Понятная оценка и прозрачные критерии.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_a909e3c9b5d4819197ddf070886c8e20",
+          "name": "Маленькие победы команды(1).png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_645650e736b081918776446f8b987faa",
+          "name": "Вовлечённость: замечать участие близких.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_b0571b23656081919e0fe91a93119605",
+          "name": "Реальные отзывы участников мероприятия.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_db92ead2c060819190bd0ff80aa814fa",
+          "name": "Вопрос № 1: рост участников движения.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_351d223fedd48191b0332f8778397c4b",
+          "name": "Поощрение роста: шаг 05.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_baa3b76eb7b481918b858a3bde21aa7c",
+          "name": "Динамика команды: маяк и кораблик.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_f2e3ca2202688191acbc37e9d5544fe9",
+          "name": "Маяк прозрачной оценки.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_cd985e3a87a48191bc055ec97467de4f",
+          "name": "Вопрос № 1: рост участников.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_d0083e6893f0819195dbce3eefacafe5",
+          "name": "Маленькие победы команды.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_f7e84d5c29548191896b070f789cf6f6",
+          "name": "Маяк детской инициативы: вклад участников.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_d2913b7f5ec48191b71c3798bd595eee",
+          "name": "Реальная польза для школы.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_622a1a8f333c8191a3f3d99c521f3e8f",
+          "name": "Право выбора: тема и формат.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_4fe7ca6e4e588191bbc8739fc43eb734",
+          "name": "Понятно и интересно: задания для детей.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_129281df973081918de4a6683d8e5ed5",
+          "name": "Равные возможности: маяк и кораблик.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_d249c137242c8191873abc1eab08bccf",
+          "name": "Современные форматы: игры, видео и ИИ.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_041be76e81348191826d0b7524c57c79",
+          "name": "Предложения участников о конкурсных заданиях.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_d74ac7c0fb8881919da62e1a8f3bf0bb",
+          "name": "Обратная связь, которая помогает команде расти.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_25a2654246b88191a273eb770ef1d9f9",
+          "name": "Обратная связь эксперта: четыре шага.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_03048660d5fc81919cdf9783a672fc4b",
+          "name": "Макет сообщества экспертов у маяка.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_7e6dffbc34308191be961b7a16a452ba",
+          "name": "Стильный макет сообщества ВКонтакте с маяком.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_e87fc93cedd881918a0c69caa62401b2",
+          "name": "Новости первых: конкурс будущего.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_c6304eecb22881919d112e7525d57946",
+          "name": "Экспертное сообщество у маяка.png",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_f2cc820fd9608191a65956ba4c36e3e1",
+          "name": "novosti_pervykh_product.pptx",
+          "group": "experts"
+        },
+        {
+          "library_file_id": "libfile_114563b665e08191925299dc1ecf3176",
+          "name": "Правовая_шпаргалка_Первички.docx",
+          "group": "primary"
+        },
+        {
+          "library_file_id": "libfile_5b4cb3131e288191946f61dc7e3a7fab",
+          "name": "Исходники_карточек_Движение_Первых.zip",
+          "group": "primary"
+        },
+        {
+          "library_file_id": "libfile_802e7ecfb628819187a1d5c9d90d9435",
+          "name": "03_Роли_команды.png",
+          "group": "primary"
+        },
+        {
+          "library_file_id": "libfile_56549fb12c3481918e070d6b5c97c08e",
+          "name": "04_Цикл_общего_дела.png",
+          "group": "primary"
+        },
+        {
+          "library_file_id": "libfile_01091039262481919ab5aea9337ffcb3",
+          "name": "09_Сотрудничество_учреждений.png",
+          "group": "primary"
+        },
+        {
+          "library_file_id": "libfile_311d8a1e823c8191a2118484acea1673",
+          "name": "06_График_на_четверть.png",
+          "group": "primary"
+        },
+        {
+          "library_file_id": "libfile_37d738cd8b208191905918f5b7585981",
+          "name": "01_Правовая_основа.png",
+          "group": "primary"
+        },
+        {
+          "library_file_id": "libfile_e95bfb83cf288191bf416bad582795a6",
+          "name": "02_Устройство_первички.png",
+          "group": "primary"
+        },
+        {
+          "library_file_id": "libfile_85695a5e448c8191850499787b287150",
+          "name": "07_Показатели_результата.png",
+          "group": "primary"
+        },
+        {
+          "library_file_id": "libfile_858f4c71e2e88191a19d4ba399feb540",
+          "name": "08_Исследовательские_данные.png",
+          "group": "primary"
+        },
+        {
+          "library_file_id": "libfile_bfb497c0ebc481919c7561de518ed274",
+          "name": "11_Решения_совета.png",
+          "group": "primary"
+        },
+        {
+          "library_file_id": "libfile_1e6f66413cc081918bebf1add3ed5d1c",
+          "name": "05_Интеграция_проектов.png",
+          "group": "primary"
+        },
+        {
+          "library_file_id": "libfile_806a14563c408191a09996c0fd066a12",
+          "name": "10_Организационная_готовность.png",
+          "group": "primary"
+        },
+        {
+          "library_file_id": "libfile_a63bd3b1f94c81918db03f8e61f85eaa",
+          "name": "Комплект_для_первичек_Движение_Первых.zip",
+          "group": "primary"
+        },
+        {
+          "library_file_id": "libfile_bff339610f8081919f9edd1fd3a5afde",
+          "name": "ИСТОЧНИКИ.md",
+          "group": "primary"
+        },
+        {
+          "library_file_id": "libfile_6af20c0c5a188191bc8b2d690555a948",
+          "name": "Буклет_Движение_Первых_Кемь_двусторонний.pdf",
+          "group": "brochure"
+        },
+        {
+          "library_file_id": "libfile_34a97692d9308191b7913cedc0fc1e2c",
+          "name": "Буклет_Движение_Первых_Кемь_оборотная.png",
+          "group": "brochure"
+        },
+        {
+          "library_file_id": "libfile_f5f8b4a461448191bd7206f4bb571662",
+          "name": "Буклет_Движение_Первых_Кемь_лицевая.png",
+          "group": "brochure"
+        },
+        {
+          "library_file_id": "libfile_91e87f0c67e0819184d81734b398fac4",
+          "name": "preview_rubric_cards.png",
+          "group": "vk-model"
+        },
+        {
+          "library_file_id": "libfile_5fe734caef5c8191b6164264ffd8a161",
+          "name": "rubric_cards_pervye_kem_pack.zip",
+          "group": "vk-model"
+        },
+        {
+          "library_file_id": "libfile_8a1163aa329c8191a9704804cbc4aebd",
+          "name": "Превью меню ВКонтакте для движения.png",
+          "group": "vk-model"
+        },
+        {
+          "library_file_id": "libfile_085bc31fd5488191bfeb4d591e5555c3",
+          "name": "preview_menu_cards.png",
+          "group": "vk-model"
+        },
+        {
+          "library_file_id": "libfile_a8ead093accc81919848baef3c6296b7",
+          "name": "vk_menu_first_kem_pack.zip",
+          "group": "vk-model"
+        },
+        {
+          "library_file_id": "libfile_e568ec3b41988191a3e3490e004667b1",
+          "name": "model_vk_first_kem_v2.html",
+          "group": "vk-model"
+        },
+        {
+          "library_file_id": "libfile_182c0842b2c481919730a145cc623b03",
+          "name": "dobro-media-standalone.html",
+          "group": "dobro-media"
+        },
+        {
+          "library_file_id": "libfile_8853e7f90bd881919a40e21ffcecded6",
+          "name": "Навигатор_Первых_сверка_по_положениям_2026.zip",
+          "group": "navigator"
+        },
+        {
+          "library_file_id": "libfile_4a4ed32049388191bc3f0f4f3764287a",
+          "name": "index(4).html",
+          "group": "navigator"
+        },
+        {
+          "library_file_id": "libfile_ecceb903c8c48191b5c3e2d555de08dc",
+          "name": "VK_Monitor_Pervye_v0.2.zip",
+          "group": "vk-monitor"
+        },
+        {
+          "library_file_id": "libfile_4d6b410dfcbc8191842571bae80ffed5",
+          "name": "Винтажная кинокамера и артисты.png",
+          "group": "frontovaya"
+        },
+        {
+          "library_file_id": "libfile_12ecaafbffc0819190c78bbdf9d8141a",
+          "name": "Девушка с мегафоном и аккордеоном.png",
+          "group": "frontovaya"
+        },
+        {
+          "library_file_id": "libfile_2b3013e5e6588191a8e1e38d60979b18",
+          "name": "Истории проекта: письма и музыка.png",
+          "group": "frontovaya"
+        },
+        {
+          "library_file_id": "libfile_e8ba54ad06bc819199424dac211f2f06",
+          "name": "Фотоотчёт фронтовой агитбригады.png",
+          "group": "frontovaya"
+        },
+        {
+          "library_file_id": "libfile_0d884847f8e48191bf958285c5568b84",
+          "name": "Ретроагитбригада на импровизированной сцене.png",
+          "group": "frontovaya"
+        },
+        {
+          "library_file_id": "libfile_19b55c59c7b4819182dbf020496f2a9e",
+          "name": "Навигация по проекту Фронтовая агитбригада.png",
+          "group": "frontovaya"
+        },
+        {
+          "library_file_id": "libfile_bed933e33a888191b1e96fc899cea840",
+          "name": "Итоги проекта: выставка и результаты.png",
+          "group": "frontovaya"
+        },
+        {
+          "library_file_id": "libfile_e1759cf41aac81918052f00763c22abf",
+          "name": "Истории и герои(2).png",
+          "group": "frontovaya"
+        },
+        {
+          "library_file_id": "libfile_d91db487cca88191927e032799c669a5",
+          "name": "Приглашение к участию(1).png",
+          "group": "frontovaya"
+        },
+        {
+          "library_file_id": "libfile_ab2ccdcee6e8819185d1dbd194dfb5bf",
+          "name": "Форматы проекта: концерт, урок, выставка.png",
+          "group": "frontovaya"
+        },
+        {
+          "library_file_id": "libfile_7a323e10b8208191b76203c501442bfa",
+          "name": "Команда готовит выступление.png",
+          "group": "frontovaya"
+        },
+        {
+          "library_file_id": "libfile_2d2e8b1693ec8191a5433961c464c411",
+          "name": "О проекте: карта, знамя и агитбригада.png",
+          "group": "frontovaya"
+        },
+        {
+          "library_file_id": "libfile_e662fafdc2a481918d3406a480f7fc17",
+          "name": "График_реализации_Фронтовая_агитбригада_2026-2027.xlsx",
+          "group": "frontovaya"
+        },
+        {
+          "library_file_id": "libfile_5bfe79263ec48191b90ece6e02c1c280",
+          "name": "Оливковая футболка с логотипом проекта.png",
+          "group": "frontovaya"
+        },
+        {
+          "library_file_id": "libfile_b9a66e38b5a88191a2df35396a816e8c",
+          "name": "Фронтовая агитбригада: мы начинаем!.png",
+          "group": "frontovaya"
+        },
+        {
+          "library_file_id": "libfile_153c9f1d56c48191877681960f4de481",
+          "name": "Мы начинаем: история, которая звучит.png",
+          "group": "frontovaya"
+        },
+        {
+          "library_file_id": "libfile_1ccb51c731bc81919bbc2f6a0b57920e",
+          "name": "Презентация продукции проекта Фронтовая агитбригада.png",
+          "group": "frontovaya"
+        },
+        {
+          "library_file_id": "libfile_c05fee6652ec81919ec89c56aa0faea3",
+          "name": "all_sketches_one_image_4k.png",
+          "group": "frontovaya"
+        },
+        {
+          "library_file_id": "libfile_01bd5983d9b48191973b84b60df3a68d",
+          "name": "04_optional_materials.png",
+          "group": "frontovaya"
+        },
+        {
+          "library_file_id": "libfile_2a646d03c1ac819185dea88b9e1f6348",
+          "name": "03_printing_rollups.png",
+          "group": "frontovaya"
+        },
+        {
+          "library_file_id": "libfile_0ec158da245481919852431df989d862",
+          "name": "01_order_matrix.png",
+          "group": "frontovaya"
+        },
+        {
+          "library_file_id": "libfile_95978eff8cd081919403c7ca86ca99ac",
+          "name": "02_souvenirs_clothing.png",
+          "group": "frontovaya"
+        },
+        {
+          "library_file_id": "libfile_b21ec0ab9b808191baacefd5f32bf010",
+          "name": "frontovaya_agitbrigada_brand_materials_sketches.pdf",
+          "group": "frontovaya"
+        },
+        {
+          "library_file_id": "libfile_1ce637c427f881918be78e68a49b80e3",
+          "name": "frontovaya_agitbrigada_logo_transparent_trimmed_4096h.png",
+          "group": "frontovaya"
+        },
+        {
+          "library_file_id": "libfile_a3f73beef71081918f8697575cab6fd9",
+          "name": "avatar_frontovaya_agitbrigada_1080.png",
+          "group": "frontovaya"
+        },
+        {
+          "library_file_id": "libfile_1139a8a2ace88191bee3e46091ba92d1",
+          "name": "01_polevoy_vypusk.png",
+          "group": "frontovaya"
+        },
+        {
+          "library_file_id": "libfile_1fb9e2a2d3308191b8d3f995c6e37640",
+          "name": "Frontovaya_Agitbrigada_VK_cover_1920x768.png",
+          "group": "frontovaya"
+        },
+        {
+          "library_file_id": "libfile_16b2e3a586b08191aa78b6f2317013fe",
+          "name": "Фронтовая агитбригада: уроки памяти.png",
+          "group": "frontovaya"
+        },
+        {
+          "library_file_id": "libfile_f2a9a517489c8191b9f247876c93ea28",
+          "name": "Фронтовая агитбригада: история Кеми.png",
+          "group": "frontovaya"
+        },
+        {
+          "library_file_id": "libfile_5a6e8fab11448191a132a20f9ee2bb93",
+          "name": "VK_bot_napominaniy_Frontovaya_agitbrigada.zip",
+          "group": "frontovaya"
+        },
+        {
+          "library_file_id": "libfile_55ec2bb331348191a724f48a5238b2c6",
+          "name": "Кемь Фест: фэнтезийный фестиваль.png",
+          "group": "kemy-fest"
+        },
+        {
+          "library_file_id": "libfile_ce89017d7db88191b434ac62e55705d9",
+          "name": "Кемь фест: викингский фестиваль у моря.png",
+          "group": "kemy-fest"
+        },
+        {
+          "library_file_id": "libfile_b36542e810b88191ad18eb9ccd5713da",
+          "name": "Кемь Фест: герб и узоры.png",
+          "group": "kemy-fest"
+        },
+        {
+          "library_file_id": "libfile_3c202038a2d88191a675388ba0587952",
+          "name": "Исторический фестиваль \"Кемь Фест 2026\".png",
+          "group": "kemy-fest"
+        },
+        {
+          "library_file_id": "libfile_012cb3001c0081918625f2c89d3b7fc9",
+          "name": "Исторический фестиваль Кемь Фест 2026.png",
+          "group": "kemy-fest"
+        },
+        {
+          "library_file_id": "libfile_234bb8486e8881919b1b3e327960313d",
+          "name": "Концерт, игры и летний праздник.png",
+          "group": "kemy-fest"
+        },
+        {
+          "library_file_id": "libfile_9054702417948191b57467e35717e5db",
+          "name": "Кемь Фест 2026: Программа и детали.png",
+          "group": "kemy-fest"
+        },
+        {
+          "library_file_id": "libfile_f6694cb14c188191ae2d709475448a1a",
+          "name": "Кемь Фест 2026: исторический фестиваль.png",
+          "group": "kemy-fest"
+        },
+        {
+          "library_file_id": "libfile_ac2fa6269d148191ab9fdfd23417d44b",
+          "name": "Исторический фестиваль Кемь Фест 2026.png",
+          "group": "kemy-fest"
+        },
+        {
+          "library_file_id": "libfile_395001d18a008191b2d1c1d3f1405637",
+          "name": "Постер музыкального фестиваля \"Возрождение\".png",
+          "group": "vozrozhdenie"
+        },
+        {
+          "library_file_id": "libfile_f7f86c039d748191970285b01f8ea784",
+          "name": "Музыкальное событие на открытом воздухе.png",
+          "group": "vozrozhdenie"
+        },
+        {
+          "library_file_id": "libfile_7ce11727ede4819188872194206d2bc2",
+          "name": "Молодёжный Фестиваль Возрождение 3 Августа.png",
+          "group": "vozrozhdenie"
+        },
+        {
+          "library_file_id": "libfile_38744bdbb8348191820792734a9e1f26",
+          "name": "Молодёжный музыкальный фестиваль \"ВОЗРОЖДЕНИЕ\".png",
+          "group": "vozrozhdenie"
+        },
+        {
+          "library_file_id": "libfile_70d115a4c32081919e8bda8e3beecab1",
+          "name": "Символы России: познавательная рабочая тетрадь.png",
+          "group": "symbols-sketches"
+        },
+        {
+          "library_file_id": "libfile_b1422e33d6bc81919c2c31e2f92e657d",
+          "name": "Интерактивный лист «Символы России».png",
+          "group": "symbols-sketches"
+        },
+        {
+          "library_file_id": "libfile_9f3acda96c14819194f506ee43561f99",
+          "name": "Рабочий лист «Символы России»(1).png",
+          "group": "symbols-sketches"
+        },
+        {
+          "library_file_id": "libfile_c3ebdece16508191a12b1b4143bfd3bc",
+          "name": "Рабочий лист «Символы России».png",
+          "group": "symbols-sketches"
+        },
+        {
+          "library_file_id": "libfile_320db86588588191af04ebccc557f3b9",
+          "name": "Квест «Символы России» для детей(1).png",
+          "group": "symbols-sketches"
+        },
+        {
+          "library_file_id": "libfile_0de3f69375d0819193d700552fa7031a",
+          "name": "Квест: Символы России для детей.png",
+          "group": "symbols-sketches"
+        },
+        {
+          "library_file_id": "libfile_6faef77fafbc8191bacc9b520a8788a3",
+          "name": "Квест «Символы России» для детей.png",
+          "group": "symbols-sketches"
+        },
+        {
+          "library_file_id": "libfile_e26e9cf5ffb88191b8f62eefb2cc7852",
+          "name": "Квест: Символы России детям.png",
+          "group": "symbols-sketches"
+        },
+        {
+          "library_file_id": "libfile_0d7cb614c0388191adc83ff4229ca7ed",
+          "name": "Интерактивные листы о символах России.png",
+          "group": "symbols-sketches"
+        },
+        {
+          "library_file_id": "libfile_856adeb0ca0c819199b60ef0aa4063ef",
+          "name": "Большой квест-лист: Символы России.png",
+          "group": "symbols-sketches"
+        },
+        {
+          "library_file_id": "libfile_1ee3d3c846608191abdda94972406d84",
+          "name": "Ручная роспись животных на камнях.png",
+          "group": "stone-art"
+        },
+        {
+          "library_file_id": "libfile_795e2b56c6b0819180b33b9eb7e55ca6",
+          "name": "Очаровательные каменные рисунки животных.png",
+          "group": "stone-art"
+        },
+        {
+          "library_file_id": "libfile_48d6de4a4c788191af5a61e252941b6a",
+          "name": "Милые камни с изображением животных.png",
+          "group": "stone-art"
+        },
+        {
+          "library_file_id": "libfile_8cbee0d975388191b170d3fd97c77b75",
+          "name": "Беломорские петроглифы для раскраски.png",
+          "group": "stone-art"
+        },
+        {
+          "library_file_id": "libfile_984fe4f2f2a88191a4877df02566d0ba",
+          "name": "Карельские орнаменты и мотивы.png",
+          "group": "karelian-painting"
+        },
+        {
+          "library_file_id": "libfile_2c60bbbc5ea48191bc8e09565e1abab2",
+          "name": "Как рисовать розу: пошаговое руководство.png",
+          "group": "karelian-painting"
+        },
+        {
+          "library_file_id": "libfile_c2550a5546fc81918a59987aec0090eb",
+          "name": "Карельская роспись: пошаговый учебник.png",
+          "group": "karelian-painting"
+        },
+        {
+          "library_file_id": "libfile_ea4f7b289d848191abaad70aa5cfa51a",
+          "name": "Как рисовать карельскую роспись.png",
+          "group": "karelian-painting"
+        },
+        {
+          "library_file_id": "libfile_24ca98c13bb481918eef97c7b4ec3c0e",
+          "name": "Карельская роспись: раскраска для тренировки.png",
+          "group": "karelian-painting"
+        },
+        {
+          "library_file_id": "libfile_58e16d39299c81919ed10ed83a0c0414",
+          "name": "Важные встречи — динамичный молодёжный коллаж.png",
+          "group": "meetings"
+        },
+        {
+          "library_file_id": "libfile_0fe0706213848191bd3eb58b1567db86",
+          "name": "Важные встречи: шаблон родительского собрания.png",
+          "group": "meetings"
+        },
+        {
+          "library_file_id": "libfile_537a47056fbc81919ae17468c76987d7",
+          "name": "vazhnye-vstrechi-kem-v2.png",
+          "group": "meetings"
+        },
+        {
+          "library_file_id": "libfile_b2fd45ebc1108191b94be67ff8c42da5",
+          "name": "Сообщества первых: встреча друзей.png",
+          "group": "communities"
+        },
+        {
+          "library_file_id": "libfile_874bcf3882cc8191adc458a95d681fa4",
+          "name": "Знакомство с сообществами Движения Первых.png",
+          "group": "communities"
+        },
+        {
+          "library_file_id": "libfile_dc5da9a9f7b481919566ca5bf2dd74b3",
+          "name": "Первая помощь: подготовка команды.png",
+          "group": "aid-visuals"
+        },
+        {
+          "library_file_id": "libfile_0e2cdae0a5ac8191b447a260b8ee4941",
+          "name": "Командная шпаргалка по первой помощи.png",
+          "group": "aid-visuals"
+        },
+        {
+          "library_file_id": "libfile_7b847d8170808191af3e149b72b86e63",
+          "name": "Памятка команде по первой помощи.png",
+          "group": "aid-visuals"
+        },
+        {
+          "library_file_id": "libfile_bdbdb2c556c48191bf06dfb0174806a3",
+          "name": "СЛР: проверка команды и манекена.png",
+          "group": "aid-visuals"
+        },
+        {
+          "library_file_id": "libfile_fdf10faaa49c8191b2de9fc8b44913cf",
+          "name": "Командная помощь самокатчику.png",
+          "group": "aid-visuals"
+        },
+        {
+          "library_file_id": "libfile_63ac67dd365081918a5e598bfca15bce",
+          "name": "Люстра: три пострадавших.png",
+          "group": "aid-visuals"
+        },
+        {
+          "library_file_id": "libfile_049b8945fd148191a8f3c27ea68ea0f8",
+          "name": "Задания_КПО_14_карточек_инициатив.docx",
+          "group": "initiative-tasks"
+        },
+        {
+          "library_file_id": "libfile_27bd53f51b54819192772d9d981ef5d3",
+          "name": "Задания_КПО_10_лучших_предложений.docx",
+          "group": "initiative-tasks"
+        },
+        {
+          "library_file_id": "libfile_e8773a0ad6dc8191918656e83c6b9289",
+          "name": "Текст_выступления_Библиотеки_и_Движение_Первых.pdf",
+          "group": "library-speech"
+        },
+        {
+          "library_file_id": "libfile_6fb487efcb08819190009a921fdccc79",
+          "name": "Текст_выступления_Библиотеки_и_Движение_Первых.docx",
+          "group": "library-speech"
+        },
+        {
+          "library_file_id": "libfile_886d7ea26264819180cac807de727955",
+          "name": "PP_Municipal_answer_key_Kustov.pdf",
+          "group": "municipal-aid"
+        },
+        {
+          "library_file_id": "libfile_5d543c6821b0819187329512b58beec0",
+          "name": "Совет_Первых_Глава_1_финальная_сборка.pptx",
+          "group": "booklet-council"
+        },
+        {
+          "library_file_id": "libfile_a78c34060aac81919e44878da3565416",
+          "name": "Активность превращается в подарки.png",
+          "group": "loyalty"
+        },
+        {
+          "library_file_id": "libfile_3f7e7cfa39b88191a291215031bd2a3b",
+          "name": "Твой контент — твои баллы!.png",
+          "group": "loyalty"
+        },
+        {
+          "library_file_id": "libfile_fe91ce9519648191a822209dae934a88",
+          "name": "Мост дружбы и сотрудничества.png",
+          "group": "bridges"
+        },
+        {
+          "library_file_id": "libfile_359dc7bac6ec81919cc5ca761be3c2af",
+          "name": "Мосты доброты и наставничества.png",
+          "group": "bridges"
+        },
+        {
+          "library_file_id": "libfile_b86cf796efe081919e34e631defeccd3",
+          "name": "Карты наставничества для подростков.png",
+          "group": "bridges"
+        },
+        {
+          "library_file_id": "libfile_16a91c613fa481919ca86bf7ebc1e0a9",
+          "name": "Голос команды — игра на импровизацию.png",
+          "group": "game-concepts"
+        },
+        {
+          "library_file_id": "libfile_c2b16e84ba1881918bfb36d919778502",
+          "name": "Тайна маршрута.png",
+          "group": "game-concepts"
+        },
+        {
+          "library_file_id": "libfile_8cf34ca58ebc8191a7804ce7a06c5248",
+          "name": "Создай событие — настольная стратегия.png",
+          "group": "game-concepts"
+        },
+        {
+          "library_file_id": "libfile_6f8505eb43d08191b96e609fcd45546d",
+          "name": "Первый импульс: динамичная карточная игра.png",
+          "group": "game-concepts"
+        },
+        {
+          "library_file_id": "libfile_978fae7d709c8191a9cad299f33e70ec",
+          "name": "На одной волне: командная игра по спектру.png",
+          "group": "game-concepts"
+        },
+        {
+          "library_file_id": "libfile_c817d5b0cc2481919f511bcbbaba3ddd",
+          "name": "Передай идею: настольная игра.png",
+          "group": "game-concepts"
+        },
+        {
+          "library_file_id": "libfile_4230d3629a9481918b7cc472b1265584",
+          "name": "Найди первого: игра на совпадения.png",
+          "group": "game-concepts"
+        },
+        {
+          "library_file_id": "libfile_c97db792d9408191a79e7ee6d9e0efdb",
+          "name": "Мозаика России.png",
+          "group": "game-concepts"
+        },
+        {
+          "library_file_id": "libfile_3e3db1964db4819184c47ef312f05197",
+          "name": "Команда действия: вместе меняем город.png",
+          "group": "game-concepts"
+        },
+        {
+          "library_file_id": "libfile_671eadd729a081918c587d1ab46d6bb0",
+          "name": "Образы первых — концепт игры.png",
+          "group": "game-concepts"
+        },
+        {
+          "library_file_id": "libfile_ea4b02a18a088191b7c70bf2c3966a5e",
+          "name": "Маршруты первых: путешествие по регионам.png",
+          "group": "game-concepts"
+        },
+        {
+          "library_file_id": "libfile_1fa4c172af3481918d0e193626d5d98f",
+          "name": "Код первых: командная игра на ассоциации.png",
+          "group": "game-concepts"
+        },
+        {
+          "library_file_id": "libfile_76cde054ec4c8191a2dad317a385b071",
+          "name": "Выставка «Карельский фронт».png",
+          "group": "exhibition"
+        },
+        {
+          "library_file_id": "libfile_ded7c41b22ac8191a5ae6940f3057bdf",
+          "name": "Выставка «В тылу ковалась победа»(2).png",
+          "group": "exhibition"
+        },
+        {
+          "library_file_id": "libfile_a47870191b3c819193c996fcee83f321",
+          "name": "Выставка «В тылу ковалась победа»(1).png",
+          "group": "exhibition"
+        },
+        {
+          "library_file_id": "libfile_f7edeaebf91c8191896ba88673f8efaa",
+          "name": "Выставка «В тылу ковалась победа».png",
+          "group": "exhibition"
+        },
+        {
+          "library_file_id": "libfile_02bd73b497f881918c8d75a0700cc1fc",
+          "name": "Плакат выставки «В тылу ковалась победа».png",
+          "group": "exhibition"
+        },
+        {
+          "library_file_id": "libfile_59b0870f3b6881919c81572ac5897596",
+          "name": "Герб моей семьи: Творческая активность.png",
+          "group": "family-emblem"
+        },
+        {
+          "library_file_id": "libfile_e0bb11bdd348819199c65c71ca0cba8a",
+          "name": "Military command interface in neon grid.png",
+          "group": "zarnitsa-visuals"
+        },
+        {
+          "library_file_id": "libfile_0f5d4c99db508191b1d49f04f5dc7468",
+          "name": "Futuristic event pass design.png",
+          "group": "zarnitsa-visuals"
+        },
+        {
+          "library_file_id": "libfile_b304b65595988191b52472dc08776af6",
+          "name": "Military tech route sheet design.png",
+          "group": "zarnitsa-visuals"
+        },
+        {
+          "library_file_id": "libfile_0e1626bf597c819197c42fc47390bf84",
+          "name": "Tactical team planning session poster.png",
+          "group": "zarnitsa-visuals"
+        },
+        {
+          "library_file_id": "libfile_899d1dd5cae881919cde386770f11010",
+          "name": "Military training challenge interface design.png",
+          "group": "zarnitsa-visuals"
+        },
+        {
+          "library_file_id": "libfile_6c5f62e85bd0819180bdb4970a0bcd06",
+          "name": "War correspondents competition poster 2.0.png",
+          "group": "zarnitsa-visuals"
+        },
+        {
+          "library_file_id": "libfile_62047daf676c8191b8e33d83c32df7b4",
+          "name": "Survival mission card design.png",
+          "group": "zarnitsa-visuals"
+        },
+        {
+          "library_file_id": "libfile_4a120c3ba1808191bdf205d4e36957cc",
+          "name": "Survival station knot guide.png",
+          "group": "zarnitsa-visuals"
+        },
+        {
+          "library_file_id": "libfile_16fc42d81cc881918341ca2cae97aec4",
+          "name": "Survival knot: guide for lifesaving techniques.png",
+          "group": "zarnitsa-visuals"
+        },
+        {
+          "library_file_id": "libfile_1532bd59d2348191b270de5fef0c0712",
+          "name": "Grapevine knot survival guide.png",
+          "group": "zarnitsa-visuals"
+        },
+        {
+          "library_file_id": "libfile_90bb37d5b5d88191ad3d429012a424a0",
+          "name": "Archery competition medal design.png",
+          "group": "zarnitsa-visuals"
+        },
+        {
+          "library_file_id": "libfile_480c778a355081918d82d43f5ef67c63",
+          "name": "Рабочеостровск_проверенная_историческая_справка_для_экскурсии_09-08-2026.docx",
+          "group": "rabocheostrovsk"
+        },
+        {
+          "library_file_id": "libfile_1c15eb6800c48191ba143732ea4fb9c7",
+          "name": "Рабочеостровск_экскурсионная_книга_ПОЛНАЯ_ИСТОЧНИКОВАЯ_РЕДАКЦИЯ.pdf",
+          "group": "rabocheostrovsk"
+        },
+        {
+          "library_file_id": "libfile_6752b1be559c8191a78cd05b1134e6bb",
+          "name": "Кемская_библиотека_10_знаков.png",
+          "group": "library-logos"
+        },
+        {
+          "library_file_id": "libfile_ad3a8fed7c108191b5993167bd382fa8",
+          "name": "Кемская_центральная_библиотека_10_SVG.zip",
+          "group": "library-logos"
+        },
+        {
+          "library_file_id": "libfile_ec163be5671881919bc3e5941e444835",
+          "name": "Кемская_библиотека_10_эскизов.png",
+          "group": "library-logos"
+        }
+      ]
+    }
+  ]
 }
