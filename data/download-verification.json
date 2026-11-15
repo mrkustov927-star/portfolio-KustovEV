@@ -1,0 +1,67 @@
+{
+  "checkedAt": "2026-11-15",
+  "method": "Anonymous HTTP GET; downloaded SHA-256 and byte length match preserved sources",
+  "samples": [
+    {
+      "format": "PNG",
+      "bytes": 15709,
+      "status": 200,
+      "sha256": "matched",
+      "authentication": "none",
+      "dimensions": [
+        752,
+        512
+      ]
+    },
+    {
+      "format": "PDF",
+      "bytes": 46291,
+      "status": 200,
+      "sha256": "matched",
+      "authentication": "none"
+    },
+    {
+      "format": "ZIP",
+      "bytes": 10494,
+      "status": 200,
+      "sha256": "matched",
+      "authentication": "none"
+    },
+    {
+      "format": "DOCX",
+      "bytes": 39982,
+      "status": 200,
+      "sha256": "matched",
+      "authentication": "none"
+    },
+    {
+      "format": "PPTX",
+      "bytes": 58925,
+      "status": 200,
+      "sha256": "matched",
+      "authentication": "none"
+    },
+    {
+      "format": "HTML",
+      "bytes": 15148,
+      "status": 200,
+      "sha256": "matched",
+      "authentication": "none"
+    },
+    {
+      "format": "XLSX",
+      "bytes": 20115,
+      "status": 200,
+      "sha256": "matched",
+      "authentication": "none"
+    },
+    {
+      "format": "MP4",
+      "bytes": 51742923,
+      "status": 200,
+      "sha256": "matched",
+      "authentication": "none"
+    }
+  ]
+}
+
