@@ -1,0 +1,98 @@
+{
+  "checkedAt": "2026-11-16T11:22:54.456687+00:00",
+  "releaseTag": "portfolio-family-2026-11-16",
+  "authentication": "none",
+  "method": "Full anonymous GET, SHA-256 and byte count comparison",
+  "filesChecked": 11,
+  "failures": 0,
+  "results": [
+    {
+      "asset": "family-89e9c2145fa62e1ecebc7f7c.pdf",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-family-2026-11-16/family-89e9c2145fa62e1ecebc7f7c.pdf",
+      "bytes": 244641,
+      "sha256": "89e9c2145fa62e1ecebc7f7c4442d27d4d45c45915657e9b60d8d6ba1139e6ab",
+      "httpStatus": 200,
+      "status": "pass"
+    },
+    {
+      "asset": "family-0608b0df94b78f6f59b60af7.pdf",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-family-2026-11-16/family-0608b0df94b78f6f59b60af7.pdf",
+      "bytes": 94031,
+      "sha256": "0608b0df94b78f6f59b60af7373e5bd27295f1f57966898a5e988af291c68979",
+      "httpStatus": 200,
+      "status": "pass"
+    },
+    {
+      "asset": "family-aa876140a060d85aee068ce1.docx",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-family-2026-11-16/family-aa876140a060d85aee068ce1.docx",
+      "bytes": 70059,
+      "sha256": "aa876140a060d85aee068ce11dee558392f6150b779397280a66e479ad465c92",
+      "httpStatus": 200,
+      "status": "pass"
+    },
+    {
+      "asset": "family-9e138d24e86929b038f12e5a.md",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-family-2026-11-16/family-9e138d24e86929b038f12e5a.md",
+      "bytes": 105841,
+      "sha256": "9e138d24e86929b038f12e5a21dfdf00aacff6da28e28dbd2f9def3fd0c4181a",
+      "httpStatus": 200,
+      "status": "pass"
+    },
+    {
+      "asset": "family-5d2410822ae63d7be09bc1ba.pdf",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-family-2026-11-16/family-5d2410822ae63d7be09bc1ba.pdf",
+      "bytes": 102845,
+      "sha256": "5d2410822ae63d7be09bc1ba7e3ba6b659433ea028cf16f6a4c84dadbc81e428",
+      "httpStatus": 200,
+      "status": "pass"
+    },
+    {
+      "asset": "family-d71260422b9f2e390b918b1c.html",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-family-2026-11-16/family-d71260422b9f2e390b918b1c.html",
+      "bytes": 13007,
+      "sha256": "d71260422b9f2e390b918b1c22498875b16e4c97fe838887e65deeb343c5631a",
+      "httpStatus": 200,
+      "status": "pass"
+    },
+    {
+      "asset": "family-c340c882c53c3450330d411c.md",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-family-2026-11-16/family-c340c882c53c3450330d411c.md",
+      "bytes": 10214,
+      "sha256": "c340c882c53c3450330d411c6b37d6d6f1c84c64c792839f1db12bb81bfe1444",
+      "httpStatus": 200,
+      "status": "pass"
+    },
+    {
+      "asset": "family-de194b2b6a278123dbb6ca14.pdf",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-family-2026-11-16/family-de194b2b6a278123dbb6ca14.pdf",
+      "bytes": 1619733,
+      "sha256": "de194b2b6a278123dbb6ca14f843073b589fb5c7dc0371fc34b7a988d0cac668",
+      "httpStatus": 200,
+      "status": "pass"
+    },
+    {
+      "asset": "family-017ec9abd77636e7d2446e8c.html",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-family-2026-11-16/family-017ec9abd77636e7d2446e8c.html",
+      "bytes": 5214,
+      "sha256": "017ec9abd77636e7d2446e8c07c250f0baff83c7cff37743b9dd25dca241b19a",
+      "httpStatus": 200,
+      "status": "pass"
+    },
+    {
+      "asset": "family-efa96dbca25244d75eeeed05.zip",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-family-2026-11-16/family-efa96dbca25244d75eeeed05.zip",
+      "bytes": 19380583,
+      "sha256": "efa96dbca25244d75eeeed056f8543c7541cce274cf1a7244b06fb2d05d2ae4e",
+      "httpStatus": 200,
+      "status": "pass"
+    },
+    {
+      "asset": "family-1c6a318464fe258ef2982286.zip",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-family-2026-11-16/family-1c6a318464fe258ef2982286.zip",
+      "bytes": 103055,
+      "sha256": "1c6a318464fe258ef29822864275f13ceb15944e07f79ba6b8df78b4bdb4bba1",
+      "httpStatus": 200,
+      "status": "pass"
+    }
+  ]
+}

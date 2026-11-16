@@ -1,0 +1,48 @@
+{
+  "checkedAt": "2026-11-16T11:26:37.158Z",
+  "sourceCommit": "53e2006eece855d19aea361ca31d96a1dee9b818",
+  "deploymentId": "dpl_9pfsLL9xZV6tefoqoD6UFDCXsdyT",
+  "deploymentState": "READY",
+  "totals": {
+    "projects": 122,
+    "galleries": 186,
+    "pages": 3430,
+    "releaseAssets": 2336
+  },
+  "build": {
+    "commands": [
+      "npm run build",
+      "npm run check"
+    ],
+    "status": "pass"
+  },
+  "downloads": {
+    "filesChecked": 11,
+    "failures": 0,
+    "authentication": "none",
+    "details": "family-download-verification-2026-11-16.json"
+  },
+  "pdfs": {
+    "newlyAuthored": 2,
+    "pages": 13,
+    "allPagesRenderedAndVisuallyInspected": true,
+    "preservedOriginalPdfPages": 36,
+    "originalDocxModified": false,
+    "docxPaginationVerified": false
+  },
+  "browser": {
+    "search": "Both new project cards found by title",
+    "formatFilter": "Both cards appear with the methodological kit filter selected",
+    "viewer": "Workbook counter advanced from 1/10 to 2/10",
+    "escape": "Returned from image viewer to project dialog",
+    "favorites": "Added workbook, observed selected state, removed it again",
+    "mobile": "390×844 project dialog inspected; override reset",
+    "originalPdf": "33-page preserved original preview loaded at 893×1263; download points to the unchanged PDF",
+    "finalPage": "https://portfolio-kustovev.vercel.app/#work/family-excursions-portfolio"
+  },
+  "limitations": [
+    "Old full portfolio file remains unavailable; published portfolio is a new curated collection.",
+    "Original travel-workbook file remains unavailable; 10-page workbook is an explicitly labeled editorial reconstruction.",
+    "DOCX is an unchanged preserved source; its page count was not asserted."
+  ]
+}
