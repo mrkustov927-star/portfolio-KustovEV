@@ -199,7 +199,8 @@ h1 span{color:#a7ebec}
 .status-dot.pending{background:#b2a17b}
 .card-arrow,.bookmark{display:grid;place-items:center;flex:none;min-width:38px;height:38px;padding:0;border-radius:13px;
   background:linear-gradient(145deg,#eef5f7,#c6dae6);box-shadow:var(--raised-small)}
-.card-arrow{margin-left:auto;color:#266e80;font-size:20px}
+.card-arrow{display:inline-flex;align-items:center;justify-content:center;gap:7px;margin-left:auto;min-width:89px;padding:0 10px;color:#266e80;font-size:18px}
+.card-arrow::before{content:"Открыть";font-size:11px;line-height:1;font-weight:750}
 .card-arrow:hover,.bookmark:hover{box-shadow:var(--pressed);color:#18495c}
 .bookmark{font-size:24px;color:#7290a0}
 .bookmark.is-saved{color:#276d80;background:#c2e2e5}
