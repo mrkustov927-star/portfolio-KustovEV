@@ -1,0 +1,314 @@
+{
+  "checkedAt": "2026-11-16T10:39:17.382969+00:00",
+  "releaseTag": "portfolio-restored-2026-11-16-b",
+  "authentication": "none",
+  "method": "Full anonymous HTTP GET for every new asset, streamed SHA-256 and byte count comparison",
+  "filesChecked": 38,
+  "failures": 0,
+  "results": [
+    {
+      "asset": "restored-e5183a1d3b956b89d282e86d.md",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-e5183a1d3b956b89d282e86d.md",
+      "httpStatus": 200,
+      "bytes": 10749,
+      "sha256": "e5183a1d3b956b89d282e86da74edf2246c9dbd5145dae4eec422c9387ac7efb",
+      "status": "pass"
+    },
+    {
+      "asset": "restored-1ffc6f2211d4966731d254fa.py",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-1ffc6f2211d4966731d254fa.py",
+      "httpStatus": 200,
+      "bytes": 24747,
+      "sha256": "1ffc6f2211d4966731d254fad99e5d077f55fe642409eca58660c8dfe6baa21a",
+      "status": "pass"
+    },
+    {
+      "asset": "restored-70ed75fbe8b646e5a34e2967.py",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-70ed75fbe8b646e5a34e2967.py",
+      "httpStatus": 200,
+      "bytes": 2188,
+      "sha256": "70ed75fbe8b646e5a34e2967e939fb5bf13739cfd855bb8b77d6fa44fa18b171",
+      "status": "pass"
+    },
+    {
+      "asset": "restored-cd3ddd30a0b92376bf514c4e.py",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-cd3ddd30a0b92376bf514c4e.py",
+      "httpStatus": 200,
+      "bytes": 1758,
+      "sha256": "cd3ddd30a0b92376bf514c4e37a08a6473a6687d89b3c1f89d46e0600a8e821d",
+      "status": "pass"
+    },
+    {
+      "asset": "restored-5b64f82afc977b3c49cc89ab.py",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-5b64f82afc977b3c49cc89ab.py",
+      "httpStatus": 200,
+      "bytes": 2645,
+      "sha256": "5b64f82afc977b3c49cc89abc2b1b375be5f78cec677fa9f773d83d4001cfd9e",
+      "status": "pass"
+    },
+    {
+      "asset": "restored-abbf384ad63c3445468045d9.py",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-abbf384ad63c3445468045d9.py",
+      "httpStatus": 200,
+      "bytes": 1263,
+      "sha256": "abbf384ad63c3445468045d9395205be3c576a1c733830abfca7342c7e3a1c48",
+      "status": "pass"
+    },
+    {
+      "asset": "restored-7ed705a2e73862d9300a3840.py",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-7ed705a2e73862d9300a3840.py",
+      "httpStatus": 200,
+      "bytes": 2323,
+      "sha256": "7ed705a2e73862d9300a3840eb483ba46aef922a4ac21c1649a22c519c53bbaf",
+      "status": "pass"
+    },
+    {
+      "asset": "restored-025e81b35fc27b53710a726a.py",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-025e81b35fc27b53710a726a.py",
+      "httpStatus": 200,
+      "bytes": 2025,
+      "sha256": "025e81b35fc27b53710a726a43ab5fd60d62b221c4d614a6e909a13e37e43b75",
+      "status": "pass"
+    },
+    {
+      "asset": "restored-c31924cacc308f4058b205f6.pdf",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-c31924cacc308f4058b205f6.pdf",
+      "httpStatus": 200,
+      "bytes": 198795,
+      "sha256": "c31924cacc308f4058b205f676c344996d86e8b6cf1d9808f2f3ebeee1bee621",
+      "status": "pass"
+    },
+    {
+      "asset": "restored-69e0465d2ca632b670330ac9.pdf",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-69e0465d2ca632b670330ac9.pdf",
+      "httpStatus": 200,
+      "bytes": 195542,
+      "sha256": "69e0465d2ca632b670330ac900ed9cd889dbcd4605f223aacc7baf73c645b544",
+      "status": "pass"
+    },
+    {
+      "asset": "restored-b02c759ae806d36036246db7.svg",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-b02c759ae806d36036246db7.svg",
+      "httpStatus": 200,
+      "bytes": 22411,
+      "sha256": "b02c759ae806d36036246db76dab9f0f9edcc10fb2fd3127448b1cf1b5c19e21",
+      "status": "pass"
+    },
+    {
+      "asset": "restored-3b38e5b334c25a44b518b312.svg",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-3b38e5b334c25a44b518b312.svg",
+      "httpStatus": 200,
+      "bytes": 22411,
+      "sha256": "3b38e5b334c25a44b518b31209e5a8c30355a325c36c064988afc810802707af",
+      "status": "pass"
+    },
+    {
+      "asset": "restored-b487e2898cde96be07d80855.svg",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-b487e2898cde96be07d80855.svg",
+      "httpStatus": 200,
+      "bytes": 22410,
+      "sha256": "b487e2898cde96be07d80855f9305b0471418600217b7d05ffaff060b7fcb997",
+      "status": "pass"
+    },
+    {
+      "asset": "restored-239f4a4fb63b2e9e37a830a4.svg",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-239f4a4fb63b2e9e37a830a4.svg",
+      "httpStatus": 200,
+      "bytes": 22409,
+      "sha256": "239f4a4fb63b2e9e37a830a44d51e56a608859bb37462a2ade2a35af8eb0bf41",
+      "status": "pass"
+    },
+    {
+      "asset": "restored-067616dbabd7d54ba05b77ac.svg",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-067616dbabd7d54ba05b77ac.svg",
+      "httpStatus": 200,
+      "bytes": 11505,
+      "sha256": "067616dbabd7d54ba05b77ac608fb1eeadede570b1f6576677011cc37ed3e25b",
+      "status": "pass"
+    },
+    {
+      "asset": "restored-8f6f31f0a5398d7c581d5379.svg",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-8f6f31f0a5398d7c581d5379.svg",
+      "httpStatus": 200,
+      "bytes": 7667,
+      "sha256": "8f6f31f0a5398d7c581d53795991909a9263678f39a3d29cac309a98bfe45f6b",
+      "status": "pass"
+    },
+    {
+      "asset": "restored-6a67cbe6df7a0f750d2b55a1.svg",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-6a67cbe6df7a0f750d2b55a1.svg",
+      "httpStatus": 200,
+      "bytes": 2923,
+      "sha256": "6a67cbe6df7a0f750d2b55a1673f49302f4a0cb3162b5c7f847a349e99c51a57",
+      "status": "pass"
+    },
+    {
+      "asset": "restored-49957a9c03c7f162ca4181ea.svg",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-49957a9c03c7f162ca4181ea.svg",
+      "httpStatus": 200,
+      "bytes": 11505,
+      "sha256": "49957a9c03c7f162ca4181ea0d37ea0f77c0ff8ef8c25be8ea0815b9bb8d9728",
+      "status": "pass"
+    },
+    {
+      "asset": "restored-b70be34fe000a78b3e7b91e1.svg",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-b70be34fe000a78b3e7b91e1.svg",
+      "httpStatus": 200,
+      "bytes": 7667,
+      "sha256": "b70be34fe000a78b3e7b91e13ec87e23a08b5eea76dc38b9a71c90a28d82fe6c",
+      "status": "pass"
+    },
+    {
+      "asset": "restored-494d3563c68f036dca455d7d.svg",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-494d3563c68f036dca455d7d.svg",
+      "httpStatus": 200,
+      "bytes": 2923,
+      "sha256": "494d3563c68f036dca455d7d17fb5a28570b3c8f27aeca52f7743d84dfff2da6",
+      "status": "pass"
+    },
+    {
+      "asset": "restored-7c43d5d74889a78b887521e8.svg",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-7c43d5d74889a78b887521e8.svg",
+      "httpStatus": 200,
+      "bytes": 11505,
+      "sha256": "7c43d5d74889a78b887521e8b7ef2e787c352ead0e859aae48c83da2b028d199",
+      "status": "pass"
+    },
+    {
+      "asset": "restored-f96c9ccced648a746754580d.pptx",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-f96c9ccced648a746754580d.pptx",
+      "httpStatus": 200,
+      "bytes": 6156650,
+      "sha256": "f96c9ccced648a746754580da9bf8bbb117a5b5ce4c38bdc804114686fc96573",
+      "status": "pass"
+    },
+    {
+      "asset": "restored-092360d64d9c0fd4941a3f6a.html",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-092360d64d9c0fd4941a3f6a.html",
+      "httpStatus": 200,
+      "bytes": 14323,
+      "sha256": "092360d64d9c0fd4941a3f6a7a93acd54d618b9277c9ff5e8a3f811a9cf90d5c",
+      "status": "pass"
+    },
+    {
+      "asset": "restored-be7845b38f0ef87c02e4d11f.py",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-be7845b38f0ef87c02e4d11f.py",
+      "httpStatus": 200,
+      "bytes": 727,
+      "sha256": "be7845b38f0ef87c02e4d11f533a86e6ee0b921e8980f26662a5c71ba0b0b15a",
+      "status": "pass"
+    },
+    {
+      "asset": "restored-9257f070f072ec0ba7867152.py",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-9257f070f072ec0ba7867152.py",
+      "httpStatus": 200,
+      "bytes": 6301,
+      "sha256": "9257f070f072ec0ba78671529a9ca4980694069efd7e9e3e52aa45e2f2e8bd5b",
+      "status": "pass"
+    },
+    {
+      "asset": "restored-0d2dd1de8ae51083c27e9dbe.pdf",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-0d2dd1de8ae51083c27e9dbe.pdf",
+      "httpStatus": 200,
+      "bytes": 274878,
+      "sha256": "0d2dd1de8ae51083c27e9dbea347b477fbc3c4d2ee59544ab61349a97faf6439",
+      "status": "pass"
+    },
+    {
+      "asset": "restored-a5f907181fe281ad856d7405.pdf",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-a5f907181fe281ad856d7405.pdf",
+      "httpStatus": 200,
+      "bytes": 448716,
+      "sha256": "a5f907181fe281ad856d7405502b1028c3a8df204f2bdc4521abd630df5fbf70",
+      "status": "pass"
+    },
+    {
+      "asset": "restored-baebdb1a598a2dd0a2008527.pdf",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-baebdb1a598a2dd0a2008527.pdf",
+      "httpStatus": 200,
+      "bytes": 249728,
+      "sha256": "baebdb1a598a2dd0a200852715247187b38931840d84628b67bd5556f4763b89",
+      "status": "pass"
+    },
+    {
+      "asset": "restored-e66b97fb27f183b2e48fe3e9.pdf",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-e66b97fb27f183b2e48fe3e9.pdf",
+      "httpStatus": 200,
+      "bytes": 232135,
+      "sha256": "e66b97fb27f183b2e48fe3e95b7fdbf7b58bbb96c29320bfc18eea0e5db27372",
+      "status": "pass"
+    },
+    {
+      "asset": "restored-ef26b80d39a2fa42a72449d1.txt",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-ef26b80d39a2fa42a72449d1.txt",
+      "httpStatus": 200,
+      "bytes": 1508,
+      "sha256": "ef26b80d39a2fa42a72449d181c4e8bef7eb9d4c35a3ef9676f390e6350d29e6",
+      "status": "pass"
+    },
+    {
+      "asset": "restored-1bbfa4147628a89a1f5f8386.md",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-1bbfa4147628a89a1f5f8386.md",
+      "httpStatus": 200,
+      "bytes": 3908,
+      "sha256": "1bbfa4147628a89a1f5f8386ef3a75cc396baaaed33f5adec97a8bea6c6aed91",
+      "status": "pass"
+    },
+    {
+      "asset": "restored-d8aadacf8607bef37bf8f543.md",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-d8aadacf8607bef37bf8f543.md",
+      "httpStatus": 200,
+      "bytes": 4772,
+      "sha256": "d8aadacf8607bef37bf8f54348813fc8a6a8a1464fbacd6387230a445fbbd93f",
+      "status": "pass"
+    },
+    {
+      "asset": "restored-8fda4f35d7613288f4ccdfd9.toml",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-8fda4f35d7613288f4ccdfd9.toml",
+      "httpStatus": 200,
+      "bytes": 1081,
+      "sha256": "8fda4f35d7613288f4ccdfd95f3a1de2b4c4caba78a105347615d7e22f352980",
+      "status": "pass"
+    },
+    {
+      "asset": "restored-e67c0e0fa22f9105ceb2dea7.md",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-e67c0e0fa22f9105ceb2dea7.md",
+      "httpStatus": 200,
+      "bytes": 4161,
+      "sha256": "e67c0e0fa22f9105ceb2dea7cd5f27f266525bc5ebd4e0c047d2f6ec4ca62054",
+      "status": "pass"
+    },
+    {
+      "asset": "restored-55391b19e3bcf14749ae44fe.zip",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-55391b19e3bcf14749ae44fe.zip",
+      "httpStatus": 200,
+      "bytes": 7054,
+      "sha256": "55391b19e3bcf14749ae44fe9d0b820a31df0d083bbb524baa4fd3c8028e376c",
+      "status": "pass"
+    },
+    {
+      "asset": "restored-4952595ad7404ab4c15d4eb1.pptx",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-4952595ad7404ab4c15d4eb1.pptx",
+      "httpStatus": 200,
+      "bytes": 6015453,
+      "sha256": "4952595ad7404ab4c15d4eb168fdc7bef8e8d7cc6f3f40344a16398f2eff7cb9",
+      "status": "pass"
+    },
+    {
+      "asset": "restored-d14db199b5f5b9abf66a3f3b.pdf",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-d14db199b5f5b9abf66a3f3b.pdf",
+      "httpStatus": 200,
+      "bytes": 1323961,
+      "sha256": "d14db199b5f5b9abf66a3f3bff7ae9887db38b4e9081e8fa9c43e604ec713465",
+      "status": "pass"
+    },
+    {
+      "asset": "restored-61a205e7fadfb736e00324e9.zip",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-61a205e7fadfb736e00324e9.zip",
+      "httpStatus": 200,
+      "bytes": 1355170,
+      "sha256": "61a205e7fadfb736e00324e9649d344e5e3ff58fb3b0799ba1aeea00c1e52550",
+      "status": "pass"
+    }
+  ]
+}

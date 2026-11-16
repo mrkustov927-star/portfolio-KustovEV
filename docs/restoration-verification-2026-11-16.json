@@ -1,0 +1,42 @@
+{
+  "checkedAt": "2026-11-16T10:44:30.893Z",
+  "sourceCommit": "1b301afb45318675879093f1c630a645c66d4bd2",
+  "deploymentId": "dpl_FgQWFiBEnRjKc8SUjb4QjbMpoCbn",
+  "productionUrl": "https://portfolio-kustovev.vercel.app/",
+  "deploymentState": "READY",
+  "build": {
+    "projects": 120,
+    "galleries": 182,
+    "pages": 3381,
+    "originalFiles": 2325,
+    "originalSources": 2009,
+    "commands": [
+      "npm run build",
+      "npm run check",
+      "node --check public/app.js"
+    ],
+    "status": "pass"
+  },
+  "anonymousDownloads": {
+    "filesChecked": 38,
+    "failures": 0,
+    "report": "docs/restoration-download-verification-2026-11-16.json"
+  },
+  "browser": {
+    "status": "pass",
+    "search": "Found the restored technical kit; search and displayed totals show 120 projects and 3381 pages.",
+    "formatFilter": "Methodological kit filter includes the technical kit.",
+    "viewer": "Opened reconstructed Bridges slide 1 and advanced to slide 2; counter changed from 4/13 to 5/13.",
+    "escape": "Closed the image viewer and returned to the project dialog.",
+    "favorites": "Added Bridges to favorites, observed selected state, removed it and observed count 0.",
+    "pdf": "Public PDF links appear in the project and viewer; full PDF bytes included in anonymous download checks.",
+    "mobile": "390×844 viewport: catalog controls and project dialog visually inspected; viewport reset afterward.",
+    "vectorPreview": "Loaded the unchanged SVG's WebP preview; natural image size 858×1000 confirmed. Neutral contrasting preview background preserves the original downloadable SVG.",
+    "finalTab": "https://portfolio-kustovev.vercel.app/#work/bridges"
+  },
+  "limitations": [
+    "Original January 2026 Bridges PPTX remains unavailable; reconstructed edition is labeled in cover, resources and project note.",
+    "Full 60-page Zarnitsa notebook and three full annual program documents remain unfound.",
+    "Native PowerPoint execution was not tested. The editable PPTX passed package, layout, font policy and Artifact Tool import checks."
+  ]
+}
