@@ -1,0 +1,12 @@
+{
+  "repository": "mrkustov927-star/newpage",
+  "commit": "d9a14ddea0e2c48babb1bae27505851aa1133209",
+  "originalSourceFilesUnchanged": true,
+  "excluded": [],
+  "runtimeExportsIncluded": false,
+  "demoChanges": [
+    "Browser storage keys are isolated from the live project.",
+    "Learning pages and training content are unchanged; the original has no network submission logic.",
+    "Added an explicit archive notice and connect-src none policy to HTML pages."
+  ]
+}

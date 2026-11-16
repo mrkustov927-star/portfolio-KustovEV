@@ -1,0 +1,328 @@
+{
+  "date": "2026-11-16",
+  "baselineCommit": "daed7886b5dfee7465518e621d6a3b482ec040ae",
+  "addedProjects": 7,
+  "addedAssets": 50,
+  "sourceIdsRecovered": [
+    "libfile_0456c45392e881919ad87d04a5690480",
+    "libfile_0c9e3a332bbc819189f1ba1f0644133b",
+    "libfile_5e7d0b3cc64c81919ff376c1ac7129dd",
+    "libfile_f55c13d68cb881918e29fd9e0e5b1bb0",
+    "libfile_f92ab135d5388191ad42ed0c07114816",
+    "libfile_1d629a340c10819182193882f92beaaa",
+    "libfile_639334542fcc81919569713d03c4a0c6",
+    "libfile_6f845398a58c819185bc949aa4ad2c38",
+    "libfile_96ba7dc3b59c8191b1bd70fbf01400ee",
+    "libfile_18c514cd31048191808fd637ef5cc616",
+    "libfile_dc27779870b88191bab40032f8edeeb4",
+    "libfile_7945696124d08191be5365daca973c68",
+    "libfile_f71ed6cf1d8881918bf33703bb36bae4",
+    "libfile_b34d7c02ab4c8191b1b2d03fba138322",
+    "libfile_1c0270ea60c8819181858acbba710e37",
+    "libfile_67443ac9c3188191bdc522744ac19507",
+    "libfile_ae5bd112437c81918f4b7c6497f8b533",
+    "libfile_d80dd06c5df081918aba9558d0b1cc67",
+    "libfile_b4472bacc3908191bcba4268d19a8b4c",
+    "libfile_122609b6fd208191b3d6474559d35f51",
+    "libfile_1d97bb59786481919aa89e034966b131",
+    "libfile_6117f7843a808191823fe1d42d0730c4",
+    "libfile_9f3db8a4459c819196b24cbe0c8635ce",
+    "libfile_4e173a420d608191b5a9c0aa212b5043"
+  ],
+  "researchExports": [
+    {
+      "sourceId": "libfile_ae5bd112437c81918f4b7c6497f8b533",
+      "projectId": "kem-transfer-research",
+      "title": "Кемский пересыльный пункт, УСЛОН и «гостиница» у Благовещенского собора: историко-архивное исследование",
+      "html": "research/ae5bd112437c.html",
+      "textChars": 18415,
+      "sources": 18,
+      "unresolvedAttachments": [],
+      "sourceVisibleTextSha256": "df3daec3c31dafabedabb5fdf6cd8e6ae5a18e1da722b20ad3e35cd6ab79a3fc"
+    },
+    {
+      "sourceId": "libfile_d80dd06c5df081918aba9558d0b1cc67",
+      "projectId": "library-logos",
+      "title": "Логотип для Кемской центральной библиотеки: исследование, направления и десять векторных концепций",
+      "html": "research/d80dd06c5df0.html",
+      "textChars": 27761,
+      "sources": 23,
+      "unresolvedAttachments": [
+        "kem_library_logo_sketches.zip",
+        "preview_contact_sheet.png",
+        "kem_library_logo_sketches.zip",
+        "kem_library_logo_sketches.zip"
+      ],
+      "sourceVisibleTextSha256": "307d1a5e1c3b8f4b5124cbde069282e332e51dc1a3acc591034392c2a7d8f493"
+    },
+    {
+      "sourceId": "libfile_b4472bacc3908191bcba4268d19a8b4c",
+      "projectId": "council",
+      "title": "«Совет Первых. От идеи — к общему делу»: полный контент-макет буклета для участников Совета Первых",
+      "html": "research/b4472bacc390.html",
+      "textChars": 69749,
+      "sources": 8,
+      "unresolvedAttachments": [],
+      "sourceVisibleTextSha256": "af0292567f3c3571346e949605b11f46ee058c24d53bd13069d43243a6b48d78"
+    },
+    {
+      "sourceId": "libfile_122609b6fd208191b3d6474559d35f51",
+      "projectId": "council",
+      "title": "Рабочий буклет участника Совета Первых первичного отделения: исследовательская концепция и готовое содержание на 32 страницы",
+      "html": "research/122609b6fd20.html",
+      "textChars": 55931,
+      "sources": 8,
+      "unresolvedAttachments": [],
+      "sourceVisibleTextSha256": "906f88cc11b448b038eb4a1f06768406e5bf5310462a2a3b8fa0bdb9748709f5"
+    },
+    {
+      "sourceId": "libfile_1d97bb59786481919aa89e034966b131",
+      "projectId": "council",
+      "title": "«Советы Первых» в первичных организациях: функции, роли, регламенты и практики",
+      "html": "research/1d97bb597864.html",
+      "textChars": 42284,
+      "sources": 12,
+      "unresolvedAttachments": [],
+      "sourceVisibleTextSha256": "b78872de8253f5ec7d2a3a10a9037c57bbc8dbced5a5dde816f9d894dad4b960"
+    },
+    {
+      "sourceId": "libfile_6117f7843a808191823fe1d42d0730c4",
+      "projectId": "libraries",
+      "title": "Продуктивное сотрудничество библиотек и Движения Первых: модели, практики и план внедрения для Кемского муниципального округа",
+      "html": "research/6117f7843a80.html",
+      "textChars": 42984,
+      "sources": 12,
+      "unresolvedAttachments": [
+        "cards_preview.png",
+        "card_01_partnerstvo.png",
+        "card_02_modeli.png",
+        "card_03_formaty.png",
+        "card_04_otkryvaya_stranitsy.png",
+        "card_05_praktiki.png",
+        "card_06_school3.png",
+        "card_07_next_step.png",
+        "Макеты_7_карточек_16x9_Библиотеки_и_Первые.zip"
+      ],
+      "sourceVisibleTextSha256": "62411d8e691094189360659a3c1dae1c4b310c382551e1ba4a0b7edcfa4c8d6d"
+    },
+    {
+      "sourceId": "libfile_9f3db8a4459c819196b24cbe0c8635ce",
+      "projectId": "ai-authorship-research",
+      "title": "Как отличают текст ИИ от человеческого и что в исходном эссе выдавало стиль ассистента",
+      "html": "research/9f3db8a4459c.html",
+      "textChars": 26046,
+      "sources": 14,
+      "unresolvedAttachments": [
+        "Эссе_Почему_я_хочу_стать_участником_Слёта_в_личном_стиле.docx"
+      ],
+      "sourceVisibleTextSha256": "f13c9ac3fa767322f37895d3fb7061ea2f7f7541058b706fd92f8fada8fa3747"
+    },
+    {
+      "sourceId": "libfile_4e173a420d608191b5a9c0aa212b5043",
+      "projectId": "rabocheostrovsk-research",
+      "title": "Источниковедческий аудит корпуса по теме Кемь — Попов остров — Якостров — Рабочеостровск",
+      "html": "research/4e173a420d60.html",
+      "textChars": 17426,
+      "sources": 6,
+      "unresolvedAttachments": [
+        "Кемь_Рабочеостровск_источниковедческий_аудит_V6.xlsx",
+        "Кемь_Рабочеостровск_паспорта_источников_V6.csv",
+        "Кемь_Рабочеостровск_ключевые_утверждения_V6.csv",
+        "kem_maps_collage2.png",
+        "kem_georef_triptych.png"
+      ],
+      "sourceVisibleTextSha256": "86651bc6631788abc9baeda6b8d268b0b7663e2d3f500f4274b858352989ec95"
+    }
+  ],
+  "repositoryPackages": {
+    "createdDate": "2026-11-16",
+    "scope": "Repository source archives and isolated offline demonstration copies. No live data fetched or changes to source repositories.",
+    "repositories": [
+      {
+        "repository": "mrkustov927-star/newpage",
+        "title": "Зарница 2.0. Команда лучших",
+        "commit": "d9a14ddea0e2c48babb1bae27505851aa1133209",
+        "sourceArchive": {
+          "filename": "newpage-source.zip",
+          "sizeBytes": 24658,
+          "sha256": "4fb9b41c9a5bc38d91b6c3996a024d2ab1554bffe2fd48f46317dbc37cf744af"
+        },
+        "offlineArchive": {
+          "filename": "newpage-offline.zip",
+          "sizeBytes": 27556,
+          "sha256": "aefb0ff72b2c69ec357e21b65d9cd98472921319d439d0bc1bd63c38326e4ef1"
+        },
+        "safeEntrypoint": "index.html",
+        "excluded": [],
+        "demoChanges": [
+          "Browser storage keys are isolated from the live project.",
+          "Learning pages and training content are unchanged; the original has no network submission logic.",
+          "Added an explicit archive notice and connect-src none policy to HTML pages."
+        ],
+        "recommendation": "Include as an interactive training/tool case with source and offline downloads. Treat content as an archival educational product, not current official rules.",
+        "sourceBytesVerified": true,
+        "sourceFilesIncluded": 13
+      },
+      {
+        "repository": "mrkustov927-star/kemfest2026",
+        "title": "КемьФест — командный план проекта",
+        "commit": "fb9ce716053780bdf32caff2fc637edc4e5c47b6",
+        "sourceArchive": {
+          "filename": "kemfest2026-source.zip",
+          "sizeBytes": 28949,
+          "sha256": "27897b22752c1cefc09f95b9bec54d7776564ed0256f2ea0f09c180889893099"
+        },
+        "offlineArchive": {
+          "filename": "kemfest2026-offline.zip",
+          "sizeBytes": 8018,
+          "sha256": "08d58f1ecc85a01ac0be1f5983d782bbc6f79da45ec601d7987fa2fdbb0cc2f3"
+        },
+        "safeEntrypoint": "index.html",
+        "excluded": [
+          {
+            "path": "config.js",
+            "reason": "Administrator PIN hash; not needed for public demonstration"
+          },
+          {
+            "path": "project-kemfest-2026.docx",
+            "reason": "Personal/contact/project details in DOCX"
+          }
+        ],
+        "demoChanges": [
+          "Only the public team-plan page is included; administrator dashboard, sync code and source project DOCX are not included.",
+          "Removed 4 links to the administrator dashboard and personal-data-bearing source document.",
+          "Project plan figures and dates retained as archival content; dates are not a claim of current project status.",
+          "Added an explicit archive notice and connect-src none policy to HTML pages."
+        ],
+        "recommendation": "Use the public team-plan offline copy as a project-management case. Do not publish the original project DOCX or administrator configuration.",
+        "sourceBytesVerified": true,
+        "sourceFilesIncluded": 9
+      },
+      {
+        "repository": "mrkustov927-star/PP10",
+        "title": "Первая помощь — подготовка команды",
+        "commit": "164fc87c79eb08c19bb215e65337393c82293672",
+        "sourceArchive": {
+          "filename": "pp10-source.zip",
+          "sizeBytes": 46433,
+          "sha256": "457978ed07a0c005e97a77a84c1b2db3e96127bccfaf92590ee818f103e7caf8"
+        },
+        "offlineArchive": {
+          "filename": "pp10-offline.zip",
+          "sizeBytes": 45327,
+          "sha256": "ea6842d689298175bd956ee9cb6719f71f4777e74782345941b300147669cb0e"
+        },
+        "safeEntrypoint": "index.html",
+        "excluded": [],
+        "demoChanges": [
+          "Firebase/live-rating configuration replaced with cloudRating:false and no project identifiers.",
+          "cloud() stops before loading external modules or accessing any service.",
+          "Browser storage uses a separate portfolio-only key; original browser profiles/history are not read.",
+          "Learning content, questions, scenarios and answer checking are unchanged.",
+          "Added an explicit archive notice and connect-src none policy to HTML pages."
+        ],
+        "recommendation": "Include as an interactive training/tool case with source and offline downloads. Treat content as an archival educational product, not current official rules.",
+        "sourceBytesVerified": true,
+        "sourceFilesIncluded": 12
+      },
+      {
+        "repository": "mrkustov927-star/PP.Kem",
+        "title": "Первая помощь — Карелия и муниципальная репетиция",
+        "commit": "02e576ebc6fad0d95a5cdc78dd4b97c28d3a9b1e",
+        "sourceArchive": {
+          "filename": "pp-kem-source.zip",
+          "sizeBytes": 70088,
+          "sha256": "0dc0a136ad705557a6611ea689968d4253137a5b8deb88896549266c7216d82c"
+        },
+        "offlineArchive": {
+          "filename": "pp-kem-offline.zip",
+          "sizeBytes": 64211,
+          "sha256": "03ee0ba013a4b1bdc4757d06a31156729ae53e33be1bb54af1f585d40c86d908"
+        },
+        "safeEntrypoint": "index.html",
+        "excluded": [
+          {
+            "path": "assets/config.js",
+            "reason": "Live Firebase project configuration and API key; not needed for offline demonstration"
+          }
+        ],
+        "demoChanges": [
+          "Firebase/live-rating configuration replaced with cloudRating:false and no project identifiers.",
+          "cloud() stops before loading external modules or accessing any service.",
+          "Browser storage uses a separate portfolio-only key; original browser profiles/history are not read.",
+          "Learning content, questions, scenarios and answer checking are unchanged.",
+          "Added an explicit archive notice and connect-src none policy to HTML pages."
+        ],
+        "recommendation": "Include as an interactive training/tool case with source and offline downloads. Treat content as an archival educational product, not current official rules.",
+        "sourceBytesVerified": true,
+        "sourceFilesIncluded": 18
+      }
+    ],
+    "validation": [
+      {
+        "repo": "newpage",
+        "javascriptFiles": 1,
+        "syntaxErrors": [],
+        "missingRelativeAssets": []
+      },
+      {
+        "repo": "kemfest2026",
+        "javascriptFiles": 1,
+        "syntaxErrors": [],
+        "missingRelativeAssets": []
+      },
+      {
+        "repo": "PP10",
+        "javascriptFiles": 4,
+        "syntaxErrors": [],
+        "missingRelativeAssets": []
+      },
+      {
+        "repo": "PP.Kem",
+        "javascriptFiles": 7,
+        "syntaxErrors": [],
+        "missingRelativeAssets": []
+      },
+      {
+        "repo": "PP10",
+        "coreTestsExitCode": 0,
+        "testSummary": [
+          "# tests 9",
+          "# pass 9",
+          "# fail 0"
+        ]
+      },
+      {
+        "repo": "PP.Kem",
+        "coreTestsExitCode": 0,
+        "testSummary": [
+          "# tests 14",
+          "# pass 14",
+          "# fail 0"
+        ]
+      }
+    ]
+  },
+  "counts": {
+    "projects": 119,
+    "galleries": 174,
+    "imagesAndPages": 3271,
+    "sitesAndTools": 32,
+    "downloadAssets": 2287,
+    "ornamentImagesAndPages": 83,
+    "mappedSourceIds": 2008
+  },
+  "limits": [
+    "Full historical chat-only materials are not all recovered.",
+    "Original research state/history JSON is not published; complete visible final text is exported.",
+    "Confidential configuration, participant documents and live result submission are excluded from public demos.",
+    "Five canonical native links are preserved with their existing restricted access; independent copies remain available where recovered.",
+    "Unconfirmed tactical medical sketches and personal images remain outside the public catalog."
+  ],
+  "nativeRoutesArchive": {
+    "projectId": "appgprj_6a5aa460522c8191838233e40785379c",
+    "commit": "fd574aaea79947e5411ae317d68d74e1a37bf723",
+    "entrypoint": "tools/recovered/native-family-routes/index.html",
+    "mapTilesRequireInternet": true
+  }
+}

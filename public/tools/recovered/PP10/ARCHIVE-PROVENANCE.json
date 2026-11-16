@@ -1,0 +1,14 @@
+{
+  "repository": "mrkustov927-star/PP10",
+  "commit": "164fc87c79eb08c19bb215e65337393c82293672",
+  "originalSourceFilesUnchanged": true,
+  "excluded": [],
+  "runtimeExportsIncluded": false,
+  "demoChanges": [
+    "Firebase/live-rating configuration replaced with cloudRating:false and no project identifiers.",
+    "cloud() stops before loading external modules or accessing any service.",
+    "Browser storage uses a separate portfolio-only key; original browser profiles/history are not read.",
+    "Learning content, questions, scenarios and answer checking are unchanged.",
+    "Added an explicit archive notice and connect-src none policy to HTML pages."
+  ]
+}

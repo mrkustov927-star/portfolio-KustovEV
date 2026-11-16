@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ru">
+<head><meta http-equiv="Content-Security-Policy" content="connect-src \'none\';">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>КемьФест 2026 - командный план</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body class="teamPage"><aside style="padding:10px 16px;background:#fff4d4;color:#322a13;font:14px/1.5 system-ui;text-align:center">Офлайн-архив для портфолио. Работа с данными внешних сервисов отключена. Исходный учебный материал сохранён.</aside>
+  <div class="shell">
+    <header class="hero teamHero">
+      <div class="heroGrid">
+        <div>
+          <div class="eyebrow">КемьФест 2026 · рабочая страница команды</div>
+          <h1>КемьФест 2026</h1>
+          <p class="subtitle">Что нужно успеть команде: календарь, ближайшие сроки и подсказки по реализации проекта без служебных форм и финансовых данных.</p>
+          <div class="stats">
+            <div><b>12</b><span>контрольных точек</span></div>
+            <div><b>10+</b><span>мастер-классов</span></div>
+            <div><b>480</b><span>участников по плану</span></div>
+            <div><b>30.11</b><span>финальный срок</span></div>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="#calendar">Открыть календарь</a>
+            <a class="btn secondary" href="#plan">План реализации</a>
+            <span class="button secondary" aria-disabled="true">Недоступно в офлайн-версии</span>
+            <span class="button secondary" aria-disabled="true">Недоступно в офлайн-версии</span>
+          </div>
+        </div>
+        <div class="teamClock">
+          <b id="teamDeadline">...</b>
+          <span>до контрольной даты 30.11.2026</span>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="teamBand" id="calendar">
+        <div class="section">
+          <div>
+            <h2>Ближайшие действия</h2>
+            <p>Командная подсказка показывает, на что обратить внимание в первую очередь.</p>
+          </div>
+        </div>
+        <div class="teamUrgent" id="urgentList"></div>
+      </section>
+
+      <section class="teamBand">
+        <div class="section">
+          <div>
+            <h2>Как работать команде</h2>
+            <p>Участник команды не заполняет отчётные формы на главной странице, а видит только понятные задачи.</p>
+          </div>
+        </div>
+        <div class="grid cards3">
+          <div class="card">
+            <div class="label">1. Сделать</div>
+            <div class="value">задачу</div>
+            <div class="small">Провести мероприятие, подготовить публикацию, собрать фото, видео или документы.</div>
+          </div>
+          <div class="card">
+            <div class="label">2. Передать</div>
+            <div class="value">ссылки</div>
+            <div class="small">Отправить администратору ссылки, списки, скриншоты статистики и краткий результат.</div>
+          </div>
+          <div class="card">
+            <div class="label">3. Проверить</div>
+            <div class="value">срок</div>
+            <div class="small">Свериться с календарём и подсказками, чтобы не пропустить контрольные точки.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="teamBand" id="plan">
+        <div class="section">
+          <div>
+            <h2>План реализации</h2>
+            <p>Все контрольные точки проекта с подсказками, что должно быть готово к сроку.</p>
+          </div>
+        </div>
+        <div class="teamPlan" id="teamPlan"></div>
+      </section>
+
+      <section class="teamBand">
+        <div class="section">
+          <div>
+            <h2>Материалы</h2>
+            <p>Быстрые переходы для команды и администратора проекта.</p>
+          </div>
+        </div>
+        <div class="grid cards3">
+          <span class="button secondary" aria-disabled="true">Недоступно в офлайн-версии</span>
+          <span class="button secondary" aria-disabled="true">Недоступно в офлайн-версии</span>
+          <a class="card teamLink" href="#calendar">
+            <span class="label">Календарь</span>
+            <b>Вернуться к срокам</b>
+            <small>Ближайшие действия и просроченные контрольные точки.</small>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <div class="footer">Исторический фестиваль «КемьФест» · командная страница реализации проекта</div>
+  </div>
+  <script src="./team.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "repository": "mrkustov927-star/kemfest2026",
+  "commit": "fb9ce716053780bdf32caff2fc637edc4e5c47b6",
+  "originalSourceFilesUnchanged": true,
+  "excluded": [
+    {
+      "path": "config.js",
+      "reason": "Administrator PIN hash; not needed for public demonstration"
+    },
+    {
+      "path": "project-kemfest-2026.docx",
+      "reason": "Personal/contact/project details in DOCX"
+    }
+  ],
+  "runtimeExportsIncluded": false,
+  "demoChanges": [
+    "Only the public team-plan page is included; administrator dashboard, sync code and source project DOCX are not included.",
+    "Removed 4 links to the administrator dashboard and personal-data-bearing source document.",
+    "Project plan figures and dates retained as archival content; dates are not a claim of current project status.",
+    "Added an explicit archive notice and connect-src none policy to HTML pages."
+  ]
+}

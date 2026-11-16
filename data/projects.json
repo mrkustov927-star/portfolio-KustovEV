@@ -122,7 +122,7 @@
     "icon": "✳",
     "audience": "Дети и подростки 10–16 лет; ведущие мастер-классов",
     "summary": "Учебные листы и архив найденных версий: карелы, белорусы, армяне, татары, русские Заонежья и северные мотивы.",
-    "description": "Все найденные серии раскрасок и учебных листов объединены по этапам разработки: ранние карельские мотивы, августовские наборы орнаментов народов Карелии, печатные и методические версии, ноябрьские творческие эскизы. Черновики сохранены для сравнения и доработки.",
+    "description": "Все найденные серии раскрасок и учебных листов объединены по этапам разработки: ранние карельские мотивы, августовские наборы орнаментов народов Карелии, печатные и методические версии, ноябрьские творческие эскизы. Черновики сохранены для сравнения и доработки. Добавлены два PDF-комплекта, два PNG-архива и дополнительные пошаговые эскизы росписи.",
     "role": "Постановка методической задачи и подготовка эскизов с помощью ChatGPT — Евгений Кустов.",
     "tags": [
       "Мастер-класс",
@@ -141,10 +141,11 @@
     ],
     "resources": [
       {
-        "title": "Скачать архив найденных вариантов",
-        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-variants-2026-11-16-b/variant-8e0475b3b561d1ddbee083ac.zip",
-        "type": "ZIP · 77.3 МБ",
-        "download": true
+        "title": "Скачать полный архив найденных оригиналов",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-3d0265a28ee020eae5457329.zip",
+        "type": "ZIP · 99.2 МБ",
+        "download": true,
+        "originalName": "Орнаменты_все_найденные_оригиналы_16_11_2026.zip"
       },
       {
         "title": "Скачать исходный файл",
@@ -165,9 +166,37 @@
         "type": "ZIP · 2.0 МБ",
         "download": true,
         "originalName": "Карточки_Орнаменты_народов_Карелии_методическая_версия.zip"
+      },
+      {
+        "title": "Скачать PDF: 13.11.2026 · Учебные листы для подростков 12–16 лет",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-0963946f915d982d95bcc8af.pdf",
+        "type": "PDF · 234 КБ",
+        "download": true,
+        "originalName": "Ornamenty_dlya_podrostkov_12-16_A4.pdf"
+      },
+      {
+        "title": "Скачать PDF: 13.11.2026 · Раскраски Карелии · PDF-комплект",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-3af5c0d35334391b6592cc73.pdf",
+        "type": "PDF · 9.7 МБ",
+        "download": true,
+        "originalName": "Ornamenty_Karelii_raskraski_A4.pdf"
+      },
+      {
+        "title": "PNG: учебные листы 12–16 лет",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-a4a093924ffc4aa9e967dc14.zip",
+        "type": "ZIP · 685 КБ",
+        "download": true,
+        "originalName": "Ornamenty_dlya_podrostkov_listy_PNG.zip"
+      },
+      {
+        "title": "PNG: отдельные листы раскрасок Карелии",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-47b69e537b95b0d451d7487a.zip",
+        "type": "ZIP · 10.3 МБ",
+        "download": true,
+        "originalName": "Ornamenty_Karelii_otdelnye_listy_PNG.zip"
       }
     ],
-    "status": "Серии, варианты и исходные файлы",
+    "status": "Варианты, PDF и PNG для скачивания",
     "ready": true,
     "galleryGroup": "ornaments",
     "preview": "materials/ornaments/002.webp",
@@ -182,7 +211,10 @@
       "ornament-aug-47",
       "ornament-nov-1",
       "ornament-nov-2",
-      "ornament-nov-3"
+      "ornament-nov-3",
+      "recovered-ornament-12-16",
+      "recovered-ornament-six",
+      "recovered-rospis"
     ]
   },
   {
@@ -1123,7 +1155,8 @@
       "Режим экскурсии и материалы о городских объектах",
       "Исторические фотографии и раздел «Фото и документы»",
       "Материалы и профили участников проекта",
-      "Дополнительные версии и исходные файлы: 63"
+      "Дополнительные версии и исходные файлы: 63",
+      "Сохранённая авторская версия сайта, commit fd574aaea7"
     ],
     "resources": [
       {
@@ -1199,6 +1232,30 @@
         "type": "MD · 11 КБ",
         "download": true,
         "originalName": "Kem_route_checkpoint.md"
+      },
+      {
+        "title": "Авторская версия: СЕМЕЙНЫЕ МАРШРУТЫ ПО КЕМИ С ПЕРВЫМИ",
+        "url": "https://smeta-proekta.mrkustov.chatgpt.site",
+        "type": "Сайт · доступ по разрешению"
+      },
+      {
+        "title": "Открыть сохранённую авторскую версию маршрутов",
+        "url": "tools/recovered/native-family-routes/index.html",
+        "type": "Без ChatGPT · подложка карты через интернет"
+      },
+      {
+        "title": "Семейные маршруты · исходники авторской версии",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-7c386628444539bcf0dae717.zip",
+        "type": "ZIP · 1.7 МБ",
+        "download": true,
+        "originalName": "Семейные маршруты · исходники авторской версии"
+      },
+      {
+        "title": "Семейные маршруты · HTML-копия с локальными файлами",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-1c3fbd5bb810eb78d86416f3.zip",
+        "type": "ZIP · 1.7 МБ",
+        "download": true,
+        "originalName": "Семейные маршруты · HTML-копия с локальными файлами"
       }
     ],
     "status": "Сайт доступен",
@@ -1316,9 +1373,21 @@
       "Учебные тестовые задания",
       "Разбор ситуационных задач",
       "Материал для подготовки к муниципальному этапу",
-      "Дополнительные версии и исходные файлы: 12"
+      "Дополнительные версии и исходные файлы: 12",
+      "Версия PP10 · 164fc87c79",
+      "Версия PP.Kem · 02e576ebc6"
     ],
     "resources": [
+      {
+        "title": "Открыть офлайн-версию: PP.Kem · расширенная версия",
+        "url": "tools/recovered/PP.Kem/index.html",
+        "type": "Без авторизации и отправки данных"
+      },
+      {
+        "title": "Открыть офлайн-версию: PP10",
+        "url": "tools/recovered/PP10/index.html",
+        "type": "Без авторизации и отправки данных"
+      },
       {
         "title": "Скачать архив найденных вариантов",
         "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-variants-2026-11-16-a/variant-43709fd82e198a2156cee012.zip",
@@ -1340,6 +1409,34 @@
         "title": "Все изображения · веб-копии",
         "url": "downloads/audit/gallery-municipal-aid.zip",
         "type": "ZIP · WebP"
+      },
+      {
+        "title": "Скачать офлайн-версию: PP10",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-ea6842d689298175bd956ee9.zip",
+        "type": "ZIP · 44 КБ",
+        "download": true,
+        "originalName": "pp10-offline.zip"
+      },
+      {
+        "title": "Скачать исходники: PP10",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-457978ed07a0c005e97a77a8.zip",
+        "type": "ZIP · 45 КБ",
+        "download": true,
+        "originalName": "pp10-source.zip"
+      },
+      {
+        "title": "Скачать офлайн-версию: PP.Kem · расширенная версия",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-03ee0ba013a4b1bdc4757d06.zip",
+        "type": "ZIP · 63 КБ",
+        "download": true,
+        "originalName": "pp-kem-offline.zip"
+      },
+      {
+        "title": "Скачать исходники: PP.Kem · расширенная версия",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-0dc0a136ad705557a6611ea6.zip",
+        "type": "ZIP · 68 КБ",
+        "download": true,
+        "originalName": "pp-kem-source.zip"
       }
     ],
     "status": "Сайт доступен",
@@ -1349,7 +1446,8 @@
       "audit-municipal-aid",
       "variants-aid-school-2026-10"
     ],
-    "galleryGroup": "variants-aid-school-2026-09"
+    "galleryGroup": "variants-aid-school-2026-09",
+    "note": "В архивах явно описаны исключённые закрытые файлы и изменения офлайн-копии. Учебный контент сохранён."
   },
   {
     "id": "aid-mentor",
@@ -1572,7 +1670,8 @@
       "Презентация для выступления",
       "Карточки для раздачи участникам",
       "Текст выступления с обсуждением на 30 минут",
-      "Дополнительные версии и исходные файлы: 27"
+      "Дополнительные версии и исходные файлы: 27",
+      "Исследование: Продуктивное сотрудничество библиотек и Движения Первых: модели, практики и план внедрения для Кемского муниципального округа"
     ],
     "resources": [
       {
@@ -1629,6 +1728,32 @@
         "type": "DOCX · 38 КБ",
         "download": true,
         "originalName": "Карточки_для_раздачи_Библиотеки_и_Первые.docx"
+      },
+      {
+        "title": "Читать: Продуктивное сотрудничество библиотек и Движения Первых: модели, практики и план внедрения для Кемского муниципального округа",
+        "url": "research/6117f7843a80.html",
+        "type": "Полный текст исследования"
+      },
+      {
+        "title": "Скачать: Библиотеки и Движение Первых · Markdown",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-9ca240d364428516581adb59.md",
+        "type": "MD · 70 КБ",
+        "download": true,
+        "originalName": "Продуктивное сотрудничество библиотек и Движения Первых: модели, практики и план внедрения для Кемского муниципального округа.md"
+      },
+      {
+        "title": "Скачать: Библиотеки и Движение Первых · HTML",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-7b441f5da3233f91a89496f2.html",
+        "type": "HTML · 87 КБ",
+        "download": true,
+        "originalName": "Продуктивное сотрудничество библиотек и Движения Первых: модели, практики и план внедрения для Кемского муниципального округа.html"
+      },
+      {
+        "title": "Скачать: Библиотеки и Движение Первых · ZIP",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-baaff49f41fee86d20e5bb67.zip",
+        "type": "ZIP · 61 КБ",
+        "download": true,
+        "originalName": "Продуктивное сотрудничество библиотек и Движения Первых: модели, практики и план внедрения для Кемского муниципального округа — текст и HTML.zip"
       }
     ],
     "status": "Презентация, выступление и карточки",
@@ -2130,7 +2255,10 @@
     "includes": [
       "Макет первой главы обучающего навигатора",
       "Идеи и примеры работы Совета Первых",
-      "Дополнительные версии и исходные файлы: 10"
+      "Дополнительные версии и исходные файлы: 10",
+      "Исследование: «Совет Первых. От идеи — к общему делу»: полный контент-макет буклета для участников Совета Первых",
+      "Исследование: Рабочий буклет участника Совета Первых первичного отделения: исследовательская концепция и готовое содержание на 32 страницы",
+      "Исследование: «Советы Первых» в первичных организациях: функции, роли, регламенты и практики"
     ],
     "resources": [
       {
@@ -2157,6 +2285,84 @@
         "type": "PPTX · 56 КБ",
         "download": true,
         "originalName": "Глава_1_Совет_Первых_макет.pptx"
+      },
+      {
+        "title": "Читать: «Совет Первых. От идеи — к общему делу»: полный контент-макет буклета для участников Совета Первых",
+        "url": "research/b4472bacc390.html",
+        "type": "Полный текст исследования"
+      },
+      {
+        "title": "Скачать: Совет Первых: контент-макет · Markdown",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-5b87fbb949a3bdd6e67c327b.md",
+        "type": "MD · 110 КБ",
+        "download": true,
+        "originalName": "«Совет Первых. От идеи — к общему делу»: полный контент-макет буклета для участников Совета Первых.md"
+      },
+      {
+        "title": "Скачать: Совет Первых: контент-макет · HTML",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-882f3d7c5a4d4b45be7e7722.html",
+        "type": "HTML · 138 КБ",
+        "download": true,
+        "originalName": "«Совет Первых. От идеи — к общему делу»: полный контент-макет буклета для участников Совета Первых.html"
+      },
+      {
+        "title": "Скачать: Совет Первых: контент-макет · ZIP",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-ee5523dcaeee10fcdb6aa847.zip",
+        "type": "ZIP · 94 КБ",
+        "download": true,
+        "originalName": "«Совет Первых. От идеи — к общему делу»: полный контент-макет буклета для участников Совета Первых — текст и HTML.zip"
+      },
+      {
+        "title": "Читать: Рабочий буклет участника Совета Первых первичного отделения: исследовательская концепция и готовое содержание на 32 страницы",
+        "url": "research/122609b6fd20.html",
+        "type": "Полный текст исследования"
+      },
+      {
+        "title": "Скачать: Совет Первых: концепция 32 страниц · Markdown",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-d38c05a7b2c7de1ca0082644.md",
+        "type": "MD · 86 КБ",
+        "download": true,
+        "originalName": "Рабочий буклет участника Совета Первых первичного отделения: исследовательская концепция и готовое содержание на 32 страницы.md"
+      },
+      {
+        "title": "Скачать: Совет Первых: концепция 32 страниц · HTML",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-3b48e729cfc046bedcdd6fb3.html",
+        "type": "HTML · 116 КБ",
+        "download": true,
+        "originalName": "Рабочий буклет участника Совета Первых первичного отделения: исследовательская концепция и готовое содержание на 32 страницы.html"
+      },
+      {
+        "title": "Скачать: Совет Первых: концепция 32 страниц · ZIP",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-38efc94a87d68b6758b8c270.zip",
+        "type": "ZIP · 74 КБ",
+        "download": true,
+        "originalName": "Рабочий буклет участника Совета Первых первичного отделения: исследовательская концепция и готовое содержание на 32 страницы — текст и HTML.zip"
+      },
+      {
+        "title": "Читать: «Советы Первых» в первичных организациях: функции, роли, регламенты и практики",
+        "url": "research/1d97bb597864.html",
+        "type": "Полный текст исследования"
+      },
+      {
+        "title": "Скачать: Советы Первых: функции и регламенты · Markdown",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-7b170732e6e3b915d6c3b6d5.md",
+        "type": "MD · 70 КБ",
+        "download": true,
+        "originalName": "«Советы Первых» в первичных организациях: функции, роли, регламенты и практики.md"
+      },
+      {
+        "title": "Скачать: Советы Первых: функции и регламенты · HTML",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-ead4090cfe119d29f5f6354b.html",
+        "type": "HTML · 85 КБ",
+        "download": true,
+        "originalName": "«Советы Первых» в первичных организациях: функции, роли, регламенты и практики.html"
+      },
+      {
+        "title": "Скачать: Советы Первых: функции и регламенты · ZIP",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-56a4c6aedfa1a9674a636e24.zip",
+        "type": "ZIP · 55 КБ",
+        "download": true,
+        "originalName": "«Советы Первых» в первичных организациях: функции, роли, регламенты и практики — текст и HTML.zip"
       }
     ],
     "status": "Макет первой главы",
@@ -2270,6 +2476,13 @@
         "title": "Все изображения · веб-копии",
         "url": "downloads/audit/gallery-experts.zip",
         "type": "ZIP · WebP"
+      },
+      {
+        "title": "Роль: Движение первых(1).png",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-52eb7f75d81b95c35d85defe.png",
+        "type": "PNG · 1.8 МБ",
+        "download": true,
+        "originalName": "Роль: Движение первых(1).png"
       }
     ],
     "collections": [
@@ -2279,7 +2492,10 @@
     "ready": true,
     "note": "В подборке сохранены разные визуальные решения обсуждавшихся тем; это рабочие материалы и эскизы.",
     "galleryGroup": "audit-experts",
-    "preview": "materials/audit-experts/feb80441f4308191971de938baf2d6f1.webp"
+    "preview": "materials/audit-experts/feb80441f4308191971de938baf2d6f1.webp",
+    "extraGalleryGroups": [
+      "recovered-expert"
+    ]
   },
   {
     "id": "firsts-brochure",
@@ -3722,7 +3938,8 @@
       "Экскурсионная книга в полной источниковой редакции",
       "Историческая справка для экскурсии от 9 августа 2026",
       "Образцы страниц и полные файлы",
-      "Дополнительные версии и исходные файлы: 33"
+      "Дополнительные версии и исходные файлы: 33",
+      "Исследование: Источниковедческий аудит корпуса по теме Кемь — Попов остров — Якостров — Рабочеостровск"
     ],
     "tags": [
       "Рабочеостровск",
@@ -3980,6 +4197,32 @@
         "type": "DOCX · 63 КБ",
         "download": true,
         "originalName": "Rabocheostrovsk_mezhdunarodny_poisk_2026.docx"
+      },
+      {
+        "title": "Читать: Источниковедческий аудит корпуса по теме Кемь — Попов остров — Якостров — Рабочеостровск",
+        "url": "research/4e173a420d60.html",
+        "type": "Полный текст исследования"
+      },
+      {
+        "title": "Скачать: Источниковедческий аудит · Markdown",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-7dc7f2ec7886884a296ddcb0.md",
+        "type": "MD · 27 КБ",
+        "download": true,
+        "originalName": "Источниковедческий аудит корпуса по теме Кемь — Попов остров — Якостров — Рабочеостровск.md"
+      },
+      {
+        "title": "Скачать: Источниковедческий аудит · HTML",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-e9055cdb1df32e675ddee14c.html",
+        "type": "HTML · 33 КБ",
+        "download": true,
+        "originalName": "Источниковедческий аудит корпуса по теме Кемь — Попов остров — Якостров — Рабочеостровск.html"
+      },
+      {
+        "title": "Скачать: Источниковедческий аудит · ZIP",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-c5b08571c0aa4d246631faea.zip",
+        "type": "ZIP · 28 КБ",
+        "download": true,
+        "originalName": "Источниковедческий аудит корпуса по теме Кемь — Попов остров — Якостров — Рабочеостровск — текст и HTML.zip"
       }
     ],
     "collections": [
@@ -4004,7 +4247,8 @@
       "Обзор десяти концепций",
       "Варианты графических знаков",
       "Архив векторных SVG",
-      "Дополнительные версии и исходные файлы: 1"
+      "Дополнительные версии и исходные файлы: 1",
+      "Исследование: Логотип для Кемской центральной библиотеки: исследование, направления и десять векторных концепций"
     ],
     "tags": [
       "Библиотека",
@@ -4038,6 +4282,32 @@
         "title": "Все изображения · веб-копии",
         "url": "downloads/audit/gallery-library-logos.zip",
         "type": "ZIP · WebP"
+      },
+      {
+        "title": "Читать: Логотип для Кемской центральной библиотеки: исследование, направления и десять векторных концепций",
+        "url": "research/d80dd06c5df0.html",
+        "type": "Полный текст исследования"
+      },
+      {
+        "title": "Скачать: Логотип Кемской библиотеки · Markdown",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-6727885ce6483e5154036a24.md",
+        "type": "MD · 47 КБ",
+        "download": true,
+        "originalName": "Логотип для Кемской центральной библиотеки: исследование, направления и десять векторных концепций.md"
+      },
+      {
+        "title": "Скачать: Логотип Кемской библиотеки · HTML",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-82fdf65f124d934ce1e911b2.html",
+        "type": "HTML · 58 КБ",
+        "download": true,
+        "originalName": "Логотип для Кемской центральной библиотеки: исследование, направления и десять векторных концепций.html"
+      },
+      {
+        "title": "Скачать: Логотип Кемской библиотеки · ZIP",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-c56191923e52defcc26327aa.zip",
+        "type": "ZIP · 45 КБ",
+        "download": true,
+        "originalName": "Логотип для Кемской центральной библиотеки: исследование, направления и десять векторных концепций — текст и HTML.zip"
       }
     ],
     "collections": [
@@ -4505,6 +4775,11 @@
         "type": "HTML · 80 КБ",
         "download": true,
         "originalName": "Logika_8_klass_offline_v1_3.html"
+      },
+      {
+        "title": "Авторская версия: Лаборатория логики · 8 класс",
+        "url": "https://logic-8-truth-lab.mrkustov.chatgpt.site",
+        "type": "Сайт · доступ по разрешению"
       }
     ],
     "collections": [
@@ -4515,7 +4790,8 @@
     "status": "Учебный сайт и оригиналы",
     "previewFrame": "tools/lessons/edu-8-logic/index.html",
     "previewScripts": true,
-    "previewLabel": "ПРЕВЬЮ УРОКА"
+    "previewLabel": "ПРЕВЬЮ УРОКА",
+    "preview": "assets/native-logic.webp"
   },
   {
     "id": "edu-9-models",
@@ -4673,6 +4949,11 @@
         "type": "ZIP · 10 КБ",
         "download": true,
         "originalName": "programmnoye_obespechenie_10_class_v2.zip"
+      },
+      {
+        "title": "Авторская версия: Информатика · ПО и файловые системы",
+        "url": "https://informatika10-po-fayly.mrkustov.chatgpt.site",
+        "type": "Сайт · доступ по разрешению"
       }
     ],
     "collections": [
@@ -4683,7 +4964,8 @@
     "status": "Учебный сайт и оригиналы",
     "previewFrame": "tools/lessons/edu-10-software/index.html",
     "previewScripts": true,
-    "previewLabel": "ПРЕВЬЮ УРОКА"
+    "previewLabel": "ПРЕВЬЮ УРОКА",
+    "preview": "assets/native-software.webp"
   },
   {
     "id": "edu-10-alphabet",
@@ -4812,6 +5094,11 @@
         "type": "HTML · 58 КБ",
         "download": true,
         "originalName": "cmd_lab_10.html"
+      },
+      {
+        "title": "Авторская версия: Командная строка — 10 класс",
+        "url": "https://cmd-lab-10.mrkustov.chatgpt.site",
+        "type": "Сайт · доступ по разрешению"
       }
     ],
     "collections": [
@@ -4822,7 +5109,8 @@
     "status": "Учебный сайт и оригиналы",
     "previewFrame": "tools/lessons/edu-10-command/index.html",
     "previewScripts": true,
-    "previewLabel": "ПРЕВЬЮ УРОКА"
+    "previewLabel": "ПРЕВЬЮ УРОКА",
+    "preview": "assets/native-cmd.webp"
   },
   {
     "id": "edu-10-representation",
@@ -5484,6 +5772,11 @@
         "type": "HTML · 84 КБ",
         "download": true,
         "originalName": "model_lab_11.html"
+      },
+      {
+        "title": "Авторская версия: Модель → Эксперимент · Информатика, 11 класс",
+        "url": "https://model-data-lab-11.mrkustov.chatgpt.site",
+        "type": "Сайт · доступ по разрешению"
       }
     ],
     "collections": [
@@ -5494,7 +5787,8 @@
     "status": "Учебный сайт и оригиналы",
     "previewFrame": "tools/lessons/edu-11-modeling/index.html",
     "previewScripts": true,
-    "previewLabel": "ПРЕВЬЮ УРОКА"
+    "previewLabel": "ПРЕВЬЮ УРОКА",
+    "preview": "assets/native-model.webp"
   },
   {
     "id": "edu-11-excel",
@@ -7628,5 +7922,371 @@
     "preview": "assets/visual-ideas.webp",
     "status": "Сайт и доступные материалы",
     "ready": true
+  },
+  {
+    "id": "event-forms",
+    "title": "Шаблоны для мероприятий и Советов Первых",
+    "category": "events",
+    "format": "print",
+    "formatLabel": "Листы и изображения",
+    "year": "2026",
+    "cover": "green",
+    "coverTitle": "Шаблоны для мероприятий и Советов Первых",
+    "overline": "СОХРАНЁННЫЕ МАТЕРИАЛЫ",
+    "icon": "↗",
+    "audience": "Педагоги, наставники и организаторы",
+    "summary": "Мандат делегата, незаполненный бюллетень и благодарственный макет. Сохранённые визуальные эскизы для доработки.",
+    "description": "Мандат делегата, незаполненный бюллетень и благодарственный макет. Сохранённые визуальные эскизы для доработки.",
+    "role": "Постановка задачи и подготовка материалов с помощью ChatGPT — Евгений Кустов.",
+    "tags": [
+      "Архив разработки"
+    ],
+    "collections": [
+      "mentor",
+      "event"
+    ],
+    "includes": [
+      "Мандат делегата конференции",
+      "Пустой бюллетень выборов Совета Первых",
+      "Благодарственный макет; событие не установлено"
+    ],
+    "resources": [
+      {
+        "title": "Мандат делегата конференции.png",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-c1b4471f25be53b1bd95bb80.png",
+        "type": "PNG · 1.2 МБ",
+        "download": true,
+        "originalName": "Мандат делегата конференции.png"
+      },
+      {
+        "title": "Бюллетень выборов Совета Первых Кемского округа.png",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-5d5c53654cd963167d5cb3c7.png",
+        "type": "PNG · 1.0 МБ",
+        "download": true,
+        "originalName": "Бюллетень выборов Совета Первых Кемского округа.png"
+      },
+      {
+        "title": "Спасибо за поддержку!.png",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-684faf810c6553b05fd4f45e.png",
+        "type": "PNG · 1.7 МБ",
+        "download": true,
+        "originalName": "Спасибо за поддержку!.png"
+      }
+    ],
+    "status": "Визуальные эскизы",
+    "ready": true,
+    "galleryGroup": "recovered-event-forms",
+    "preview": "materials/recovered-event-forms/c1b4471f25be53b1.webp"
+  },
+  {
+    "id": "adventures-guide",
+    "title": "Приключения Первых: путеводитель и варианты",
+    "category": "team",
+    "format": "print",
+    "formatLabel": "Листы и изображения",
+    "year": "2026",
+    "cover": "green",
+    "coverTitle": "Приключения Первых: путеводитель и варианты",
+    "overline": "СОХРАНЁННЫЕ МАТЕРИАЛЫ",
+    "icon": "↗",
+    "audience": "Педагоги, наставники и организаторы",
+    "summary": "Два информационных эскиза о проекте «Приключения Первых» сезона 2026–2027. Сохранены как варианты разработки.",
+    "description": "Два информационных эскиза о проекте «Приключения Первых» сезона 2026–2027. Сохранены как варианты разработки.",
+    "role": "Постановка задачи и подготовка материалов с помощью ChatGPT — Евгений Кустов.",
+    "tags": [
+      "Архив разработки"
+    ],
+    "collections": [
+      "mentor",
+      "event"
+    ],
+    "includes": [],
+    "resources": [
+      {
+        "title": "Приключения Первых: проектный путеводитель.png",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-89992345aea9a25a8ab0424e.png",
+        "type": "PNG · 1.7 МБ",
+        "download": true,
+        "originalName": "Приключения Первых: проектный путеводитель.png"
+      },
+      {
+        "title": "Приключения первых: путь к новым вершинам.png",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-d518c390e9ac5b991b36a7ee.png",
+        "type": "PNG · 1.6 МБ",
+        "download": true,
+        "originalName": "Приключения первых: путь к новым вершинам.png"
+      }
+    ],
+    "status": "Архив · сезон 2026–2027",
+    "ready": true,
+    "galleryGroup": "recovered-adventures",
+    "preview": "materials/recovered-adventures/89992345aea9a25a.webp"
+  },
+  {
+    "id": "educational-infographics",
+    "title": "Учебная инфографика: визуальные эксперименты",
+    "category": "informatics",
+    "format": "print",
+    "formatLabel": "Листы и изображения",
+    "year": "2026",
+    "cover": "green",
+    "coverTitle": "Учебная инфографика: визуальные эксперименты",
+    "overline": "СОХРАНЁННЫЕ МАТЕРИАЛЫ",
+    "icon": "↗",
+    "audience": "Педагоги, наставники и организаторы",
+    "summary": "Англоязычные визуальные эскизы Computer Basics Cheat Sheet и The Water Cycle. Архив графических экспериментов, не готовый учебный курс.",
+    "description": "Англоязычные визуальные эскизы Computer Basics Cheat Sheet и The Water Cycle. Архив графических экспериментов, не готовый учебный курс.",
+    "role": "Постановка задачи и подготовка материалов с помощью ChatGPT — Евгений Кустов.",
+    "tags": [
+      "Архив разработки"
+    ],
+    "collections": [
+      "mentor",
+      "event"
+    ],
+    "includes": [],
+    "resources": [
+      {
+        "title": "Шпаргалка по компьютеру: клавиатура и бинарный код.png",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-0abd596ab1608395a5fe9062.png",
+        "type": "PNG · 1.4 МБ",
+        "download": true,
+        "originalName": "Шпаргалка по компьютеру: клавиатура и бинарный код.png"
+      },
+      {
+        "title": "Инфографика о круговороте воды.png",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-f494a0907a2101fcc4ad15db.png",
+        "type": "PNG · 1.9 МБ",
+        "download": true,
+        "originalName": "Инфографика о круговороте воды.png"
+      }
+    ],
+    "status": "Учебные визуальные эскизы",
+    "ready": true,
+    "galleryGroup": "recovered-edu-infographics",
+    "preview": "materials/recovered-edu-infographics/0abd596ab1608395.webp"
+  },
+  {
+    "id": "kem-transfer-research",
+    "title": "Кемский пересыльный пункт: исследование",
+    "category": "routes",
+    "format": "kit",
+    "formatLabel": "Методический материал",
+    "year": "2026",
+    "cover": "green",
+    "coverTitle": "Кемский пересыльный пункт: исследование",
+    "overline": "СОХРАНЁННЫЕ МАТЕРИАЛЫ",
+    "icon": "↗",
+    "audience": "Педагоги, наставники и организаторы",
+    "summary": "Историко-архивное исследование Кемского пересыльного пункта и здания у Благовещенского собора. Сохранённый текст с источниками.",
+    "description": "Историко-архивное исследование Кемского пересыльного пункта и здания у Благовещенского собора. Сохранённый текст с источниками.",
+    "role": "Постановка задачи и подготовка материалов с помощью ChatGPT — Евгений Кустов.",
+    "tags": [
+      "Архив разработки"
+    ],
+    "collections": [
+      "mentor",
+      "event"
+    ],
+    "includes": [
+      "Исследование: Кемский пересыльный пункт, УСЛОН и «гостиница» у Благовещенского собора: историко-архивное исследование"
+    ],
+    "resources": [
+      {
+        "title": "Читать: Кемский пересыльный пункт, УСЛОН и «гостиница» у Благовещенского собора: историко-архивное исследование",
+        "url": "research/ae5bd112437c.html",
+        "type": "Полный текст исследования"
+      },
+      {
+        "title": "Скачать: Кемский пересыльный пункт · Markdown",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-86aede7e79255d4c9e9b4560.md",
+        "type": "MD · 32 КБ",
+        "download": true,
+        "originalName": "Кемский пересыльный пункт, УСЛОН и «гостиница» у Благовещенского собора: историко-архивное исследование.md"
+      },
+      {
+        "title": "Скачать: Кемский пересыльный пункт · HTML",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-a12da818dad0b7a5bfaaccdb.html",
+        "type": "HTML · 41 КБ",
+        "download": true,
+        "originalName": "Кемский пересыльный пункт, УСЛОН и «гостиница» у Благовещенского собора: историко-архивное исследование.html"
+      },
+      {
+        "title": "Скачать: Кемский пересыльный пункт · ZIP",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-5fc1f1d638479b689b41825d.zip",
+        "type": "ZIP · 31 КБ",
+        "download": true,
+        "originalName": "Кемский пересыльный пункт, УСЛОН и «гостиница» у Благовещенского собора: историко-архивное исследование — текст и HTML.zip"
+      }
+    ],
+    "status": "Материалы доступны",
+    "ready": true,
+    "previewFrame": "research/ae5bd112437c.html",
+    "previewScripts": false,
+    "previewLabel": "ТЕКСТ ИССЛЕДОВАНИЯ"
+  },
+  {
+    "id": "ai-authorship-research",
+    "title": "ИИ и авторский текст: исследование",
+    "category": "media",
+    "format": "kit",
+    "formatLabel": "Методический материал",
+    "year": "2026",
+    "cover": "green",
+    "coverTitle": "ИИ и авторский текст: исследование",
+    "overline": "СОХРАНЁННЫЕ МАТЕРИАЛЫ",
+    "icon": "↗",
+    "audience": "Педагоги, наставники и организаторы",
+    "summary": "Сохранённое исследование признаков текста ИИ и работы над авторским стилем. Аналитический материал, подготовленный с ChatGPT.",
+    "description": "Сохранённое исследование признаков текста ИИ и работы над авторским стилем. Аналитический материал, подготовленный с ChatGPT.",
+    "role": "Постановка задачи и подготовка материалов с помощью ChatGPT — Евгений Кустов.",
+    "tags": [
+      "Архив разработки"
+    ],
+    "collections": [
+      "mentor",
+      "event"
+    ],
+    "includes": [
+      "Исследование: Как отличают текст ИИ от человеческого и что в исходном эссе выдавало стиль ассистента"
+    ],
+    "resources": [
+      {
+        "title": "Читать: Как отличают текст ИИ от человеческого и что в исходном эссе выдавало стиль ассистента",
+        "url": "research/9f3db8a4459c.html",
+        "type": "Полный текст исследования"
+      },
+      {
+        "title": "Скачать: ИИ и авторский текст · Markdown",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-84b1e301fa905c196ea343c9.md",
+        "type": "MD · 43 КБ",
+        "download": true,
+        "originalName": "Как отличают текст ИИ от человеческого и что в исходном эссе выдавало стиль ассистента.md"
+      },
+      {
+        "title": "Скачать: ИИ и авторский текст · HTML",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-42bc8ffb93bbd5af50ad552f.html",
+        "type": "HTML · 53 КБ",
+        "download": true,
+        "originalName": "Как отличают текст ИИ от человеческого и что в исходном эссе выдавало стиль ассистента.html"
+      },
+      {
+        "title": "Скачать: ИИ и авторский текст · ZIP",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-db0735384f552c48eadea356.zip",
+        "type": "ZIP · 42 КБ",
+        "download": true,
+        "originalName": "Как отличают текст ИИ от человеческого и что в исходном эссе выдавало стиль ассистента — текст и HTML.zip"
+      }
+    ],
+    "status": "Материалы доступны",
+    "ready": true,
+    "previewFrame": "research/9f3db8a4459c.html",
+    "previewScripts": false,
+    "previewLabel": "ТЕКСТ ИССЛЕДОВАНИЯ"
+  },
+  {
+    "id": "zarnitsa-team",
+    "title": "Зарница 2.0. Команда лучших",
+    "category": "events",
+    "format": "site",
+    "formatLabel": "Интерактивный сайт",
+    "year": "2026",
+    "cover": "green",
+    "coverTitle": "Зарница 2.0. Команда лучших",
+    "overline": "СОХРАНЁННЫЕ МАТЕРИАЛЫ",
+    "icon": "↗",
+    "audience": "Педагоги, наставники и организаторы",
+    "summary": "Многостраничный помощник подготовки: модули, практические задания, планировщик, диагностика и командные роли. Доступна офлайн-копия.",
+    "description": "Многостраничный помощник подготовки: модули, практические задания, планировщик, диагностика и командные роли. Доступна офлайн-копия.",
+    "role": "Постановка задачи и подготовка материалов с помощью ChatGPT — Евгений Кустов.",
+    "tags": [
+      "Архив разработки"
+    ],
+    "collections": [
+      "mentor",
+      "event"
+    ],
+    "includes": [
+      "Версия newpage · d9a14ddea0"
+    ],
+    "resources": [
+      {
+        "title": "Открыть офлайн-версию: Зарница 2.0. Команда лучших",
+        "url": "tools/recovered/newpage/index.html",
+        "type": "Без авторизации и отправки данных"
+      },
+      {
+        "title": "Скачать офлайн-версию: Зарница 2.0. Команда лучших",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-aefb0ff72b2c69ec357e21b6.zip",
+        "type": "ZIP · 27 КБ",
+        "download": true,
+        "originalName": "newpage-offline.zip"
+      },
+      {
+        "title": "Скачать исходники: Зарница 2.0. Команда лучших",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-4fb9b41c9a5bc38d91b6c399.zip",
+        "type": "ZIP · 24 КБ",
+        "download": true,
+        "originalName": "newpage-source.zip"
+      }
+    ],
+    "status": "Сайт · исходники и офлайн-копия",
+    "ready": true,
+    "previewFrame": "tools/recovered/newpage/index.html",
+    "previewScripts": false,
+    "previewLabel": "ЖИВОЙ ПРОСМОТР"
+  },
+  {
+    "id": "kemfest-plan",
+    "title": "КемьФест: командный план проекта",
+    "category": "planning",
+    "format": "site",
+    "formatLabel": "Интерактивный сайт",
+    "year": "2026",
+    "cover": "green",
+    "coverTitle": "КемьФест: командный план проекта",
+    "overline": "СОХРАНЁННЫЕ МАТЕРИАЛЫ",
+    "icon": "↗",
+    "audience": "Педагоги, наставники и организаторы",
+    "summary": "Командный план исторического фестиваля. Офлайн-копия показывает публичную часть проекта; рабочая конфигурация и документы участников не включены.",
+    "description": "Командный план исторического фестиваля. Офлайн-копия показывает публичную часть проекта; рабочая конфигурация и документы участников не включены.",
+    "role": "Постановка задачи и подготовка материалов с помощью ChatGPT — Евгений Кустов.",
+    "tags": [
+      "Архив разработки"
+    ],
+    "collections": [
+      "mentor",
+      "event"
+    ],
+    "includes": [
+      "Версия kemfest2026 · fb9ce71605"
+    ],
+    "resources": [
+      {
+        "title": "Открыть офлайн-версию: КемьФест — командный план проекта",
+        "url": "tools/recovered/kemfest2026/index.html",
+        "type": "Без авторизации и отправки данных"
+      },
+      {
+        "title": "Скачать офлайн-версию: КемьФест — командный план проекта",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-08d58f1ecc85a01ac0be1f59.zip",
+        "type": "ZIP · 8 КБ",
+        "download": true,
+        "originalName": "kemfest2026-offline.zip"
+      },
+      {
+        "title": "Скачать исходники: КемьФест — командный план проекта",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-recovered-2026-11-16/recovered-27897b22752c1cefc09f95b9.zip",
+        "type": "ZIP · 28 КБ",
+        "download": true,
+        "originalName": "kemfest2026-source.zip"
+      }
+    ],
+    "status": "Сайт · исходники и офлайн-копия",
+    "ready": true,
+    "previewFrame": "tools/recovered/kemfest2026/index.html",
+    "previewScripts": false,
+    "previewLabel": "ЖИВОЙ ПРОСМОТР",
+    "note": "В архивах явно описаны исключённые закрытые файлы и изменения офлайн-копии. Учебный контент сохранён."
   }
 ]
