@@ -1755,6 +1755,30 @@
         "type": "PDF · 197 КБ",
         "download": true,
         "originalName": "Kem_6klass_kartochki_ekskursovodov.pdf"
+      },
+      {
+        "title": "Расширенные карточки экскурсоводов · 33 страницы",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-family-2026-11-16/family-89e9c2145fa62e1ecebc7f7c.pdf",
+        "type": "PDF · 239 КБ",
+        "download": true
+      },
+      {
+        "title": "Лист участника экскурсии · 3 страницы",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-family-2026-11-16/family-0608b0df94b78f6f59b60af7.pdf",
+        "type": "PDF · 92 КБ",
+        "download": true
+      },
+      {
+        "title": "Расширенные карточки · редактируемый DOCX",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-family-2026-11-16/family-aa876140a060d85aee068ce1.docx",
+        "type": "DOCX · 69 КБ",
+        "download": true
+      },
+      {
+        "title": "Расширенные карточки · исходный текст Markdown",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-family-2026-11-16/family-9e138d24e86929b038f12e5a.md",
+        "type": "MD · 104 КБ",
+        "download": true
       }
     ],
     "status": "14 листов · PDF",
@@ -1763,7 +1787,9 @@
     "preview": "materials/kem_cards/001.webp",
     "extraGalleryGroups": [
       "variants-kem-guide-2026-07",
-      "variants-kem-guide-2026-11"
+      "variants-kem-guide-2026-11",
+      "family-expanded-89e9c2145f",
+      "family-expanded-0608b0df94"
     ]
   },
   {
@@ -8603,5 +8629,217 @@
     "ready": true,
     "status": "Архив и 5 исходных файлов",
     "note": "Редакция 30.10.2026. Совместимость команд и адресов с текущими версиями не проверена; подключения не выполнялись."
+  },
+  {
+    "id": "family-excursions-portfolio",
+    "title": "Семейные экскурсии с Первыми: портфолио проекта",
+    "category": "routes",
+    "format": "method",
+    "formatLabel": "Материалы проекта",
+    "year": "2026",
+    "cover": "blue",
+    "coverTitle": "Исследовать.<br>Рассказывать.<br>Делиться.",
+    "overline": "ЭКСКУРСИИ И МАРШРУТЫ",
+    "icon": "↗",
+    "summary": "Подборка сохранившихся материалов проекта: оформление, досье, расширенные карточки экскурсоводов и лист участника.",
+    "description": "Подборка сохранившихся материалов проекта: оформление, досье, расширенные карточки экскурсоводов и лист участника.",
+    "audience": "Юные экскурсоводы, участники путешествий и наставники",
+    "role": "Исследования и маршруты — Полина Боровкова и Матвей Шишкин. Сопровождение и подготовка подборки — Евгений Кустов.",
+    "tags": [
+      "Маршруты",
+      "Экскурсии",
+      "Для печати"
+    ],
+    "collections": [
+      "event",
+      "mentor"
+    ],
+    "includes": [
+      "Портфолио подборки в PDF на 3 страницах и HTML",
+      "Четыре оригинальных изображения оформления",
+      "Расширенные карточки экскурсоводов · PDF 33 страницы",
+      "56 вопросов с ответами и 28 интерактивных заданий",
+      "Лист участника · PDF 3 страницы",
+      "Редактируемый исходник DOCX и текст Markdown",
+      "Экскурсионное досье PDF и DOCX",
+      "Общий архив с документами и оформлением"
+    ],
+    "resources": [
+      {
+        "title": "Скачать весь комплект",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-family-2026-11-16/family-efa96dbca25244d75eeeed05.zip",
+        "type": "ZIP · 18.5 МБ",
+        "download": true
+      },
+      {
+        "title": "Расширенные карточки экскурсоводов · 33 страницы",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-family-2026-11-16/family-89e9c2145fa62e1ecebc7f7c.pdf",
+        "type": "PDF · 239 КБ",
+        "download": true
+      },
+      {
+        "title": "Лист участника экскурсии · 3 страницы",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-family-2026-11-16/family-0608b0df94b78f6f59b60af7.pdf",
+        "type": "PDF · 92 КБ",
+        "download": true
+      },
+      {
+        "title": "Расширенные карточки · редактируемый DOCX",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-family-2026-11-16/family-aa876140a060d85aee068ce1.docx",
+        "type": "DOCX · 69 КБ",
+        "download": true
+      },
+      {
+        "title": "Расширенные карточки · исходный текст Markdown",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-family-2026-11-16/family-9e138d24e86929b038f12e5a.md",
+        "type": "MD · 104 КБ",
+        "download": true
+      },
+      {
+        "title": "Портфолио подборки · PDF",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-family-2026-11-16/family-de194b2b6a278123dbb6ca14.pdf",
+        "type": "PDF · 1.5 МБ",
+        "download": true
+      },
+      {
+        "title": "Портфолио подборки · HTML",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-family-2026-11-16/family-017ec9abd77636e7d2446e8c.html",
+        "type": "HTML · 6 КБ",
+        "download": true
+      },
+      {
+        "title": "Открыть портфолио подборки в браузере",
+        "url": "tools/family-recovery/family-excursions-portfolio/index.html",
+        "type": "HTML · без входа в ChatGPT"
+      },
+      {
+        "title": "Семейные экскурсии по Кеми · оригинал PNG",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-variants-2026-11-16-a/variant-6b994f41839e1494137ebba1.png",
+        "type": "PNG · 1.8 МБ",
+        "download": true
+      },
+      {
+        "title": "Семейные экскурсии по Кеми(1) · оригинал PNG",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-variants-2026-11-16-b/variant-a2e32a626053b7e7f40cecf0.png",
+        "type": "PNG · 1.6 МБ",
+        "download": true
+      },
+      {
+        "title": "Семейные экскурсии по Кеми(2) · оригинал PNG",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-variants-2026-11-16-b/variant-b7114ffdf55928e586a70031.png",
+        "type": "PNG · 2.3 МБ",
+        "download": true
+      },
+      {
+        "title": "Семейные экскурсии по Кеми(3) · оригинал PNG",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-variants-2026-11-16-a/variant-142f725772457236ba35fd42.png",
+        "type": "PNG · 2.0 МБ",
+        "download": true
+      },
+      {
+        "title": "Экскурсионное досье Кемь Семейные маршруты.pdf",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-variants-2026-11-16-a/variant-73e0634988c4637082c84a09.pdf",
+        "type": "PDF · 4.4 МБ",
+        "download": true,
+        "originalName": "Экскурсионное_досье_Кемь_Семейные_маршруты.pdf"
+      },
+      {
+        "title": "Экскурсионное досье Кемь Семейные маршруты.docx",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-variants-2026-11-16-a/variant-50f70d3446d971ca1c083766.docx",
+        "type": "DOCX · 5.2 МБ",
+        "download": true,
+        "originalName": "Экскурсионное_досье_Кемь_Семейные_маршруты.docx"
+      },
+      {
+        "title": "Сайт маршрутов и сохранённые версии",
+        "url": "#work/kem-route",
+        "type": "Карточка проекта"
+      },
+      {
+        "title": "Другие редакции карточек экскурсоводов",
+        "url": "#work/kem-guide",
+        "type": "Карточка проекта"
+      }
+    ],
+    "ready": true,
+    "status": "Материалы доступны",
+    "note": "Подборка составлена 16.11.2026 из сохранившихся файлов. Это новый каталог материалов проекта; полный прежний файл портфолио не найден. Исторические сведения из экскурсионных материалов требуют проверки по их источникам.",
+    "galleryGroup": "family-family-excursions-portfolio",
+    "preview": "materials/variants-kem-route-2026-07/6b994f41839e1494.webp",
+    "extraGalleryGroups": [
+      "family-expanded-89e9c2145f",
+      "family-expanded-0608b0df94",
+      "variants-kem-route-2026-11",
+      "variants-kem-route-2026-07"
+    ]
+  },
+  {
+    "id": "marshruty-pervykh-workbook",
+    "title": "Маршруты Первых: рабочая тетрадь участника",
+    "category": "routes",
+    "format": "method",
+    "formatLabel": "Рабочая тетрадь · восстановленная редакция",
+    "year": "2025–2026",
+    "cover": "blue",
+    "coverTitle": "Исследовать.<br>Рассказывать.<br>Делиться.",
+    "overline": "ЭКСКУРСИИ И МАРШРУТЫ",
+    "icon": "↗",
+    "summary": "Восстановленная редакция путеводной тетради: Кемь, Попов остров, Немецкий Кузов, задания, заметки и итоговый проект.",
+    "description": "Восстановленная редакция путеводной тетради: Кемь, Попов остров, Немецкий Кузов, задания, заметки и итоговый проект.",
+    "audience": "Юные экскурсоводы, участники путешествий и наставники",
+    "role": "Подготовка и систематизация материалов с ChatGPT — Евгений Кустов.",
+    "tags": [
+      "Маршруты",
+      "Экскурсии",
+      "Для печати"
+    ],
+    "collections": [
+      "event",
+      "mentor"
+    ],
+    "includes": [
+      "Кемь, Попов остров и Немецкий Кузов",
+      "Подготовка к путешествию и роли в команде",
+      "Задания, наблюдения, вопросы и зарисовки",
+      "Создание маршрута, легенды и сувенира",
+      "Подготовка итогового проекта и рефлексия",
+      "PDF на 10 страницах и редактируемые HTML и Markdown"
+    ],
+    "resources": [
+      {
+        "title": "Скачать весь комплект",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-family-2026-11-16/family-1c6a318464fe258ef2982286.zip",
+        "type": "ZIP · 101 КБ",
+        "download": true
+      },
+      {
+        "title": "Восстановленная тетрадь · PDF",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-family-2026-11-16/family-5d2410822ae63d7be09bc1ba.pdf",
+        "type": "PDF · 101 КБ",
+        "download": true
+      },
+      {
+        "title": "Восстановленная тетрадь · HTML",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-family-2026-11-16/family-d71260422b9f2e390b918b1c.html",
+        "type": "HTML · 13 КБ",
+        "download": true
+      },
+      {
+        "title": "Открыть тетрадь в браузере",
+        "url": "tools/family-recovery/marshruty-pervykh-workbook/index.html",
+        "type": "HTML · без входа в ChatGPT"
+      },
+      {
+        "title": "Восстановленная тетрадь · MD",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-family-2026-11-16/family-c340c882c53c3450330d411c.md",
+        "type": "MD · 10 КБ",
+        "download": true
+      }
+    ],
+    "ready": true,
+    "status": "10 страниц · восстановленная редакция",
+    "note": "Структура подтверждена сохранившимися фрагментами переписки 28.08.2025. Задания и поля для ответов составлены заново 16.11.2026. Исходный файл прежней тетради не найден; новая редакция не является его точной копией.",
+    "galleryGroup": "family-marshruty-pervykh-workbook",
+    "preview": "materials/family-marshruty-pervykh-workbook/001.webp"
   }
 ]

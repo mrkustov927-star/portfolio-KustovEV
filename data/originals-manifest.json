@@ -22753,6 +22753,138 @@
       "releaseTag": "portfolio-restored-2026-11-16-b",
       "representation": "reconstructed-edition",
       "editionDate": "2026-11-16"
+    },
+    {
+      "asset": "family-89e9c2145fa62e1ecebc7f7c.pdf",
+      "name": "Kem_6klass_rasshirennye_kartochki.pdf",
+      "bytes": 244641,
+      "sha256": "89e9c2145fa62e1ecebc7f7c4442d27d4d45c45915657e9b60d8d6ba1139e6ab",
+      "format": "PDF",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-family-2026-11-16/family-89e9c2145fa62e1ecebc7f7c.pdf",
+      "releaseTag": "portfolio-family-2026-11-16",
+      "representation": "unchanged-local-original",
+      "sourceProject": "Семейные экскурсии с Первыми",
+      "sourceBytesUnchanged": true,
+      "sourceRelativePath": "Карточки_экскурсоводов_6_класс/Расширенная_версия/Kem_6klass_rasshirennye_kartochki.pdf"
+    },
+    {
+      "asset": "family-0608b0df94b78f6f59b60af7.pdf",
+      "name": "Kem_6klass_list_uchastnika.pdf",
+      "bytes": 94031,
+      "sha256": "0608b0df94b78f6f59b60af7373e5bd27295f1f57966898a5e988af291c68979",
+      "format": "PDF",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-family-2026-11-16/family-0608b0df94b78f6f59b60af7.pdf",
+      "releaseTag": "portfolio-family-2026-11-16",
+      "representation": "unchanged-local-original",
+      "sourceProject": "Семейные экскурсии с Первыми",
+      "sourceBytesUnchanged": true,
+      "sourceRelativePath": "Карточки_экскурсоводов_6_класс/Расширенная_версия/Kem_6klass_list_uchastnika.pdf"
+    },
+    {
+      "asset": "family-aa876140a060d85aee068ce1.docx",
+      "name": "Kem_6klass_rasshirennye_kartochki.docx",
+      "bytes": 70059,
+      "sha256": "aa876140a060d85aee068ce11dee558392f6150b779397280a66e479ad465c92",
+      "format": "DOCX",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-family-2026-11-16/family-aa876140a060d85aee068ce1.docx",
+      "releaseTag": "portfolio-family-2026-11-16",
+      "representation": "unchanged-local-original",
+      "sourceProject": "Семейные экскурсии с Первыми",
+      "sourceBytesUnchanged": true,
+      "sourceRelativePath": "Карточки_экскурсоводов_6_класс/Расширенная_версия/Kem_6klass_rasshirennye_kartochki.docx"
+    },
+    {
+      "asset": "family-9e138d24e86929b038f12e5a.md",
+      "name": "Kem_6klass_rasshirennyy_tekst.md",
+      "bytes": 105841,
+      "sha256": "9e138d24e86929b038f12e5a21dfdf00aacff6da28e28dbd2f9def3fd0c4181a",
+      "format": "MD",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-family-2026-11-16/family-9e138d24e86929b038f12e5a.md",
+      "releaseTag": "portfolio-family-2026-11-16",
+      "representation": "unchanged-local-original",
+      "sourceProject": "Семейные экскурсии с Первыми",
+      "sourceBytesUnchanged": true,
+      "sourceRelativePath": "Карточки_экскурсоводов_6_класс/Расширенная_версия/Kem_6klass_rasshirennyy_tekst.md"
+    },
+    {
+      "asset": "family-5d2410822ae63d7be09bc1ba.pdf",
+      "name": "Marshruty_Pervykh_reconstructed_2026-11-16.pdf",
+      "bytes": 102845,
+      "sha256": "5d2410822ae63d7be09bc1ba7e3ba6b659433ea028cf16f6a4c84dadbc81e428",
+      "format": "PDF",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-family-2026-11-16/family-5d2410822ae63d7be09bc1ba.pdf",
+      "releaseTag": "portfolio-family-2026-11-16",
+      "representation": "reconstructed-edition",
+      "editionDate": "2026-11-16",
+      "oldOriginalRecovered": false
+    },
+    {
+      "asset": "family-d71260422b9f2e390b918b1c.html",
+      "name": "Marshruty_Pervykh_reconstructed_2026-11-16.html",
+      "bytes": 13007,
+      "sha256": "d71260422b9f2e390b918b1c22498875b16e4c97fe838887e65deeb343c5631a",
+      "format": "HTML",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-family-2026-11-16/family-d71260422b9f2e390b918b1c.html",
+      "releaseTag": "portfolio-family-2026-11-16",
+      "representation": "reconstructed-edition",
+      "editionDate": "2026-11-16",
+      "oldOriginalRecovered": false
+    },
+    {
+      "asset": "family-c340c882c53c3450330d411c.md",
+      "name": "Marshruty_Pervykh_reconstructed_2026-11-16.md",
+      "bytes": 10214,
+      "sha256": "c340c882c53c3450330d411c6b37d6d6f1c84c64c792839f1db12bb81bfe1444",
+      "format": "MD",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-family-2026-11-16/family-c340c882c53c3450330d411c.md",
+      "releaseTag": "portfolio-family-2026-11-16",
+      "representation": "reconstructed-edition",
+      "editionDate": "2026-11-16",
+      "oldOriginalRecovered": false
+    },
+    {
+      "asset": "family-de194b2b6a278123dbb6ca14.pdf",
+      "name": "Semeynye_ekskursii_portfolio_collection_2026-11-16.pdf",
+      "bytes": 1619733,
+      "sha256": "de194b2b6a278123dbb6ca14f843073b589fb5c7dc0371fc34b7a988d0cac668",
+      "format": "PDF",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-family-2026-11-16/family-de194b2b6a278123dbb6ca14.pdf",
+      "releaseTag": "portfolio-family-2026-11-16",
+      "representation": "curated-collection",
+      "editionDate": "2026-11-16",
+      "oldOriginalRecovered": false
+    },
+    {
+      "asset": "family-017ec9abd77636e7d2446e8c.html",
+      "name": "Semeynye_ekskursii_portfolio_collection_2026-11-16.html",
+      "bytes": 5214,
+      "sha256": "017ec9abd77636e7d2446e8c07c250f0baff83c7cff37743b9dd25dca241b19a",
+      "format": "HTML",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-family-2026-11-16/family-017ec9abd77636e7d2446e8c.html",
+      "releaseTag": "portfolio-family-2026-11-16",
+      "representation": "curated-collection",
+      "editionDate": "2026-11-16",
+      "oldOriginalRecovered": false
+    },
+    {
+      "asset": "family-efa96dbca25244d75eeeed05.zip",
+      "name": "Семейные экскурсии с Первыми: портфолио проекта · комплект.zip",
+      "bytes": 19380583,
+      "sha256": "efa96dbca25244d75eeeed056f8543c7541cce274cf1a7244b06fb2d05d2ae4e",
+      "format": "ZIP",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-family-2026-11-16/family-efa96dbca25244d75eeeed05.zip",
+      "releaseTag": "portfolio-family-2026-11-16",
+      "representation": "curated-collection-package"
+    },
+    {
+      "asset": "family-1c6a318464fe258ef2982286.zip",
+      "name": "Маршруты Первых: рабочая тетрадь участника · комплект.zip",
+      "bytes": 103055,
+      "sha256": "1c6a318464fe258ef29822864275f13ceb15944e07f79ba6b8df78b4bdb4bba1",
+      "format": "ZIP",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-family-2026-11-16/family-1c6a318464fe258ef2982286.zip",
+      "releaseTag": "portfolio-family-2026-11-16",
+      "representation": "reconstructed-edition-package"
     }
   ],
   "sources": {
@@ -44157,7 +44289,8 @@
     "portfolio-variants-2026-11-16-a",
     "portfolio-variants-2026-11-16-b",
     "portfolio-recovered-2026-11-16",
-    "portfolio-restored-2026-11-16-b"
+    "portfolio-restored-2026-11-16-b",
+    "portfolio-family-2026-11-16"
   ],
   "archiveMembers": {
     "libfile_98f3fff8c9b08191be72a8121bbbb5ac::Kem_route_checkpoint.md": {
@@ -44601,6 +44734,60 @@
       "sourceArchiveMember": "AGENTS.md",
       "representation": "archive-member",
       "sourceBytesUnchanged": true
+    }
+  },
+  "localSources": {
+    "Kem_6klass_rasshirennye_kartochki.pdf": {
+      "asset": "family-89e9c2145fa62e1ecebc7f7c.pdf",
+      "name": "Kem_6klass_rasshirennye_kartochki.pdf",
+      "bytes": 244641,
+      "sha256": "89e9c2145fa62e1ecebc7f7c4442d27d4d45c45915657e9b60d8d6ba1139e6ab",
+      "format": "PDF",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-family-2026-11-16/family-89e9c2145fa62e1ecebc7f7c.pdf",
+      "releaseTag": "portfolio-family-2026-11-16",
+      "representation": "unchanged-local-original",
+      "sourceProject": "Семейные экскурсии с Первыми",
+      "sourceBytesUnchanged": true,
+      "sourceRelativePath": "Карточки_экскурсоводов_6_класс/Расширенная_версия/Kem_6klass_rasshirennye_kartochki.pdf"
+    },
+    "Kem_6klass_list_uchastnika.pdf": {
+      "asset": "family-0608b0df94b78f6f59b60af7.pdf",
+      "name": "Kem_6klass_list_uchastnika.pdf",
+      "bytes": 94031,
+      "sha256": "0608b0df94b78f6f59b60af7373e5bd27295f1f57966898a5e988af291c68979",
+      "format": "PDF",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-family-2026-11-16/family-0608b0df94b78f6f59b60af7.pdf",
+      "releaseTag": "portfolio-family-2026-11-16",
+      "representation": "unchanged-local-original",
+      "sourceProject": "Семейные экскурсии с Первыми",
+      "sourceBytesUnchanged": true,
+      "sourceRelativePath": "Карточки_экскурсоводов_6_класс/Расширенная_версия/Kem_6klass_list_uchastnika.pdf"
+    },
+    "Kem_6klass_rasshirennye_kartochki.docx": {
+      "asset": "family-aa876140a060d85aee068ce1.docx",
+      "name": "Kem_6klass_rasshirennye_kartochki.docx",
+      "bytes": 70059,
+      "sha256": "aa876140a060d85aee068ce11dee558392f6150b779397280a66e479ad465c92",
+      "format": "DOCX",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-family-2026-11-16/family-aa876140a060d85aee068ce1.docx",
+      "releaseTag": "portfolio-family-2026-11-16",
+      "representation": "unchanged-local-original",
+      "sourceProject": "Семейные экскурсии с Первыми",
+      "sourceBytesUnchanged": true,
+      "sourceRelativePath": "Карточки_экскурсоводов_6_класс/Расширенная_версия/Kem_6klass_rasshirennye_kartochki.docx"
+    },
+    "Kem_6klass_rasshirennyy_tekst.md": {
+      "asset": "family-9e138d24e86929b038f12e5a.md",
+      "name": "Kem_6klass_rasshirennyy_tekst.md",
+      "bytes": 105841,
+      "sha256": "9e138d24e86929b038f12e5a21dfdf00aacff6da28e28dbd2f9def3fd0c4181a",
+      "format": "MD",
+      "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-family-2026-11-16/family-9e138d24e86929b038f12e5a.md",
+      "releaseTag": "portfolio-family-2026-11-16",
+      "representation": "unchanged-local-original",
+      "sourceProject": "Семейные экскурсии с Первыми",
+      "sourceBytesUnchanged": true,
+      "sourceRelativePath": "Карточки_экскурсоводов_6_класс/Расширенная_версия/Kem_6klass_rasshirennyy_tekst.md"
     }
   }
 }
