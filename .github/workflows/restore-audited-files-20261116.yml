@@ -21,7 +21,7 @@ jobs:
           node-version: '22'
       - name: Verify parent and fetch pinned bundles
         env:
-          BASELINE: a354ede1e795fbe7b8c16290ea4e431ad0d9a10d
+          BASELINE: de646b087e510cb2ccf6f9937da57838f9113ada
         run: |
           test "$(git rev-parse HEAD^)" = "$BASELINE"
           mkdir -p /tmp/portfolio-restoration
@@ -73,7 +73,7 @@ jobs:
               notes.write_text('38 файлов скачивания: проверенные материалы из архивов, технический комплект и явно обозначенная восстановленная редакция «Мостов Добра». Оригинальные байты извлечённых файлов сохранены. 21 файл ранее был доступен внутри общих ZIP.')
               gh('release','create',tag,'--draft','--target',__import__('os').environ['GITHUB_SHA'],'--title','Восстановленные материалы · 16 ноября 2026','--notes-file',str(notes))
           release=json.loads(gh('release','view',tag,'--json','id,isDraft'))
-          rid=release['id']
+          rid=next(x['id'] for x in json.loads(gh('api',f'repos/{repo}/releases?per_page=100')) if x['tag_name']==tag)
           assets=json.loads(gh('api',f'repos/{repo}/releases/{rid}/assets?per_page=100'))
           current={x['name']:x for x in assets}
           files=json.load(open('/tmp/portfolio-restoration/new-assets.json'))
