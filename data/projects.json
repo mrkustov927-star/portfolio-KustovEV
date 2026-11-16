@@ -79,6 +79,27 @@
         "type": "PDF · 293 КБ",
         "download": true,
         "originalName": "01_Руководство_ведущего.pdf"
+      },
+      {
+        "title": "01 Руководство ведущего.pdf",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-0d2dd1de8ae51083c27e9dbe.pdf",
+        "type": "PDF · 269 КБ",
+        "download": true,
+        "originalName": "01_Руководство_ведущего.pdf"
+      },
+      {
+        "title": "02 Материалы для печати.pdf",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-a5f907181fe281ad856d7405.pdf",
+        "type": "PDF · 439 КБ",
+        "download": true,
+        "originalName": "02_Материалы_для_печати.pdf"
+      },
+      {
+        "title": "03 Презентация мастерской.pdf",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-baebdb1a598a2dd0a2008527.pdf",
+        "type": "PDF · 244 КБ",
+        "download": true,
+        "originalName": "03_Презентация_мастерской.pdf"
       }
     ],
     "tags": [
@@ -102,7 +123,10 @@
     "galleryGroup": "legends",
     "extraGalleryGroups": [
       "workshop",
-      "variants-legend-workshop-2026-09"
+      "variants-legend-workshop-2026-09",
+      "restored-legend-workshop-0d2dd1de8a",
+      "restored-legend-workshop-a5f907181f",
+      "restored-legend-workshop-baebdb1a59"
     ],
     "preview": "materials/legends/011.webp",
     "audience": "Дети и подростки 10–17 лет, ведущие мастерской",
@@ -421,6 +445,20 @@
         "type": "ZIP · 4.9 МБ",
         "download": true,
         "originalName": "Школа_актива_улучшенные_оригиналы.zip"
+      },
+      {
+        "title": "Scenariy Shkoly aktiva 16 10 2026.pdf",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-c31924cacc308f4058b205f6.pdf",
+        "type": "PDF · 195 КБ",
+        "download": true,
+        "originalName": "Scenariy_Shkoly_aktiva_16_10_2026.pdf"
+      },
+      {
+        "title": "Razdatochnye materialy 16 10 2026.pdf",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-69e0465d2ca632b670330ac9.pdf",
+        "type": "PDF · 191 КБ",
+        "download": true,
+        "originalName": "Razdatochnye_materialy_16_10_2026.pdf"
       }
     ],
     "status": "Сценарий, листы и визуальный комплект",
@@ -429,7 +467,9 @@
     "extraGalleryGroups": [
       "school_scenario",
       "audit-school-visuals",
-      "variants-school-active-2026-10"
+      "variants-school-active-2026-10",
+      "restored-school-active-c31924cacc",
+      "restored-school-active-69e0465d2c"
     ],
     "preview": "materials/school_handouts/002.webp"
   },
@@ -765,14 +805,16 @@
     "includes": [
       "Визуальная концепция напольной игры",
       "Карточки с трудностями для обсуждения",
-      "Материал о цели и смысле игровой модели"
+      "Материал о цели и смысле игровой модели",
+      "Восстановленная редакция презентации на 10 слайдов",
+      "Редактируемый PPTX, PDF и слайды PNG"
     ],
     "tags": [
       "10–17 лет",
       "Наставничество",
       "Игра"
     ],
-    "status": "3 сохранившихся макета",
+    "status": "3 архивных эскиза + восстановленная презентация",
     "year": "2026",
     "cover": "pink cover-document",
     "coverTitle": "Идея.<br>Команда.<br>Практика.",
@@ -793,6 +835,27 @@
         "title": "Все изображения · веб-копии",
         "url": "downloads/audit/gallery-bridges.zip",
         "type": "ZIP · WebP"
+      },
+      {
+        "title": "Восстановленная редакция · редактируемый PPTX",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-4952595ad7404ab4c15d4eb1.pptx",
+        "type": "PPTX · 5.7 МБ",
+        "download": true,
+        "originalName": "Мосты_Добра_восстановленная_редакция_16.11.2026.pptx"
+      },
+      {
+        "title": "Восстановленная редакция · PDF для просмотра",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-d14db199b5f5b9abf66a3f3b.pdf",
+        "type": "PDF · 1.3 МБ",
+        "download": true,
+        "originalName": "Мосты_Добра_восстановленная_редакция_16.11.2026.pdf"
+      },
+      {
+        "title": "Восстановленная редакция · 10 слайдов PNG и тексты",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-61a205e7fadfb736e00324e9.zip",
+        "type": "ZIP · 1.3 МБ",
+        "download": true,
+        "originalName": "Мосты_Добра_восстановленная_редакция_слайды_PNG.zip"
       }
     ],
     "collections": [
@@ -800,9 +863,12 @@
       "event"
     ],
     "ready": true,
-    "note": "Ранее в чатах — «Мост помощи». Финальное название — «Мосты Добра». Презентация упоминается в истории, но её исходный файл в доступном каталоге не найден.",
+    "note": "Презентация в исходных файлах января 2026 года не найдена. Добавленная 16.11.2026 редакция составлена по сохранившемуся описанию и структуре 10 слайдов из переписки 27.01.2026. Формулировки слайдов, этапов и рефлексии восстановлены редакционно; это не точная копия утраченного PPTX. Три исходных эскиза сохранены отдельно.",
     "galleryGroup": "audit-bridges",
-    "preview": "materials/audit-bridges/fe91ce9519648191a822209dae934a88.webp"
+    "preview": "materials/audit-bridges/fe91ce9519648191a822209dae934a88.webp",
+    "extraGalleryGroups": [
+      "restored-bridges-d14db199b5"
+    ]
   },
   {
     "id": "games",
@@ -1156,7 +1222,8 @@
       "Исторические фотографии и раздел «Фото и документы»",
       "Материалы и профили участников проекта",
       "Дополнительные версии и исходные файлы: 63",
-      "Сохранённая авторская версия сайта, commit fd574aaea7"
+      "Сохранённая авторская версия сайта, commit fd574aaea7",
+      "Рабочая заметка от 01.11.2026 и 7 архивных технических исходников"
     ],
     "resources": [
       {
@@ -1256,6 +1323,62 @@
         "type": "ZIP · 1.7 МБ",
         "download": true,
         "originalName": "Семейные маршруты · HTML-копия с локальными файлами"
+      },
+      {
+        "title": "Рабочая заметка о маршруте · 01.11.2026",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-e5183a1d3b956b89d282e86d.md",
+        "type": "MD · 11 КБ",
+        "download": true,
+        "originalName": "Kem_route_checkpoint.md"
+      },
+      {
+        "title": "Архивный исходник · build_report.py",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-1ffc6f2211d4966731d254fa.py",
+        "type": "PY · 25 КБ",
+        "download": true,
+        "originalName": "build_report.py"
+      },
+      {
+        "title": "Архивный исходник · fetch_thumbnails.py",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-70ed75fbe8b646e5a34e2967.py",
+        "type": "PY · 3 КБ",
+        "download": true,
+        "originalName": "fetch_thumbnails.py"
+      },
+      {
+        "title": "Архивный исходник · retry_thumbnails.py",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-cd3ddd30a0b92376bf514c4e.py",
+        "type": "PY · 2 КБ",
+        "download": true,
+        "originalName": "retry_thumbnails.py"
+      },
+      {
+        "title": "Архивный исходник · community_fetch.py",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-5b64f82afc977b3c49cc89ab.py",
+        "type": "PY · 3 КБ",
+        "download": true,
+        "originalName": "community_fetch.py"
+      },
+      {
+        "title": "Архивный исходник · community_fullsize.py",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-abbf384ad63c3445468045d9.py",
+        "type": "PY · 2 КБ",
+        "download": true,
+        "originalName": "community_fullsize.py"
+      },
+      {
+        "title": "Архивный исходник · community_retry.py",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-7ed705a2e73862d9300a3840.py",
+        "type": "PY · 3 КБ",
+        "download": true,
+        "originalName": "community_retry.py"
+      },
+      {
+        "title": "Архивный исходник · fetch_images.py",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-025e81b35fc27b53710a726a.py",
+        "type": "PY · 2 КБ",
+        "download": true,
+        "originalName": "fetch_images.py"
       }
     ],
     "status": "Сайт доступен",
@@ -1264,7 +1387,8 @@
     "galleryGroup": "variants-kem-route-2026-07",
     "extraGalleryGroups": [
       "variants-kem-route-2026-11"
-    ]
+    ],
+    "note": "Архивные технические исходники опубликованы для изучения; исходные выгрузки и рабочие данные в них не включены."
   },
   {
     "id": "news",
@@ -1754,6 +1878,13 @@
         "type": "ZIP · 61 КБ",
         "download": true,
         "originalName": "Продуктивное сотрудничество библиотек и Движения Первых: модели, практики и план внедрения для Кемского муниципального округа — текст и HTML.zip"
+      },
+      {
+        "title": "Презентация Библиотеки и Движение Первых.pptx",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-f96c9ccced648a746754580d.pptx",
+        "type": "PPTX · 5.9 МБ",
+        "download": true,
+        "originalName": "Презентация_Библиотеки_и_Движение_Первых.pptx"
       }
     ],
     "status": "Презентация, выступление и карточки",
@@ -4223,6 +4354,27 @@
         "type": "ZIP · 28 КБ",
         "download": true,
         "originalName": "Источниковедческий аудит корпуса по теме Кемь — Попов остров — Якостров — Рабочеостровск — текст и HTML.zip"
+      },
+      {
+        "title": "Открыть каталог.html",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-092360d64d9c0fd4941a3f6a.html",
+        "type": "HTML · 14 КБ",
+        "download": true,
+        "originalName": "Открыть_каталог.html"
+      },
+      {
+        "title": "Архивный исходник · extract_pdf_pages.py",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-be7845b38f0ef87c02e4d11f.py",
+        "type": "PY · 1 КБ",
+        "download": true,
+        "originalName": "extract_pdf_pages.py"
+      },
+      {
+        "title": "Архивный исходник · download_archive.py",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-9257f070f072ec0ba7867152.py",
+        "type": "PY · 7 КБ",
+        "download": true,
+        "originalName": "download_archive.py"
       }
     ],
     "collections": [
@@ -4230,7 +4382,7 @@
       "event"
     ],
     "ready": true,
-    "note": "Сохранены подготовленные редакции исследовательских материалов. Исторические версии и гипотезы следует различать по приведённым в книге источникам.",
+    "note": "Сохранены подготовленные редакции исследовательских материалов. Исторические версии и гипотезы следует различать по приведённым в книге источникам. Архивные технические исходники опубликованы для изучения; исходные выгрузки и рабочие данные в них не включены.",
     "galleryGroup": "audit-rabocheostrovsk",
     "preview": "materials/audit-rabocheostrovsk/page-1.webp",
     "extraGalleryGroups": [
@@ -5303,6 +5455,13 @@
         "type": "ZIP · 302 КБ",
         "download": true,
         "originalName": "10-klass-praktikum-dlya-uchenikov.zip"
+      },
+      {
+        "title": "09-praktikum-10-klass.pdf",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-e66b97fb27f183b2e48fe3e9.pdf",
+        "type": "PDF · 227 КБ",
+        "download": true,
+        "originalName": "09-praktikum-10-klass.pdf"
       }
     ],
     "collections": [
@@ -5313,7 +5472,9 @@
     "status": "Учебный сайт и оригиналы",
     "previewFrame": "tools/lessons/edu-10-editor/index.html",
     "previewScripts": true,
-    "previewLabel": "ПРЕВЬЮ УРОКА"
+    "previewLabel": "ПРЕВЬЮ УРОКА",
+    "galleryGroup": "restored-edu-10-editor-e66b97fb27",
+    "preview": "materials/restored-edu-10-editor-e66b97fb27/001.webp"
   },
   {
     "id": "edu-10-arithmetic",
@@ -6276,6 +6437,83 @@
         "type": "PDF · 6 КБ",
         "download": true,
         "originalName": "SIDE_B_GROTESK_25_YEARS_GOLD.pdf"
+      },
+      {
+        "title": "GROTESK FRONT WHITE VECTOR.svg",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-b02c759ae806d36036246db7.svg",
+        "type": "SVG · 22 КБ",
+        "download": true,
+        "originalName": "GROTESK_FRONT_WHITE_VECTOR.svg"
+      },
+      {
+        "title": "GROTESK FRONT BLACK VECTOR.svg",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-3b38e5b334c25a44b518b312.svg",
+        "type": "SVG · 22 КБ",
+        "download": true,
+        "originalName": "GROTESK_FRONT_BLACK_VECTOR.svg"
+      },
+      {
+        "title": "GROTESK FRONT BLUE VECTOR.svg",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-b487e2898cde96be07d80855.svg",
+        "type": "SVG · 22 КБ",
+        "download": true,
+        "originalName": "GROTESK_FRONT_BLUE_VECTOR.svg"
+      },
+      {
+        "title": "GROTESK FRONT RED VECTOR.svg",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-239f4a4fb63b2e9e37a830a4.svg",
+        "type": "SVG · 22 КБ",
+        "download": true,
+        "originalName": "GROTESK_FRONT_RED_VECTOR.svg"
+      },
+      {
+        "title": "MASK WHITE VECTOR.svg",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-067616dbabd7d54ba05b77ac.svg",
+        "type": "SVG · 12 КБ",
+        "download": true,
+        "originalName": "MASK_WHITE_VECTOR.svg"
+      },
+      {
+        "title": "DESCRIPTOR WHITE VECTOR.svg",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-8f6f31f0a5398d7c581d5379.svg",
+        "type": "SVG · 8 КБ",
+        "download": true,
+        "originalName": "DESCRIPTOR_WHITE_VECTOR.svg"
+      },
+      {
+        "title": "TITLE WHITE VECTOR.svg",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-6a67cbe6df7a0f750d2b55a1.svg",
+        "type": "SVG · 3 КБ",
+        "download": true,
+        "originalName": "TITLE_WHITE_VECTOR.svg"
+      },
+      {
+        "title": "MASK BLACK VECTOR.svg",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-49957a9c03c7f162ca4181ea.svg",
+        "type": "SVG · 12 КБ",
+        "download": true,
+        "originalName": "MASK_BLACK_VECTOR.svg"
+      },
+      {
+        "title": "DESCRIPTOR BLACK VECTOR.svg",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-b70be34fe000a78b3e7b91e1.svg",
+        "type": "SVG · 8 КБ",
+        "download": true,
+        "originalName": "DESCRIPTOR_BLACK_VECTOR.svg"
+      },
+      {
+        "title": "TITLE BLACK VECTOR.svg",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-494d3563c68f036dca455d7d.svg",
+        "type": "SVG · 3 КБ",
+        "download": true,
+        "originalName": "TITLE_BLACK_VECTOR.svg"
+      },
+      {
+        "title": "MASK RED VECTOR.svg",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-7c43d5d74889a78b887521e8.svg",
+        "type": "SVG · 12 КБ",
+        "download": true,
+        "originalName": "MASK_RED_VECTOR.svg"
       }
     ],
     "collections": [
@@ -6289,7 +6527,8 @@
     "extraGalleryGroups": [
       "variants-grotesk-print-2026-05",
       "variants-grotesk-print-2026-07",
-      "variants-grotesk-print-2026-10"
+      "variants-grotesk-print-2026-10",
+      "restored-grotesk-vectors"
     ]
   },
   {
@@ -8288,5 +8527,81 @@
     "previewScripts": false,
     "previewLabel": "ЖИВОЙ ПРОСМОТР",
     "note": "В архивах явно описаны исключённые закрытые файлы и изменения офлайн-копии. Учебный контент сохранён."
+  },
+  {
+    "id": "mcp-workflow-kit",
+    "title": "ChatGPT и Codex: рабочий технический комплект",
+    "category": "planning",
+    "format": "method",
+    "formatLabel": "Архивный технический шаблон",
+    "year": "2026",
+    "cover": "blue",
+    "coverTitle": "Замысел.<br>Инструкция.<br>Исходники.",
+    "overline": "РАБОЧИЕ ИНСТРУМЕНТЫ / 30.10.2026",
+    "icon": "↗",
+    "audience": "Автор и коллеги, работающие с ChatGPT и Codex",
+    "summary": "Сохранённые инструкции, промпты и пример конфигурации MCP для организации работы.",
+    "description": "Авторский комплект от 30 октября 2026 года: команды, промпты, инструкция, пример конфигурации и файл рабочих правил. Представлен как архивный шаблон для изучения и редактирования.",
+    "role": "Подготовка рабочего комплекта с ChatGPT — Евгений Кустов.",
+    "tags": [
+      "ChatGPT",
+      "Codex",
+      "Шаблоны"
+    ],
+    "collections": [
+      "digital"
+    ],
+    "includes": [
+      "Архив с пятью исходными текстовыми файлами",
+      "Команды и промпты для работы",
+      "Инструкция и пример конфигурации MCP"
+    ],
+    "resources": [
+      {
+        "title": "Скачать весь технический комплект",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-55391b19e3bcf14749ae44fe.zip",
+        "type": "ZIP · 7 КБ",
+        "download": true,
+        "originalName": "Универсальный_комплект_MCP_ChatGPT_Codex.zip"
+      },
+      {
+        "title": "КОМАНДЫ.txt",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-ef26b80d39a2fa42a72449d1.txt",
+        "type": "TXT · 2 КБ",
+        "download": true,
+        "originalName": "КОМАНДЫ.txt"
+      },
+      {
+        "title": "ПРОМПТЫ.md",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-1bbfa4147628a89a1f5f8386.md",
+        "type": "MD · 4 КБ",
+        "download": true,
+        "originalName": "ПРОМПТЫ.md"
+      },
+      {
+        "title": "ИНСТРУКЦИЯ.md",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-d8aadacf8607bef37bf8f543.md",
+        "type": "MD · 5 КБ",
+        "download": true,
+        "originalName": "ИНСТРУКЦИЯ.md"
+      },
+      {
+        "title": "codex config example.toml",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-8fda4f35d7613288f4ccdfd9.toml",
+        "type": "TOML · 2 КБ",
+        "download": true,
+        "originalName": "codex_config_example.toml"
+      },
+      {
+        "title": "AGENTS.md",
+        "url": "https://github.com/mrkustov927-star/portfolio-KustovEV/releases/download/portfolio-restored-2026-11-16-b/restored-e67c0e0fa22f9105ceb2dea7.md",
+        "type": "MD · 5 КБ",
+        "download": true,
+        "originalName": "AGENTS.md"
+      }
+    ],
+    "ready": true,
+    "status": "Архив и 5 исходных файлов",
+    "note": "Редакция 30.10.2026. Совместимость команд и адресов с текущими версиями не проверена; подключения не выполнялись."
   }
 ]
