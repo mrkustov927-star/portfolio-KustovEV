@@ -40,6 +40,7 @@
     $("saved-count").textContent = saved.size;
     $("saved-button").classList.toggle("active", state.savedOnly);
     $("saved-button").setAttribute("aria-pressed", String(state.savedOnly));
+    document.querySelectorAll("[data-saved-toggle]").forEach(el => { el.classList.toggle("active",state.savedOnly); el.setAttribute("aria-pressed",String(state.savedOnly)); });
     $("total-stat").textContent = projects.length;
     if ($("materials-stat")) $("materials-stat").textContent = Object.values(materials.galleries).reduce((n,a)=>n+a.length,0);
     if ($("sites-stat")) $("sites-stat").textContent = projects.filter(p=>p.format==='site').length;
@@ -108,6 +109,8 @@
     if(!viewer.open)viewer.showModal();
   }
   document.addEventListener("click", async event => {
+    const sidebarSaved=event.target.closest("[data-saved-toggle]");
+    if(sidebarSaved){$("saved-button").click();return;}
     const image=event.target.closest('[data-gallery-project]');
     if(image){showViewer(image.dataset.galleryProject,Number(image.dataset.galleryIndex));return;}
     const project = event.target.closest("[data-project]");
