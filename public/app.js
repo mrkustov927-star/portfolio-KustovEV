@@ -19,12 +19,43 @@
   const normalize = value => value.toLocaleLowerCase("ru").replaceAll("ё", "е");
   const categoryName = id => categories.find(c => c.id === id)?.label || id;
   const plural = n => n % 10 === 1 && n % 100 !== 11 ? "разработка" : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? "разработки" : "разработок";
+  const cardLimit = 6;
+  const categoryNotes = {
+    creative:"Мастер-классы, игровые форматы и творческие материалы",
+    events:"Идеи и готовые решения для событий",
+    routes:"Путешествия, краеведение и семейные маршруты",
+    aid:"Занятия, тренировки и материалы по первой помощи",
+    team:"Для наставников и совместной работы",
+    volunteer:"Волонтёрские практики и проекты",
+    media:"Публикации, изображения и медиаматериалы",
+    planning:"Планы, календари и инструменты организации",
+    informatics:"Уроки, тренажёры и цифровые инструменты"
+  };
+  const categoryIcons = {creative:"✳",events:"▣",routes:"⌖",aid:"✚",team:"◎",volunteer:"♡",media:"▤",planning:"◫",informatics:"⌘"};
+  const indexMap = new Map(projects.map((p,i) => [p.id,i]));
+  let openedGroups = new Set();
+  let shownByGroup = new Map();
+  let lastFilterKey = null;
   function cover(p, index) {
-    if (p.preview) return `<span class="cover cover-image${p.format==='site'?' preview-site':''}"><img src="${escape(p.preview)}" alt="Превью разработки: ${escape(p.title)}" loading="lazy"><span class="preview-label">${p.format==='site'?'САЙТ':'ЛИСТЫ И КАРТОЧКИ · '+p.gallery.length}</span></span>`;
+    if (p.preview) return `<span class="cover cover-image${p.format==='site'?' preview-site':''}"><span class="cover-stage"><img src="${escape(p.preview)}" alt="Превью разработки: ${escape(p.title)}" loading="lazy"></span><span class="preview-label">${p.format==='site'?'САЙТ':'МАТЕРИАЛЫ'}</span></span>`;
     if (p.previewFrame) return `<span class="cover cover-frame"><iframe src="${escape(p.previewFrame)}" title="Живое превью: ${escape(p.title)}" tabindex="-1" loading="lazy" sandbox="${p.previewScripts===false?'':'allow-scripts'}"></iframe><span class="preview-label">${escape(p.previewLabel||'ЖИВОЙ ПРОСМОТР')}</span></span>`;
     const photo = p.cover === "route" ? '<img src="assets/kem-history.jpg" alt="" loading="lazy" width="750" height="587">' : "";
     return `<span class="cover cover-${escape(p.cover)}">${photo}<span class="cover-overline">${escape(p.overline)}</span><span class="cover-index">${String(index+1).padStart(2,"0")}</span><span class="cover-main">${p.coverTitle}</span>${p.cover !== "route" ? `<span class="cover-icon" aria-hidden="true">${escape(p.icon)}</span>` : ""}</span>`;
   }
+  function classifyPreview(img) {
+    const coverElement = img.closest(".cover-image");
+    if (!coverElement || coverElement.classList.contains("preview-site") || !img.naturalWidth || !img.naturalHeight) return;
+    const ratio = img.naturalHeight / img.naturalWidth;
+    coverElement.classList.toggle("cover-portrait", ratio >= 1.16);
+    coverElement.classList.toggle("cover-landscape", ratio < 1.16);
+  }
+  function classifyPreviews() {
+    document.querySelectorAll("#project-grid .cover-image img").forEach(img => {
+      if (img.complete) classifyPreview(img);
+      else img.addEventListener("load", () => classifyPreview(img), {once:true});
+    });
+  }
+  const renderCard = p => `<article class="project-card"><button type="button" class="card-open" data-project="${p.id}" aria-label="Подробнее: ${escape(p.title)}">${cover(p,projects.indexOf(p))}<span class="card-body"><span class="card-category">${escape(categoryName(p.category))}</span><h3>${escape(p.title)}</h3><p>${escape(p.summary)}</p><span class="card-tags">${p.tags.map(t => `<span>${escape(t)}</span>`).join("")}</span></span></button><div class="card-footer"><span class="status-dot${p.ready ? "" : " pending"}" aria-hidden="true"></span><span>${escape(p.status)}</span><button class="card-arrow" type="button" data-project="${p.id}" aria-label="Открыть карточку ${escape(p.title)}">↗</button><button type="button" class="bookmark${saved.has(p.id)?" is-saved":""}" data-save="${p.id}" aria-pressed="${saved.has(p.id)}" aria-label="${saved.has(p.id)?"Убрать из избранного":"В избранное"}: ${escape(p.title)}">${saved.has(p.id)?"★":"☆"}</button></div></article>`);
   function renderFilters() {
     $("filters").innerHTML = categories.map(c => `<button class="filter${state.category === c.id ? " active" : ""}" type="button" data-category="${c.id}" aria-pressed="${state.category === c.id}">${escape(c.label)} <span>${c.id === "all" ? projects.length : projects.filter(p => p.category === c.id).length}</span></button>`).join("");
   }
@@ -32,7 +63,32 @@
     renderFilters();
     const q = normalize(state.query.trim());
     const filtered = projects.filter(p => (state.category === "all" || p.category === state.category) && (state.format === "all" || p.format === state.format) && (!state.savedOnly || saved.has(p.id)) && (!state.collection || p.collections.includes(state.collection)) && (!q || normalize([p.title,p.summary,p.description,p.audience,p.formatLabel,...p.tags].join(" ")).includes(q)));
-    $("project-grid").innerHTML = filtered.map(p => `<article class="project-card"><button type="button" class="card-open" data-project="${p.id}" aria-label="Подробнее: ${escape(p.title)}">${cover(p,projects.indexOf(p))}<span class="card-body"><span class="card-category">${escape(categoryName(p.category))}</span><h3>${escape(p.title)}</h3><p>${escape(p.summary)}</p><span class="card-tags">${p.tags.map(t => `<span>${escape(t)}</span>`).join("")}</span></span></button><div class="card-footer"><span class="status-dot${p.ready ? "" : " pending"}" aria-hidden="true"></span><span>${escape(p.status)}</span><button class="card-arrow" type="button" data-project="${p.id}" aria-label="Открыть карточку ${escape(p.title)}">↗</button><button type="button" class="bookmark${saved.has(p.id)?" is-saved":""}" data-save="${p.id}" aria-pressed="${saved.has(p.id)}" aria-label="${saved.has(p.id)?"Убрать из избранного":"В избранное"}: ${escape(p.title)}">${saved.has(p.id)?"★":"☆"}</button></div></article>`).join("");
+    const grouped = categories.filter(c => c.id !== "all").map(c => ({category:c,items:filtered.filter(p => p.category === c.id)})).filter(g => g.items.length);
+    const key = [state.category,state.format,state.savedOnly,state.collection||"",q].join("|");
+    if (key !== lastFilterKey) {
+      lastFilterKey = key;
+      shownByGroup = new Map();
+      const hasSearchOrFilter = state.category !== "all" || state.format !== "all" || state.savedOnly || !!state.collection || !!q;
+      openedGroups = new Set(hasSearchOrFilter ? grouped.map(g => g.category.id) : grouped.slice(0,1).map(g => g.category.id));
+    }
+    $("project-grid").innerHTML = grouped.map(({category,items}) => {
+      const count = shownByGroup.get(category.id) || cardLimit;
+      const visible = items.slice(0,count);
+      return `<section class="catalog-section" id="group-${escape(category.id)}">
+        <details class="catalog-group" data-group="${escape(category.id)}" ${openedGroups.has(category.id)?"open":""}>
+          <summary class="group-summary">
+            <span class="group-icon" aria-hidden="true">${categoryIcons[category.id]||"◇"}</span>
+            <span class="group-heading"><strong>${escape(category.label)}</strong><small>${escape(categoryNotes[category.id] || "Проекты и материалы")}</small></span>
+            <span class="group-meta"><span class="group-count">${items.length} ${plural(items.length)}</span><span class="group-chevron" aria-hidden="true">⌄</span></span>
+          </summary>
+          <div class="group-body">
+            <div class="project-grid">${visible.map(renderCard).join("")}</div>
+            ${items.length > visible.length ? `<button type="button" class="show-more" data-more="${escape(category.id)}">Показать ещё <span aria-hidden="true">↓</span><span class="show-more-count">Осталось ${items.length-visible.length}</span></button>` : ""}
+          </div>
+        </details>
+      </section>`;
+    }).join("");
+    classifyPreviews();filtered.map(p => `<article class="project-card"><button type="button" class="card-open" data-project="${p.id}" aria-label="Подробнее: ${escape(p.title)}">${cover(p,projects.indexOf(p))}<span class="card-body"><span class="card-category">${escape(categoryName(p.category))}</span><h3>${escape(p.title)}</h3><p>${escape(p.summary)}</p><span class="card-tags">${p.tags.map(t => `<span>${escape(t)}</span>`).join("")}</span></span></button><div class="card-footer"><span class="status-dot${p.ready ? "" : " pending"}" aria-hidden="true"></span><span>${escape(p.status)}</span><button class="card-arrow" type="button" data-project="${p.id}" aria-label="Открыть карточку ${escape(p.title)}">↗</button><button type="button" class="bookmark${saved.has(p.id)?" is-saved":""}" data-save="${p.id}" aria-pressed="${saved.has(p.id)}" aria-label="${saved.has(p.id)?"Убрать из избранного":"В избранное"}: ${escape(p.title)}">${saved.has(p.id)?"★":"☆"}</button></div></article>`).join("");
     const prefix = state.savedOnly ? "Избранное · " : state.collection ? ({mentor:"Для наставника · ",event:"Для события · ",digital:"Интерактивные сайты · "}[state.collection]) : "";
     $("results-count").textContent = `${prefix}${filtered.length} ${plural(filtered.length)}`;
     $("empty").hidden = filtered.length > 0;
@@ -109,6 +165,16 @@
     if(!viewer.open)viewer.showModal();
   }
   document.addEventListener("click", async event => {
+    const more = event.target.closest("[data-more]");
+    if (more) {
+      const group = more.dataset.more;
+      shownByGroup.set(group,(shownByGroup.get(group)||cardLimit)+cardLimit);
+      render();
+      const next = document.querySelector(`[data-more="${group}"]`);
+      if(next) next.focus({preventScroll:true});
+      else document.querySelector(`[data-group="${group}"] summary`)?.focus({preventScroll:true});
+      return;
+    }
     const sidebarSaved=event.target.closest("[data-saved-toggle]");
     if(sidebarSaved){$("saved-button").click();return;}
     const image=event.target.closest('[data-gallery-project]');
@@ -129,6 +195,12 @@
       catch { toast("Ссылку можно скопировать из адресной строки"); }
     }
   });
+  $("project-grid").addEventListener("toggle",event => {
+    const details = event.target;
+    if (!details.matches?.("details[data-group]") || !details.isConnected) return;
+    if (details.open) openedGroups.add(details.dataset.group);
+    else openedGroups.delete(details.dataset.group);
+  },true);
   $("search").addEventListener("input",event=>{state.query=event.target.value;render();});
   $("format").addEventListener("change",event=>{state.format=event.target.value;render();});
   $("saved-button").addEventListener("click",()=>{state.savedOnly=!state.savedOnly;state.collection=null;render();$("catalog").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});});
