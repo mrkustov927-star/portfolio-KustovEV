@@ -14,6 +14,12 @@ const galleries=context.window.PORTFOLIO_MATERIALS?.galleries||{};
 for(const [key,items]of Object.entries(galleries))for(const item of items)checkPath(item.src);
 for(const p of projects)if(p.galleryGroup&&!galleries[p.galleryGroup]?.length)problems.push('Empty gallery: '+p.galleryGroup);
 const html=fs.readFileSync('public/index.html','utf8');
+const groupCount=categories.filter(c=>c.id!=="all"&&projects.some(p=>p.category===c.id)).length;
+if((html.match(/class="catalog-group"/g)||[]).length!==groupCount)problems.push('Missing collapsible category groups');
+if((html.match(/class="catalog-section"/g)||[]).length!==groupCount)problems.push('Unexpected catalog section count');
+if(!html.includes('class="cover-stage"'))problems.push('Adaptive cover stage missing');
+if(!html.includes('class="catalog-groups" id="project-grid"'))problems.push('New catalog container missing');
+
 if((html.match(/<article class="project-card">/g)||[]).length!==projects.length)problems.push('Static card count differs');
 if(/kustov-pervye-portfolio\.mrkustov\.chatgpt\.site/.test(html))problems.push('Outdated portfolio origin');
 if(problems.length){console.error(problems.join('\n'));process.exit(1)}
