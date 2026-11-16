@@ -1,0 +1,14 @@
+{
+  "checkedAt": "2026-11-16T09:21:45.178359+00:00",
+  "authentication": "none",
+  "cookies": "none",
+  "downloads": 50,
+  "passed": 50,
+  "bytes": 152043290,
+  "sha256Compared": true,
+  "allDownloadsPassed": true,
+  "publicHtmlPagesChecked": 14,
+  "publicHtmlPagesPassed": 14,
+  "sourceCommit": "a8f5eb470a123294f4641d8952b629c6ba0d44ca",
+  "browserInteractionCheck": "unavailable"
+}

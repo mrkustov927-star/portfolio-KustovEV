@@ -126,5 +126,15 @@
     "The seven examples are missing as individually registered original downloads. Similar or derived pages may already appear in the galleries; no claim of seven unique new projects is made.",
     "The check validates catalog references, not every file in every nested archive or all external site versions.",
     "No missing materials were published by this audit."
-  ]
+  ],
+  "resolution": {
+    "updatedAt": "2026-11-16",
+    "status": "confirmed-audit-examples-recovered",
+    "catalogComplete": false,
+    "sourceCommit": "a8f5eb470a123294f4641d8952b629c6ba0d44ca",
+    "details": "docs/recovery-publication-2026-11-16.md",
+    "addedDownloadAssets": 50,
+    "allNewDownloadsVerifiedAnonymously": true,
+    "remaining": "Previous unresolved backlog and files without confirmed professional context."
+  }
 }
