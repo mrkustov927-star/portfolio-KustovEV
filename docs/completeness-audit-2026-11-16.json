@@ -1,0 +1,130 @@
+{
+  "checkedAt": "2026-11-16",
+  "baselineCommit": "0ea0119efb1a818ac2077d892063e1628dd7d2ad",
+  "conclusion": "incomplete",
+  "scope": {
+    "ownedLibraryFiles": 5393,
+    "generatedLibraryFiles": 3223,
+    "uploadedLibraryFiles": 2170,
+    "libraryInventoryComplete": true,
+    "nativeSites": 13,
+    "publishedNativeSites": 10,
+    "githubRepositories": 12,
+    "chatHistory": "Retrieved relevant earlier conversation fragments; not an exhaustive export of all chats or ChatGPT Project contents."
+  },
+  "catalog": {
+    "projects": 112,
+    "galleries": 167,
+    "imagesAndPages": 3249,
+    "sitesAndTools": 30,
+    "downloadAssets": 2237,
+    "generatedLibraryIdsMappedToOriginals": 1984,
+    "generatedLibraryIdsNotMappedToOriginals": 1239,
+    "orphanGalleries": 0,
+    "missingGalleryGroups": 0,
+    "galleryItemsWithoutOriginalReference": 0,
+    "ornamentGalleryImages": 69
+  },
+  "unlinkedOriginalExamples": [
+    {
+      "id": "libfile_0456c45392e881919ad87d04a5690480",
+      "name": "Ornamenty_dlya_podrostkov_12-16_A4.pdf",
+      "bytes": 239307,
+      "status": "original-not-registered",
+      "libraryUrl": "https://chatgpt.com/library?file_id=libfile_0456c45392e881919ad87d04a5690480&account_id=personal"
+    },
+    {
+      "id": "libfile_0c9e3a332bbc819189f1ba1f0644133b",
+      "name": "Ornamenty_dlya_podrostkov_listy_PNG.zip",
+      "bytes": 701842,
+      "status": "original-not-registered",
+      "libraryUrl": "https://chatgpt.com/library?file_id=libfile_0c9e3a332bbc819189f1ba1f0644133b&account_id=personal"
+    },
+    {
+      "id": "libfile_5e7d0b3cc64c81919ff376c1ac7129dd",
+      "name": "Ornamenty_Karelii_raskraski_A4.pdf",
+      "bytes": 10130162,
+      "status": "original-not-registered",
+      "libraryUrl": "https://chatgpt.com/library?file_id=libfile_5e7d0b3cc64c81919ff376c1ac7129dd&account_id=personal"
+    },
+    {
+      "id": "libfile_f55c13d68cb881918e29fd9e0e5b1bb0",
+      "name": "Ornamenty_Karelii_otdelnye_listy_PNG.zip",
+      "bytes": 10754438,
+      "status": "original-not-registered",
+      "libraryUrl": "https://chatgpt.com/library?file_id=libfile_f55c13d68cb881918e29fd9e0e5b1bb0&account_id=personal"
+    },
+    {
+      "id": "libfile_f92ab135d5388191ad42ed0c07114816",
+      "name": "Мандат делегата конференции.png",
+      "bytes": 1232018,
+      "status": "original-not-registered",
+      "libraryUrl": "https://chatgpt.com/library?file_id=libfile_f92ab135d5388191ad42ed0c07114816&account_id=personal"
+    },
+    {
+      "id": "libfile_1d629a340c10819182193882f92beaaa",
+      "name": "Бюллетень выборов Совета Первых Кемского округа.png",
+      "bytes": 1100381,
+      "status": "original-not-registered",
+      "libraryUrl": "https://chatgpt.com/library?file_id=libfile_1d629a340c10819182193882f92beaaa&account_id=personal"
+    },
+    {
+      "id": "libfile_639334542fcc81919569713d03c4a0c6",
+      "name": "Приключения Первых: проектный путеводитель.png",
+      "bytes": 1826377,
+      "status": "original-not-registered",
+      "libraryUrl": "https://chatgpt.com/library?file_id=libfile_639334542fcc81919569713d03c4a0c6&account_id=personal"
+    }
+  ],
+  "missingLiveSites": [
+    {
+      "title": "Зарница 2.0. Команда лучших",
+      "url": "https://mrkustov927-star.github.io/newpage/",
+      "repository": "mrkustov927-star/newpage",
+      "httpStatus": 200
+    },
+    {
+      "title": "КемьФест — командный план",
+      "url": "https://mrkustov927-star.github.io/kemfest2026/",
+      "repository": "mrkustov927-star/kemfest2026",
+      "httpStatus": 200
+    }
+  ],
+  "unlinkedRepositoryVersions": [
+    {
+      "repository": "mrkustov927-star/PP10",
+      "description": "Первая помощь: отдельная версия тренажёра",
+      "pagesStatus": 404
+    },
+    {
+      "repository": "mrkustov927-star/PP.Kem",
+      "description": "Первая помощь: расширенный тренажёр и региональный раздел",
+      "pagesStatus": 404
+    }
+  ],
+  "nativeSiteVersionReview": [
+    "Командная строка — 10 класс",
+    "Модель → Эксперимент · Информатика, 11 класс",
+    "Информатика · ПО и файловые системы",
+    "Лаборатория логики · 8 класс",
+    "СЕМЕЙНЫЕ МАРШРУТЫ ПО КЕМИ С ПЕРВЫМИ"
+  ],
+  "researchReports": {
+    "notMappedToOriginals": 8,
+    "readableExcerptObtained": 2,
+    "readableContentUnavailable": 6,
+    "completeContentsReviewed": 0
+  },
+  "previousBacklogRequiresEvidence": [
+    "Годовые программы направлений",
+    "Полный блокнот «Зарницы» на 60 страниц",
+    "Полная презентация «Мосты Добра»",
+    "Полные текстовые конкурсные чек-листы"
+  ],
+  "limits": [
+    "Unmapped Library IDs are not equivalent to missing professional materials: the set includes personal files, working documents, references, repeated versions and unclassified experiments.",
+    "The seven examples are missing as individually registered original downloads. Similar or derived pages may already appear in the galleries; no claim of seven unique new projects is made.",
+    "The check validates catalog references, not every file in every nested archive or all external site versions.",
+    "No missing materials were published by this audit."
+  ]
+}
