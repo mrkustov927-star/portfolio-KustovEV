@@ -1,0 +1,90 @@
+name: Publish recovered portfolio materials
+on:
+  push:
+    paths:
+      - .github/workflows/publish-recovered.yml
+permissions:
+  contents: write
+concurrency:
+  group: portfolio-recovered-20261116
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: mrkustov927-star/portfolio-KustovEV
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 2
+      - name: Verify reviewed parent
+        run: test "$(git rev-parse HEAD^)" = "daed7886b5dfee7465518e621d6a3b482ec040ae"
+      - name: Download and verify reviewed bundles
+        shell: python
+        run: |
+          import pathlib,urllib.request,tarfile,hashlib
+          root=pathlib.Path('/tmp/recovered-portfolio');root.mkdir()
+          bundles={"source-changes.tar.gz":{"bytes":6458477,"sha256":"f82599cd6593e497d3531c6883a8b0070a488dc9858a0b89cbe0ece694e49339"},"original-assets.tar":{"bytes":152176640,"sha256":"4402f70d5c47469c85973f2358921033109385fcd285b62a90f4c5a428deea19"}}
+          class Verified:
+              def __init__(self,response):self.response=response;self.h=hashlib.sha256();self.n=0
+              def read(self,n=-1):
+                  b=self.response.read(n);self.h.update(b);self.n+=len(b);return b
+          for name,meta in bundles.items():
+              with urllib.request.urlopen('https://sb-2xxhf4varqmt.vercel.run/'+name,timeout=300) as response:
+                  stream=Verified(response)
+                  with tarfile.open(fileobj=stream,mode='r|gz' if name.endswith('.gz') else 'r|') as archive:
+                      archive.extractall('.' if name.startswith('source-') else root,filter='data')
+                  while stream.read(1048576):pass
+                  assert stream.n==meta['bytes'] and stream.h.hexdigest()==meta['sha256'],name
+                  print('Verified bundle:',name,stream.n,flush=True)
+      - name: Check catalog and all recovered bytes
+        run: |
+          npm run build
+          npm run check
+          node --check public/app.js
+          python3 - <<'PY'
+          import json,pathlib,hashlib,zipfile
+          root=pathlib.Path('/tmp/recovered-portfolio');items=json.loads((root/'new-assets.json').read_text())
+          assert len(items)==50
+          for x in items:
+              p=root/'assets'/x['asset']
+              assert p.stat().st_size==x['bytes'] and hashlib.sha256(p.read_bytes()).hexdigest()==x['sha256'],x['asset']
+              if p.suffix=='.zip':
+                  with zipfile.ZipFile(p) as z:assert z.testzip() is None
+          print('Verified original, export and archive assets:',len(items))
+          PY
+      - name: Publish downloads and verify GitHub checksums
+        shell: python
+        run: |
+          import json,pathlib,subprocess,os,time
+          root=pathlib.Path('/tmp/recovered-portfolio');files=json.loads((root/'new-assets.json').read_text());repo=os.environ['GH_REPO'];tag='portfolio-recovered-2026-11-16'
+          releases=json.loads(subprocess.check_output(['gh','api',f'repos/{repo}/releases?per_page=100']))
+          rel=next((r for r in releases if r['tag_name']==tag),None)
+          if rel is None:
+              rel=json.loads(subprocess.check_output(['gh','api','--method','POST',f'repos/{repo}/releases','-f','tag_name='+tag,'-f','target_commitish=daed7886b5dfee7465518e621d6a3b482ec040ae','-F','draft=true','-f','make_latest=false','-f','name=Восстановленные материалы портфолио · 16.11.2026','-f','body=Дополнение по аудиту: оригиналы, полные тексты исследований и изолированные копии сайтов. Состав, происхождение и ограничения сохранены в репозитории. Скачивание без входа в ChatGPT.']))
+          rid=rel['id']
+          def assets():
+              pages=json.loads(subprocess.check_output(['gh','api','--paginate','--slurp',f'repos/{repo}/releases/{rid}/assets?per_page=100']))
+              return {f['name']:f for page in pages for f in page}
+          for attempt in range(4):
+              remote=assets();missing=[str(root/'assets'/f['asset']) for f in files if f['asset'] not in remote]
+              if not missing:break
+              subprocess.run(['gh','release','upload',tag,*missing],check=False)
+              if attempt:time.sleep(5)
+          remote=assets()
+          for f in files:
+              a=remote[f['asset']]
+              assert a['size']==f['bytes'] and a['digest']=='sha256:'+f['sha256'],f['asset']
+          subprocess.check_output(['gh','api','--method','PATCH',f'repos/{repo}/releases/{rid}','-F','draft=false','-f','make_latest=false'])
+          remote=assets()
+          for f in files:assert remote[f['asset']]['browser_download_url']==f['url']
+          print('Published and checksum-verified assets:',len(files))
+      - name: Commit recovered portfolio
+        run: |
+          git config user.name "portfolio-maintenance"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data public src scripts docs README.md
+          git commit -m "Recover audited originals, complete research texts and downloadable site versions"
+          git push origin HEAD:main
