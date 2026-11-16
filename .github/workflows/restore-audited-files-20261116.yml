@@ -14,12 +14,14 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
       - name: Verify parent and fetch pinned bundles
         env:
-          BASELINE: 2773858e22efe048c122d30f281900fdb188feaa
+          BASELINE: a354ede1e795fbe7b8c16290ea4e431ad0d9a10d
         run: |
           test "$(git rev-parse HEAD^)" = "$BASELINE"
           mkdir -p /tmp/portfolio-restoration
