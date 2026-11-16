@@ -117,20 +117,32 @@
     toast(persisted ? (adding ? "Добавлено в избранное" : "Убрано из избранного") : "Избранное сохранится до закрытия страницы");
     document.querySelector(`[data-save="${id}"]`)?.focus({preventScroll:true});
   }
+  function galleryCard(p,g,index) {
+    return `<button class="material-thumb" type="button" data-gallery-project="${escape(p.id)}" data-gallery-index="${index}" aria-label="Открыть: ${escape(g.title)}"><img src="${escape(g.src)}" alt="${escape(g.title)}" loading="lazy" width="${g.width}" height="${g.height}"><span>${escape(g.title)}</span></button>`;
+  }
   function openProject(id, updateHash = true) {
     const p = byId.get(id);
     if (!p) return;
     if (!dialog.open) lastFocus = document.activeElement;
     const resources = p.resources.length ? `<div class="dialog-section"><h3>Открыть материалы</h3>${p.resources.map(r => `<a class="resource" href="${escape(r.url)}" target="_blank" rel="noopener noreferrer"><span><strong>${escape(r.title)}</strong><small>${escape(r.type)}</small></span><span aria-hidden="true">↗</span><span class="sr-only"> — откроется в новой вкладке</span></a>`).join("")}${p.resources.some(r=>r.library)?'<p class="resource-note">Исходные файлы скачиваются без входа в ChatGPT.</p>':""}</div>` : '<p class="description-only">В портфолио пока представлено описание этой разработки. Файл ещё не подключён.</p>';
     let galleryOffset = 0;
-    const gallerySections = [p.galleryGroup, ...(p.extraGalleryGroups || [])].filter(Boolean).map(key => {
+    const gallerySections = [p.galleryGroup, ...(p.extraGalleryGroups || [])].filter(Boolean).map((key,seriesIndex) => {
       const list = materials.galleries[key] || [];
       const meta = materials.series?.[key];
-      const heading = meta ? `<h4 class="gallery-series-title">${escape(meta.title)}</h4><p class="gallery-hint">${escape(meta.status || '')}</p>` : '';
-      const result = heading + `<div class="material-gallery">${list.map((g,i)=>`<button class="material-thumb" type="button" data-gallery-project="${p.id}" data-gallery-index="${galleryOffset+i}" aria-label="Открыть: ${escape(g.title)}"><img src="${escape(g.src)}" alt="${escape(g.title)}" loading="lazy" width="${g.width}" height="${g.height}"><span>${escape(g.title)}</span></button>`).join('')}</div>`;
+      const base = galleryOffset;
       galleryOffset += list.length;
-      return result;
-    }).join('');
+      if (!list.length) return "";
+      const first = list.slice(0,12);
+      return `<details class="gallery-series" ${seriesIndex===0?"open":""}>
+        <summary><span>${escape(meta?.title || "Материалы и варианты")}</span>
+        <span class="series-count">${list.length} изображений</span><span class="series-chevron" aria-hidden="true">⌄</span></summary>
+        <div class="gallery-series-content">
+          ${meta?.status ? `<p class="gallery-hint">${escape(meta.status)}</p>` : ""}
+          <div class="material-gallery">${first.map((g,i) => galleryCard(p,g,base+i)).join("")}</div>
+          ${list.length > first.length ? `<button class="gallery-more" type="button" data-gallery-more="${escape(key)}" data-gallery-base="${base}" data-gallery-project="${escape(p.id)}" data-gallery-next="${first.length}">Показать ещё изображения · ${list.length-first.length}</button>` : ""}
+        </div>
+      </details>`;
+    }).join("");
     const gallery = p.gallery.length ? `<div class="dialog-section"><h3>Изображения, страницы и варианты · ${p.gallery.length}</h3><p class="gallery-hint">Варианты сгруппированы по сериям и времени создания. Нажмите на изображение, чтобы рассмотреть и скачать исходник. Оригиналы доступны без входа в ChatGPT.</p>${gallerySections}</div>` : '';
     $("detail-content").innerHTML = `<div class="dialog-header"><p class="eyebrow">${escape(categoryName(p.category))} / ${escape(p.year)}</p><h2 id="detail-title">${escape(p.title)}</h2><p>${escape(p.description)}</p></div><dl class="dialog-meta"><div><dt>Для кого</dt><dd>${escape(p.audience)}</dd></div><div><dt>Формат</dt><dd>${escape(p.formatLabel)}</dd></div><div style="grid-column:1/-1"><dt>Авторство и участие</dt><dd>${escape(p.role)}</dd></div></dl><div class="dialog-section"><h3>Что входит в разработку</h3><ul>${p.includes.map(s=>`<li>${escape(s)}</li>`).join("")}</ul></div>${resources}${p.note?`<p class="resource-note">${escape(p.note)}</p>`:""}<div class="dialog-bottom"><button type="button" data-modal-save="${p.id}" aria-pressed="${saved.has(id)}">${saved.has(id)?"★ В избранном":"☆ В избранное"}</button><button type="button" data-copy="${p.id}">Скопировать ссылку ↗</button></div>`;
     if (gallery) $("detail-content").querySelector('.dialog-bottom').insertAdjacentHTML('beforebegin',gallery);
@@ -165,6 +177,27 @@
     if(!viewer.open)viewer.showModal();
   }
   document.addEventListener("click", async event => {
+    const galleryMore = event.target.closest("[data-gallery-more]");
+    if (galleryMore) {
+      const key = galleryMore.dataset.galleryMore;
+      const p = byId.get(galleryMore.dataset.galleryProject);
+      const list = materials.galleries[key] || [];
+      const base = Number(galleryMore.dataset.galleryBase);
+      const start = Number(galleryMore.dataset.galleryNext);
+      if (!p || !Number.isFinite(base) || !Number.isFinite(start)) return;
+      const next = Math.min(start+12,list.length);
+      galleryMore.parentElement.querySelector(".material-gallery")
+        .insertAdjacentHTML("beforeend",list.slice(start,next).map((g,i)=>galleryCard(p,g,base+start+i)).join(""));
+      if (next === list.length) {
+        const heading = galleryMore.closest("details")?.querySelector("summary");
+        galleryMore.remove();
+        heading?.focus({preventScroll:true});
+      } else {
+        galleryMore.dataset.galleryNext = String(next);
+        galleryMore.textContent = `Показать ещё изображения · ${list.length-next}`;
+      }
+      return;
+    }
     const more = event.target.closest("[data-more]");
     if (more) {
       const group = more.dataset.more;
