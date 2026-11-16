@@ -1,0 +1,103 @@
+name: Publish family portfolio materials
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/publish-family-materials-20261116.yml']
+permissions:
+  contents: write
+concurrency:
+  group: portfolio-family-20261116
+  cancel-in-progress: false
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify parent and fetch pinned bundles
+        env:
+          BASELINE: 56f0d7ad521fa4a430bfc61d42d3a14d8cff9089
+        run: |
+          test "$(git rev-parse HEAD^)" = "$BASELINE"
+          mkdir -p /tmp/portfolio-restoration
+          curl --fail --retry 3 --location https://sb-2xxhf4varqmt.vercel.run/family-source.tar.gz -o /tmp/portfolio-restoration/source.tar.gz
+          curl --fail --retry 3 --location https://sb-2xxhf4varqmt.vercel.run/family-assets.tar.gz -o /tmp/portfolio-restoration/assets.tar.gz
+          echo '6428e0dc1e26e70b473daa514329c37e1568a1e70731869f231946d64be97fbe  /tmp/portfolio-restoration/source.tar.gz' | sha256sum --check -
+          echo 'b9ec485d96c6cd26b02965ef897920b1cf3b03b5ec32678cdadd92ef9af702b8  /tmp/portfolio-restoration/assets.tar.gz' | sha256sum --check -
+      - name: Apply source and verify every file
+        run: |
+          python3 - <<'PY'
+          import tarfile,pathlib,json,hashlib,zipfile
+          def extract(src,dest,allowed):
+              with tarfile.open(src) as t:
+                  for m in t.getmembers():
+                      p=pathlib.PurePosixPath(m.name)
+                      assert not p.is_absolute() and '..' not in p.parts
+                      assert m.isfile() or m.isdir()
+                      assert allowed(p)
+                  t.extractall(dest,filter='data')
+          extract('/tmp/portfolio-restoration/source.tar.gz','.',lambda p:p.parts[0] in ('data','docs','public'))
+          extract('/tmp/portfolio-restoration/assets.tar.gz','/tmp/portfolio-restoration',lambda p:p.parts[0] in ('assets','new-assets.json'))
+          fs=json.load(open('/tmp/portfolio-restoration/new-assets.json'))
+          assert len(fs)==11
+          for f in fs:
+              p=pathlib.Path('/tmp/portfolio-restoration/assets')/f['asset']
+              assert p.name==f['asset']
+              assert p.stat().st_size==f['bytes']
+              assert hashlib.sha256(p.read_bytes()).hexdigest()==f['sha256']
+              if p.suffix in ('.zip','.pptx','.docx'):
+                  with zipfile.ZipFile(p) as z: assert z.testzip() is None
+          print('Verified',len(fs),'release assets')
+          PY
+          npm run build
+          npm run check
+          node --check public/app.js
+      - name: Upload verified public downloads
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: mrkustov927-star/portfolio-KustovEV
+        run: |
+          python3 - <<'PY'
+          import subprocess,json,pathlib
+          tag='portfolio-family-2026-11-16'
+          repo='mrkustov927-star/portfolio-KustovEV'
+          def gh(*a):return subprocess.check_output(['gh',*a],text=True)
+          seen=subprocess.run(['gh','release','view',tag,'--json','id,isDraft'],text=True,capture_output=True)
+          if seen.returncode:
+              notes=pathlib.Path('/tmp/portfolio-restoration/notes.md')
+              notes.write_text('Семейные экскурсии: четыре сохранённых исходника без изменений и новая подборка материалов. Маршруты Первых: явно обозначенная восстановленная редакция на 10 страницах, PDF и редактируемые HTML/Markdown. Старые полные файлы портфолио и тетради не найдены.')
+              gh('release','create',tag,'--draft','--target',__import__('os').environ['GITHUB_SHA'],'--title','Семейные экскурсии и Маршруты Первых · 16 ноября 2026','--notes-file',str(notes))
+          release=json.loads(gh('release','view',tag,'--json','id,isDraft'))
+          rid=next(x['id'] for x in json.loads(gh('api',f'repos/{repo}/releases?per_page=100')) if x['tag_name']==tag)
+          assets=json.loads(gh('api',f'repos/{repo}/releases/{rid}/assets?per_page=100'))
+          current={x['name']:x for x in assets}
+          files=json.load(open('/tmp/portfolio-restoration/new-assets.json'))
+          for f in files:
+              if f['asset'] in current:
+                  a=current[f['asset']]
+                  assert a['size']==f['bytes'] and a.get('digest')=='sha256:'+f['sha256']
+              else:gh('release','upload',tag,str(pathlib.Path('/tmp/portfolio-restoration/assets')/f['asset']))
+          assets=json.loads(gh('api',f'repos/{repo}/releases/{rid}/assets?per_page=100'))
+          current={x['name']:x for x in assets}
+          assert len(current)==len(files)
+          for f in files:
+              a=current[f['asset']]
+              assert a['size']==f['bytes'] and a.get('digest')=='sha256:'+f['sha256']
+          gh('release','edit',tag,'--draft=false')
+          final=json.loads(gh('release','view',tag,'--json','isDraft,url'))
+          assert final['isDraft'] is False
+          print('Published',len(files),'verified assets')
+          PY
+      - name: Commit catalog after downloads are public
+        run: |
+          test "$(git ls-remote origin refs/heads/main | cut -f1)" = "$GITHUB_SHA"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data docs public
+          git commit -m "Add family excursion portfolio and reconstructed travel workbook"
+          git push origin HEAD:main
