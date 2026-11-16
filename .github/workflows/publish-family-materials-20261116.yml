@@ -21,7 +21,7 @@ jobs:
           node-version: '22'
       - name: Verify parent and fetch pinned bundles
         env:
-          BASELINE: 56f0d7ad521fa4a430bfc61d42d3a14d8cff9089
+          BASELINE: 86512be5e8811cd7a49d27a9a2e88b0f2520f834
         run: |
           test "$(git rev-parse HEAD^)" = "$BASELINE"
           mkdir -p /tmp/portfolio-restoration
@@ -73,7 +73,8 @@ jobs:
               notes.write_text('Семейные экскурсии: четыре сохранённых исходника без изменений и новая подборка материалов. Маршруты Первых: явно обозначенная восстановленная редакция на 10 страницах, PDF и редактируемые HTML/Markdown. Старые полные файлы портфолио и тетради не найдены.')
               gh('release','create',tag,'--draft','--target',__import__('os').environ['GITHUB_SHA'],'--title','Семейные экскурсии и Маршруты Первых · 16 ноября 2026','--notes-file',str(notes))
           release=json.loads(gh('release','view',tag,'--json','id,isDraft'))
-          rid=next(x['id'] for x in json.loads(gh('api',f'repos/{repo}/releases?per_page=100')) if x['tag_name']==tag)
+          rid=446941627
+          assert json.loads(gh('api',f'repos/{repo}/releases/{rid}'))['tag_name']==tag
           assets=json.loads(gh('api',f'repos/{repo}/releases/{rid}/assets?per_page=100'))
           current={x['name']:x for x in assets}
           files=json.load(open('/tmp/portfolio-restoration/new-assets.json'))
